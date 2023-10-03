@@ -1,14 +1,37 @@
 // Colors
-$clr1: #2e3bce;
-$clr2: #6d08da;
-$clr3: #574f7d;
-$clr4: #f2a1e0;
-$clr5: #f26e93;
-$clr6: #fff;
-$clr7: #222;
+$main-clr: #000000;
+$sec-clr: #121212;
+$accent-clr: #181818;
+$green-main-btn-clr: #1ed760;
+$fill-svg-clr: #1fdf64;
 
+//nav-bar
+$main-txt-clr: #fff;
+$sec-txt-clr: #b3b3b3;
+
+//List
+$third-clr: #282828;
+$third-txt-clr: #a7a7a7;
+$transparent: #00000000;
+
+//Play/pause-tool-bar
+$not-hover-green-clr: #3da060;
+$hover-green-clr: #1fdf64;
+
+//Main bgc ingredient
+$main-bgc-ing1: rgb(28, 26, 26);
+$main-bgc-ing2: linear-gradient(0deg, rgba(28, 26, 26, 1) 73%, rgba(47, 51, 51, 1) 100%);
 
 // Breakpoints
 $mobile-breakpoint: 460px;
 $narrow-breakpoint: 720px;
 $normal-breakpoint: 960px;
+$column-count: 5;
+
+// $clr1: #2e3bce;
+// $clr2: #6d08da;
+// $clr3: #574f7d;
+// $clr4: #f2a1e0;
+// $clr5: #f26e93;
+// $clr6: #fff;
+// $clr7: #222;

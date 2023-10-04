@@ -5,7 +5,7 @@ return(
   
     <span>{station.name} </span>
     <p>
-        {station.songs.map(song=> <span>{song.artist} </span> )}
+        {station.songs.map(song=> <span key={song.artist}>{song.artist} </span> )}
     </p>
     </>
 )

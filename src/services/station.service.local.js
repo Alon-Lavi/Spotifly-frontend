@@ -92,6 +92,7 @@ var stations = [
         "addedBy": {}
       },
     ],
+    "isRecomended": true,
     "msgs": [
       {
         id: 'm101',
@@ -132,6 +133,7 @@ var stations = [
         "addedBy": {}
       },
     ],
+    "isRecomended": true,
     "msgs": [
       {
         id: 'm101',
@@ -172,6 +174,7 @@ var stations = [
         "addedBy": {}
       },
     ],
+    "isRecomended": true,
     "msgs": [
       {
         id: 'm101',

@@ -1,9 +1,11 @@
+.main-container{
+	margin-top: 70px;
+    margin-left: 196px;
+}
+
 .station-list {
 	list-style-type: none;
 	display: grid;
-	grid-gap: 18px;
-	grid-template-columns: repeat($column-count, minmax(0, 1fr));
-	min-width: $min-container-width;
 	grid-gap: 18px;
 	grid-template-columns: repeat($column-count, minmax(0, 1fr));
 	min-width: $min-container-width;
@@ -46,7 +48,6 @@
 
 
 .recomended-list {
-	margin-left: 270px;
 	display: grid;
 	width: 60vw;
 	gap: 1em;

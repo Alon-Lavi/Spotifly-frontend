@@ -9,7 +9,7 @@ export function NavBar() {
             <ul className="side-bar-list">
                 <div className="header-side-bar">
                 <li className="side-bar-item ">
-                    <NavLink to="/" className="nav-link hover">
+                    <NavLink to="/station" className="nav-link hover">
                       {/* <img src={homeIcon} alt="Home Icon" className="nav-icon" /> */}
                          Home 
                     </NavLink>

@@ -10,10 +10,9 @@ import { RecomendedList } from '../cmps/RecomendedList.jsx'
 
 export function StationIndex() {
 	const stations = useSelector((storeState) => storeState.stationModule.stations)
-	const [recomended,setRecomended] =useState(stationService.getRecomended())
+	const [recomended, setRecomended] = useState(stationService.getRecomended())
 	useEffect(() => {
 		loadStations()
-     
 	}, [])
 
 	async function onRemoveStation(stationId) {
@@ -62,16 +61,12 @@ export function StationIndex() {
 		if (user.isAdmin) return true
 		return station.owner?._id === user._id
 	}
-if(!recomended||!stations)return <div>loading </div>
+	if (!recomended || !stations) return <div>loading </div>
 	return (
 		<div>
-			<h3>Stations App</h3>
 			<main>
-				<button onClick={onAddStation}>Add Station </button>
-                <RecomendedList recomended={recomended}/>
-                <StationList onRemoveStation={onRemoveStation} onUpdateStation={onUpdateStation} stations={stations}/>
-
-				
+				<RecomendedList recomended={recomended} />
+				<StationList onRemoveStation={onRemoveStation} onUpdateStation={onUpdateStation} stations={stations} />
 			</main>
 		</div>
 	)

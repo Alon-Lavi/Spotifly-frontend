@@ -4,6 +4,7 @@ import { StationIndex } from './pages/StationIndex.jsx'
 import { ReviewIndex } from './pages/ReviewIndex.jsx'
 import { ChatApp } from './pages/Chat.jsx'
 import { AdminApp } from './pages/AdminIndex.jsx'
+import { SearchPage } from './cmps/SearchPage.jsx'
 
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
@@ -24,6 +25,12 @@ const routes = [
 		component: <StationIndex />,
 		label: 'Stations',
 	},
+    {
+        path: 'search',
+        component: <SearchPage />,
+        label: 'Search'
+
+    },
 	// {
 	//     path: 'review',
 	//     component: <ReviewIndex />,

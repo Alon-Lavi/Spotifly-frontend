@@ -20,6 +20,7 @@ export function NavBar() {
                     <NavLink to="/search" className="nav-link">
                     <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="1.4em" viewBox="2 -3 35 24"><path fill="none" stroke="#ffffff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="m21 21l-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>
                         Search
+                       
                     </NavLink>
                 </li>
                 </div>

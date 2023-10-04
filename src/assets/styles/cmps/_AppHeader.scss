@@ -46,66 +46,86 @@
 // 		color: $green-main-btn-clr;
 // 	}
 // }
+// .app-header {
+// 	// margin: 0;
+// 	padding: rem(16px) rem(32px);
+// 	padding-inline-end: rem(16px);
+// 	height: rem(64px);
+// 	position: sticky;
+// 	top: 10;
+// 	z-index: 10;
+
+// .user-bar {
+// 	display: flex;
+// 	.logout-btn {
+// 		display: flex;
+// 		color: black;
+// 		border: 0;
+// 		font-size: 0.875rem;
+// 	}
+// }
+
+// .app-header-top-bar {
+// 	// min-width: rem(40px);
+// 	display: flex;
+// 	justify-content: space-between;
+// }
+
+// .dir-btns {
+// 	display: flex;
+// 	pointer-events: auto;
+// }
+
+// .user-icon {
+// 	align-items: center;
+// 	display: flex;
+// 	width: rem(32px);
+// 	height: rem(32px);
+// 	border-radius: 50%;
+// }
+
+// .login {
+// 	border: 0;
+// 	display: flex;
+// 	width: rem(32px);
+// 	height: rem(32px);
+// 	align-items: center;
+// 	right: 10px;
+// }
+// }
+
 .app-header {
-	// margin: 0;
-	padding: rem(16px) rem(32px);
-	padding-inline-end: rem(16px);
-	height: rem(64px);
-	position: sticky;
-	top: 10;
-	z-index: 10;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	// justify-content: space-between;
+	top: 0;
+	left: 0;
+	// z-index: 1;
+	margin-top: 0;
+	height: 60px;
+	width: 100vw;
+	background-color: #171717;
+	color: whitesmoke;
+}
 
-	// .user-bar {
-	// 	display: flex;
-	// 	.logout-btn {
-	// 		display: flex;
-	// 		color: black;
-	// 		border: 0;
-	// 		font-size: 0.875rem;
-	// 	}
-	// }
+// .go-back-btn,
+// .forward-btn {
+// 	border: none;
+// 	cursor: pointer;
+// 	justify-content: center;
+// 	display: inline-flex;
+// 	position: relative;
+// 	width: rem(32px);
+// 	height: rem(32px);
+// 	align-items: center;
+// }
 
-	.app-header-top-bar {
-		// min-width: rem(40px);
-		display: flex;
-		justify-content: space-between;
-	}
-
-	.go-back-btn,
-	.forward-btn {
-		border: none;
-		cursor: pointer;
-		justify-content: center;
-		display: inline-flex;
-		position: relative;
-		width: rem(32px);
-		height: rem(32px);
-		align-items: center;
-
-		// background-color: black;
-		// border-radius: 20%;
-		// color: red;
-	}
-
-	.dir-btns {
-		display: flex;
-		pointer-events: auto;
-	}
-
-	.user-icon {
-		align-items: center;
-		display: flex;
-		width: rem(32px);
-		height: rem(32px);
-		border-radius: 50%;
-	}
-
-	.login {
-		border: 0;
-		display: flex;
-		width: rem(32px);
-		height: rem(32px);
-		align-items: center;
-		right: 10px;
-	}
+.user-icon {
+	align-items: center;
+	display: flex;
+	width: rem(32px);
+	height: rem(32px);
+	border-radius: 50%;
 }

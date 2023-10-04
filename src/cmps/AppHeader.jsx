@@ -63,7 +63,6 @@ export function AppHeader({ scrollTop }) {
 						</button>
 					</div>
 
-<<<<<<< HEAD
 					<div className="user-bar">
 						{user && (
 							<span className="login">
@@ -83,22 +82,6 @@ export function AppHeader({ scrollTop }) {
 						)}
 					</div>
 				</div>
-=======
-				{user && (
-					<span className="user-info">
-						<Link to={`user/${user._id}`}>
-							{user.imgUrl && <img src={user.imgUrl} />}
-							{user.fullname}
-						</Link>
-						<button onClick={onLogout}>Logout</button>
-					</span>
-				)}
-				{!user && (
-					<section className="user-info">
-						<LoginSignup onLogin={onLogin} onSignup={onSignup} />
-					</section>
-				)}
->>>>>>> refs/remotes/origin/main
 			</nav>
 		</header>
 	)

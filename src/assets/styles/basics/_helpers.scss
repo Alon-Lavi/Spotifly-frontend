@@ -35,6 +35,18 @@
 	&.justify-center {
 		justify-content: center;
 	}
+	&.justify-around {
+		justify-content: space-around;
+	}
+	&.justify-evenly {
+		justify-content: space-evenly;
+	}
+	&.justify-between {
+		justify-content: space-between;
+	}
+	&.justify-flex-end {
+		justify-content: flex-end;
+	}
 	&.align-center {
 		align-items: center;
 	}

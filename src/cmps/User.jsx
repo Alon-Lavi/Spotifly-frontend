@@ -21,7 +21,16 @@ export function User() {
 	const onForward = () => {
 		navigate(+1)
 	}
+
 	function onToggleModal() {
+		setIsOpen(!isOpen)
+	}
+
+	function onOpenModal() {
+		setIsOpen(true)
+	}
+
+	function closeModal() {
 		setIsOpen(!isOpen)
 	}
 
@@ -53,8 +62,8 @@ export function User() {
 	}
 
 	return (
-		<section className="user-profile" onClick={onToggleModal}>
-			<div className="user flex">
+		<section className="user-profile">
+			<div onClick={onToggleModal} className="user flex">
 				<div className="svg-down-container">
 					{isOpen ? (
 						<svg role="img" height="16" width="16" className="Svg-sc-1bi12j5-0 hDgDGI eAXFT6yvz37fvS1lmt6k" viewBox="0 0 16 16">
@@ -75,7 +84,7 @@ export function User() {
 			</div>
 			{isOpen && (
 				<ul className="user-options-container">
-					<LoginSignup onLogin={login} onSignup={signup} />
+					<LoginSignup onLogin={onLogin} onSignup={signup} />
 				</ul>
 			)}
 			{/* <div className="dir-btns">
@@ -89,45 +98,3 @@ export function User() {
 		</section>
 	)
 }
-
-// 	return (
-// 		<header className="app-header" style={{ backgroundColor: `rgb(40,40,40,${scrollTop / 100})` }}>
-// 			<nav>
-// 				<div className="app-header-top-bar">
-
-// 					<div className="user-bar">
-// 						{user && (
-// 							<span className="login">
-// 								<Link to={`user/${user._id}`}>
-// 									{user.imgUrl && <img className="user-icon" src={user.imgUrl} />}
-// 									{/* {user.fullname} */}
-// 								</Link>
-// 								<button className="logout-btn" onClick={onLogout}>
-// 									Logout
-// 								</button>
-// 							</span>
-// 						)}
-// 						{!user && (
-// 							<section className="login">
-// 								<LoginSignup onLogin={onLogin} onSignup={onSignup} />
-// 							</section>
-// 						)}
-// 					</div>
-// 				</div>
-// 			</nav>
-// 		</header>
-// 	)
-// }
-
-// import routes from '../routes'
-// import { useEffect } from 'react'
-// import { Link, NavLink, useNavigate } from 'react-router-dom'
-// import { useDispatch, useSelector } from 'react-redux'
-
-// import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
-// import { login, logout, signup } from '../store/actions/user.actions.js'
-// import { LoginSignup } from './LoginSignup.jsx'
-
-// export function AppHeader({ scrollTop }) {
-// 	const dispatch = useDispatch()
-// 	const user = useSelector((storeState) => storeState.userModule.user)

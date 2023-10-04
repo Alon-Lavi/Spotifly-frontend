@@ -1,8 +1,8 @@
 // Setup
+@import 'setup/Typography';
 @import 'setup/Variables';
 @import 'setup/Functions';
 @import 'setup/Mixins';
-@import 'setup/Typography';
 
 // Basics
 @import 'basics/Helpers';
@@ -17,6 +17,7 @@
 @import 'views/StationIndex';
 @import 'views/ReviewIndex';
 @import 'views/UserDetails';
+@import 'views/LoginPage';
 
 // Components
 @import 'cmps/AppHeader';

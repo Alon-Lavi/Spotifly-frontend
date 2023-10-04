@@ -12,20 +12,17 @@ const routes = [
 		component: <HomePage />,
 		label: 'Home 🏠',
 	},
-	{
-		path: 'baba',
-		// component: <BabaIndex />,
-		label: 'Meet our Babas',
-	},
+	
+
 	// {
 	//     path: 'survey',
 	//     component: <SurveyIndex />,
 	//     label: 'Take our survey'
 	// },
 	{
-		path: 'car',
+		path: 'station',
 		component: <StationIndex />,
-		label: 'Cars',
+		label: 'Stations',
 	},
 	// {
 	//     path: 'review',

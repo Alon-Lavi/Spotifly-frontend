@@ -1,93 +1,93 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { loadCars, addCar, updateCar, removeCar, addToCart } from '../store/actions/car.actions.js'
+import { loadStations, addStation, updateStation, removeStation } from '../store/actions/station.actions.js'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from '../services/user.service.js'
-import { carService } from '../services/car.service.js'
+import { stationService } from '../services/station.service.js'
 
 export function StationIndex() {
-	const cars = useSelector((storeState) => storeState.carModule.cars)
+	const stations = useSelector((storeState) => storeState.stationModule.stations)
 
 	useEffect(() => {
-		loadCars()
+		loadStations()
 	}, [])
 
-	async function onRemoveCar(carId) {
+	async function onRemoveStation(stationId) {
 		try {
-			await removeCar(carId)
-			showSuccessMsg('Car removed')
+			await removeStation(stationId)
+			showSuccessMsg('Station removed')
 		} catch (err) {
-			showErrorMsg('Cannot remove car')
+			showErrorMsg('Cannot remove station')
 		}
 	}
 
-	async function onAddCar() {
-		const car = carService.getEmptyCar()
-		car.vendor = prompt('Vendor?')
+	async function onAddStation() {
+		const station = stationService.getEmptyStation()
+		station.vendor = prompt('Vendor?')
 		try {
-			const savedCar = await addCar(car)
-			showSuccessMsg(`Car added (id: ${savedCar._id})`)
+			const savedStation = await addStation(station)
+			showSuccessMsg(`Station added (id: ${savedStation._id})`)
 		} catch (err) {
-			showErrorMsg('Cannot add car')
+			showErrorMsg('Cannot add station')
 		}
 	}
 
-	async function onUpdateCar(car) {
+	async function onUpdateStation(station) {
 		const price = +prompt('New price?')
-		const carToSave = { ...car, price }
+		const stationToSave = { ...station, price }
 		try {
-			const savedCar = await updateCar(carToSave)
-			showSuccessMsg(`Car updated, new price: ${savedCar.price}`)
+			const savedStation = await updateStation(stationToSave)
+			showSuccessMsg(`Station updated, new price: ${savedStation.price}`)
 		} catch (err) {
-			showErrorMsg('Cannot update car')
+			showErrorMsg('Cannot update station')
 		}
 	}
 
-	function onAddToCart(car) {
-		console.log(`Adding ${car.vendor} to Cart`)
-		addToCart(car)
-		showSuccessMsg('Added to Cart')
+	function onAddToStationt(station) {
+		console.log(`Adding ${station.vendor} to Stationt`)
+		addToStationt(station)
+		showSuccessMsg('Added to Stationt')
 	}
 
-	function onAddCarMsg(car) {
-		console.log(`TODO Adding msg to car`)
+	function onAddStationMsg(station) {
+		console.log(`TODO Adding msg to station`)
 	}
-	function shouldShowActionBtns(car) {
+	function shouldShowActionBtns(station) {
 		const user = userService.getLoggedinUser()
 		if (!user) return false
 		if (user.isAdmin) return true
-		return car.owner?._id === user._id
+		return station.owner?._id === user._id
 	}
 
 	return (
 		<div>
-			<h3>Cars App</h3>
+			<h3>Stations App</h3>
 			<main>
-				<button onClick={onAddCar}>Add Car ⛐</button>
-				<ul className="car-list">
-					{cars.map((car) => (
-						<li className="car-preview" key={car._id}>
-							<h4>{car.vendor}</h4>
+				<button onClick={onAddStation}>Add Station ⛐</button>
+				<ul className="station-list">
+					{stations.map((station) => (
+						<li className="station-preview" key={station._id}>
+							<h4>{station.vendor}</h4>
 							<h1>⛐</h1>
 							<p>
-								Price: <span>${car.price.toLocaleString()}</span>
+								Price: <span>${station.price.toLocaleString()}</span>
 							</p>
 							<p>
-								Owner: <span>{car.owner && car.owner.fullname}</span>
+								Owner: <span>{station.owner && station.owner.fullname}</span>
 							</p>
-							{shouldShowActionBtns(car) && (
+							{shouldShowActionBtns(station) && (
 								<div>
 									<button
 										onClick={() => {
-											onRemoveCar(car._id)
+											onRemoveStation(station._id)
 										}}
 									>
 										x
 									</button>
 									<button
 										onClick={() => {
-											onUpdateCar(car)
+											onUpdateStation(station)
 										}}
 									>
 										Edit
@@ -97,18 +97,18 @@ export function StationIndex() {
 
 							<button
 								onClick={() => {
-									onAddCarMsg(car)
+									onAddStationMsg(station)
 								}}
 							>
-								Add car msg
+								Add station msg
 							</button>
 							<button
 								className="buy"
 								onClick={() => {
-									onAddToCart(car)
+									onAddToStationt(station)
 								}}
 							>
-								Add to cart
+								Add to stationt
 							</button>
 						</li>
 					))}

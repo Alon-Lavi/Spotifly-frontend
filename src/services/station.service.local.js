@@ -3,9 +3,9 @@ import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
-const STORAGE_KEY = 'car'
+const STORAGE_KEY = 'station'
 
-export const carService = {
+export const StationService = {
     query,
     getById,
     save,
@@ -13,54 +13,54 @@ export const carService = {
     getEmptyCar,
     addCarMsg
 }
-window.cs = carService
+window.cs = StationService
 
 
 async function query(filterBy = { txt: '', price: 0 }) {
-    var cars = await storageService.query(STORAGE_KEY)
+    var stations = await storageService.query(STORAGE_KEY)
     if (filterBy.txt) {
         const regex = new RegExp(filterBy.txt, 'i')
-        cars = cars.filter(car => regex.test(car.vendor) || regex.test(car.description))
+        stations = stations.filter(station => regex.test(station.vendor) || regex.test(station.description))
     }
     if (filterBy.price) {
-        cars = cars.filter(car => car.price <= filterBy.price)
+        stations = stations.filter(station => station.price <= filterBy.price)
     }
-    return cars
+    return stations
 }
 
-function getById(carId) {
-    return storageService.get(STORAGE_KEY, carId)
+function getById(sattionId) {
+    return storageService.get(STORAGE_KEY, sattionId)
 }
 
-async function remove(carId) {
+async function remove(sattionId) {
     // throw new Error('Nope')
-    await storageService.remove(STORAGE_KEY, carId)
+    await storageService.remove(STORAGE_KEY, sattionId)
 }
 
-async function save(car) {
+async function save(station) {
     var savedCar
-    if (car._id) {
-        savedCar = await storageService.put(STORAGE_KEY, car)
+    if (station._id) {
+        savedCar = await storageService.put(STORAGE_KEY, station)
     } else {
         // Later, owner is set by the backend
-        car.owner = userService.getLoggedinUser()
-        savedCar = await storageService.post(STORAGE_KEY, car)
+        station.owner = userService.getLoggedinUser()
+        savedCar = await storageService.post(STORAGE_KEY, station)
     }
     return savedCar
 }
 
-async function addCarMsg(carId, txt) {
+async function addCarMsg(sattionId, txt) {
     // Later, this is all done by the backend
-    const car = await getById(carId)
-    if (!car.msgs) car.msgs = []
+    const station = await getById(sattionId)
+    if (!station.msgs) station.msgs = []
 
     const msg = {
         id: utilService.makeId(),
         by: userService.getLoggedinUser(),
         txt
     }
-    car.msgs.push(msg)
-    await storageService.put(STORAGE_KEY, car)
+    station.msgs.push(msg)
+    await storageService.put(STORAGE_KEY, station)
 
     return msg
 }

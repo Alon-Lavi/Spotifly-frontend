@@ -1,6 +1,6 @@
 
 export function RecomendedPreview({playlist}){
-    console.log(playlist);
+    // console.log(playlist);
 
     return (
         <article key={playlist._id}>

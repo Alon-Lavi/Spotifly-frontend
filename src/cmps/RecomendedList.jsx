@@ -4,7 +4,7 @@ import { RecomendedPreview } from "./RecomendedPreview";
 export function RecomendedList({recomended}){
     console.log(recomended);
     return(
-        <section>
+        <section className="recomended-list ">
 
        
      {   recomended.map(playlist=>
@@ -12,4 +12,5 @@ export function RecomendedList({recomended}){
         )}
         </section>
     )
+
 }

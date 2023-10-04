@@ -64,7 +64,7 @@ export function StationIndex() {
 	if (!recomended || !stations) return <div>loading </div>
 	return (
 		<div>
-			<main>
+			<main className='main-container'>
 				<RecomendedList recomended={recomended} />
 				<StationList onRemoveStation={onRemoveStation} onUpdateStation={onUpdateStation} stations={stations} />
 			</main>

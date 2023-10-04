@@ -7,9 +7,6 @@ import { AppHeader } from './cmps/AppHeader'
 import { AppFooter } from './cmps/AppFooter'
 import { UserDetails } from './pages/UserDetails'
 import { NavBar } from './cmps/NavBar'
-import { AppHeader } from './cmps/AppHeader'
-import { AppFooter } from './cmps/AppFooter'
-import { UserDetails } from './pages/UserDetails'
 import { NavLink } from 'react-router-dom'
 
 export function RootCmp() {

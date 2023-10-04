@@ -1,98 +1,78 @@
-import { stationService } from '../../services/station.service.local.js'
-import { userService } from '../../services/user.service.js'
 import { store } from '../store.js'
 import { showSuccessMsg, showErrorMsg } from '../../services/event-bus.service.js'
-import { ADD_STATION, REMOVE_STATION, SET_STATIONS, UNDO_REMOVE_STATION, UPDATE_STATION } from '../reducer/station.reducer.js'
+import {
+	SET_SONG,
+	PAUSE_SONG,
+	SET_PLAYER,
+	TOGGLE_IS_PLAYING,
+	SET_PLAYER_SONGS,
+	SET_IDX_SONG,
+	SET_SHUFFLE_SONGS,
+	SET_SHUFFLE,
+	SET_SONG_OBJECT,
+} from '../reducer/music.player.reducer.js'
 
 // Action Creators:
-export function getActionRemoveStation(sattionId) {
+export function getActionSetSong(currSongId) {
 	return {
-		type: REMOVE_STATION,
-		sattionId,
+		type: SET_SONG,
+		currSongId,
 	}
 }
-export function getActionAddStation(station) {
+
+export function getActionPauseSong(currSongId) {
 	return {
-		type: ADD_STATION,
-		station,
+		type: PAUSE_SONG,
+		currSongId,
 	}
 }
-export function getActionUpdateStation(station) {
+
+export function getActionSetPlayer(player) {
 	return {
-		type: UPDATE_STATION,
-		station,
+		type: SET_PLAYER,
+		player,
 	}
 }
 
-export async function loadStations() {
-	try {
-		const stations = await stationService.query()
-		console.log('Stations from DB:', stations)
-		store.dispatch({
-			type: SET_STATIONS,
-			stations,
-		})
-	} catch (err) {
-		console.log('Cannot load stations', err)
-		throw err
+export function getActionToggleIsPlaying(isPlaying) {
+	return {
+		type: TOGGLE_IS_PLAYING,
+		isPlaying,
 	}
 }
 
-export async function removeStation(sattionId) {
-	try {
-		await stationService.remove(sattionId)
-		store.dispatch(getActionRemoveStation(sattionId))
-	} catch (err) {
-		console.log('Cannot remove station', err)
-		throw err
+export function getActionSetPlayerSongs(currStationId, currSongs) {
+	return {
+		type: SET_PLAYER_SONGS,
+		currStationId,
+		currSongs,
 	}
 }
 
-export async function addStation(station) {
-	try {
-		const savedStation = await stationService.save(station)
-		console.log('Added station', savedStation)
-		store.dispatch(getActionAddStation(savedStation))
-		return savedStation
-	} catch (err) {
-		console.log('Cannot add station', err)
-		throw err
+export function getActionSetIdxSong(currSongIdx) {
+	return {
+		type: SET_IDX_SONG,
+		currSongIdx,
 	}
 }
 
-export function updateStation(station) {
-	return stationService
-		.save(station)
-		.then((savedStation) => {
-			console.log('Updated station:', savedStation)
-			store.dispatch(getActionUpdateStation(savedStation))
-			return savedStation
-		})
-		.catch((err) => {
-			console.log('Cannot save station', err)
-			throw err
-		})
+export function getActionSetShuffleSongs(shuffleSongs) {
+	return {
+		type: SET_SHUFFLE_SONGS,
+		shuffleSongs,
+	}
 }
 
-// Demo for Optimistic Mutation
-// (IOW - Assuming the server call will work, so updating the UI first)
-export function onRemoveStationOptimistic(sattionId) {
-	store.dispatch({
-		type: REMOVE_STATION,
-		sattionId,
-	})
-	showSuccessMsg('station removed')
+export function getActionSetShuffle(isShuffle) {
+	return {
+		type: SET_SHUFFLE,
+		isShuffle,
+	}
+}
 
-	stationService
-		.remove(sattionId)
-		.then(() => {
-			console.log('Server Reported - Deleted Succesfully')
-		})
-		.catch((err) => {
-			showErrorMsg('Cannot remove station')
-			console.log('Cannot load stations', err)
-			store.dispatch({
-				type: UNDO_REMOVE_STATION,
-			})
-		})
+export function getActionSetSongObject(songDetails) {
+	return {
+		type: SET_SONG_OBJECT,
+		songDetails,
+	}
 }

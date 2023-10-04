@@ -26,7 +26,7 @@ $main-bgc-ing2: linear-gradient(0deg, rgba(28, 26, 26, 1) 73%, rgba(47, 51, 51, 
 $mobile-breakpoint: 460px;
 $narrow-breakpoint: 720px;
 $normal-breakpoint: 960px;
-$column-count: 5;
+// $column-count: 5;
 
 // $green-main-btn-clr: #2e3bce;
 $clr2: #6d08da;
@@ -35,3 +35,9 @@ $clr4: #f2a1e0;
 $clr5: #f26e93;
 $clr6: #fff;
 $clr7: #222;
+
+
+$grid-gap:18px;
+$min-container-width: 150px;
+$column-count:4; 
+// calc(100vw/$min-container-width);

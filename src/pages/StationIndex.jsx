@@ -1,16 +1,19 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { loadStations, addStation, updateStation, removeStation } from '../store/actions/station.actions.js'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from '../services/user.service.js'
-import { stationService } from '../services/station.service.js'
+import { stationService } from '../services/station.service.local.js'
+import { StationList } from '../cmps/StationList.jsx'
+import { RecomendedList } from '../cmps/RecomendedList.jsx'
 
 export function StationIndex() {
 	const stations = useSelector((storeState) => storeState.stationModule.stations)
-
+	const [recomended,setRecomended] =useState(stationService.getRecomended())
 	useEffect(() => {
 		loadStations()
+     
 	}, [])
 
 	async function onRemoveStation(stationId) {
@@ -59,60 +62,16 @@ export function StationIndex() {
 		if (user.isAdmin) return true
 		return station.owner?._id === user._id
 	}
-
+if(!recomended||!stations)return <div>loading </div>
 	return (
 		<div>
 			<h3>Stations App</h3>
 			<main>
-				<button onClick={onAddStation}>Add Station ⛐</button>
-				<ul className="station-list">
-					{stations.map((station) => (
-						<li className="station-preview" key={station._id}>
-							<h4>{station.vendor}</h4>
-							<h1>⛐</h1>
-							<p>
-								Price: <span>${station.price.toLocaleString()}</span>
-							</p>
-							<p>
-								Owner: <span>{station.owner && station.owner.fullname}</span>
-							</p>
-							{shouldShowActionBtns(station) && (
-								<div>
-									<button
-										onClick={() => {
-											onRemoveStation(station._id)
-										}}
-									>
-										x
-									</button>
-									<button
-										onClick={() => {
-											onUpdateStation(station)
-										}}
-									>
-										Edit
-									</button>
-								</div>
-							)}
+				<button onClick={onAddStation}>Add Station </button>
+                <StationList onRemoveStation={onRemoveStation} onUpdateStation={onUpdateStation} stations={stations}/>
+                <RecomendedList recomended={recomended}/>
 
-							<button
-								onClick={() => {
-									onAddStationMsg(station)
-								}}
-							>
-								Add station msg
-							</button>
-							<button
-								className="buy"
-								onClick={() => {
-									onAddToStationt(station)
-								}}
-							>
-								Add to stationt
-							</button>
-						</li>
-					))}
-				</ul>
+				
 			</main>
 		</div>
 	)

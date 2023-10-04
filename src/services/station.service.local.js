@@ -3,7 +3,7 @@ import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
-const STORAGE_KEY = 'station'
+const STORAGE_KEY = 'stationDB'
 
 export const stationService = {
   query,
@@ -15,7 +15,6 @@ export const stationService = {
   getRecomended
 }
 window.cs = stationService
-
 
 var stations = [
   {
@@ -35,6 +34,7 @@ var stations = [
     "songs": [
       {
         "id": "s1001",
+        "album": "album1",
         "title": "The Meters - Cissy Strut",
         "artist": "Cissy Strut",
         "url": "youtube/song.mp4",
@@ -44,6 +44,7 @@ var stations = [
       },
       {
         "id": "mUkfiLjooxs",
+          "album": "album2",
         "artist": " The JB's ",
         "title": " Pass The Peas",
         "url": "youtube/song.mp4",
@@ -51,7 +52,7 @@ var stations = [
         "addedBy": {}
       },
     ],
-    
+
     "isRecomended": true,
     "msgs": [
       {
@@ -77,6 +78,7 @@ var stations = [
     "songs": [
       {
         "id": "s1001",
+          "album": "album1",
         "title": "The Meters - Cissy Strut",
         "artist": "Cissy Strut",
         "url": "youtube/song.mp4",
@@ -86,6 +88,7 @@ var stations = [
       },
       {
         "id": "mUkfiLjooxs",
+          "album": "album2",
         "artist": " The JB's ",
         "title": " Pass The Peas",
         "url": "youtube/song.mp4",
@@ -119,6 +122,7 @@ var stations = [
     "songs": [
       {
         "id": "s1001",
+          "album": "album1",
         "title": "The Meters - Cissy Strut",
         "artist": "Cissy Strut",
         "url": "youtube/song.mp4",
@@ -128,6 +132,7 @@ var stations = [
       },
       {
         "id": "mUkfiLjooxs",
+          "album": "album2",
         "artist": " The JB's ",
         "title": " Pass The Peas",
         "url": "youtube/song.mp4",
@@ -161,6 +166,7 @@ var stations = [
     "songs": [
       {
         "id": "s1001",
+          "album": "album1",
         "title": "The Meters - Cissy Strut",
         "artist": "Cissy Strut",
         "url": "youtube/song.mp4",
@@ -170,6 +176,7 @@ var stations = [
       },
       {
         "id": "mUkfiLjooxs",
+          "album": "album2",
         "artist": " The JB's ",
         "title": " Pass The Peas",
         "url": "youtube/song.mp4",
@@ -188,10 +195,19 @@ var stations = [
     ]
   }
 ]
+createStations()
+async function createStations() {
+  const stationsFromStorage =await stationService.query(STORAGE_KEY)
+  console.log(stationsFromStorage,'hvhjvhjvhjvhjvhjvhjjhvjh');
+  if (!stationsFromStorage||!stationsFromStorage.length) {
+    storageService.save(STORAGE_KEY, stations)
+  }
+
+}
 
 
 async function query(filterBy = { txt: '', price: 0 }) {
-  // var stations = await storageService.query(STORAGE_KEY)
+  var stations = await storageService.query(STORAGE_KEY)
   if (filterBy.txt) {
     const regex = new RegExp(filterBy.txt, 'i')
     stations = stations.filter(station => regex.test(station.vendor) || regex.test(station.description))
@@ -201,19 +217,19 @@ async function query(filterBy = { txt: '', price: 0 }) {
   }
   return stations
 }
-function getRecomended(){
-  const recomendedList =stations.filter(station=> station.isRecomended===true)
+function getRecomended() {
+  const recomendedList = stations.filter(station => station.isRecomended === true)
   return recomendedList
 }
 
 
-function getById(sattionId) {
-  return storageService.get(STORAGE_KEY, sattionId)
+function getById(stationId) {
+  return storageService.get(STORAGE_KEY, stationId)
 }
 
-async function remove(sattionId) {
+async function remove(stationId) {
   // throw new Error('Nope')
-  await storageService.remove(STORAGE_KEY, sattionId)
+  await storageService.remove(STORAGE_KEY, stationId)
 }
 
 async function save(station) {
@@ -228,9 +244,9 @@ async function save(station) {
   return savedCar
 }
 
-async function addCarMsg(sattionId, txt) {
+async function addCarMsg(stationId, txt) {
   // Later, this is all done by the backend
-  const station = await getById(sattionId)
+  const station = await getById(stationId)
   if (!station.msgs) station.msgs = []
 
   const msg = {

@@ -8,6 +8,7 @@ import { AppFooter } from './cmps/AppFooter'
 import { UserDetails } from './pages/UserDetails'
 import { NavBar } from './cmps/NavBar'
 import { NavLink } from 'react-router-dom'
+import { StationDetails } from './pages/StationDetails'
 
 export function RootCmp() {
 	const [scrollTop, setScrollTop] = useState(0)
@@ -46,6 +47,9 @@ export function RootCmp() {
 						<Route key={route.path} exact={true} element={route.component} path={route.path} />
 					))}
 					<Route path="user/:id" element={<UserDetails />} />
+					<Route path="station/station/:stationId" element={<StationDetails />} />
+
+
 				</Routes>
 			</main>
 			<AppFooter />

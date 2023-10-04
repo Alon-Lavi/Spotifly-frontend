@@ -68,8 +68,8 @@ if(!recomended||!stations)return <div>loading </div>
 			<h3>Stations App</h3>
 			<main>
 				<button onClick={onAddStation}>Add Station </button>
-                <RecomendedList recomended={recomended}/>
                 <StationList onRemoveStation={onRemoveStation} onUpdateStation={onUpdateStation} stations={stations}/>
+                <RecomendedList recomended={recomended}/>
 
 				
 			</main>

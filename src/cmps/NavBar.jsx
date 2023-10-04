@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 import homeIcon from '../assets/img/home.png'
-
-
+import { SearchPage } from "./SearchPage";
 
 export function NavBar() {
     return (
@@ -9,9 +8,10 @@ export function NavBar() {
             <ul className="side-bar-list">
                 <div className="header-side-bar">
                 <li className="side-bar-item ">
-                    <NavLink to="/station" className="nav-link hover">
+                    <NavLink to="/station" className="nav-link">
                       {/* <img src={homeIcon} alt="Home Icon" className="nav-icon" /> */}
                       <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="1.4em" viewBox="2 -3 35 24"><path fill="none" stroke="#ffffff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m3 12l2-2m0 0l7-7l7 7M5 10v10a1 1 0 0 0 1 1h3m10-11l2 2m-2-2v10a1 1 0 0 1-1 1h-3m-6 0a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1m-6 0h6"></path></svg>
+                    
                       Home
                     </NavLink>
                </li>

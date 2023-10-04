@@ -83,7 +83,6 @@ export function AboutUs() {
                 } />
 
             <FancyBox onClose={() => console.log('ok, closing')}>
-                <h3>{count.toLocaleString()} Followers</h3>
                 <button onClick={onTellMeMore}>Tell me More</button>
             </FancyBox>
 

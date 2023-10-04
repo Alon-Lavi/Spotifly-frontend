@@ -1,4 +1,4 @@
-import { StationService } from "../../services/station.service.local.js";
+import { stationService } from "../../services/station.service.local.js";
 import { userService } from "../../services/user.service.js";
 import { store } from '../store.js'
 import { showSuccessMsg, showErrorMsg } from '../../services/event-bus.service.js'
@@ -26,7 +26,7 @@ export function getActionUpdateStation(station) {
 
 export async function loadStations() {
     try {
-        const stations = await StationService.query()
+        const stations = await stationService.query()
         console.log('Stations from DB:', stations)
         store.dispatch({
             type: SET_STATIONS,
@@ -42,7 +42,7 @@ export async function loadStations() {
 
 export async function removeStation(sattionId) {
     try {
-        await StationService.remove(sattionId)
+        await stationService.remove(sattionId)
         store.dispatch(getActionRemoveStation(sattionId))
     } catch (err) {
         console.log('Cannot remove station', err)
@@ -52,7 +52,7 @@ export async function removeStation(sattionId) {
 
 export async function addStation(station) {
     try {
-        const savedStation = await StationService.save(station)
+        const savedStation = await stationService.save(station)
         console.log('Added station', savedStation)
         store.dispatch(getActionAddStation(savedStation))
         return savedStation
@@ -63,7 +63,7 @@ export async function addStation(station) {
 }
 
 export function updateStation(station) {
-    return StationService.save(station)
+    return stationService.save(station)
         .then(savedStation => {
             console.log('Updated station:', savedStation)
             store.dispatch(getActionUpdateStation(savedStation))
@@ -91,7 +91,7 @@ export function onRemoveStationOptimistic(sattionId) {
     })
     showSuccessMsg('station removed')
 
-    StationService.remove(sattionId)
+    stationService.remove(sattionId)
         .then(() => {
             console.log('Server Reported - Deleted Succesfully');
         })

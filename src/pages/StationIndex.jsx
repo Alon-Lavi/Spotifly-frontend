@@ -10,63 +10,31 @@ import { RecomendedList } from '../cmps/RecomendedList.jsx'
 
 export function StationIndex() {
 	const stations = useSelector((storeState) => storeState.stationModule.stations)
-	const [recomended, setRecomended] = useState(stationService.getRecomended())
+	const [recomended, setRecomended] = useState()
+
 	useEffect(() => {
 		loadStations()
+		loadRecomended()
 	}, [])
 
-	async function onRemoveStation(stationId) {
+
+	async function loadRecomended() {
 		try {
-			await removeStation(stationId)
-			showSuccessMsg('Station removed')
-		} catch (err) {
-			showErrorMsg('Cannot remove station')
+			const getRecomended = await stationService.query({ isRecomended: true })
+			setRecomended(getRecomended)
+		} catch (error) {
+			showErrorMsg('Cannot get station')
 		}
 	}
 
-	 async function onAddStation() {
-		const station = stationService.getEmptyStation()
-		station.vendor = prompt('Vendor?')
-		try {
-			const savedStation = await addStation(station)
-			showSuccessMsg(`Station added (id: ${savedStation._id})`)
-		} catch (err) {
-			showErrorMsg('Cannot add station')
-		}
-	}
+	
 
-	async function onUpdateStation(station) {
-		const price = +prompt('New price?')
-		const stationToSave = { ...station, price }
-		try {
-			const savedStation = await updateStation(stationToSave)
-			showSuccessMsg(`Station updated, new price: ${savedStation.price}`)
-		} catch (err) {
-			showErrorMsg('Cannot update station')
-		}
-	}
-
-	function onAddToStationt(station) {
-		console.log(`Adding ${station.vendor} to Stationt`)
-		addToStationt(station)
-		showSuccessMsg('Added to Stationt')
-	}
-
-	function onAddStationMsg(station) {
-		console.log(`TODO Adding msg to station`)
-	}
-	function shouldShowActionBtns(station) {
-		const user = userService.getLoggedinUser()
-		if (!user) return false
-		if (user.isAdmin) return true
-		return station.owner?._id === user._id
-	}
 	if (!recomended || !stations) return <div>loading </div>
 	return (
 		<div>
 			<main className='main-container'>
 				<RecomendedList recomended={recomended} />
-				<StationList onRemoveStation={onRemoveStation} onUpdateStation={onUpdateStation} stations={stations} />
+				<StationList  stations={stations} />
 			</main>
 		</div>
 	)

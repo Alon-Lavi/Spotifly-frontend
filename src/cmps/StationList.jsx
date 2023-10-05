@@ -9,9 +9,9 @@ export function StationList({stations,onRemoveStation,onUpdateStation}){
    
     return(
         <ul className="station-list">
-        {stations.map((station) => (
+        {stations.map((station,idx) => (
             <li className="station-preview" key={station._id}>
-             <Link to={`station/${station._id}`}>  <StationPreview station={station} /></Link> 
+             <Link key={idx+100} to={`station/${station._id}`}>  <StationPreview station={station} /></Link> 
                 
 
             </li>

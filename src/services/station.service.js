@@ -12,7 +12,7 @@ export const stationService = {
     getById,
     save,
     remove,
-    getEmptyCar,
+    getEmptyStation,
     addCarMsg
 }
 window.cs = stationService
@@ -46,7 +46,7 @@ async function addCarMsg(sattionId, txt) {
 }
 
 
-function getEmptyCar() {
+function getEmptyStation() {
     return {
         vendor: 'Susita-' + (Date.now() % 1000),
         price: utilService.getRandomIntInclusive(1000, 9000),

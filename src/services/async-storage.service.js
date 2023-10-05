@@ -4,7 +4,7 @@ export const storageService = {
 	post,
 	put,
 	remove,
-	save
+	_save
 
 }
 
@@ -53,7 +53,7 @@ function remove(entityType, entityId) {
 
 // Private functions
 
-function save(entityType, entities) {
+function _save(entityType, entities) {
 	localStorage.setItem(entityType, JSON.stringify(entities))
 }
 

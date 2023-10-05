@@ -9,6 +9,8 @@ import { UserDetails } from './pages/UserDetails'
 import { NavBar } from './cmps/NavBar'
 import { NavLink } from 'react-router-dom'
 import { StationDetails } from './pages/StationDetails'
+import { StationIndex } from './pages/StationIndex'
+import { AddStation } from './cmps/AddStation'
 
 export function RootCmp() {
 	const [scrollTop, setScrollTop] = useState(0)
@@ -48,6 +50,8 @@ export function RootCmp() {
 					))}
 					<Route path="user/:id" element={<UserDetails />} />
 					<Route path="station/station/:stationId" element={<StationDetails />} />
+					<Route path="station/add" element={<AddStation/>} />
+
 
 
 				</Routes>

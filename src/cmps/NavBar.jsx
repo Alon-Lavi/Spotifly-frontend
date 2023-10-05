@@ -10,7 +10,7 @@ import { loadStations, addStation, updateStation, removeStation } from '../store
 export function NavBar() {
 
 
-    const stations = useSelector((storeState) => storeState.stationModule.stations.slice(0, 5));
+    const stations = useSelector((storeState) => storeState.stationModule.stations.slice(7, 12));
 
 
     return (
@@ -58,10 +58,10 @@ export function NavBar() {
                         {stations.map((station) => (
                             <li className="station-preview" key={station._id}>
                                     <img src={station.createdBy.imgUrl} alt={station.name} />
-                                <Link to={`station/${station._id}`}>
+                                <Link to={`station/station/${station._id}`}>
                                     <div className="station-info">
                                         <p className="playlist-name">{station.name}</p>
-                                        <p>
+                                        <p className="song-name">
                                             {station.songs.map(song => <span key={song.artist}>{song.artist} </span>)}
                                         </p>
                                     </div>

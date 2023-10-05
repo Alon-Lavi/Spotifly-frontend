@@ -19,12 +19,12 @@ async function query(filterBy = { txt: '' }) {
 	return httpService.get(STORAGE_KEY, filterBy)
 }
 
-function getById(sattionId) {
-	return httpService.get(`station/${sattionId}`)
+function getById(stationId) {
+	return httpService.get(`station/${stationId}`)
 }
 
-async function remove(sattionId) {
-	return httpService.delete(`station/${sattionId}`)
+async function remove(stationId) {
+	return httpService.delete(`station/${stationId}`)
 }
 async function save(station) {
 	var savedCar
@@ -36,8 +36,8 @@ async function save(station) {
 	return savedCar
 }
 
-async function addCarMsg(sattionId, txt) {
-	const savedMsg = await httpService.post(`station/${sattionId}/msg`, { txt })
+async function addCarMsg(stationId, txt) {
+	const savedMsg = await httpService.post(`station/${stationId}/msg`, { txt })
 	return savedMsg
 }
 

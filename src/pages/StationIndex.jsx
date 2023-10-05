@@ -24,7 +24,7 @@ export function StationIndex() {
 		}
 	}
 
-	async function onAddStation() {
+	 async function onAddStation() {
 		const station = stationService.getEmptyStation()
 		station.vendor = prompt('Vendor?')
 		try {

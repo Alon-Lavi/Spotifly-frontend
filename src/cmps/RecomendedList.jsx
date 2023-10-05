@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { RecomendedPreview } from "./RecomendedPreview";
 
 
@@ -8,7 +9,7 @@ export function RecomendedList({recomended}){
 
        
      {   recomended.map(playlist=>
-        <RecomendedPreview playlist={playlist}/>
+       <Link to={`station/${playlist._id}`}><RecomendedPreview playlist={playlist}/></Link> 
         )}
         </section>
     )

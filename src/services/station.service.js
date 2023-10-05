@@ -6,12 +6,12 @@ import { httpService } from './http.service.js'
 const STORAGE_KEY = 'station'
 
 export const stationService = {
-	query,
-	getById,
-	save,
-	remove,
-	getEmptyCar,
-	addCarMsg,
+    query,
+    getById,
+    save,
+    remove,
+    getEmptyStation,
+    addCarMsg
 }
 window.cs = stationService
 
@@ -41,8 +41,10 @@ async function addCarMsg(sattionId, txt) {
 	return savedMsg
 }
 
-function getEmptyCar() {
-	return {
-		vendor: 'Susita-' + (Date.now() % 1000),
-	}
+
+function getEmptyStation() {
+    return {
+        vendor: 'Susita-' + (Date.now() % 1000),
+        price: utilService.getRandomIntInclusive(1000, 9000),
+    }
 }

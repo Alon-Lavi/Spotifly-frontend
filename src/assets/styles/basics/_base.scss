@@ -16,7 +16,7 @@ body {
 	font-size: rem(18px);
 	background-color: black;
 	margin: 0;
-	max-width: 1024px;
+	max-width: em(1024px);
 	margin: auto;
 }
 
@@ -34,7 +34,7 @@ h6 {
 section,
 main,
 footer {
-	padding: 5px;
+	padding: em(5px);
 }
 
 img {

@@ -3,13 +3,13 @@
 	height: 100vh;
 	background: $main-bgc-ing1;
 	background: $main-bgc-ing2;
-	grid-template-columns: 242px auto;
-	grid-template-rows: 1fr 90px;
+	grid-template-columns: em(242px) auto;
+	grid-template-rows: 1fr em(90px);
 }
 
 .main-container {
 	display: grid;
-	grid-template-columns: 20px 1fr 20px;
+	grid-template-columns: em(20px) 1fr em(20px);
 
 	> * {
 		grid-column: 2;
@@ -42,5 +42,5 @@
 .sattiond-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-	grid-gap: 20px;
+	grid-gap: em(20px);
 }

@@ -1,0 +1,78 @@
+.user-profile {
+	position: relative;
+
+	.user {
+		justify-content: space-between;
+		align-items: center;
+		width: em(174px);
+		background-color: #0a0a0a;
+		border-radius: em(20px);
+		margin-right: em(30px);
+		margin-top: em(10px);
+		transition: all 200ms ease-in-out;
+
+		@include for-mobile-layout {
+			width: 34vw;
+		}
+
+		&:hover {
+			cursor: pointer;
+			background-color: rgba($color: #ffffff59, $alpha: 0.3);
+			border: em(1px) solid black;
+		}
+
+		// .img-warpper {
+		// 	height: em(33px);
+		// 	img {
+		// 		width: em(30px);
+		// 		right: em(10px);
+		// 		border: 1px #535353 solid;
+		// 		border-radius: 50%;
+		// 		transition: all 300ms ease-in;
+		// 		background-color: #535353;
+		// 		transition: all 300ms ease-in;
+		// 		margin-left: 4px;
+		// 		margin-top: 2px;
+		// 	}
+		// }
+
+		h4 {
+			font-size: em(17px);
+			font-weight: em(200px);
+			transition: font-size 300ms ease-in;
+			margin: 6px 0 0.3em;
+		}
+
+		.svg-down-container {
+			margin-top: em(4px);
+			margin-right: em(5px);
+		}
+
+		svg {
+			fill: gainsboro;
+		}
+	}
+
+	.user-options-container {
+		background-color: #282828;
+		position: absolute;
+		min-width: em(100px);
+		padding: em(5px);
+		list-style-type: none;
+		margin: em(10px) 0;
+		cursor: pointer;
+
+		& > * {
+			padding: em(5px);
+		}
+
+		& > *:not(:last-child) {
+			border-bottom: em(1px) solid #eeeeee29;
+		}
+
+		& > *:hover {
+			background-color: hsla(0, 0%, 100%, 0.219);
+			border-radius: em(4px);
+		}
+	}
+}

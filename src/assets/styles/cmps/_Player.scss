@@ -1,0 +1,45 @@
+.app-player {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	height: 72px;
+
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+}
+
+.player-song-preview {
+	display: flex;
+	align-items: center;
+}
+
+.player-main {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	.play-button-icon {
+	}
+
+	.pause-button-icon {
+	}
+}
+
+.player-side-controls {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.progress-bar {
+	.bar {
+		width: 100%;
+		accent-color: white;
+	}
+}

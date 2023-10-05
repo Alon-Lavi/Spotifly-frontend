@@ -36,8 +36,13 @@ $clr5: #f26e93;
 $clr6: #fff;
 $clr7: #222;
 
-
-$grid-gap:18px;
+$grid-gap: 18px;
 $min-container-width: 150px;
-$column-count:4; 
+$column-count: 4;
 // calc(100vw/$min-container-width);
+
+$rhap_theme-color: #868686 !default; // Color of all buttons and volume/progress indicators
+$rhap_background-color: #171717 !default; // Color of the player background
+$rhap_bar-color: #e4e4e4 !default; // Color of volume and progress bar
+$rhap_time-color: #333 !default; // Font color of current time and duration
+$rhap_font-family: inherit !default;

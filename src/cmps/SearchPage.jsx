@@ -32,14 +32,14 @@ export function SearchPage() {
                
                </form>
             </div>
-            {/* <ul className="station-list">
+            <ul className="station-list">
         {stations.map((station) => (
             <li className="station-preview" key={station._id}>
              <Link to={`station/${station._id}`}>  <StationPreview station={station} /></Link> 
 
             </li>
         ))}
-    </ul> */}
+    </ul>
         </section>
     )
 }

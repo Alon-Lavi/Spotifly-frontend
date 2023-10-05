@@ -4,8 +4,7 @@ export const storageService = {
 	post,
 	put,
 	remove,
-	_save
-
+	_save,
 }
 
 function query(entityType, delay = 500) {
@@ -65,4 +64,3 @@ function _makeId(length = 5) {
 	}
 	return text
 }
-

@@ -8,7 +8,6 @@
 @import 'basics/Helpers';
 @import 'basics/Layout';
 @import 'basics/Base';
-@import 'basics/Links';
 @import 'basics/Forms';
 
 // Views
@@ -24,8 +23,8 @@
 @import 'cmps/AppHeader';
 @import 'cmps/AppFooter';
 @import 'cmps/AddStation';
-
 @import 'cmps/UserMsg';
 @import 'cmps/NavBar';
-@import 'cmps/User';
+@import 'cmps/UserProfile';
 @import 'cmps/SearchPage';
+@import 'cmps/MusicPlayer';

@@ -1,34 +1,37 @@
 .station-details {
-    margin-left: 202px;
-    margin-top: 90px;
+	margin-left: em(202px);
+	margin-top: em(90px);
 
-    header {
-        display:flex;
+	header {
+		display: flex;
+		color: aliceblue;
 
-                color: aliceblue;
+		h1 {
+			font-size: 6rem;
+		}
 
-        h1 {
-            font-size: 6rem;
-        }
+		img {
+			width: em(192px);
+		}
 
-        img {
-            width: 192px;
-        }
-        p{
-           margin-inline-start: 20px;
-        }
-    }
-table{
-    color: white;
-    width: 100%;
-    th{
-        text-align: left;
-    }
-    td{
-        text-align: left;
-    }
-    img{
-        width: 40px;
-    }
-}
+		p {
+			margin-inline-start: em(20px);
+		}
+	}
+
+	table {
+		color: white;
+		width: 100%;
+		th {
+			text-align: left;
+		}
+
+		td {
+			text-align: left;
+		}
+
+		img {
+			width: rem(40px);
+		}
+	}
 }

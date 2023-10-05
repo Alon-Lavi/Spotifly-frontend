@@ -2,15 +2,15 @@ button {
 	border: 0;
 	background-color: $green-main-btn-clr;
 	color: whitesmoke;
-	padding: 5px 10px;
-	margin: 5px;
+	padding: em(5px) em(10px);
+	margin: em(5px);
 	cursor: pointer;
 }
 
 form > * {
 	display: block;
-	width: 200px;
-	margin: 10px 0px;
+	width: rem(200px);
+	margin: rem(10px) 0px;
 }
 
 .btn-link {

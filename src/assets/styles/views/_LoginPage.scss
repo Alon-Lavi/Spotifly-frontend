@@ -11,8 +11,7 @@
 			background: #111;
 			border-radius: 0.625rem;
 			text-align: center;
-			padding: 40px;
-			box-shadow: 0 0 7pxhsla (0, 0%, 67.8%, 0.23921568627450981);
+			padding: em(40px);
 
 			.login-form {
 				display: flex;
@@ -20,7 +19,7 @@
 
 			input {
 				width: 80%;
-				height: 35px;
+				height: em(35px);
 				color: #fff;
 				background-color: #3a3a3a;
 				align-items: center;
@@ -44,17 +43,16 @@
 			.btn-link {
 				color: #fff;
 				font-size: 1.125rem;
-				// text-decoration: underline;
 				background-color: transparent;
 				border: none;
-				margin-bottom: 3px;
+				margin-bottom: em(3px);
 			}
 		}
 
 		.signup-form {
 			display: grid;
 			place-items: center;
-			grid-gap: 20px;
+			grid-gap: em(20px);
 		}
 	}
 }

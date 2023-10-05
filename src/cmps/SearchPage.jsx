@@ -26,7 +26,7 @@ export function SearchPage() {
                  <input
                   name="txt"
                   type="text"
-                  placeholder="   &#128269; What do you want to listen to?"
+                  placeholder="      &#128269; What do you want to listen to?"
 />
                 </div>
                

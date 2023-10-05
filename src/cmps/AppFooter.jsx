@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { UserMsg } from './UserMsg.jsx'
 import axios from 'axios'
-import { Player } from './Player'
 import ReactPlayer from 'react-player'
 
 export function AppFooter({videoId}) {

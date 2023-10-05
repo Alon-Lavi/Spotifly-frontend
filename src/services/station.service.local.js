@@ -13,16 +13,7 @@ export const stationService = {
 	addStationMsg,
 	getRecomended,
 }
-window.cs = stationService
 
-createStations()
-async function createStations() {
-	const stationsFromStorage = await stationService.query(STORAGE_KEY)
-	console.log(stationsFromStorage, 'hvhjvhjvhjvhjvhjvhjjhvjh')
-	if (!stationsFromStorage || !stationsFromStorage.length) {
-		storageService.save(STORAGE_KEY, stations)
-	}
-}
 window.cs = stationService
 
 
@@ -336,7 +327,7 @@ var stations = [
 				addedBy: {},
 			},
 		],
-		isRecomended: true,
+	
 		msgs: [
 			{
 				id: 'm101',
@@ -380,7 +371,7 @@ var stations = [
 				addedBy: {},
 			},
 		],
-		isRecomended: true,
+	
 		msgs: [
 			{
 				id: 'm101',
@@ -424,7 +415,7 @@ var stations = [
 				addedBy: {},
 			},
 		],
-		isRecomended: true,
+	
 		msgs: [
 			{
 				id: 'm101',
@@ -468,7 +459,7 @@ var stations = [
 				addedBy: {},
 			},
 		],
-		isRecomended: true,
+	
 		msgs: [
 			{
 				id: 'm101',
@@ -512,7 +503,7 @@ var stations = [
 				addedBy: {},
 			},
 		],
-		isRecomended: true,
+	
 		msgs: [
 			{
 				id: 'm101',
@@ -556,7 +547,7 @@ var stations = [
 				addedBy: {},
 			},
 		],
-		isRecomended: true,
+	
 		msgs: [
 			{
 				id: 'm101',
@@ -600,7 +591,7 @@ var stations = [
 				addedBy: {},
 			},
 		],
-		isRecomended: true,
+	
 		msgs: [
 			{
 				id: 'm101',
@@ -644,7 +635,7 @@ var stations = [
 				addedBy: {},
 			},
 		],
-		isRecomended: true,
+	
 		msgs: [
 			{
 				id: 'm101',
@@ -688,7 +679,7 @@ var stations = [
 				addedBy: {},
 			},
 		],
-		isRecomended: true,
+	
 		msgs: [
 			{
 				id: 'm101',
@@ -732,7 +723,7 @@ var stations = [
 				addedBy: {},
 			},
 		],
-		isRecomended: true,
+	
 		msgs: [
 			{
 				id: 'm101',
@@ -776,7 +767,7 @@ var stations = [
 				addedBy: {},
 			},
 		],
-		isRecomended: true,
+	
 		msgs: [
 			{
 				id: 'm101',
@@ -820,7 +811,7 @@ var stations = [
 				addedBy: {},
 			},
 		],
-		isRecomended: true,
+	
 		msgs: [
 			{
 				id: 'm101',
@@ -864,7 +855,7 @@ var stations = [
 				addedBy: {},
 			},
 		],
-		isRecomended: true,
+	
 		msgs: [
 			{
 				id: 'm101',
@@ -908,7 +899,7 @@ var stations = [
 				addedBy: {},
 			},
 		],
-		isRecomended: true,
+	
 		msgs: [
 			{
 				id: 'm101',
@@ -952,7 +943,7 @@ var stations = [
 				addedBy: {},
 			},
 		],
-		isRecomended: true,
+	
 		msgs: [
 			{
 				id: 'm101',
@@ -996,7 +987,7 @@ var stations = [
 				addedBy: {},
 			},
 		],
-		isRecomended: true,
+	
 		msgs: [
 			{
 				id: 'm101',

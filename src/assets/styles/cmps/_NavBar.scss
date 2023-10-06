@@ -7,148 +7,125 @@
 	z-index: 1;
 	background-color: #000;
 
-}
+	.header-side-bar {
+		background-color: rgb(15, 15, 15);
+		width: 100%;
+		border-radius: rem(6px);
+	}
 
-.header-side-bar {
-	background-color: rgb(15, 15, 15);
-	width: 100%;
-	border-radius: rem(6px);
-}
-
-.main-side-bar {
-	background-color: rgb(15, 15, 15);
-	width: 100%;
-	height: 84vh;
-	border-radius: rem(7px);
-	margin-bottom: em(18px);
-
-	.library {
-
-		display: flex;
-		align-items: center;
-		margin-left: 22px;
-		margin-top: -23px;
+	.main-side-bar {
+		background-color: rgb(15, 15, 15);
+		width: 100%;
+		height: 84vh;
+		border-radius: rem(7px);
+		margin-bottom: em(18px);
 
 
-		span {
-			color: rgba(245, 245, 245, 0.717);
+		.library {
+			display: flex;
+			align-items: center;
+			margin-left: 22px;
+			margin-top: -23px;
+
+			span {
+				color: rgba(245, 245, 245, 0.717);
+
+				&:hover {
+					color: rgb(255, 255, 255);
+				}
+			}
 		}
+	
+	}
 
-		span:hover {
+	.side-bar-list {
+		list-style: none;
+		padding: 0;
+		margin-left: em(6px);
+		margin-right: em(6px);
+		margin-top: em(6px);
+	}
+
+	.side-bar-item {
+		padding-top: em(8px);
+		padding-bottom: em(6px);
+		margin-bottom: em(6px);
+	}
+
+	.nav-link {
+		padding-left: em(24px);
+		font-family: sans-serif;
+		text-decoration: none;
+		color: rgba(245, 245, 245, 0.717);
+		font-size: em(12px);
+		transition: 0.15s ease-in-out;
+
+		&:hover {
 			color: rgb(255, 255, 255);
 		}
 	}
 
-	.add-library {
+	.user-station-list {
+		margin-left: em(6px);
 
-		svg:hover {
-			
-			border: 30px;
-			background-color: rgb(111, 111, 111);
-			border-radius: 25px;
+		.side-search-bar {
+			input {
+				margin-left: em(8px);
+				color: rgb(255, 255, 255);
+				background-color: rgb(40, 40, 40);
+				border-radius: em(6px);
+				font-size: 10px;
+				height: 27px;
+				width: 80%;
+				border: none;
+				outline: none;
+			}
+		}
+
+		.station-preview {
+			display: flex;
+			align-items: center;
+		}
+
+		li {
+			width: 250px;
+			height: 60px;
+			border-radius: 5px;
+			padding-left: 5px;
+
+			&:hover {
+				background-color: rgba(24, 24, 24);
+			}
+		}
+
+		.station-preview img {
+			width: 42px;
+			height: 42px;
+			border-radius: 4px;
+		}
+
+		.station-info {
+			display: grid;
+			flex-direction: column;
+			padding-left: 12px;
+			font-family: 'circular', 'gotham', 'rubik', sans-serif;
+		}
+
+		.playlist-name {
+			margin-top: -9px;
+			font-size: 13px;
+			color: rgba(255, 255, 255, 0.925);
+		}
+
+		.song-name {
+			margin-top: 17px;
+			position: fixed;
+			font-size: 12px;
+			padding: 0px;
+
+			span {
+				color: rgba(245, 245, 245, 0.558);
+			}
 		}
 	}
-
-
-}
-
-.side-bar-list {
-	list-style: none;
-	padding: 0;
-	margin-left: em(6px);
-	margin-right: em(6px);
-	margin-top: em(6px);
-}
-
-.side-bar-item {
-	padding-top: em(8px);
-	padding-bottom: em(6px);
-	margin-bottom: em(6px);
-}
-
-.nav-link {
-	padding-left: em(24px);
-	font-family: sans-serif;
-	text-decoration: none;
-	color: rgba(245, 245, 245, 0.717);
-	font-size: em(12px);
-	transition: 0.15s ease-in-out;
-}
-
-.nav-link:hover {
-	color: rgb(255, 255, 255);
-}
-
-.user-station-list {
-	margin-left: em(8px);
-
-
-
-	.side-search-bar {
-
-		input {
-			margin-left: em(8px);
-			color: rgb(255, 255, 255);
-			background-color: rgb(40, 40, 40);
-			border-radius: em(5px);
-			font-size: 10px;
-			height: 29px;
-			width: 80%;
-			border: none;
-			outline: none;
-		}
-	}
-
-	.station-preview {
-		display: flex;
-		align-items: center;
-
-	}
-
-	li {
-		width: 250px;
-		height: 60px;
-		;
-		border-radius: 5px;
-		padding-left: 5px;
-	}
-
-	li:hover {
-		background-color: rgba(24, 24, 24);
-
-	}
-
-	.station-preview img {
-
-		width: 42px;
-		height: 42px;
-		border-radius: 4px;
-	}
-
-	.station-info {
-		display: grid;
-		flex-direction: column;
-		padding-left: 12px;
-		font-family: 'circular', 'gotham', 'rubik', sans-serif;
-
-	}
-
-	.playlist-name {
-		margin-top: -9px;
-		font-size: 13px;
-		color: rgba(255, 255, 255, 0.925);
-
-	}
-
-	.song-name {
-		margin-top: 17px;
-		position: fixed;
-		font-size: 12px;
-		padding: 0px;
-
-		span {
-			color: rgba(245, 245, 245, 0.558);
-		}
-	}
-
 }

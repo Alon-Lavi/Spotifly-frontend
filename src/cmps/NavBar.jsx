@@ -10,7 +10,7 @@ import { loadStations, addStation, updateStation, removeStation } from '../store
 export function NavBar() {
 
 
-    const stations = useSelector((storeState) => storeState.stationModule.stations.slice(7, 12));
+    const stations = useSelector((storeState) => storeState.stationModule.stations.slice(7, 15));
 
 
     return (
@@ -37,11 +37,26 @@ export function NavBar() {
 
                     <li className="side-bar-item">
                         <NavLink to="/library" className="nav-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="1.4em" viewBox="2 -3 35 24"><path fill="#ffffff" d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 5h-3v5.5a2.5 2.5 0 0 1-5 0a2.5 2.5 0 0 1 2.5-2.5c.57 0 1.08.19 1.5.51V5h4v2zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6z"></path></svg>
-                            Library
+                            <span className="library">
+                                <svg
+                                    role="img"
+                                    height="24"
+                                    width="24"
+                                    aria-hidden="true"
+                                    viewBox="3 1 24 24"
+                                    data-encore-id="icon"
+                                    className="Svg-sc-ytk21e-0 ldgdZj"
+                                    style={{ color: 'white', marginBottom: '5px' }}
+                                >
+                                    <path d="M3 22a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1zM15.5 2.134A1 1 0 0 0 14 3v18a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V6.464a1 1 0 0 0-.5-.866l-6-3.464zM9 2a1 1 0 0 0-1 1v18a1 1 2 1 0 2 0V3a1 1 0 0 0-1-1z"></path>
+                                </svg>
+
+                                <span>Your Library</span>
+                            </span>
+
                         </NavLink>
                     </li>
-                    <li className="side-bar-item">
+                    {/* <li className="side-bar-item">
                         <NavLink to="/liked" className="nav-link">
                             <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="1.4em" viewBox="1 6 75 24"><mask id="ipSLike0"><path fill="#fff" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M15 8C8.925 8 4 12.925 4 19c0 11 13 21 20 23.326C31 40 44 30 44 19c0-6.075-4.925-11-11-11c-3.72 0-7.01 1.847-9 4.674A10.987 10.987 0 0 0 15 8Z"></path></mask><path fill="#ffffff" d="M0 0h48v48H0z" mask="url(#ipSLike0)"></path></svg>
                             Liked Songs
@@ -53,11 +68,11 @@ export function NavBar() {
                             <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="1.4em" viewBox="1 6 75 24"><mask id="ipSAdd0"><g fill="none" strokeLinejoin="round" strokeWidth="4"><rect width="36" height="36" x="6" y="6" fill="#fff" stroke="#fff" rx="3"></rect><path stroke="#000" strokeLinecap="round" d="M24 16v16m-8-8h16"></path></g></mask><path fill="#ffffff" d="M0 0h48v48H0z" mask="url(#ipSAdd0)"></path></svg>
                             Create PlayList
                         </NavLink>
-                    </li>
+                    </li> */}
                     <div className="user-station-list ">
                         {stations.map((station) => (
                             <li className="station-preview" key={station._id}>
-                                    <img src={station.createdBy.imgUrl} alt={station.name} />
+                                <img src={station.createdBy.imgUrl} alt={station.name} />
                                 <Link to={`station/station/${station._id}`}>
                                     <div className="station-info">
                                         <p className="playlist-name">{station.name}</p>

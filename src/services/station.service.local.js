@@ -11,11 +11,113 @@ export const stationService = {
 	save,
 	remove,
 	getEmptyStation,
-	addStationMsg,
+	removeSong,
+	// addStationMsg,
 	getGenres
 }
 
 window.cs = stationService
+
+async function query(filterBy = { txt: '' }) {
+	console.log('====================================')
+	console.log(filterBy.isRecomended)
+	console.log('====================================')
+	var stations = await storageService.query(STORAGE_KEY)
+	if (filterBy.txt) {
+		const regex = new RegExp(filterBy.txt, 'i')
+		stations = stations.filter((station) => regex.test(station.vendor) || regex.test(station.description))
+	}
+	if (filterBy.isRecomended) {
+		stations = stations.filter((station) => station.isRecomended === true)
+	}
+	console.log('====================================')
+	console.log(stations, 's')
+	console.log('====================================')
+	return stations
+}
+
+// async function query(filterBy = { txt: '' }) {
+// 	var stations = await storageService.query(STORAGE_KEY)
+// 	if (filterBy.txt) {
+// 		const regex = new RegExp(filterBy.txt, 'i')
+// 		stations = stations.filter((station) => regex.test(station.name) || regex.test(station.description))
+// 	}
+// 	if (filterBy.isRecomended) {
+// 		stations = stations.filter((station) => station.isRecomended === true)
+// 	}
+// 	return stations
+// }
+
+function getById(stationId) {
+	return storageService.get(STORAGE_KEY, stationId)
+}
+
+async function remove(stationId) {
+	// throw new Error('Nope')
+	await storageService.remove(STORAGE_KEY, stationId)
+}
+
+function removeSong(songId, station) {
+	const updatedSongs = station.songs.filter((song) => song._id !== songId)
+	station.songs = updatedSongs
+	return save(station)
+}
+
+// async function save(station) {
+// 	var savedStation
+// 	if (station._id) {
+// 		savedStation = await storageService.put(STORAGE_KEY, station)
+// 	} else {
+// 		// Later, owner is set by the backend
+// 		// station.owner = userService.getLoggedinUser()
+// 		savedStation = await storageService.post(STORAGE_KEY, station)
+// 	}
+// 	return savedStation
+// }
+
+async function save(station) {
+	var savedStation
+	if (station._id) {
+		savedStation = await storageService.put(STORAGE_KEY, station)
+	} else {
+		// station.owner = userService.getLoggedinUser() MAYBE NEEDED
+		savedStation = await storageService.post(STORAGE_KEY, station)
+	}
+	return savedStation
+}
+
+// function getEmptyStation() {
+// 	return {
+// 		_id: '',
+// 		name: 'My playlist #1 ',
+// 		description: '',
+// 		tags: [],
+// 		createdBy: {
+// 			_id: utilService.makeId(),
+// 			owner: 'admin',
+// 			imgUrl: emptyStationImg,
+// 		},
+// 		likedByUsers: [],
+// 		songs: [],
+// 	}
+// }
+
+// async function addStationMsg(stationId, txt) {
+// 	// Later, this is all done by the backend
+// 	const station = await getById(stationId)
+// 	if (!station.msgs) station.msgs = []
+
+// 	const msg = {
+// 		id: 'd1001',
+// 		by: userService.getLoggedinUser(),
+// 		txt,
+// 	}
+// 	station.msgs.push(msg)
+// 	await storageService.put(STORAGE_KEY, station)
+
+// 	return msg
+// }
+
 var stationsDemo = [
 	{
 		_id: 'd5001',
@@ -24,8 +126,7 @@ var stationsDemo = [
 		createdBy: {
 			_id: 'u101',
 			fullname: 'Puki Ben David',
-			imgUrl:
-				"https://dailymix-images.scdn.co/v2/img/ab6761610000e5ebe6b8f92cadb785fd926be403/1/en/default"
+			imgUrl: 'https://dailymix-images.scdn.co/v2/img/ab6761610000e5ebe6b8f92cadb785fd926be403/1/en/default',
 		},
 		likedByUsers: ['{minimal-user}', '{minimal-user}'],
 
@@ -66,8 +167,7 @@ var stationsDemo = [
 		createdBy: {
 			_id: 'u101',
 			fullname: 'Puki Ben David',
-			imgUrl:
-				"https://dailymix-images.scdn.co/v2/img/6f0da41419b31d9d2ba55d2df212f59ad0668118/2/en/default"
+			imgUrl: 'https://dailymix-images.scdn.co/v2/img/6f0da41419b31d9d2ba55d2df212f59ad0668118/2/en/default',
 		},
 		likedByUsers: ['{minimal-user}', '{minimal-user}'],
 
@@ -110,8 +210,7 @@ var stationsDemo = [
 		createdBy: {
 			_id: 'u101',
 			fullname: 'Puki Ben David',
-			imgUrl:
-				"https://dailymix-images.scdn.co/v2/img/ab6761610000e5ebbd0a9110c01c547407bfd1b9/3/en/default"
+			imgUrl: 'https://dailymix-images.scdn.co/v2/img/ab6761610000e5ebbd0a9110c01c547407bfd1b9/3/en/default',
 		},
 		likedByUsers: ['{minimal-user}', '{minimal-user}'],
 
@@ -153,8 +252,7 @@ var stationsDemo = [
 		createdBy: {
 			_id: 'u101',
 			fullname: 'Puki Ben David',
-			imgUrl:
-				"https://dailymix-images.scdn.co/v2/img/ab6761610000e5eb9d786723f2aa91b9f538e139/4/en/default"
+			imgUrl: 'https://dailymix-images.scdn.co/v2/img/ab6761610000e5eb9d786723f2aa91b9f538e139/4/en/default',
 		},
 		likedByUsers: ['{minimal-user}', '{minimal-user}'],
 
@@ -637,8 +735,6 @@ var stationsDemo = [
 			},
 		],
 	},
-
-
 
 	{
 		_id: 'd1041',

@@ -1,13 +1,14 @@
 .side-bar {
-    top: 0;
-    left: 0;
-    position: fixed;
-    height: 100%;
-    width: 280px;
-    z-index: 1;
-    background-color: #000;
-	
+	top: 0;
+	left: 0;
+	position: fixed;
+	height: 100%;
+	width: 280px;
+	z-index: 1;
+	background-color: #000;
+
 }
+
 .header-side-bar {
 	background-color: rgb(15, 15, 15);
 	width: 100%;
@@ -21,16 +22,36 @@
 	border-radius: rem(7px);
 	margin-bottom: em(18px);
 
-	.library{
-	
+	.library {
+
 		display: flex;
 		align-items: center;
 		margin-left: 22px;
 		margin-top: -23px;
 
+
+		span {
+			color: rgba(245, 245, 245, 0.717);
+		}
+
+		span:hover {
+			color: rgb(255, 255, 255);
+		}
 	}
-	
+
+	.add-library {
+
+		svg:hover {
+			
+			border: 30px;
+			background-color: rgb(111, 111, 111);
+			border-radius: 25px;
+		}
+	}
+
+
 }
+
 .side-bar-list {
 	list-style: none;
 	padding: 0;
@@ -38,6 +59,7 @@
 	margin-right: em(6px);
 	margin-top: em(6px);
 }
+
 .side-bar-item {
 	padding-top: em(8px);
 	padding-bottom: em(6px);
@@ -48,7 +70,7 @@
 	padding-left: em(24px);
 	font-family: sans-serif;
 	text-decoration: none;
-	color: rgba(245, 245, 245, 0.558);
+	color: rgba(245, 245, 245, 0.717);
 	font-size: em(12px);
 	transition: 0.15s ease-in-out;
 }
@@ -58,12 +80,13 @@
 }
 
 .user-station-list {
-    
 	margin-left: em(8px);
 
-	.side-search-bar{
 
-		input{
+
+	.side-search-bar {
+
+		input {
 			margin-left: em(8px);
 			color: rgb(255, 255, 255);
 			background-color: rgb(40, 40, 40);
@@ -77,36 +100,40 @@
 	}
 
 	.station-preview {
-		display:flex;
+		display: flex;
 		align-items: center;
-	
+
 	}
-	li{
-		width:250px;
-		height: 60px;;
+
+	li {
+		width: 250px;
+		height: 60px;
+		;
 		border-radius: 5px;
 		padding-left: 5px;
 	}
-    li:hover{
+
+	li:hover {
 		background-color: rgba(24, 24, 24);
 
 	}
-	
+
 	.station-preview img {
 
 		width: 42px;
 		height: 42px;
 		border-radius: 4px;
 	}
-	
+
 	.station-info {
 		display: grid;
-		flex-direction: column; 
+		flex-direction: column;
 		padding-left: 12px;
 		font-family: 'circular', 'gotham', 'rubik', sans-serif;
 
 	}
-    .playlist-name{
+
+	.playlist-name {
 		margin-top: -9px;
 		font-size: 13px;
 		color: rgba(255, 255, 255, 0.925);
@@ -114,19 +141,14 @@
 	}
 
 	.song-name {
-        margin-top: 17px;
+		margin-top: 17px;
 		position: fixed;
 		font-size: 12px;
 		padding: 0px;
 
-	     span{
+		span {
 			color: rgba(245, 245, 245, 0.558);
-		 }
+		}
 	}
-
-}
-svg {
-
-	color: rgba(245, 245, 245, 0.558);
 
 }

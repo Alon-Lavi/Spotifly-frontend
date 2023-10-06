@@ -24,16 +24,34 @@ export function NavBar() {
                 <div className="header-side-bar">
                     <li className="side-bar-item ">
                         <NavLink to="/station" className="nav-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="1.4em" viewBox="1 -3 35 24"><path fill="none" stroke="#ffffff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m3 12l2-2m0 0l7-7l7 7M5 10v10a1 1 0 0 0 1 1h3m10-11l2 2m-2-2v10a1 1 0 0 1-1 1h-3m-6 0a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1m-6 0h6"></path></svg>
+                            <svg
+                                role="img"
+                                height="21"
+                                width="21"
+                                class="icon"
+                                viewBox="0 0 22 24"
+                                data-encore-id="icon"
+                                style={{ fill: "#b3b3b3", marginRight: '16px', marginBottom: '-5px' }}
+                            >
+                                <path d="M13.5 1.515a3 3 0 0 0-3 0L3 5.845a2 2 0 0 0-1 1.732V21a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6h4v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V7.577a2 2 0 0 0-1-1.732l-7.5-4.33z"></path>
+                                </svg>
                             Home
                         </NavLink>
                     </li>
-
                     <li className="side-bar-item">
                         <NavLink to="/search" className="nav-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="1.4em" viewBox="2 -3 35 24"><path fill="none" stroke="#ffffff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="m21 21l-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>
+                            <svg
+                                role="img"
+                                height="21"
+                                width="21"
+                                aria-hidden="true"
+                                class="icon"
+                                viewBox="0 0 22 24"
+                                data-encore-id="icon"
+                                style={{ fill: "#b3b3b3", marginRight: '16px', marginBottom: '-5px' }}
+                            >
+                                <path d="M15.356 10.558c0 2.623-2.16 4.75-4.823 4.75-2.664 0-4.824-2.127-4.824-4.75s2.16-4.75 4.824-4.75c2.664 0 4.823 2.127 4.823 4.75z"></path><path d="M1.126 10.558c0-5.14 4.226-9.28 9.407-9.28 5.18 0 9.407 4.14 9.407 9.28a9.157 9.157 0 0 1-2.077 5.816l4.344 4.344a1 1 0 0 1-1.414 1.414l-4.353-4.353a9.454 9.454 0 0 1-5.907 2.058c-5.18 0-9.407-4.14-9.407-9.28zm9.407-7.28c-4.105 0-7.407 3.274-7.407 7.28s3.302 7.279 7.407 7.279 7.407-3.273 7.407-7.28c0-4.005-3.302-7.278-7.407-7.278z"></path></svg>
                             Search
-
                         </NavLink>
                     </li>
                 </div>
@@ -45,11 +63,12 @@ export function NavBar() {
                                 <span className="library">
                                     <svg
                                         role="img"
-                                        height="24"
-                                        viewBox="-2 0 24 24"
+                                        height="21"
+                                        width="21"
+                                        viewBox="0 0 22 24"
                                         data-encore-id="icon"
                                         className="Svg-sc-ytk21e-0 ldgdZj"
-                                        style={{ marginRight: '10px', marginBottom: '3px' }}
+                                        style={{ fill: "#b3b3b3", marginRight: '9px', marginBottom: '3px' }}
                                     >
                                         <path d="M3 22a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1zM15.5 2.134A1 1 0 0 0 14 3v18a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V6.464a1 1 0 0 0-.5-.866l-6-3.464zM9 2a1 1 0 0 0-1 1v18a1 1 2 1 0 2 0V3a1 1 0 0 0-1-1z"></path>
                                     </svg>
@@ -62,15 +81,17 @@ export function NavBar() {
                             className="add-library">
                             <NavLink to="station/add" className="nav-link">
                                 <span className="icon">
+
+
                                     <svg xmlns="http://www.w3.org/2000/svg"
-                                         width="15" 
-                                         height="15" 
-                                         viewBox="0 0 1024 1024"
-                                         className="Svg-sc-ytk21e-0 ldgdZj"
-                                         style={{ marginTop: '19px', marginLeft: '55px' }}
-                                         >
-                                        <path fill="#ffffff" d="M480 480V128a32 32 0 0 1 64 0v352h352a32 32 0 1 1 0 64H544v352a32 32 0 1 1-64 0V544H128a32 32 0 0 1 0-64h352z" /></svg>
-                                        
+                                        width="15"
+                                        height="15"
+                                        viewBox="0 0 16 16"
+                                        style={{ marginTop: '18px', marginLeft: '85px' }}
+                                    >
+                                        <path fill="#b3b3b3" stroke="#a3a3a3" stroke-linecap="round" stroke-linejoin="round" d="M7 .54v13M.5 7h13" /></svg>
+
+
                                 </span>
                             </NavLink>
                         </li>
@@ -83,7 +104,7 @@ export function NavBar() {
                                     <input
                                         name="txt"
                                         type="text"
-                                        placeholder="Search in your library?"
+                                        placeholder="     Search in your library..."
                                         value={searchText}
                                         onChange={handleSearchInputChange}
                                     />

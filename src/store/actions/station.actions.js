@@ -1,8 +1,16 @@
 import { stationService } from '../../services/station.service.local.js'
-import { userService } from '../../services/user.service.js'
 import { store } from '../store.js'
+import { userService } from '../../services/user.service.js'
 import { showSuccessMsg, showErrorMsg } from '../../services/event-bus.service.js'
-import { ADD_STATION, REMOVE_STATION, SET_STATIONS, UNDO_REMOVE_STATION, UPDATE_STATION } from '../reducer/station.reducer.js'
+import {
+	ADD_STATION,
+	REMOVE_SONG,
+	REMOVE_STATION,
+	SET_CURRENT_STATION,
+	SET_SEARCHERS,
+	SET_STATIONS,
+	UPDATE_STATION,
+} from '../reducer/station.reducer.js'
 
 // Action Creators:
 export function getActionRemoveStation(stationId) {
@@ -11,12 +19,14 @@ export function getActionRemoveStation(stationId) {
 		stationId,
 	}
 }
+
 export function getActionAddStation(station) {
 	return {
 		type: ADD_STATION,
 		station,
 	}
 }
+
 export function getActionUpdateStation(station) {
 	return {
 		type: UPDATE_STATION,
@@ -24,8 +34,24 @@ export function getActionUpdateStation(station) {
 	}
 }
 
-export async function loadStations(filterBy) {
+export function setCurrStation(currStation) {
+	store.dispatch({ type: SET_CURRENT_STATION, currStation })
+}
 
+export function setSearchers(searchers) {
+	store.dispatch({ type: SET_SEARCHERS, searchers })
+}
+
+export async function removeSong(songId, currStation) {
+	try {
+		stationService.removeSong(songId, currStation)
+		await store.dispatch({ type: REMOVE_SONG, currStation })
+	} catch (err) {
+		console.log('Could not remove song')
+	}
+}
+
+export async function loadStations(filterBy) {
 	try {
 		const stations = await stationService.query(filterBy)
 		console.log('Stations from DB:', stations)
@@ -52,8 +78,7 @@ export async function removeStation(stationId) {
 export async function addStation(station) {
 	try {
 		const savedStation = await stationService.save(station)
-		console.log('Added station', savedStation)
-		store.dispatch(getActionAddStation(savedStation))
+		setCurrStation(savedStation)
 		return savedStation
 	} catch (err) {
 		console.log('Cannot add station', err)
@@ -61,39 +86,35 @@ export async function addStation(station) {
 	}
 }
 
-export function updateStation(station) {
-	return stationService
-		.save(station)
-		.then((savedStation) => {
-			console.log('Updated station:', savedStation)
-			store.dispatch(getActionUpdateStation(savedStation))
-			return savedStation
-		})
-		.catch((err) => {
-			console.log('Cannot save station', err)
-			throw err
-		})
+export async function updateStation(station) {
+	try {
+		const savedStation = await stationService.save(station)
+		if (station.name !== 'Liked Songs') setCurrStation(savedStation)
+		return savedStation
+	} catch (err) {
+		console.log('Cannot save station', err)
+		throw err
+	}
 }
 
 // Demo for Optimistic Mutation
 // (IOW - Assuming the server call will work, so updating the UI first)
-export function onRemoveStationOptimistic(stationId) {
-	store.dispatch({
-		type: REMOVE_STATION,
-		stationId,
-	})
-	showSuccessMsg('station removed')
+// export function onRemoveStationOptimistic(stationId) {
+//     store.dispatch({
+//         type: REMOVE_STATION,
+//         stationId
+//     })
+//     showSuccessMsg('Station removed')
 
-	stationService
-		.remove(stationId)
-		.then(() => {
-			console.log('Server Reported - Deleted Succesfully')
-		})
-		.catch((err) => {
-			showErrorMsg('Cannot remove station')
-			console.log('Cannot load stations', err)
-			store.dispatch({
-				type: UNDO_REMOVE_STATION,
-			})
-		})
-}
+//     stationService.remove(stationId)
+//         .then(() => {
+//             console.log('Server Reported - Deleted Successfully')
+//         })
+//         .catch(err => {
+//             showErrorMsg('Cannot remove station')
+//             console.log('Cannot load stations', err)
+//             store.dispatch({
+//                 type: UNDO_REMOVE_STATION,
+//             })
+//         })
+// }

@@ -194,8 +194,8 @@ var stationsDemo = [
 		"_id": 'd1002',
 		"name": "Simpsons",
 		"tags": [
-			"Funk",
-			"Happy"
+			"Pop",
+			"Rock"
 		],
 		"createdBy": {
 			"_id": "u101",
@@ -285,8 +285,8 @@ var stationsDemo = [
 		"_id": 'd9001',
 		"name": "GTA playlist",
 		"tags": [
-			"Funk",
-			"Happy"
+			"Hip-Hop",
+			"Rock"
 		],
 		"createdBy": {
 			"_id": "u101",
@@ -329,8 +329,9 @@ var stationsDemo = [
 		"_id": 'd1003',
 		"name": "watch it burn",
 		"tags": [
-			"Funk",
-			"Happy"
+		
+			"Pop",
+			"Hip-Hop"
 		],
 		"createdBy": {
 			"_id": "u101",
@@ -375,7 +376,7 @@ var stationsDemo = [
 		_id: 'd1005',
 		isRecomended: true,
 		name: 'liked songs',
-		tags: ['Funk', 'Happy'],
+		tags: ['Funk', 'Happy',"Hip-Hop"],
 		createdBy: {
 			_id: 'u101',
 			fullname: 'Puki Ben David',
@@ -419,7 +420,7 @@ var stationsDemo = [
 	{
 		_id: 'd1006',
 		name: 'Subliminal radio',
-		tags: ['Funk', 'Happy'],
+		tags: ["Hip-Hop"],
 		createdBy: {
 			_id: 'u101',
 			fullname: 'Puki Ben David',
@@ -463,7 +464,7 @@ var stationsDemo = [
 	{
 		_id: 'd1007',
 		name: 'This is Eminem',
-		tags: ['Funk', 'Happy'],
+		tags: ['Hip-Hop'],
 		createdBy: {
 			_id: 'u101',
 			fullname: 'Puki Ben David',
@@ -507,7 +508,7 @@ var stationsDemo = [
 	{
 		_id: 'd1008',
 		name: 'Top of 2020',
-		tags: ['Funk', 'Happy'],
+		tags: ['Pop'],
 		createdBy: {
 			_id: 'u101',
 			fullname: 'Puki Ben David',
@@ -551,7 +552,7 @@ var stationsDemo = [
 	{
 		_id: 'd1010',
 		name: 'הליהיטים הגדולים של ישראל',
-		tags: ['Funk', 'Happy'],
+		tags: ['Pop'],
 		createdBy: {
 			_id: 'u101',
 			fullname: 'Puki Ben David',
@@ -596,7 +597,7 @@ var stationsDemo = [
 	{
 		_id: 'd1011',
 		name: 'Tate we made it',
-		tags: ['Funk', 'Happy'],
+		tags: ['Hip-Hop', 'Workout'],
 		createdBy: {
 			_id: 'u101',
 			fullname: 'Puki Ben David',
@@ -1076,7 +1077,9 @@ const genres= await storageService.query(GENRE_KEY)
 }
 
 async function query(filterBy = { txt: '' }) {
-
+console.log('====================================');
+console.log(filterBy);
+console.log('====================================');
 	var stations = await storageService.query(STORAGE_KEY)
 	if (filterBy.txt) {
 		const regex = new RegExp(filterBy.txt, 'i')
@@ -1084,6 +1087,9 @@ async function query(filterBy = { txt: '' }) {
 	}
 	if (filterBy.isRecomended) {
 		stations = stations.filter((station) => station.isRecomended === true)
+	}
+	if(filterBy.genre){
+		stations= stations.filter(station=>station.tags.includes(filterBy.genre))
 	}
 
 	return stations

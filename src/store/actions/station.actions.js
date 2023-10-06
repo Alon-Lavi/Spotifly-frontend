@@ -24,9 +24,10 @@ export function getActionUpdateStation(station) {
 	}
 }
 
-export async function loadStations() {
+export async function loadStations(filterBy) {
+
 	try {
-		const stations = await stationService.query()
+		const stations = await stationService.query(filterBy)
 		console.log('Stations from DB:', stations)
 		store.dispatch({
 			type: SET_STATIONS,

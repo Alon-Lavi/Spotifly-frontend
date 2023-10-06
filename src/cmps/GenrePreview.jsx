@@ -1,9 +1,7 @@
 
 
 export function GenrePreview({genre}){
-    console.log('====================================');
-    console.log(genre);
-    console.log('====================================');
+
     const divStyle = {
         backgroundColor: genre.backgroundcolor,
       };

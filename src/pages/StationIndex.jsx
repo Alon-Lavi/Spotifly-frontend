@@ -7,13 +7,16 @@ import { userService } from '../services/user.service.js'
 import { stationService } from '../services/station.service.local.js'
 import { StationList } from '../cmps/StationList.jsx'
 import { RecomendedList } from '../cmps/RecomendedList.jsx'
+import { useParams } from 'react-router'
 
 export function StationIndex() {
 	const stations = useSelector((storeState) => storeState.stationModule.stations)
 	const [recomended, setRecomended] = useState()
+	const {genre}= useParams()
 
 	useEffect(() => {
-		loadStations()
+	
+		loadStations({genre})
 		loadRecomended()
 	}, [])
 
@@ -33,7 +36,7 @@ export function StationIndex() {
 	return (
 		<div>
 			<main className='main-container'>
-				<RecomendedList recomended={recomended} />
+			{!genre &&<RecomendedList recomended={recomended} />}
 				<StationList  stations={stations} />
 			</main>
 		</div>

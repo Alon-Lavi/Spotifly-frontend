@@ -1,42 +1,52 @@
 export const SET_STATIONS = 'SET_STATIONS'
+export const SET_CURRENT_STATION = 'SET_CURRENT_STATION'
 export const REMOVE_STATION = 'REMOVE_STATION'
+export const REMOVE_SONG = 'REMOVE_SONG'
 export const ADD_STATION = 'ADD_STATION'
 export const UPDATE_STATION = 'UPDATE_STATION'
+export const SET_SEARCHERS = 'SET_SEARCHERS'
 export const UNDO_REMOVE_STATION = 'UNDO_REMOVE_STATION'
 
 const initialState = {
-    stations: [],
-    lastRemovedStation: null
+	stations: [],
+	currStation: null,
+	searchRes: null,
 }
 
 export function stationReducer(state = initialState, action) {
-    var newState = state
-    var stations
-    switch (action.type) {
-        case SET_STATIONS:
-            newState = { ...state, stations: action.stations }
-            break
-        case REMOVE_STATION:
-            const lastRemovedStation = state.stations.find(station => station._id === action.sattionId)
-            stations = state.stations.filter(station => station._id !== action.sattionId)
-            newState = { ...state, stations, lastRemovedStation }
-            break
-        case ADD_STATION:
-            newState = { ...state, stations: [...state.stations, action.station] }
-            break
-        case UPDATE_STATION:
-            stations = state.stations.map(station => (station._id === action.station._id) ? action.station : station)
-            newState = { ...state, stations }
-            break
-       
-       
-        
-        case UNDO_REMOVE_STATION:
-            if (state.lastRemovedStation) {
-                newState = { ...state, stations: [...state.stations, state.lastRemovedStation], lastRemovedStation: null }
-            }
-            break
-        default:
-    }
-    return newState
+	var newState = state
+	var stations
+
+	switch (action.type) {
+		case SET_STATIONS:
+			newState = { ...state, stations: action.stations }
+			break
+
+		case SET_CURRENT_STATION:
+			newState = { ...state, currStation: action.currStation }
+			break
+		case REMOVE_STATION:
+			stations = state.stations.filter((station) => station._id !== action.stationId)
+			newState = { ...state, stations }
+			break
+		case REMOVE_SONG:
+			newState = { ...state, currStation: action.currStation }
+			break
+		case ADD_STATION:
+			newState = {
+				...state,
+				stations: [...state.stations, action.station],
+			}
+			break
+		case UPDATE_STATION:
+			stations = state.stations.map((station) => (station._id === action.station._id ? action.station : station))
+			newState = { ...state, stations, currStation: action.station }
+			break
+
+		case SET_SEARCHERS:
+			newState = { ...state, searchRes: action.searchers }
+			break
+		default:
+	}
+	return newState
 }

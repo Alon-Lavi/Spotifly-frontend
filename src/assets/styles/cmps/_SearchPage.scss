@@ -39,9 +39,48 @@
 				border: em(2px) solid whitesmoke;
 			}
 		}
+
 		.search-icon {
 			color: white;
 			margin-right: em(8px);
+		}
+	}
+
+}
+
+.genres-list {
+	list-style-type: none;
+	display: grid;
+	grid-gap: em(18px);
+	grid-template-columns: repeat(5, minmax(0, 1fr));
+	min-width: $min-container-width;
+	margin-inline-start: 234px;
+
+	.genre-preview {
+		border-radius: 8px;
+		cursor: pointer;
+		font-family: inherit;
+		font-size: 1.25rem;
+		font-weight: 700;
+		height: 12rem;
+		overflow: hidden;
+		position: relative;
+		width: 12rem;
+
+		img {
+			height: 110px;
+			margin-left: 4em;
+			margin-top: 1em;
+			position: absolute;
+			-webkit-transform: rotate(30deg) translate(18%, -2%);
+			transform: rotate(30deg) translate(18%, -2%);
+			width: 110px;
+		}
+
+		h1 {
+			color: #fff;
+			margin-left: 20px;
+			margin-top: 20px;
 		}
 	}
 }

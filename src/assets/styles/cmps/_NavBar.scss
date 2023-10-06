@@ -26,7 +26,8 @@
 		display: flex;
 		align-items: center;
 		margin-left: 22px;
-		margin-top: 0px;
+		margin-top: -23px;
+
 	}
 	
 }
@@ -37,8 +38,6 @@
 	margin-right: em(6px);
 	margin-top: em(6px);
 }
-
-
 .side-bar-item {
 	padding-top: em(8px);
 	padding-bottom: em(6px);
@@ -46,13 +45,12 @@
 }
 
 .nav-link {
-	padding-left: em(25px);
-	font-family: 'circular', 'gotham', 'rubik', sans-serif;
+	padding-left: em(24px);
+	font-family: sans-serif;
 	text-decoration: none;
 	color: rgba(245, 245, 245, 0.558);
 	font-size: em(12px);
-	transition: color 0.15s ease-in-out;
-
+	transition: 0.15s ease-in-out;
 }
 
 .nav-link:hover {
@@ -63,6 +61,21 @@
     
 	margin-left: em(8px);
 
+	.side-search-bar{
+
+		input{
+			margin-left: em(8px);
+			color: rgb(255, 255, 255);
+			background-color: rgb(40, 40, 40);
+			border-radius: em(5px);
+			font-size: 10px;
+			height: 29px;
+			width: 80%;
+			border: none;
+			outline: none;
+		}
+	}
+
 	.station-preview {
 		display:flex;
 		align-items: center;
@@ -71,7 +84,6 @@
 	li{
 		width:250px;
 		height: 60px;;
-		
 		border-radius: 5px;
 		padding-left: 5px;
 	}
@@ -96,14 +108,13 @@
 	}
     .playlist-name{
 		margin-top: -9px;
-		font-size: 15px;
+		font-size: 13px;
 		color: rgba(255, 255, 255, 0.925);
 
-		 
 	}
 
 	.song-name {
-        margin-top: 20px;
+        margin-top: 17px;
 		position: fixed;
 		font-size: 12px;
 		padding: 0px;

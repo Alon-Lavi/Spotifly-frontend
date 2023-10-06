@@ -6,12 +6,12 @@
     width: 280px;
     z-index: 1;
     background-color: #000;
-
+	
 }
 .header-side-bar {
 	background-color: rgb(15, 15, 15);
 	width: 100%;
-	border-radius: rem(7px);
+	border-radius: rem(6px);
 }
 
 .main-side-bar {
@@ -20,8 +20,16 @@
 	height: 84vh;
 	border-radius: rem(7px);
 	margin-bottom: em(18px);
-}
 
+	.library{
+	
+		display: flex;
+		align-items: center;
+		margin-left: 22px;
+		margin-top: 0px;
+	}
+	
+}
 .side-bar-list {
 	list-style: none;
 	padding: 0;
@@ -30,21 +38,21 @@
 	margin-top: em(6px);
 }
 
+
 .side-bar-item {
-	padding-top: em(7px);
+	padding-top: em(8px);
 	padding-bottom: em(6px);
-	margin-bottom: em(7px);
-	
+	margin-bottom: em(6px);
 }
 
 .nav-link {
-	padding-left: em(24px);
+	padding-left: em(25px);
 	font-family: 'circular', 'gotham', 'rubik', sans-serif;
 	text-decoration: none;
 	color: rgba(245, 245, 245, 0.558);
-	font-size: em(13px);
+	font-size: em(12px);
 	transition: color 0.15s ease-in-out;
-	flex: 1;
+
 }
 
 .nav-link:hover {
@@ -53,7 +61,7 @@
 
 .user-station-list {
     
-	margin-left: em(16px);
+	margin-left: em(8px);
 
 	.station-preview {
 		display:flex;
@@ -61,7 +69,7 @@
 	
 	}
 	li{
-		width:235px;
+		width:250px;
 		height: 60px;;
 		
 		border-radius: 5px;
@@ -104,5 +112,10 @@
 			color: rgba(245, 245, 245, 0.558);
 		 }
 	}
+
+}
+svg {
+
+	color: rgba(245, 245, 245, 0.558);
 
 }

@@ -21,7 +21,7 @@ export function SearchPage() {
         <section className="search-page">
             <div className="search-bar">
                 <form>
-                    <h4 className="search-header">Browse all</h4>
+             
                     <div className="search-input-container">
                         <span>
 

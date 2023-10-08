@@ -1,6 +1,6 @@
 import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
-import { SOCKET_EMIT_UPDATE_STATION, socketService } from './socket.service.js'
+// import { SOCKET_EMIT_UPDATE_STATION, socketService } from './socket.service.js'
 import { updateStation } from '../store/actions/station.actions.js'
 
 const STORAGE_KEY = 'station'
@@ -59,7 +59,7 @@ async function save(station) {
 	try {
 		if (station._id) {
 			savedStation = await httpService.put(BASE_URL + station._id, station)
-			socketService.emit(SOCKET_EMIT_UPDATE_STATION, station)
+			// socketService.emit(SOCKET_EMIT_UPDATE_STATION, station)
 		} else {
 			savedStation = await httpService.post(BASE_URL, station)
 		}

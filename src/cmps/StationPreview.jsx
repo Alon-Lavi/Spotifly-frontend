@@ -9,7 +9,7 @@ export function StationPreview({ station, onPlayStation }) {
 	const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
 
 	return (
-		<section>
+		<section className='station-card-page'>
 			<section className="station-card">
 				<Link to={`/station/${station._id}`}>
 					<div className="img-container">

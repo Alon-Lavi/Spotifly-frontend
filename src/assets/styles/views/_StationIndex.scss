@@ -1,11 +1,16 @@
+
 .main-container {
+	display: grid;
+	justify-content: center;
+	align-items: center;
 	margin-top: em(70px);
-	margin-left: em(71px);
+	margin-left: em(0px);
 	background-color: #121212;
-	width: 100%;
 	border-radius: em(10px);
 	display: grid;
-	justify-content: left;
+	width: 100%;
+	height: 100%;
+
 }
 
 .station-list {

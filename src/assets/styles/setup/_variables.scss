@@ -41,8 +41,42 @@ $min-container-width: 150px;
 $column-count: 4;
 // calc(100vw/$min-container-width);
 
-$rhap_theme-color: #868686 !default; // Color of all buttons and volume/progress indicators
-$rhap_background-color: #171717 !default; // Color of the player background
-$rhap_bar-color: #e4e4e4 !default; // Color of volume and progress bar
-$rhap_time-color: #333 !default; // Font color of current time and duration
-$rhap_font-family: inherit !default;
+:root {
+	--min-column-width: 270px;
+	--item-height: 80px;
+	--column-gap: 24px;
+	--row-gap: 16px;
+	--column-width: 204px;
+	--column-count: 7;
+	--grid-gap: 24px;
+	--min-container-width: 432px;
+	--content-spacing: 24px;
+	--primary-color: #282828;
+}
+
+// Colors
+$bgclr1: #000000;
+$bgclr2: #121212;
+$bgclr1-light: #535353;
+$card-color: #181818;
+$bgclr3: #1ed760;
+$bgclr4: #282828;
+$bgclr5: hsla(0, 0%, 100%, 0.3); // Progress bar bg
+$bgclr-mobile-player: rgb(61 63 63);
+
+$clr-1: #fff;
+$clr1: #ffffff; // Song name
+$clr1-faded: hsla(0, 0%, 100%, 0.9);
+$clr2: #b3b3b3; // Song desc
+$clr3: #a7a7a7; // Your library on the side bar
+$clr3-light: hsla(0, 0%, 100%, 0.7);
+$clr3-dark: hsla(0, 0%, 100%, 0.1); //Detail line:hover
+$clr4: #1ed760; // Play button
+$clr4-light: #1fdf64; //Play button hover
+$box-shadow: 0 1px 5px #000;
+$app-header-nav-btn: rgba(0, 0, 0, 0.7);
+
+// Breakpoints
+$mobile-breakpoint: 460px;
+$narrow-breakpoint: 720px;
+$normal-breakpoint: 960px;

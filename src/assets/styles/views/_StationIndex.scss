@@ -1,8 +1,11 @@
+
 .main-container {
+	display: grid;
+	justify-content: center;
+	align-items: center;
 	margin-top: em(70px);
 	margin-left: em(250px);
 	background-color: #121212;
-	width: 100%;
 	border-radius: em(10px);
 	display: grid;
 	justify-content: left;

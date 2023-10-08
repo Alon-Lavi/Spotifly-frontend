@@ -1,7 +1,7 @@
+import axios from 'axios'
 import { httpService } from './http.service'
 import { utilService } from './util.service'
 import { stationService } from './station.service.local'
-import axios from 'axios'
 
 export const trackService = {
 	getVideos,

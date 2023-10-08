@@ -6,7 +6,7 @@ import { utilService } from '../services/util.service'
 // import { stationService } from '../services/station.service'
 import { stationService } from '../services/station.service.local'
 import { setCurrentTime, setIsPlaying, setPlayer, setSongDuration, setSongPlaying } from '../store/actions/player.actions'
-import { svgService } from '../services/svg.service.jsx'
+import { Svg } from '../pages/Svg'
 import { loadStations, updateStation } from '../store/actions/station.actions'
 import { trackService } from '../services/track.service'
 
@@ -118,13 +118,13 @@ export function Player() {
 
 	function getVolumeIcon() {
 		if (volumeValue < 0.01) {
-			return svgService.volumeIcon0
+			return Svg.volumeIcon0
 		} else if (volumeValue <= 33) {
-			return svgService.volumeIcon33
+			return Svg.volumeIcon33
 		} else if (volumeValue <= 66) {
-			return svgService.volumeIcon66
+			return Svg.volumeIcon66
 		} else {
-			return svgService.volumeIcon100
+			return Svg.volumeIcon100
 		}
 	}
 
@@ -264,7 +264,7 @@ export function Player() {
 				</div>
 				{currStation && (
 					<button onClick={() => onLikeSong(songPlaying.songId)} className="btn-like-song">
-						{currStation.songs[songPlaying?.songIdx]?.isLiked ? svgService.likedSongIcon : svgService.heartIcon}
+						{currStation.songs[songPlaying?.songIdx]?.isLiked ? Svg.likedSongIcon : Svg.heartIcon}
 					</button>
 				)}
 			</div>
@@ -287,13 +287,13 @@ export function Player() {
 						</svg>
 					</button>
 					<button className="backBtn" onClick={() => onChangeSong(false)}>
-						{svgService.goBackIcon}
+						{Svg.goBackIcon}
 					</button>
 					<button className="playBtn" onClick={handlePlay}>
-						{isPlaying ? svgService.playerPauseTrackIcon : svgService.playerPlayTrackIcon}
+						{isPlaying ? Svg.playerPauseTrackIcon : Svg.playerPlayTrackIcon}
 					</button>
 					<button className="fwdBtn" onClick={() => onChangeSong(true)}>
-						{svgService.playerFwdTrackIcon}
+						{Svg.playerFwdTrackIcon}
 					</button>
 					<button onClick={onRepeatClick}>
 						{isRepeat ? (

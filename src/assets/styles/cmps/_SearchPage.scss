@@ -1,83 +1,80 @@
 .search-page {
 	position: fixed;
-	top: em(68px);
-	left: 0;
-	right: 0;
-	background-color: #181818;
-	padding: em(16px);
-	border: em(10px);
+	top: 60px;
+	left: 100px;
+	height: 95%;
+    width: 100%;
+	overflow-y: scroll;
 
-	form {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-
-		.search-header {
-			color: rgb(255, 255, 255);
-			font-size: em(12px);
-			margin-right: rem(70px);
-		}
+	background-color: rgb(15, 15, 15);
 
 		.search-input-container {
 			flex: 1;
-			margin-right: em(1px);
+			margin-right: em(10px);
 
 			input {
-				width: em(315px);
-				height: em(44px);
-				background-color: #333;
+				margin-left: 255px;
+				width: em(420px);
+				height: em(54px);
+				background-color: rgb(40, 40, 40);
 				color: rgb(255, 255, 255);
 
 				font-size: em(12px);
-				border-radius: em(24px);
+				border-radius: em(45px);
 				border: none;
 			}
 
 			input:focus {
 				outline: none;
 				border-color: rgb(255, 255, 255);
-				border: em(2px) solid whitesmoke;
+				border: em(3px) solid whitesmoke;
 			}
 		}
 
 		.search-icon {
 			color: white;
-			margin-right: em(8px);
+			margin-right: em(2px);
 		}
 	}
 
-}
 
-.genres-list {
-	list-style-type: none;
-	display: grid;
-	grid-gap: em(18px);
-	grid-template-columns: repeat(5, minmax(0, 1fr));
-	min-width: $min-container-width;
-	margin-inline-start: 234px;
+
+	.genres-list {
+		display: flex;
+		list-style-type: none;
+		margin-left: 205px;
+		margin-bottom: 20px;
+	
+		transition: 0.55s ease-in-out;
+		flex-wrap: wrap; 
+
 
 	.genre-preview {
 		border-radius: 8px;
 		cursor: pointer;
-		font-family: inherit;
-		font-size: 1.25rem;
+		margin: 10px;
+		font-family: sans-serif;
+		font-size: 1.0rem;
 		font-weight: 700;
+		width: 12rem;
 		height: 12rem;
 		overflow: hidden;
 		position: relative;
-		width: 12rem;
 
 		img {
-			height: 110px;
-			margin-left: 4em;
-			margin-top: 1em;
+			height: 100px;
+			width: 100px;
+
+			margin-left: 6.9em;
+			margin-top: 2.6em;
 			position: absolute;
-			-webkit-transform: rotate(30deg) translate(18%, -2%);
+			-webkit-transform: rotate(20deg) translate(18%, -2%);
 			transform: rotate(30deg) translate(18%, -2%);
-			width: 110px;
 		}
 
 		h1 {
+			font-family: 'circular', 'gotham', 'rubik', sans-serif;
+			font-weight: 600;
 			color: #fff;
 			margin-left: 20px;
 			margin-top: 20px;

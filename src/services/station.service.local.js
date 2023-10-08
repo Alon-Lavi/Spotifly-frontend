@@ -973,33 +973,111 @@ var stationsDemo = [
 		],
 	},
 ]
-var genres = [
+const genres = [
 	{
-		title: 'Hip-Hop',
-		imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf9e3dea60be755ccd97b7351f',
-		backgroundcolor: 'purple',
+	  title: 'Hip-Hop',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf9e3dea60be755ccd97b7351f',
+	  backgroundcolor: 'purple',
 	},
 	{
-		title: 'Pop',
-		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafa862ab80dd85682b37c4e768',
-		backgroundcolor: 'green',
+	  title: 'Pop',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafa862ab80dd85682b37c4e768',
+	  backgroundcolor: 'green',
 	},
 	{
-		title: 'Rock',
-		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafae7e69beb88f16969641b53e',
-		backgroundcolor: 'red',
+	  title: 'Rock',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafae7e69beb88f16969641b53e',
+	  backgroundcolor: 'red',
 	},
 	{
-		title: 'Workout',
-		imgUrl: 'https://i.scdn.co/image/ab67706f000000029249b35f23fb596b6f006a15',
-		backgroundcolor: 'grey',
+	  title: 'Workout',
+	  imgUrl: 'https://i.scdn.co/image/ab67706f000000029249b35f23fb596b6f006a15',
+	  backgroundcolor: 'grey',
 	},
 	{
-		title: 'insrumental',
-		imgUrl: 'https://i.scdn.co/image/ab67706f000000028ed1a5002b96c2ea882541b2',
-		backgroundcolor: 'lightblue',
+	  title: 'Instrumental',
+	  imgUrl: 'https://i.scdn.co/image/ab67706f000000028ed1a5002b96c2ea882541b2',
+	  backgroundcolor: 'lightblue',
 	},
-]
+	{
+	  title: 'Electronic',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafdfdaac1cf9574a196ca25196',
+	  backgroundcolor: 'pink',
+	},
+	{
+	  title: 'R&B',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf26dd3719e8824756914ae61f',
+	  backgroundcolor: 'orange',
+	},
+	{
+	  title: 'Country',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafefa737b67ec51ec989f5a51d',
+	  backgroundcolor: 'blue',
+	},
+	{
+	  title: 'Classical',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf12809992dfc5b318892ea07b',
+	  backgroundcolor: 'teal',
+	},
+
+	{
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafefa737b67ec51ec989f5a51d',
+	  backgroundcolor: 'gold',
+	},
+	{
+	  title: 'Blues',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf271f9d895003c5f5561c1354',
+	  backgroundcolor: 'indigo',
+	},
+	{
+	  title: 'Folk',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf271f9d895003c5f5561c1354',
+	  backgroundcolor: 'magenta',
+	},
+	{
+	  title: 'Latin',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafa59f90c077c9f618fd0dde30',
+	  backgroundcolor: 'lightcoral',
+	},
+	{
+	  title: 'Dance',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafefa737b67ec51ec989f5a51d',
+	  backgroundcolor: 'lightseagreen',
+	},
+	{
+	  title: 'Alternative',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafe914a07d20cec7a65e2e5dad',
+	  backgroundcolor: 'tomato',
+	},
+	{
+	  title: 'Soul',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafd82e2c83fe100a89e9cbb2a2',
+	  backgroundcolor: 'royalblue',
+	},
+	{
+	  title: 'Reggaeton',
+	  imgUrl: 'https://i.scdn.co/image/ab67706f00000002b70e0223f544b1faa2e95ed0',
+	  backgroundcolor: 'darkorange',
+	},
+
+	{
+	  title: 'K-Pop',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafefa737b67ec51ec989f5a51d',
+	  backgroundcolor: 'orchid',
+	},
+	{
+	  title: 'Acoustic',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf12809992dfc5b318892ea07b',
+	  backgroundcolor: 'cadetblue',
+	},
+	{
+	  title: 'Chill',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf8dec632effd9735fa8aba06e',
+	  backgroundcolor: 'peru',
+	},
+  ];
+  
+  
 
 function getEmptyStation() {
 	return {

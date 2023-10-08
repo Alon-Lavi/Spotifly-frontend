@@ -21,7 +21,7 @@ export function SearchPage() {
         <section className="search-page">
             <div className="search-bar">
                 <form>
-                    <h4 className="search-header">Browse all</h4>
+             
                     <div className="search-input-container">
                         <span>
 
@@ -35,12 +35,13 @@ export function SearchPage() {
 
                 </form>
             </div>
+
             {genres && <ul className="genres-list">
                 {genres.map((genre) => (
-            
-                        <Link to={`station/${genre.title}`}>  <GenrePreview genre={genre} /></Link>
+                
+                           <Link to={`station/${genre.title}`}>  <GenrePreview genre={genre} /></Link>
 
-                   
+          
                 ))}
             </ul>}
         </section>

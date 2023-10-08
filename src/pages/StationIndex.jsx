@@ -35,7 +35,7 @@ export function StationIndex() {
 
 	if (!recomended || !stations) return <div>loading </div>
 	return (
-		<div>
+		<div className='main-container-page'>
 			<main className='main-container'>
 			{!genre &&<RecomendedList recomended={recomended} />}
 				<StationList  stations={stations} />

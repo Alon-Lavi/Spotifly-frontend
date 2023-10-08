@@ -1,32 +1,75 @@
 .side-bar {
 	top: 0;
 	left: 0;
+	
+	margin-left: 2px;
 	position: fixed;
 	height: 100%;
-	width: 280px;
+	width: 335px;
 	z-index: 1;
 	background-color: #000;
 
 	.header-side-bar {
 		background-color: rgb(15, 15, 15);
 		width: 100%;
-		border-radius: rem(6px);
+		height: 115px;
+		border-radius: rem(8px);
+		margin-bottom: 8px;
+        padding-top: 17px;
+		padding-bottom: 14px;
+        
+		svg {
+			margin-top: 3px;
+			margin-left: 0px;
+		}
+
+		.txt-home {
+			margin-top: 6px;
+			margin-left: 5px;
+			font-size: 15px;
+			font-weight: 500;
+			letter-spacing: 0.7px;
+		}
+		.txt-search {
+			margin-top: 4px;
+			margin-left: 4px;
+			font-size: 15px;
+		
+			letter-spacing: 0.7px;
+			font-weight: 500;
+		}
+		li {
+			margin-bottom: 7px;
+		}
+	   
 	}
 
 	.main-side-bar {
 		background-color: rgb(15, 15, 15);
 		width: 100%;
-		height: 84vh;
-		border-radius: rem(7px);
-		margin-bottom: em(18px);
+		height: 86vh;
+		border-radius: rem(8px);
+		// margin-bottom: em(100px);
+		// margin-top: em(5px);
+	
 
 
 		.library {
 			display: flex;
 			align-items: center;
-			margin-left: 22px;
-			margin-top: -23px;
-
+			margin-left: 23px;
+			margin-top: -28px;
+            
+			.library-span {
+				margin-left: 3px ;
+				font-size: 15px ;
+				letter-spacing: 0.8px;
+				font-weight: 500;
+			}
+            
+            svg{
+				margin-left: -1px;
+			}
 			span {
 				color: rgba(245, 245, 245, 0.717);
 
@@ -47,13 +90,13 @@
 	}
 
 	.side-bar-item {
-		padding-top: em(8px);
-		padding-bottom: em(6px);
-		margin-bottom: em(6px);
+		padding-top: em(12px);
+		padding-bottom: em(1px);
+		margin-bottom: em(12px);
 	}
 
 	.nav-link {
-		padding-left: em(24px);
+		padding-left: em(26px);
 		font-family: sans-serif;
 		text-decoration: none;
 		color: rgba(245, 245, 245, 0.717);
@@ -66,17 +109,18 @@
 	}
 
 	.user-station-list {
-		margin-left: em(6px);
+		margin-left: em(8px);
 
 		.side-search-bar {
 			input {
-				margin-left: em(8px);
+				margin-left: em(7px);
 				color: rgb(255, 255, 255);
 				background-color: rgb(40, 40, 40);
-				border-radius: em(6px);
+				border-radius: 4px;
 				font-size: 10px;
-				height: 27px;
-				width: 80%;
+			
+				height: 32px;
+				width: 100%;
 				border: none;
 				outline: none;
 			}
@@ -88,10 +132,11 @@
 		}
 
 		li {
-			width: 250px;
-			height: 60px;
+			width: 97%;
+			height: 65px;
 			border-radius: 5px;
-			padding-left: 5px;
+			padding-left: 6px;
+		
 
 			&:hover {
 				background-color: rgba(24, 24, 24);
@@ -99,8 +144,8 @@
 		}
 
 		.station-preview img {
-			width: 42px;
-			height: 42px;
+			width: 47px;
+			height: 47px;
 			border-radius: 4px;
 		}
 
@@ -112,15 +157,15 @@
 		}
 
 		.playlist-name {
-			margin-top: -9px;
-			font-size: 13px;
+			margin-top: -5px;
+			font-size: 15px;
 			color: rgba(255, 255, 255, 0.925);
 		}
 
 		.song-name {
-			margin-top: 17px;
+			margin-top: 21px;
 			position: fixed;
-			font-size: 12px;
+			font-size: 14px;
 			padding: 0px;
 
 			span {

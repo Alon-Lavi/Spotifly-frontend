@@ -18,7 +18,8 @@ export function StationIndex() {
 	
 		loadStations({genre})
 		loadRecomended()
-	}, [])
+		
+	}, [genre])
 
 
 	async function loadRecomended() {

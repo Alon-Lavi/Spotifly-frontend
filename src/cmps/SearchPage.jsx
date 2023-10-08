@@ -35,7 +35,7 @@ export function SearchPage() {
 
                 </form>
             </div>
-            
+
             {genres && <ul className="genres-list">
                 {genres.map((genre) => (
                 

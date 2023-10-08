@@ -1001,97 +1001,78 @@ const genres = [
 	},
 	{
 	  title: 'Electronic',
-	  imgUrl: 'URL',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafdfdaac1cf9574a196ca25196',
 	  backgroundcolor: 'pink',
 	},
 	{
 	  title: 'R&B',
-	  imgUrl: 'URL',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf26dd3719e8824756914ae61f',
 	  backgroundcolor: 'orange',
 	},
 	{
 	  title: 'Country',
-	  imgUrl: 'URL',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafefa737b67ec51ec989f5a51d',
 	  backgroundcolor: 'blue',
 	},
 	{
 	  title: 'Classical',
-	  imgUrl: 'URL',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf12809992dfc5b318892ea07b',
 	  backgroundcolor: 'teal',
 	},
+
 	{
-	  title: 'Jazz',
-	  imgUrl: 'URL',
-	  backgroundcolor: 'brown',
-	},
-	{
-	  title: 'Indie',
-	  imgUrl: 'URL',
-	  backgroundcolor: 'lime',
-	},
-	{
-	  title: 'Metal',
-	  imgUrl: 'URL',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafefa737b67ec51ec989f5a51d',
 	  backgroundcolor: 'gold',
 	},
 	{
-	  title: 'Reggae',
-	  imgUrl: 'URL',
-	  backgroundcolor: 'cyan',
-	},
-	{
 	  title: 'Blues',
-	  imgUrl: 'URL',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf271f9d895003c5f5561c1354',
 	  backgroundcolor: 'indigo',
 	},
 	{
 	  title: 'Folk',
-	  imgUrl: 'URL',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf271f9d895003c5f5561c1354',
 	  backgroundcolor: 'magenta',
 	},
 	{
 	  title: 'Latin',
-	  imgUrl: 'URL',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafa59f90c077c9f618fd0dde30',
 	  backgroundcolor: 'lightcoral',
 	},
 	{
 	  title: 'Dance',
-	  imgUrl: 'URL',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafefa737b67ec51ec989f5a51d',
 	  backgroundcolor: 'lightseagreen',
 	},
 	{
 	  title: 'Alternative',
-	  imgUrl: 'URL',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafe914a07d20cec7a65e2e5dad',
 	  backgroundcolor: 'tomato',
 	},
 	{
 	  title: 'Soul',
-	  imgUrl: 'URL',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafd82e2c83fe100a89e9cbb2a2',
 	  backgroundcolor: 'royalblue',
 	},
 	{
 	  title: 'Reggaeton',
-	  imgUrl: 'URL',
+	  imgUrl: 'https://i.scdn.co/image/ab67706f00000002b70e0223f544b1faa2e95ed0',
 	  backgroundcolor: 'darkorange',
 	},
-	{
-	  title: 'Punk',
-	  imgUrl: 'URL',
-	  backgroundcolor: 'sienna',
-	},
+
 	{
 	  title: 'K-Pop',
-	  imgUrl: 'URL',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafefa737b67ec51ec989f5a51d',
 	  backgroundcolor: 'orchid',
 	},
 	{
 	  title: 'Acoustic',
-	  imgUrl: 'URL',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf12809992dfc5b318892ea07b',
 	  backgroundcolor: 'cadetblue',
 	},
 	{
 	  title: 'Chill',
-	  imgUrl: 'URL',
+	  imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf8dec632effd9735fa8aba06e',
 	  backgroundcolor: 'peru',
 	},
   ];

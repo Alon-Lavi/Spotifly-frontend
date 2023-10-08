@@ -6,9 +6,6 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { login, logout, signup } from '../store/actions/user.actions.js'
 import { LoginSignup } from './LoginSignup.jsx'
 
-import PrevPage from './svg/PrevPage'
-import NextPage from './svg/NextPage'
-
 export function User() {
 	const navigate = useNavigate()
 	const [isOpen, setIsOpen] = useState(false)
@@ -87,14 +84,6 @@ export function User() {
 					<LoginSignup onLogin={onLogin} onSignup={signup} />
 				</ul>
 			)}
-			{/* <div className="dir-btns">
-				<button onClick={onBack} className="go-back-btn">
-					<PrevPage />
-				</button>
-				<button onClick={onForward} className="forward-btn">
-					<NextPage />
-				</button>
-			</div> */}
 		</section>
 	)
 }

@@ -16,6 +16,7 @@ export function setSongPlaying(songPlaying) {
 	store.dispatch({ type: SONG_PLAYING, songPlaying })
 	setIsPlaying(true)
 
+	
 }
 
 export function setCurrentTime(currentTime) {

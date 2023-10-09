@@ -4,6 +4,7 @@ import { stationService } from '../services/station.service.local'
 import { removeStation, updateStation } from '../store/actions/station.actions'
 import { showErrorMsg } from '../services/event-bus.service'
 import { setIsPlaying, setSongPlaying } from '../store/actions/player.actions'
+import { LoaderService } from '../services/loader.service'
 
 export function StationDetails() {
 	const [station, setStation] = useState(null)
@@ -12,7 +13,7 @@ export function StationDetails() {
 
 	useEffect(() => {
 		loadStations()
-	}, [stationId])
+	}, [station])
 	async function onRemoveStation(stationId) {
 		try {
 			await removeStation(stationId)
@@ -35,7 +36,7 @@ export function StationDetails() {
 			}
 		}
 	}
-	function playSong(song){
+	function playSong(song) {
 		setSongPlaying(song)
 		setIsPlaying(true)
 	}
@@ -50,7 +51,7 @@ export function StationDetails() {
 			navigate('/station')
 		}
 	}
-	if (!station) return <dir>loading...</dir>
+	if (!station) return LoaderService.threeDots
 	return (
 		<section className="station-details">
 			<header>
@@ -72,7 +73,7 @@ export function StationDetails() {
 				</thead>
 				<tbody>
 					{station.songs.map((song, idx) => (
-						<tr onClick={()=>playSong(song)} key={idx}>
+						<tr onClick={() => playSong(song)} key={idx}>
 							<td>{idx + 1}</td>
 							<td>
 								<img src={song.imgUrl} alt="" /> {song.title}{' '}

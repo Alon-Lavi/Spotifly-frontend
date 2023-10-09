@@ -9,21 +9,21 @@ import { StationList } from '../cmps/StationList.jsx'
 import { RecomendedList } from '../cmps/RecomendedList.jsx'
 import { useParams } from 'react-router'
 import { setSongPlaying } from '../store/actions/player.actions.js'
+import { LoaderService } from '../services/loader.service.jsx'
+import { utilService } from '../services/util.service.js'
 
 export function StationIndex() {
 	const stations = useSelector((storeState) => storeState.stationModule.stations)
 	const [recomended, setRecomended] = useState()
-	const {genre}= useParams()
+	const { genre } = useParams()
 
 	useEffect(() => {
-	
-		loadStations({genre})
+		loadStations({ genre })
 		loadRecomended()
-		
 	}, [genre])
-function onPlayStation(song){
-	setSongPlaying(song)
-}
+	function onPlayStation(song) {
+		setSongPlaying(song)
+	}
 
 	async function loadRecomended() {
 		try {
@@ -34,13 +34,12 @@ function onPlayStation(song){
 		}
 	}
 
-	
-
-	if (!recomended || !stations) return <div>loading </div>
+	if (!recomended || !stations) return LoaderService.threeDots
 	return (
-		<div className='main-container-page'>
-			<main className='main-container'>
-			{!genre &&<RecomendedList recomended={recomended} />}
+		<div className="main-container-page">
+			<h3 className="greeting">{utilService.getGreetings()}</h3>
+			<main className="main-container">
+				{!genre && <RecomendedList recomended={recomended} />}
 				<StationList onPlayStation={onPlayStation} stations={stations} />
 			</main>
 		</div>

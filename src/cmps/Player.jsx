@@ -252,7 +252,7 @@ export function Player() {
 				<div className="station-img">
 					{/* <img src={songPlaying ? currStation?.songs[songPlaying?.songIdx]?.imgUrl : emptyStation} alt="station-img" /> */}
 					<div className="player-container">
-						<YouTube videoId={songPlaying?.songId} opts={opts} onReady={handlePlayerReady} onStateChange={onChangePlayerStatus} />
+						<YouTube videoId={'79fzeNUqQbQ'} opts={opts} onReady={handlePlayerReady} onStateChange={onChangePlayerStatus} />
 					</div>
 					<div className="artist-details">
 						<span className="song-name" title={currStation?.songs[songPlaying?.songIdx || 0]?.title}>

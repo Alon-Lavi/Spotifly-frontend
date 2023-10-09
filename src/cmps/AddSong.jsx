@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { trackService } from '../services/track.service'
 import { Svg } from '../pages/Svg'
 
-export function AddSong({ station, onAddSong, getCleanTitle }) {
+export function AddSong({ station, onAddSong }) {
 	const [searchTerm, setSearchTerm] = useState('')
 	const [tracks, setTracks] = useState([])
 

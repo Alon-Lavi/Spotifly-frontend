@@ -38,7 +38,7 @@ export function StationDetails() {
 	}
 	function playSong(song) {
 		setSongPlaying(song)
-		setIsPlaying(true)
+
 	}
 
 	async function loadStations() {

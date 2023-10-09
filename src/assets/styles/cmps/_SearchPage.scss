@@ -1,33 +1,48 @@
-
-
 .search-page {
 	position: fixed;
 	top: 60px;
 	left: 100px;
 	height: 95%;
-    width: 100%;
+	width: 100%;
 	overflow-y: scroll;
 
 	background-color: rgb(15, 15, 15);
 
-		
 
-		.search-icon {
-			color: white;
-			margin-right: em(2px);
-		}
+
+	.search-icon {
+		color: white;
+		margin-right: em(2px);
 	}
 
-
-
-	.genres-list {
-		display: flex;
-		list-style-type: none;
+	.song-list {
 		margin-left: 205px;
-		margin-bottom: 20px;
 	
-		transition: 0.55s ease-in-out;
-		flex-wrap: wrap; 
+		list-style-type: none;
+
+		li {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			cursor: pointer;
+			img {
+				width: 40px;
+				height: 40px;
+			}
+		}
+	}
+}
+
+
+
+.genres-list {
+	display: flex;
+	list-style-type: none;
+	margin-left: 205px;
+	margin-bottom: 20px;
+
+	transition: 0.55s ease-in-out;
+	flex-wrap: wrap;
 
 
 	.genre-preview {
@@ -61,4 +76,6 @@
 			margin-top: 20px;
 		}
 	}
+
+
 }

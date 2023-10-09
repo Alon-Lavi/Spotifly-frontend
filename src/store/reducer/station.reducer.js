@@ -11,6 +11,7 @@ const initialState = {
 	stations: [],
 	currStation: null,
 	searchRes: null,
+	songsToSearch: null
 }
 
 export function stationReducer(state = initialState, action) {
@@ -44,7 +45,7 @@ export function stationReducer(state = initialState, action) {
 			break
 
 		case SET_SEARCHERS:
-			newState = { ...state, searchRes: action.searchers }
+			newState = { ...state, songsToSearch: action.songs }
 			break
 		default:
 	}

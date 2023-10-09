@@ -38,8 +38,8 @@ export function setCurrStation(currStation) {
 	store.dispatch({ type: SET_CURRENT_STATION, currStation })
 }
 
-export function setSearchers(searchers) {
-	store.dispatch({ type: SET_SEARCHERS, searchers })
+export function setSongsToSearch(songs) {
+	store.dispatch({ type: SET_SEARCHERS, songs })
 }
 
 export async function removeSong(songId, currStation) {

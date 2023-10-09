@@ -1,13 +1,25 @@
 .side-bar {
 	top: 0;
 	left: 0;
-	
+	transition: 0.15s ease-in-out;
 	margin-left: 2px;
 	position: fixed;
 	height: 100%;
-	width: 335px;
+	width: 355px;
 	z-index: 1;
 	background-color: #000;
+	@media (max-width: 768px) {
+		width: 300px; 
+		transition: 0.15s ease-in-out;
+	
+	  @media (max-width: 576px) {
+		width: 250px; 
+		transition: 0.15s ease-in-out;
+            svg {
+				margin-bottom:px;
+			}	
+	  }
+	}
 
 	.header-side-bar {
 		background-color: rgb(15, 15, 15);

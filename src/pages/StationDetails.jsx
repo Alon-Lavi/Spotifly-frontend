@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router'
 import { stationService } from '../services/station.service.local'
 import { removeStation, updateStation } from '../store/actions/station.actions'
 import { showErrorMsg } from '../services/event-bus.service'
+import { setIsPlaying, setSongPlaying } from '../store/actions/player.actions'
 
 export function StationDetails() {
 	const [station, setStation] = useState(null)
@@ -33,6 +34,10 @@ export function StationDetails() {
 				showErrorMsg('Cannot update station')
 			}
 		}
+	}
+	function playSong(song){
+		setSongPlaying(song)
+		setIsPlaying(true)
 	}
 
 	async function loadStations() {
@@ -67,7 +72,7 @@ export function StationDetails() {
 				</thead>
 				<tbody>
 					{station.songs.map((song, idx) => (
-						<tr key={idx}>
+						<tr onClick={()=>playSong(song)} key={idx}>
 							<td>{idx + 1}</td>
 							<td>
 								<img src={song.imgUrl} alt="" /> {song.title}{' '}

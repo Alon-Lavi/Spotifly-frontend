@@ -16,7 +16,7 @@ export function StationPreview({ station,onPlayStation }) {
 					<span key={song.artist}>{song.artist} </span>
 				))}
 			</p>
-			<button className="btn-play-playlist" onClick={() => onPlayStation(station._id)}>
+			<button className="btn-play-playlist" onClick={() => onPlayStation(station.songs[0])}>
 				{isPlaying ? Svg.playerPauseTrackIcon : Svg.playerPlayTrackIcon}
 			</button>
 		</>

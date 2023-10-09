@@ -5,7 +5,7 @@ import { StationPreview } from "./StationPreview.jsx"
 
 
 
-export function StationList({stations,onRemoveStation,onUpdateStation}){
+export function StationList({stations,onRemoveStation,onUpdateStation,onPlayStation}){
    
     return(
         <ul className="station-list">
@@ -15,7 +15,7 @@ export function StationList({stations,onRemoveStation,onUpdateStation}){
               
 
 
-             <Link key={idx+100} to={`station/${station._id}`}>  <StationPreview station={station} /></Link> 
+             <Link key={idx+100} to={`station/${station._id}`}>  <StationPreview onPlayStation={onPlayStation} station={station} /></Link> 
                 
 
             </li>

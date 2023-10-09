@@ -8,6 +8,7 @@ import { stationService } from '../services/station.service.local.js'
 import { StationList } from '../cmps/StationList.jsx'
 import { RecomendedList } from '../cmps/RecomendedList.jsx'
 import { useParams } from 'react-router'
+import { setSongPlaying } from '../store/actions/player.actions.js'
 
 export function StationIndex() {
 	const stations = useSelector((storeState) => storeState.stationModule.stations)
@@ -20,7 +21,9 @@ export function StationIndex() {
 		loadRecomended()
 		
 	}, [genre])
-
+function onPlayStation(song){
+	setSongPlaying(song)
+}
 
 	async function loadRecomended() {
 		try {
@@ -38,7 +41,7 @@ export function StationIndex() {
 		<div className='main-container-page'>
 			<main className='main-container'>
 			{!genre &&<RecomendedList recomended={recomended} />}
-				<StationList  stations={stations} />
+				<StationList onPlayStation={onPlayStation} stations={stations} />
 			</main>
 		</div>
 	)

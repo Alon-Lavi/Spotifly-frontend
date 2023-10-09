@@ -9,10 +9,10 @@
 
 .main-container {
 	display: grid;
-	grid-template-columns: em(20px) 1fr em(20px);
+	grid-template-columns: em(20px) 1fr rem(20px);
 
 	> * {
-		grid-column: 2;
+		grid-column: 3;
 
 		&.full {
 			grid-column: 1 /-1;
@@ -21,16 +21,18 @@
 
 	@include for-narrow-layout {
 		grid-template-columns:
-			minmax(20px, 1fr)
+			1fr
 			minmax(auto, $mobile-breakpoint)
 			minmax(20px, 1fr);
 	}
+
 	@include for-normal-layout {
 		grid-template-columns:
 			minmax(20px, 1fr)
 			minmax(auto, $narrow-breakpoint)
 			minmax(20px, 1fr);
 	}
+
 	@include for-wide-layout {
 		grid-template-columns:
 			minmax(20px, 1fr)
@@ -39,8 +41,8 @@
 	}
 }
 
-.sattiond-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-	grid-gap: em(20px);
-}
+// .sattiond-grid {
+// 	display: grid;
+// 	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+// 	grid-gap: em(20px);
+// }

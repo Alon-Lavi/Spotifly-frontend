@@ -4,12 +4,13 @@
 	justify-content: center;
 	align-items: center;
 	margin-top: em(70px);
-	margin-left: em(250px);
+	margin-left: em(300px);
 	background-color: #121212;
 	border-radius: em(10px);
 	display: grid;
 	justify-content: left;
 	grid-template-columns: 1fr;
+	width: 95%;
 }
 
 .station-list {
@@ -38,10 +39,7 @@
 		display: grid;
 		place-items: center;
 
-		&:hover {
-			background-color: #282828;
-			cursor: pointer;
-		}
+
 
 		img {
 			width: 100%;
@@ -53,6 +51,40 @@
 			margin-block: 0px;
 			font-size: 0.8125rem;
 			margin: em(5px);
+		}
+		.btn-play-playlist {
+			height: 48px;
+			width: 48px;
+			background-color: $clr4;
+			padding: 10px;
+			border-radius: 50%;
+	
+			border: none;
+			position: absolute;
+			top: 38%;
+			right: 12%;
+			opacity: 0;
+			transform: translateY(20%);
+			transition: transform 0.3s, opacity 0.5s;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		&:hover {
+			background-color: #282828;
+			cursor: pointer;
+			& .btn-play-playlist {
+				border: none;
+				background-color: #1ed760;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+				opacity: 1;
+				transform: translateY(0);
+				cursor: pointer;
+				.svg {
+					width: 20px;
+					height: 20px;
+				}
+			}
 		}
 	}
 }
@@ -74,11 +106,7 @@
 		display: flex;
 		align-items: center;
 
-		&:hover {
-			background: hsla(0, 0%, 100%, 0.2);
-			cursor: pointer;
-			// background-color: #282828;
-		}
+	
 
 		img {
 			height: em(64px);
@@ -87,6 +115,40 @@
 
 		span {
 			margin-inline-start: 1em;
+		}
+		.btn-play-playlist {
+			height: 48px;
+			width: 48px;
+			background-color: $clr4;
+			padding: 10px;
+			border-radius: 50%;
+	
+			border: none;
+			position: absolute;
+			right: 3%;
+			opacity: 0;
+			transform: translateY(20%);
+			transition: transform 0.3s, opacity 0.5s;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		&:hover {
+			background: hsla(0, 0%, 100%, 0.2);
+			cursor: pointer;
+			& .btn-play-playlist {
+				border: none;
+				background-color: #1ed760;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+				opacity: 1;
+				transform: translateY(0);
+				cursor: pointer;
+				.svg {
+					width: 20px;
+					height: 20px;
+				}
+			}
+			// background-color: #282828;
 		}
 	}
 }

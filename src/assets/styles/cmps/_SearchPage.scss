@@ -1,3 +1,5 @@
+
+
 .search-page {
 	position: fixed;
 	top: 60px;
@@ -8,28 +10,7 @@
 
 	background-color: rgb(15, 15, 15);
 
-		.search-input-container {
-			flex: 1;
-			margin-right: em(10px);
-
-			input {
-				margin-left: 255px;
-				width: em(420px);
-				height: em(54px);
-				background-color: rgb(40, 40, 40);
-				color: rgb(255, 255, 255);
-
-				font-size: em(12px);
-				border-radius: em(45px);
-				border: none;
-			}
-
-			input:focus {
-				outline: none;
-				border-color: rgb(255, 255, 255);
-				border: em(3px) solid whitesmoke;
-			}
-		}
+		
 
 		.search-icon {
 			color: white;

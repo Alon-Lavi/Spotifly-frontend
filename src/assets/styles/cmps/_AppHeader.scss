@@ -1,16 +1,41 @@
 .app-header {
-	position: absolute;
 	display: flex;
-	align-items: center;
 	justify-content: flex-end;
-	top: 0;
-	left: 0;
-	margin-top: em(8px);
-	margin-right: em(8px);
-	height: 60px;
+    position: relative;
+	height: 100%;
 	width: 100vw;
-	background-color: #171717;
+	margin-top: 8px;
+	background-color: rgb(15, 15, 15);
 	color: whitesmoke;
-	// justify-content: space-between;
-	// z-index: 1;
+
+	.search-header {
+	display: flex;
+	justify-content:flex-end ;
+		margin-right: 1000px;
+	}
+}
+
+.search-input-container { 
+	
+	padding-bottom: 1px;
+	padding-left: 200px;
+	margin-top: 3px;
+
+	input {
+		margin-left: 555px;
+		width: em(420px);
+		height: em(53px);
+		background-color: rgb(40, 40, 40);
+		color: rgb(255, 255, 255);
+
+		font-size: em(12px);
+		border-radius: em(45px);
+		border: none;
+	}
+
+	input:focus {
+		outline: none;
+		border-color: rgb(255, 255, 255);
+		border: em(3px) solid whitesmoke;
+	}
 }

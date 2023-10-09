@@ -9,7 +9,7 @@ import { loadStations, addStation, updateStation, removeStation } from '../store
 
 export function NavBar() {
     const [searchText, setSearchText] = useState('');
-    const stations = useSelector((storeState) => storeState.stationModule.stations.slice(4, 11));
+    const stations = useSelector((storeState) => storeState.stationModule.stations.slice(1, 9));
     const [isHovered, setIsHovered] = useState(false);
 
     const handleSearchInputChange = (e) => {

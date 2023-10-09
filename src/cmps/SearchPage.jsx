@@ -19,28 +19,11 @@ export function SearchPage() {
     }
     return (
         <section className="search-page">
-            <div className="search-bar">
-                <form>
-             
-                    <div className="search-input-container">
-                        <span>
-
-                        </span>
-                        <input
-                            name="txt"
-                            type="text"
-                            placeholder="      &#128269; What do you want to listen to?"
-                        />
-                    </div>
-
-                </form>
-            </div>
-
+   
             {genres && <ul className="genres-list">
                 {genres.map((genre) => (
                 
                            <Link to={`station/${genre.title}`}>  <GenrePreview genre={genre} /></Link>
-
           
                 ))}
             </ul>}

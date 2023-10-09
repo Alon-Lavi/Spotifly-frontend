@@ -80,6 +80,7 @@ var stationsDemo = [
 		songs: [
 			{
 				id: 's1001',
+				videoId:'79fzeNUqQbQ',
 				album: 'album15',
 				title: 'The Meters - Cissy Strut',
 				artist: 'Cissy Strut',

@@ -1,17 +1,15 @@
-
 .main-container {
 	display: grid;
-	justify-content: center;
 	align-items: center;
-	margin-top: em(70px);
+	justify-content: center;
+	grid-template-columns: auto;
 	margin-left: em(300px);
 	background-color: #121212;
 	border-radius: em(10px);
-	display: grid;
-	justify-content: left;
-	grid-template-columns: 1fr;
-	width: 95%;
-}
+	// margin-top: em(70px);
+	// justify-content: left;
+	// width: 95%;
+} 
 
 .station-list {
 	list-style-type: none;
@@ -20,7 +18,7 @@
 	gap: 24px; /* Adjust the gap between cards as needed */
 	justify-content: start;
 
-    margin-left: -31px;
+	margin-left: -31px;
 
 	// display: grid;
 	// grid-gap: em(18px);
@@ -39,8 +37,6 @@
 		display: grid;
 		place-items: center;
 
-
-
 		img {
 			width: 100%;
 			border-radius: em(6px);
@@ -58,7 +54,7 @@
 			background-color: $clr4;
 			padding: 10px;
 			border-radius: 50%;
-	
+
 			border: none;
 			position: absolute;
 			top: 38%;
@@ -93,7 +89,7 @@
 	display: grid;
 	gap: 1em;
 	// grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-	grid-template: auto/repeat(auto-fill,minmax(max(240px,25%),1fr));
+	grid-template: auto/repeat(auto-fill, minmax(max(240px, 25%), 1fr));
 
 	article {
 		background-color: hsla(0, 0%, 100%, 0.1);
@@ -105,8 +101,6 @@
 		transition: background-color 0.3s ease;
 		display: flex;
 		align-items: center;
-
-	
 
 		img {
 			height: em(64px);
@@ -122,7 +116,7 @@
 			background-color: $clr4;
 			padding: 10px;
 			border-radius: 50%;
-	
+
 			border: none;
 			position: absolute;
 			right: 3%;

@@ -1,6 +1,11 @@
 import React from 'react'
+ import { Svg } from './Svg'
+import { useSelector } from 'react-redux'
 
-export function StationPreview({ station }) {
+
+export function StationPreview({ station,onPlayStation }) {
+	const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
+
 	return (
 		<>
 			<img src={station.createdBy.imgUrl} alt="" />
@@ -11,6 +16,9 @@ export function StationPreview({ station }) {
 					<span key={song.artist}>{song.artist} </span>
 				))}
 			</p>
+			<button className="btn-play-playlist" onClick={() => onPlayStation(station._id)}>
+				{isPlaying ? Svg.playerPauseTrackIcon : Svg.playerPlayTrackIcon}
+			</button>
 		</>
 	)
 }

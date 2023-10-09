@@ -6,7 +6,7 @@ import { utilService } from '../services/util.service'
 // import { stationService } from '../services/station.service'
 import { stationService } from '../services/station.service.local'
 import { setCurrentTime, setIsPlaying, setPlayer, setSongDuration, setSongPlaying } from '../store/actions/player.actions'
-import { Svg } from '../pages/Svg'
+import { Svg } from './Svg'
 import { loadStations, updateStation } from '../store/actions/station.actions'
 import { trackService } from '../services/track.service'
 

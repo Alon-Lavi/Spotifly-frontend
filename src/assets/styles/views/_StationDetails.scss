@@ -1,6 +1,6 @@
 .station-details {
-	margin-left: em(202px);
-	margin-top: em(90px);
+	display: grid;
+	margin-left: em(300px);
 
 	header {
 		display: flex;
@@ -22,9 +22,10 @@
 	table {
 		color: white;
 		width: 100%;
-		tr{
+		tr {
 			cursor: pointer;
 		}
+
 		th {
 			text-align: left;
 		}

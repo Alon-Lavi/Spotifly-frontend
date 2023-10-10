@@ -40,7 +40,7 @@ export function NavBar() {
                                 role="img"
                                 height="23"
                                 width="26"
-                                class="icon"
+                                className="icon"
                                 viewBox="-1 0 25 22"
                                 data-encore-id="icon"
                                 style={{ fill: isHovered ? 'white' : '#b3b3b3', marginRight: '15px', marginBottom: '-15px' }}
@@ -61,7 +61,7 @@ export function NavBar() {
                                 height="24"
                                 width="26"
                                 aria-hidden="true"
-                                class="icon"
+                                className="icon"
                                 viewBox="0 0 23 24"
                                 data-encore-id="icon"
                                 style={{ fill: "#b3b3b3", marginRight: '15px', marginBottom: '1px' }}
@@ -109,7 +109,7 @@ export function NavBar() {
                                         viewBox="0 0 16 16"
                                         style={{ marginTop: '19px', marginLeft: '82px' }}
                                     >
-                                        <path fill="#b3b3b3" stroke="#a3a3a3" stroke-linecap="round" stroke-linejoin="round" d="M7 .54v13M.5 7h13" /></svg>
+                                        <path fill="#b3b3b3" stroke="#a3a3a3" strokeLinecap="round" strokeLinejoin="round" d="M7 .54v13M.5 7h13" /></svg>
 
 
                                 </span>

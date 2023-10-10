@@ -56,8 +56,8 @@ export function SearchPage() {
       <section className="search-page">
         {!songs && genres && (
           <ul className="genres-list">
-            {genres.map((genre) => (
-              <Link to={`station/${genre.title}`} key={genre.id}>
+            {genres.map((genre, idx) => (
+              <Link to={`station/${genre.title}`} key={idx}>
                 <GenrePreview genre={genre} />
               </Link>
             ))}
@@ -65,8 +65,8 @@ export function SearchPage() {
         )}
         {songs && (
           <ul className="song-list">
-            {songs.map((song) => (
-              <li key={song.id}>
+            {songs.map((song, idx) => (
+              <li key={idx}>
                 <img src={song.snippet.thumbnails.high.url} alt="" />
                 <span>{song.snippet.title}</span>
                 <div className="options">

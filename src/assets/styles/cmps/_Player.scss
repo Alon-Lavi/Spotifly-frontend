@@ -40,7 +40,7 @@
 	align-items: baseline;
 	justify-content: center;
 	margin-bottom: 8px;
-	gap: 16px;
+	// gap: 16px;
 
 	.backBtn,
 	.fwdBtn,
@@ -213,10 +213,13 @@
 	justify-content: space-between;
 	align-items: center;
 }
+
 .volume-container {
 	display: flex;
-	align-items: center;
+	align-items: end;
 	margin: auto 1em;
+	// margin-inline-start: 200px;
+	width: 200px;
 	@media (max-width: $mobile-breakpoint) {
 		margin: 0;
 	}
@@ -361,4 +364,13 @@
 			width: 40px;
 		}
 	}
+}
+
+.main-player-section-full {
+	position: fixed;
+	z-index: 1001;
+	bottom: 0;
+
+	width: 100%;
+	background-color: black;
 }

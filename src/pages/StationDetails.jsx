@@ -38,7 +38,6 @@ export function StationDetails() {
 	}
 	function playSong(song) {
 		setSongPlaying(song)
-
 	}
 
 	async function loadStations() {
@@ -56,12 +55,12 @@ export function StationDetails() {
 		<section className="station-details">
 			<header>
 				<img src={station.createdBy.imgUrl} alt="" />
-				<p>
+				<div>
 					<h1>{station.name}</h1>
 					{station.songs.map((song) => (
 						<span key={song.artist}>{song.artist} </span>
 					))}
-				</p>
+				</div>
 			</header>
 			<div>
 				<button onClick={() => onRemoveStation(station._id)}>delete</button>
@@ -69,7 +68,12 @@ export function StationDetails() {
 			</div>
 			<table>
 				<thead>
-					<th>#</th> <th>title</th> <th>album</th> <th>time</th>
+					<tr>
+						<th>#</th>
+						<th>title</th>
+						<th>album</th>
+						<th>time</th>
+					</tr>
 				</thead>
 				<tbody>
 					{station.songs.map((song, idx) => (

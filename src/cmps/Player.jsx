@@ -268,6 +268,7 @@ export function Player() {
 					</button>
 				)}
 			</div>
+			
 
 			{/* CENTER */}
 			<div className="center-controls">
@@ -323,6 +324,23 @@ export function Player() {
 							</svg>
 						)}
 					</button>
+					<div className="volume-container">
+					<button className="btn-mute" onClick={handleMute}>
+						{/* {!isMuted && getVolumeIcon()} */}
+					</button>
+					<input
+						className="volume-bar-element"
+						type="range"
+						name="volumeControl"
+						min="0"
+						max="100"
+						value={volumeValue}
+						onMouseEnter={handleVolumeBarMouseEnter}
+						onMouseLeave={handleVolumeBarMouseLeave}
+						onChange={handleVolumeChange}
+						style={volumeBarStyle}
+					/>
+				</div>
 				</div>
 				<div className="bottom-center-controls">
 					<div className="progress-bar flex">
@@ -347,23 +365,7 @@ export function Player() {
 
 			{/* RIGHT */}
 			<div className="right-controls ">
-				<div className="volume-container">
-					<button className="btn-mute" onClick={handleMute}>
-						{/* {!isMuted && getVolumeIcon()} */}
-					</button>
-					<input
-						className="volume-bar-element"
-						type="range"
-						name="volumeControl"
-						min="0"
-						max="100"
-						value={volumeValue}
-						onMouseEnter={handleVolumeBarMouseEnter}
-						onMouseLeave={handleVolumeBarMouseLeave}
-						onChange={handleVolumeChange}
-						style={volumeBarStyle}
-					/>
-				</div>
+			
 			</div>
 		</div>
 	)

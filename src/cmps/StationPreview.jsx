@@ -12,7 +12,7 @@ export function StationPreview({ station,onPlayStation }) {
 
 			<span>{station.name} </span>
 			<p>
-				{station.songs.map((song) => (
+				{station.songs && station.songs.map((song) => (
 					<span key={song.artist}>{song.artist} </span>
 				))}
 			</p>

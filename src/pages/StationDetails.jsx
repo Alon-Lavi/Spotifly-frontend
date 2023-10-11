@@ -7,6 +7,7 @@ import { setIsPlaying, setSongPlaying } from '../store/actions/player.actions'
 import { LoaderService } from '../services/loader.service'
 import { Search } from '../cmps/Search'
 import { useSelector } from 'react-redux'
+import { utilService } from '../services/util.service'
 
 export function StationDetails() {
 	const [station, setStation] = useState(null)

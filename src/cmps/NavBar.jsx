@@ -1,13 +1,17 @@
-import { NavLink, Navigate } from "react-router-dom";
+import { NavLink,  useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { StationPreview } from "./StationPreview";
 import homeIcon from '../assets/img/home.png'
 import { SearchPage } from "./SearchPage";
+import { stationService } from "../services/station.service.local";
+
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { loadStations, addStation, updateStation, removeStation } from '../store/actions/station.actions.js'
 
 export function NavBar() {
+	const navigate = useNavigate()
+
     const [searchText, setSearchText] = useState('');
     const stations = useSelector((storeState) => storeState.stationModule.stations.slice(1, 9));
     const [isHovered, setIsHovered] = useState(false);
@@ -26,14 +30,14 @@ export function NavBar() {
     };
     async function createStation() {
         const station = stationService.getEmptyStation()
-       const stationSaved = await stationService.save(station)
-        Navigate(`station/station/${stationSaved._id}`)
+        const stationSaved = await stationService.save(station)
+        navigate(`station/station/${stationSaved._id}`)
     }
     return (
         <nav className="side-bar">
             <ul className="side-bar-list">
                 <div className="header-side-bar">
-                <li className={`side-bar-item-home ${isHovered ? 'hovered' : ''}`}>
+                    <li className={`side-bar-item-home ${isHovered ? 'hovered' : ''}`}>
                         <NavLink
                             to="/station"
                             className="nav-link flex"
@@ -73,9 +77,9 @@ export function NavBar() {
                                 <path d="M15.356 10.558c0 2.623-2.16 4.75-4.823 4.75-2.664 0-4.824-2.127-4.824-4.75s2.16-4.75 4.824-4.75c2.664 0 4.823 2.127 4.823 4.75z"></path><path d="M1.126 10.558c0-5.14 4.226-9.28 9.407-9.28 5.18 0 9.407 4.14 9.407 9.28a9.157 9.157 0 0 1-2.077 5.816l4.344 4.344a1 1 0 0 1-1.414 1.414l-4.353-4.353a9.454 9.454 0 0 1-5.907 2.058c-5.18 0-9.407-4.14-9.407-9.28zm9.407-7.28c-4.105 0-7.407 3.274-7.407 7.28s3.302 7.279 7.407 7.279 7.407-3.273 7.407-7.28c0-4.005-3.302-7.278-7.407-7.278z"></path></svg>
                             <div className="txt-search">
 
-                            Search
+                                Search
                             </div>
-                             
+
                         </NavLink>
                     </li>
                 </div>
@@ -103,7 +107,7 @@ export function NavBar() {
                         </li>
                         <li
                             className="add-library">
-                              <a onClick={createStation} className="nav-link">
+                            <a onClick={createStation} className="nav-link">
                                 <span className="icon">
 
 

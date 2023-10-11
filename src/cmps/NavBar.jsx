@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { StationPreview } from "./StationPreview";
 import homeIcon from '../assets/img/home.png'
@@ -24,7 +24,11 @@ export function NavBar() {
     const handleMouseLeave = () => {
         setIsHovered(false);
     };
-
+    async function createStation() {
+        const station = stationService.getEmptyStation()
+       const stationSaved = await stationService.save(station)
+        Navigate(`station/station/${stationSaved._id}`)
+    }
     return (
         <nav className="side-bar">
             <ul className="side-bar-list">
@@ -99,7 +103,7 @@ export function NavBar() {
                         </li>
                         <li
                             className="add-library">
-                            <NavLink to="station/add" className="nav-link">
+                              <a onClick={createStation} className="nav-link">
                                 <span className="icon">
 
 
@@ -113,7 +117,7 @@ export function NavBar() {
 
 
                                 </span>
-                            </NavLink>
+                            </a>
                         </li>
                     </div>
                     <div className="user-station-list ">

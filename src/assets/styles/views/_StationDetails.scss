@@ -39,3 +39,31 @@
 		}
 	}
 }
+.song-list {
+
+
+	list-style-type: none;
+
+	li {
+		display: flex;
+		height: 50px;
+		gap: 10px;
+		cursor: pointer;
+		.options{
+			height: inherit;
+
+		}
+		img {
+			width: 40px;
+			height: 40px;
+		}
+	}
+}
+.song-search{
+
+	.search-input-container{
+		input{
+			margin-left: 0;
+		}
+	}
+}

@@ -16,23 +16,50 @@
 	}
 
 	.song-list {
-		margin-left: 205px;
-	
+		width: 1100px;
+		height: max-content;
+		margin-left: 265px;
 		list-style-type: none;
+	
+		.text-song-name {
+			flex-grow: 1; 
+		}
+		:hover {
+			background-color: rgb(63, 63, 63);
+		}
+
 
 		li {
+			width: 100%;
+			height: 55px;
+			border-radius: 5px;
+			padding-left: 6px;
 			display: flex;
-			height: 50px;
 			gap: 10px;
+			justify-content: space-between;
+			align-items: center;
 			cursor: pointer;
-			.options{
-				height: inherit;
-			
+		
+            button {
+				border-radius: 10px;
+			    align-items: center;
+				justify-content: center;
+				background-color: rgba(86, 86, 86, 0.558);
+		
 			}
+			svg {
+				margin-right: 10px;
+				
+			}
+			
+
 			img {
+				justify-content: start;
+				align-items: start;
 				width: 40px;
 				height: 40px;
 			}
+
 		}
 	}
 }
@@ -64,7 +91,6 @@
 		img {
 			height: 100px;
 			width: 100px;
-
 			margin-left: 6.9em;
 			margin-top: 2.6em;
 			position: absolute;
@@ -82,4 +108,57 @@
 	}
 
 
+}
+
+.modal {
+    display: flex;
+    // display: none;
+    position: fixed;
+    z-index: 1000;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background-color: rgba(30, 30, 30);
+	flex-direction: column;
+	button {
+		background-color: rgba(30, 30, 30);
+	
+
+		:hover{
+			background-color: rgba(47, 47, 47);
+		}
+	}
+
+    &-content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        max-width: 400px;
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+      
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+
+            &.add-to-playlist {
+                background-color: #c1c1c1;
+            }
+
+            &.close-modal {
+                background-color: #b0b0b0;
+            }
+        }
+
+        button + button {
+            margin-left: 10px;
+        }
+    }
 }

@@ -5,7 +5,7 @@ import YouTube from 'react-youtube'
 import { utilService } from '../services/util.service'
 // import { stationService } from '../services/station.service'
 import { stationService } from '../services/station.service.local'
-import { setCurrentTime, setIsPlaying, setPlayer, setSongDuration, setSongPlaying } from '../store/actions/player.actions'
+import { setCurrTime, setCurrentTime, setIsPlaying, setPlayer, setSongDuration, setSongPlaying } from '../store/actions/player.actions'
 import { Svg } from './Svg'
 import { loadStations, updateStation } from '../store/actions/station.actions'
 import { trackService } from '../services/track.service'
@@ -20,8 +20,8 @@ export function Player() {
 	const [isVolumeBarHovered, setIsVolumeBarHovered] = useState(false)
 	const [isDesktop, setIsDesktop] = useState(true)
 	// const [isLiked, setIsLiked] = useState(false)
-	// const [isPlayerReady, setIsPlayerReady] = useState(false)
 
+	const currTime = useSelector((state) => state.playerModule.currTime)
 	const songDuration = useSelector((storeState) => storeState.playerModule.songDuration)
 	const currentTime = useSelector((storeState) => storeState.playerModule.currentTime)
 	const player = useSelector((storeState) => storeState.playerModule.player)
@@ -32,11 +32,13 @@ export function Player() {
 
 	useEffect(() => {
 		if (!isPlaying || !player) return
+
 		const updatePlayerInfo = () => {
 			setCurrentTime(player.getCurrentTime())
 			setSongDuration(player.getDuration())
 		}
-		const intervalId = setInterval(updatePlayerInfo, 1000)
+
+		const intervalId = setInterval(updatePlayerInfo, 50)
 		return () => {
 			clearInterval(intervalId)
 		}
@@ -50,9 +52,7 @@ export function Player() {
 		const handleResize = () => {
 			setIsDesktop(window.innerWidth >= 768)
 		}
-
 		handleResize()
-
 		window.addEventListener('resize', handleResize)
 
 		return () => {
@@ -60,41 +60,44 @@ export function Player() {
 		}
 	}, [])
 
-	const handlePlay = () => {
+	function handlePlay() {
 		if (player) {
-			!isPlaying ? player.playVideo() : player.pauseVideo()
-			setIsPlaying(!isPlaying)
+			const isCurrentlyPlaying = !isPlaying
+			isCurrentlyPlaying ? player.playVideo() : player.pauseVideo()
+			setIsPlaying(isCurrentlyPlaying)
 		}
 	}
 
 	//PLAYER CONTROLS
 	function handleForward() {
 		if (player) {
-			const newTime = currentTime + 15
+			const newTime = currTime + 15
 			player.seekTo(newTime, true)
-			setCurrentTime(newTime)
+			setCurrTime(newTime)
 		}
 	}
 
 	function handleBackward() {
 		if (player) {
-			const newTime = currentTime - 15
+			const newTime = currTime - 15
 			player.seekTo(newTime, true)
-			setCurrentTime(newTime)
+			setCurrTime(newTime)
 		}
 	}
 
 	function handleMute() {
-		if (player.isMuted()) {
-			player.unMute()
+		if (player) {
+			if (player.isMuted()) {
+				player.unMute()
+			}
 		} else {
 			player.mute()
 		}
 		setIsMuted(!isMuted)
 	}
 
-	function handlePlayerReady(event) {
-		setPlayer(event.target)
+	function handlePlayerReady(ev) {
+		setPlayer(ev.target)
 	}
 
 	const opts = {
@@ -107,13 +110,23 @@ export function Player() {
 	}
 
 	//VOLUME BAR
-	function handleVolumeChange(event) {
-		player.setVolume(event.target.value)
-		setVolumeValue(event.target.value)
+	function handleVolumeChange(ev) {
+		player.setVolume(ev.target.value)
+		setVolumeValue(ev.target.value)
 	}
 
 	function handleVolumeBarMouseEnter() {
 		setIsVolumeBarHovered(true)
+	}
+
+	function handleVolumeBarMouseLeave() {
+		setIsVolumeBarHovered(false)
+	}
+
+	let volumeBarStyle = {
+		background: isVolumeBarHovered
+			? `linear-gradient(to right, #1db954 0%, #1db954 ${volumeValue}%, hsla(0,0%,100%,.3) ${volumeValue}%, hsla(0,0%,100%,.3) 100%)`
+			: `linear-gradient(to right, #fff 0%, #fff ${volumeValue}%, hsla(0,0%,100%,.3) ${volumeValue}%, hsla(0,0%,100%,.3) 100%)`,
 	}
 
 	function getVolumeIcon() {
@@ -128,23 +141,13 @@ export function Player() {
 		}
 	}
 
-	function handleVolumeBarMouseLeave() {
-		setIsVolumeBarHovered(false)
-	}
-
-	let volumeBarStyle = {
-		background: isVolumeBarHovered
-			? `linear-gradient(to right, #1db954 0%, #1db954 ${volumeValue}%, hsla(0,0%,100%,.3) ${volumeValue}%, hsla(0,0%,100%,.3) 100%)`
-			: `linear-gradient(to right, #fff 0%, #fff ${volumeValue}%, hsla(0,0%,100%,.3) ${volumeValue}%, hsla(0,0%,100%,.3) 100%)`,
-	}
-
 	//PROGRESS BAR
-	async function handleProgressChange(event) {
+	async function handleProgressChange(ev) {
 		try {
-			const targetTime = (event.target.value / 100) * songDuration
+			const targetTime = (ev.target.value / 100) * songDuration
 			await player.seekTo(targetTime, true)
 			setCurrentTime(targetTime)
-			setProgressValue(event.target.value)
+			setProgressValue(ev.target.value)
 		} catch (err) {
 			console.log('Could not load progress', err)
 		}
@@ -158,7 +161,7 @@ export function Player() {
 		setIsProgressBarHovered(false)
 	}
 
-	const progressBarStyle = {
+	let progressBarStyle = {
 		background: isProgressBarHovered
 			? `linear-gradient(to right, #1db954 0%, #1db954 ${progressValue}%, hsla(0,0%,100%,.3) ${progressValue}%, hsla(0,0%,100%,.3) 100%)`
 			: `linear-gradient(to right, #fff 0%, #fff ${progressValue}%, hsla(0,0%,100%,.3) ${progressValue}%, hsla(0,0%,100%,.3) 100%)`,
@@ -175,11 +178,13 @@ export function Player() {
 		if (data === 5) {
 			player.playVideo()
 		}
+
 		if (data === 0) {
 			if (isRepeat) {
 				player.playVideo()
 				return
 			}
+
 			if (isShuffle) {
 				const randSongIdx = utilService.getRandomSongIndex(currStation.songs)
 				const shuffledSongId = currStation.songs[randSongIdx]._id
@@ -188,6 +193,7 @@ export function Player() {
 				player.playVideo()
 				return
 			}
+
 			const nextSong =
 				songPlaying.songIdx + 1 <= currStation.songs.length
 					? {
@@ -220,6 +226,7 @@ export function Player() {
 				songId: currStation.songs[songPlaying.songIdx - 1]?._id,
 				songIdx: songPlaying.songIdx - 1,
 			}
+
 			setSongPlaying(prevSong)
 			console.log('songPlaying from else', songPlaying)
 			player.playVideo()
@@ -227,48 +234,50 @@ export function Player() {
 	}
 
 	function onShuffle() {
-		if (isRepeat) setIsRepeat(false)
 		setIsShuffle(!isShuffle)
 	}
 
-	async function onLikeSong(likedSongId) {
-		const [likedSong] = currStation.songs.filter((song) => song._id === likedSongId)
-		const updatedSongs = currStation.songs.map((song) => (song._id === likedSong._id ? { ...song, isLiked: !song.isLiked } : song))
-		const updatedStation = { ...currStation, songs: updatedSongs }
-		await updateStation(updatedStation)
-		const likedSongsStation = stations.find((station) => station.name === 'Liked Songs')
-		if (!likedSong.isLiked) {
-			await stationService.addToLikedSongsStation(likedSong, likedSongsStation)
-		} else {
-			await stationService.removeFromLikedSongsStation(likedSong, likedSongsStation)
-		}
-		loadStations()
-	}
+	// async function onLikeSong(likedSongId) {
+	// 	const [likedSong] = currStation.songs.filter((song) => song._id === likedSongId)
+	// 	const updatedSongs = currStation.songs.map((song) => (song._id === likedSong._id ? { ...song, isLiked: !song.isLiked } : song))
+	// 	const updatedStation = { ...currStation, songs: updatedSongs }
+	// 	await updateStation(updatedStation)
+	// 	const likedSongsStation = stations.find((station) => station.name === 'Liked Songs')
+	// 	if (!likedSong.isLiked) {
+	// 		await stationService.addToLikedSongsStation(likedSong, likedSongsStation)
+	// 	} else {
+	// 		await stationService.removeFromLikedSongsStation(likedSong, likedSongsStation)
+	// 	}
+	// 	loadStations()
+	// }
 
 	return (
 		<div className="main-player-section-full">
 			{/* LEFT */}
 			<div className="left-controls">
 				<div className="station-img">
-					{/* <img src={songPlaying ? currStation?.songs[songPlaying?.songIdx]?.imgUrl : emptyStation} alt="station-img" /> */}
-				{songPlaying &&	<div className="player-container">
-						<YouTube videoId={songPlaying.videoId} opts={opts} onReady={handlePlayerReady} onStateChange={onChangePlayerStatus} />
-					</div>}
-					<div className="artist-details">
-						<span className="song-name" title={currStation?.songs[songPlaying?.songIdx || 0]?.title}>
-							{isDesktop
-								? trackService.truncateTitle(trackService.getCleanTitle(currStation?.songs[songPlaying?.songIdx || 0]?.title))
-								: trackService.getCleanTitle(currStation?.songs[songPlaying?.songIdx || 0]?.title)}
-						</span>
-					</div>
+					{songPlaying && (
+						<div className="player-container">
+							<img src={songPlaying.imgUrl} alt="station-img" />
+							<YouTube videoId={songPlaying.videoId} opts={opts} onReady={handlePlayerReady} onStateChange={onChangePlayerStatus} />
+						</div>
+					)}
+					{currStation?.songs && (
+						<div className="artist-details">
+							<span className="song-name" title={currStation?.songs[songPlaying?.songIdx || 0]?.title}>
+								{isDesktop
+									? trackService.truncateTitle(trackService.getCleanTitle(currStation?.songs[songPlaying?.songIdx || 0]?.title))
+									: trackService.getCleanTitle(currStation?.songs[songPlaying?.songIdx || 0]?.title)}
+							</span>
+						</div>
+					)}
 				</div>
-				{currStation && (
+				{/* {currStation && (
 					<button onClick={() => onLikeSong(songPlaying.songId)} className="btn-like-song">
 						{currStation.songs[songPlaying?.songIdx]?.isLiked ? Svg.likedSongIcon : Svg.heartIcon}
 					</button>
-				)}
+				)} */}
 			</div>
-			
 
 			{/* CENTER */}
 			<div className="center-controls">
@@ -287,13 +296,13 @@ export function Player() {
 							<path d="M7.5 10.723l.98-1.167.957 1.14a2.25 2.25 0 001.724.804h1.947l-1.017-1.018a.75.75 0 111.06-1.06l2.829 2.828-2.829 2.828a.75.75 0 11-1.06-1.06L13.109 13H11.16a3.75 3.75 0 01-2.873-1.34l-.787-.938z" />
 						</svg>
 					</button>
-					<button className="backBtn" onClick={() => onChangeSong(false)}>
+					<button className="backBtn" onClick={() => handleBackward()}>
 						{Svg.goBackIcon}
 					</button>
 					<button className="playBtn" onClick={handlePlay}>
 						{isPlaying ? Svg.playerPauseTrackIcon : Svg.playerPlayTrackIcon}
 					</button>
-					<button className="fwdBtn" onClick={() => onChangeSong(true)}>
+					<button className="fwdBtn" onClick={() => handleForward()}>
 						{Svg.playerFwdTrackIcon}
 					</button>
 					<button onClick={onRepeatClick}>
@@ -324,9 +333,8 @@ export function Player() {
 							</svg>
 						)}
 					</button>
-					<div className="volume-container">
-					<button className="btn-mute" onClick={handleMute}>
-						{/* {!isMuted && getVolumeIcon()} */}
+					<button className="btn-mute" onClick={handleMute} svg={Svg.mutedIcon}>
+						{!isMuted && getVolumeIcon()}
 					</button>
 					<input
 						className="volume-bar-element"
@@ -341,7 +349,7 @@ export function Player() {
 						style={volumeBarStyle}
 					/>
 				</div>
-				</div>
+
 				<div className="bottom-center-controls">
 					<div className="progress-bar flex">
 						<div className="time-stamp start">{utilService.convertTime(currentTime) || '-:--'}</div>
@@ -363,10 +371,8 @@ export function Player() {
 				</div>
 			</div>
 
-			{/* RIGHT */}
-			<div className="right-controls ">
-			
-			</div>
+			{/* RIGHT
+			<div className="right-controls"></div> */}
 		</div>
 	)
 }

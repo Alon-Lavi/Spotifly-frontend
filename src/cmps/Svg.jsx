@@ -4,7 +4,7 @@ export const Svg = {
 			xmlns="http://www.w3.org/2000/svg"
 			className="icon-options"
 			role="img"
-			fill="white"
+			fill="hsla(0,0%,100%,.7)"
 			height="32"
 			width="32"
 			aria-hidden="true"
@@ -294,7 +294,7 @@ export const Svg = {
 			height="16"
 			width="16"
 			aria-hidden="true"
-			fill="white"
+			fill="hsla(0,0%,100%,.7)"
 			aria-label="Volume off"
 			id="volume-icon"
 			viewBox="0 0 16 16"
@@ -394,7 +394,7 @@ export const Svg = {
 	exitEditIcon: (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
-			fill="white"
+			fill="hsla(0,0%,100%,.7)"
 			role="img"
 			height="16"
 			width="16"
@@ -410,7 +410,7 @@ export const Svg = {
 	searchMagGlassIcon: (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
-			fill="white"
+			fill="hsla(0,0%,100%,.7)"
 			role="img"
 			height="16"
 			width="16"

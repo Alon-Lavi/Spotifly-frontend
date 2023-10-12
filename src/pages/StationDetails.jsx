@@ -61,13 +61,16 @@ export function StationDetails() {
 
 
 	function playSong(song) {
-		const songToPlay = {
-		
-			videoId: song.id.videoId,
-			title: song.snippet.title,
-			imgUrl: song.snippet.thumbnails.high.url
+		console.log(song);
+		if(song.kind){
+			const songToPlay = {	
+				videoId: song.id.videoId,
+				title: song.snippet.title,
+				imgUrl: song.snippet.thumbnails.high.url
+			}
+			setSongPlaying(songToPlay)
 		}
-		setSongPlaying(songToPlay)
+	else setSongPlaying(song)
 	}
 
 

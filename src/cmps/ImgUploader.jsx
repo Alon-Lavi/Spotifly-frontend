@@ -7,6 +7,7 @@ export function ImgUploader({ onUploaded = null }) {
     height: 500,
     width: 500,
   })
+  
   const [isUploading, setIsUploading] = useState(false)
 
   async function uploadImg(ev) {

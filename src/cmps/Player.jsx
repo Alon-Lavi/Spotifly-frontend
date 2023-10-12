@@ -371,8 +371,8 @@ export function Player() {
 				</div>
 			</div>
 
-			{/* RIGHT
-			<div className="right-controls"></div> */}
+			{/* {/* RIGHT */}
+			<div className="right-controls"></div>
 		</div>
 	)
 }

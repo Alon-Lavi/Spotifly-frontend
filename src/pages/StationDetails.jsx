@@ -9,6 +9,7 @@ import { Search } from '../cmps/Search'
 import { useSelector } from 'react-redux'
 import { utilService } from '../services/util.service'
 import { ImgUploader } from '../cmps/ImgUploader'
+import { trackService } from '../services/track.service'
 
 export function StationDetails() {
 	const [station, setStation] = useState(null)
@@ -42,13 +43,15 @@ export function StationDetails() {
 	const handleTextareaChange = (event) => {
 		setTextareaValue(event.target.value);
 	};
-	async function AddToPlaylist(song) {
+	async function AddToPlaylist(song,ev) {
+		ev.stopPropagation()
 		const songToSave = {
 			id: utilService.makeId(),
 			videoId: song.id.videoId,
-			title: song.snippet.title,
+			title: song.snippet.title.replace(/\([^)]*\)|\[[^\]]*\]/g, ''),
 			imgUrl: song.snippet.thumbnails.high.url
 		}
+
 		// setStation(prevStation=>({...prevStation,songs:[ ...prevStation.songs,  songToSave]}))
 		const stationToSave = { ...station, songs: [...station.songs, songToSave] }
 		// setStation(stationToSave)
@@ -58,7 +61,13 @@ export function StationDetails() {
 
 
 	function playSong(song) {
-		setSongPlaying(song)
+		const songToPlay = {
+		
+			videoId: song.id.videoId,
+			title: song.snippet.title,
+			imgUrl: song.snippet.thumbnails.high.url
+		}
+		setSongPlaying(songToPlay)
 	}
 
 	async function loadStations() {
@@ -130,19 +139,18 @@ export function StationDetails() {
 					))}
 				</tbody>
 			</table>
+			<div>Let's find something for your playlist</div>
 			<div className='song-search'>
 				<Search />
 			</div>
 			<ul className="song-list">
 				{songs && songs.map((song, idx) => (
-					<li key={idx}>
+					<li onClick={() => playSong(song)} key={idx}>
 						<img src={song.snippet.thumbnails.high.url} alt="" />
 						<div className="options">
-							<span>{song.snippet.title}</span>
-							<button onClick={() => playSong(song)}>Play</button>
-							<button onClick={() => AddToPlaylist(song)}> Add to Playlist </button>
+							<span>{song.snippet.title.replace(/\([^)]*\)|\[[^\]]*\]/g, '')}</span>
+							<button onClick={(event) => AddToPlaylist(song,event)}> Add  </button>
 							{/* Ваши три точки и модальное окно */}
-							{<svg className='option' fill="#ffffff" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">#ffffff&lt;#ffffffg#ffffff #ffffffi#ffffffd#ffffff=#ffffff"#ffffffS#ffffffV#ffffffG#ffffffR#ffffffe#ffffffp#ffffffo#ffffff_#ffffffb#ffffffg#ffffffC#ffffffa#ffffffr#ffffffr#ffffffi#ffffffe#ffffffr#ffffff"#ffffff #ffffffs#fffffft#ffffffr#ffffffo#ffffffk#ffffffe#ffffff-#ffffffi#ffffffd#fffffft#ffffffh#ffffff=#ffffff"#ffffff0#ffffff"#ffffff&gt;#ffffff&lt;#ffffff/#ffffffg#ffffff&gt;#ffffff&lt;#ffffffg#ffffff #ffffffi#ffffffd#ffffff=#ffffff"#ffffffS#ffffffV#ffffffG#ffffffR#ffffffe#ffffffp#ffffffo#ffffff_#fffffft#ffffffr#ffffffa#ffffffc#ffffffe#ffffffr#ffffffC#ffffffa#ffffffr#ffffffr#ffffffi#ffffffe#ffffffr#ffffff"#ffffff #ffffffs#fffffft#ffffffr#ffffffo#ffffffk#ffffffe#ffffff-#ffffffl#ffffffi#ffffffn#ffffffe#ffffffc#ffffffa#ffffffp#ffffff=#ffffff"#ffffffr#ffffffo#ffffffu#ffffffn#ffffffd#ffffff"#ffffff #ffffffs#fffffft#ffffffr#ffffffo#ffffffk#ffffffe#ffffff-#ffffffl#ffffffi#ffffffn#ffffffe#ffffffj#ffffffo#ffffffi#ffffffn#ffffff=#ffffff"#ffffffr#ffffffo#ffffffu#ffffffn#ffffffd#ffffff"#ffffff&gt;#ffffff&lt;#ffffff/#ffffffg#ffffff&gt;#ffffff&lt;#ffffffg#ffffff #ffffffi#ffffffd#ffffff=#ffffff"#ffffffS#ffffffV#ffffffG#ffffffR#ffffffe#ffffffp#ffffffo#ffffff_#ffffffi#ffffffc#ffffffo#ffffffn#ffffffC#ffffffa#ffffffr#ffffffr#ffffffi#ffffffe#ffffffr#ffffff"#ffffff&gt;#ffffff&lt;#ffffffp#ffffffa#fffffft#ffffffh#ffffff #ffffffd#ffffff=#ffffff"#ffffffM#ffffff1#ffffff2#ffffff,#ffffff1#ffffff0#ffffffa#ffffff2#ffffff,#ffffff2#ffffff,#ffffff0#ffffff,#ffffff1#ffffff,#ffffff1#ffffff-#ffffff2#ffffff,#ffffff2#ffffffA#ffffff2#ffffff,#ffffff2#ffffff,#ffffff0#ffffff,#ffffff0#ffffff,#ffffff1#ffffff,#ffffff1#ffffff2#ffffff,#ffffff1#ffffff0#ffffffZ#ffffffM#ffffff4#ffffff,#ffffff1#ffffff4#ffffffa#ffffff2#ffffff,#ffffff2#ffffff,#ffffff0#ffffff,#ffffff1#ffffff,#ffffff0#ffffff-#ffffff2#ffffff-#ffffff2#ffffffA#ffffff2#ffffff,#ffffff2#ffffff,#ffffff0#ffffff,#ffffff0#ffffff,#ffffff0#ffffff,#ffffff4#ffffff,#ffffff1#ffffff4#ffffffZ#ffffffm#ffffff1#ffffff6#ffffff-#ffffff4#ffffffa#ffffff2#ffffff,#ffffff2#ffffff,#ffffff0#ffffff,#ffffff1#ffffff,#ffffff0#ffffff,#ffffff2#ffffff,#ffffff2#ffffffA#ffffff2#ffffff,#ffffff2#ffffff,#ffffff0#ffffff,#ffffff0#ffffff,#ffffff0#ffffff,#ffffff2#ffffff0#ffffff,#ffffff1#ffffff0#ffffffZ#ffffff"#ffffff&gt;#ffffff&lt;#ffffff/#ffffffp#ffffffa#fffffft#ffffffh#ffffff&gt;#ffffff&lt;#ffffff/#ffffffg#ffffff&gt;#ffffff</svg>}
 						</div>
 					</li>
 				))}

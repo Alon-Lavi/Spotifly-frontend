@@ -112,16 +112,21 @@
 
 .modal {
     display: flex;
-    // display: none;
     position: fixed;
-    z-index: 1000;
     align-items: flex-start;
     justify-content: flex-start;
-    background-color: rgba(30, 30, 30);
+    background-color: rgba(30, 30, 30, 0.711);
 	flex-direction: column;
+	  .button-select-modal-add:hover {
+		background-color: rgb(47, 47, 47);
+	  }
+	  .button-select-modal-close:hover {
+		background-color: rgb(47, 47, 47);
+	  }
+
 	button {
+		width: 110px;
 		background-color: rgba(30, 30, 30);
-	
 
 		:hover{
 			background-color: rgba(47, 47, 47);
@@ -132,10 +137,11 @@
         background-color: #fff;
         padding: 20px;
         border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 0px rgba(0, 0, 0, 0.2);
         max-width: 400px;
 
         select {
+			list-style-type: none;
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
@@ -157,8 +163,8 @@
             }
         }
 
-        button + button {
-            margin-left: 10px;
-        }
+        // button + button {
+        //     margin-left: 10px;
+        // }
     }
 }

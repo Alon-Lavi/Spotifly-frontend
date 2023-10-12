@@ -33,8 +33,8 @@ export function AddToPlaylistModal({ playlists, onClose, onAddToPlaylist, svgPos
                     </option>
                 ))}
             </select>
-            <button onClick={handleAddToPlaylist}>Add to Playlist</button>
-            <button onClick={onClose}>Close</button>
+            <button className='button-select-modal-add' onClick={handleAddToPlaylist}>Add to Playlist</button>
+            <button className='button-select-modal-close' onClick={onClose}>Close</button>
         </div>
     );
 }

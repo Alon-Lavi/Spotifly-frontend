@@ -59,17 +59,44 @@
 		gap: 10px;
 		cursor: pointer;
 
-		.options {
-			height: inherit;
-
-		}
-
-		img {
-			width: 40px;
-			height: 40px;
+		&:hover {
+			background-color: hsla(0, 0%, 100%, .1);
 		}
 	}
+
+	.options {
+		height: inherit;
+		display: flex;
+		align-items: center;
+		width: 100%;
+		justify-content: space-between;
+
+		button {
+			align-items: center;
+			background-color: transparent;
+			border: 1px solid #717171;
+			border-radius: 500px;
+			color: #f5f5f5;
+			cursor: pointer;
+			display: flex;
+			font-size: 1rem;
+			margin: 5px;
+			padding: 0.4em 1em;
+			transition-duration: 133ms;
+
+			&:hover {
+				border-color: #fff;
+			}
+		}
+
+	}
+
+	img {
+		width: 40px;
+		height: 40px;
+	}
 }
+
 
 .song-search {
 
@@ -107,6 +134,7 @@
 	background-color: #282828;
 	border-radius: 8px;
 	box-shadow: 0 4px 4px rgba(0, 0, 0, .3);
+
 	p {
 		margin-block: 0px;
 		font-size: 0.6875rem;
@@ -128,11 +156,11 @@
 			font-weight: 700;
 		}
 
-	span{
-		cursor: pointer;
-	}
+		span {
+			cursor: pointer;
+		}
 
-		
+
 	}
 
 

@@ -84,7 +84,26 @@ export function SearchPage() {
                                 <img src={song.snippet.thumbnails.high.url} alt="" />
                                 <span className='text-song-name'>{song.snippet.title}</span>
                                 <div className="options">
-                                    <button onClick={() => playSong(song)}>Play</button>
+                                    <button onClick={() => playSong(song)}>
+                                        <svg width="20px"
+                                         height="20px" 
+                                         viewBox="0 0 1024 1024" 
+                                         mlns="http://www.w3.org/2000/svg" 
+                                         fill="#ffffff">
+                                            <g id="SVGRepo_bgCarrier" 
+                                            stroke-width="2">
+
+                                            </g>
+                                            <g id="SVGRepo_tracerCarrier" 
+                                            stroke-linecap="round" 
+                                            stroke-linejoin="round"></g>
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path d="M716.8 512l-384-256v512z"
+                                                 fill="#ffffff" 
+                                                 fill-rule="evenodd">
+                                                    </path></g>
+                                                    </svg>
+                                                    </button>
                                     {/* <button onClick={(event) => openAddToPlaylistModal(event, song)}>
                                         Add to Playlist
                                     </button> */}

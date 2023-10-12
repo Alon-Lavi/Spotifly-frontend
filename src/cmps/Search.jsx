@@ -8,7 +8,7 @@ import { setSongsToSearch } from "../store/actions/station.actions";
 
 
 export function Search() {
-const API_KEY ='AIzaSyCIHRUBlXc7OJQY31NlL6jlfigPqh9_PHE'
+    const API_KEY ='AIzaSyCIHRUBlXc7OJQY31NlL6jlfigPqh9_PHE'
 const [songs,setSongs] = useState(null)
 
 async function handleChange({target}) {
@@ -32,7 +32,7 @@ async function handleChange({target}) {
 
                 </span>
                 <input
-                onChange={utilService.debounce(handleChange,1000)}
+                onChange={utilService.debounce(handleChange,3000)}
                     name="txt"
                     type="text"
                     placeholder="      &#128269; What do you want to listen to?"

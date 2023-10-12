@@ -3,12 +3,16 @@ import { Link } from "react-router-dom";
 import { StationPreview } from "./StationPreview";
 import homeIcon from '../assets/img/home.png'
 import { SearchPage } from "./SearchPage";
+import { stationService } from "../services/station.service.local";
+
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { loadStations, addStation, updateStation, removeStation } from '../store/actions/station.actions.js'
 import { stationService } from "../services/station.service.local";
 
 export function NavBar() {
+
+
     const [searchText, setSearchText] = useState('');
     const stations = useSelector((storeState) => storeState.stationModule.stations.slice(1, 9));
     const [isHovered, setIsHovered] = useState(false);

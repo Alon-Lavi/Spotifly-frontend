@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { loadStations, setSongsToSearch } from '../store/actions/station.actions';
-import { stationService } from '../services/station.service.local';
+import { stationService } from '../services/station.service.local.js';
 import { GenrePreview } from './GenrePreview';
 import { setSongPlaying } from '../store/actions/player.actions';
 import { AddToPlaylistModal } from './AddToPlaylistModal';
@@ -10,27 +10,40 @@ import { AddToPlaylistModal } from './AddToPlaylistModal';
 export function SearchPage() {
     const songs = useSelector((storeState) => storeState.stationModule.songsToSearch);
     const [genres, setGenres] = useState([]);
-    const [playlists, setPlaylists] = useState([]); // Добавьте состояние для плейлистов
+    const [playlists, setPlaylists] = useState([]);
     const [selectedSong, setSelectedSong] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [svgPosition, setSvgPosition] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
         loadGenres();
-        loadPlaylists(); // Загрузите плейлисты при загрузке компонента
         return () => {
             setSongsToSearch(null);
         };
     }, []);
 
     async function loadGenres() {
-        setGenres(await stationService.getGenres());
+        const allGenres = await stationService.getGenres(); 
+        console.log(allGenres)
+        setGenres(allGenres);
+        loadPlaylists(allGenres);
     }
 
-    async function loadPlaylists() {
-     
-        const fetchedPlaylists = await stationService.getPlaylists();
-        setPlaylists(fetchedPlaylists);
+    async function loadPlaylists(genres) {
+
+        const allPlaylists = await stationService.getGenres();
+        console.log('All playlists:', allPlaylists);
+        setPlaylists(allPlaylists);
+    }
+    
+    
+
+    function getPlaylistNames() {
+
+        return stationsDemo.map((station) => ({
+            _id: station._id,
+            name: station.name,
+        }));
     }
 
     function playSong(song) {
@@ -44,11 +57,11 @@ export function SearchPage() {
 
     function openAddToPlaylistModal(event, song) {
         const svgPosition = {
-            x: event.clientX, // Получить координаты клика по X
-            y: event.clientY, // Получить координаты клика по Y
+            x: event.clientX,
+            y: event.clientY,
         };
         setSelectedSong(song);
-        setSvgPosition(svgPosition); // Сохранить позицию SVG в состоянии компонента
+        setSvgPosition(svgPosition);
         setIsModalOpen(true);
     }
 
@@ -58,13 +71,9 @@ export function SearchPage() {
     }
 
     function addToPlaylist(playlistId) {
-        // Ваш код для добавления песни в плейлист по ID
-        // Например, вызов API для добавления песни в плейлист
-        // stationService.addToPlaylist(playlistId, selectedSong);
-        // Закройте модальное окно после добавления
+
         closeAddToPlaylistModal();
     }
-
     return (
         <>
             <section className="search-page">
@@ -84,30 +93,9 @@ export function SearchPage() {
                                 <img src={song.snippet.thumbnails.high.url} alt="" />
                                 <span className='text-song-name'>{song.snippet.title}</span>
                                 <div className="options">
-                                    <button onClick={() => playSong(song)}>
-                                        <svg width="20px"
-                                         height="20px" 
-                                         viewBox="0 0 1024 1024" 
-                                         mlns="http://www.w3.org/2000/svg" 
-                                         fill="#ffffff">
-                                            <g id="SVGRepo_bgCarrier" 
-                                            stroke-width="2">
-
-                                            </g>
-                                            <g id="SVGRepo_tracerCarrier" 
-                                            stroke-linecap="round" 
-                                            stroke-linejoin="round"></g>
-                                            <g id="SVGRepo_iconCarrier">
-                                                <path d="M716.8 512l-384-256v512z"
-                                                 fill="#ffffff" 
-                                                 fill-rule="evenodd">
-                                                    </path></g>
-                                                    </svg>
-                                                    </button>
-                                    {/* <button onClick={(event) => openAddToPlaylistModal(event, song)}>
-                                        Add to Playlist
-                                    </button> */}
-                                    {/* SVG элемент с обработчиком события onClick */}
+                                    <button className='button-play black-button-play' onClick={() => playSong(song)}>
+                                        &#9658;
+                                    </button>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="15"
@@ -118,8 +106,8 @@ export function SearchPage() {
                                         strokeWidth="3"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
-                                        onClick={(event) => openAddToPlaylistModal(event, song)} // Добавьте этот обработчик события
-                                        style={{ cursor: 'pointer' }} // Добавьте стиль, чтобы курсор был виден при наведении
+                                        onClick={(event) => openAddToPlaylistModal(event, song)}
+                                        style={{ cursor: 'pointer' }}
                                     >
                                         <circle cx="12" cy="12" r="1"></circle>
                                         <circle cx="19" cy="12" r="1"></circle>
@@ -134,7 +122,7 @@ export function SearchPage() {
             {isModalOpen && (
                 <AddToPlaylistModal
                     playlists={playlists}
-                    svgPosition={svgPosition} // Передача svgPosition
+                    svgPosition={svgPosition}
                     onClose={closeAddToPlaylistModal}
                     onAddToPlaylist={addToPlaylist}
                 />

@@ -70,6 +70,21 @@ export function StationDetails() {
 		setSongPlaying(songToPlay)
 	}
 
+
+	async function AddToPlaylist(song) {
+		const songToSave = {
+			id: utilService.makeId(),
+			videoId: song.id.videoId,
+			title: song.snippet.title,
+			imgUrl: song.snippet.thumbnails.high.url
+		}
+		// setStation(prevStation=>({...prevStation,songs:[ ...prevStation.songs,  songToSave]}))
+		const  stationToSave = { ...station, songs:[ ...station.songs,  songToSave] }
+		// setStation(stationToSave)
+		await updateStation(stationToSave)
+		console.log(stationToSave);
+	}
+
 	async function loadStations() {
 		try {
 			const station = await stationService.getById(stationId)

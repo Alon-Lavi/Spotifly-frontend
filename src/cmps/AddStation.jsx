@@ -7,7 +7,7 @@ import { useNavigate } from "react-router";
 export function AddStation() {
     const [newStation, setNewStation] = useState(stationService.getEmptyStation())
     const navigate = useNavigate()
-  
+
 
 
     function handleChange({ target }) {
@@ -16,10 +16,10 @@ export function AddStation() {
         setNewStation(prevStation => ({ ...prevStation, [field]: value }))
 
     }
-  async  function submitForm(ev) {
+    async function submitForm(ev) {
         ev.preventDefault()
-       await stationService.save(newStation)
-        navigate('/station')
+        await stationService.save(newStation)
+        navigate(`/station/station/${newStation.id}`)
     }
 
     return (

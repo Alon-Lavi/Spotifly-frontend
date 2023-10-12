@@ -219,8 +219,9 @@
 
 //RIGHT ELEMENTS
 .right-container {
-	justify-content: space-between;
-	align-items: center;
+	// justify-content: space-between;
+	// align-items: center;
+	display: flex;
 }
 
 .volume-container {

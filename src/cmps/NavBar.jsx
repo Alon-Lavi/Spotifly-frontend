@@ -1,4 +1,4 @@
-import { NavLink,  useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { StationPreview } from "./StationPreview";
 import homeIcon from '../assets/img/home.png'
@@ -8,13 +8,15 @@ import { stationService } from "../services/station.service.local";
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { loadStations, addStation, updateStation, removeStation } from '../store/actions/station.actions.js'
+// import { stationService } from "../services/station.service.local";
 
 export function NavBar() {
-	const navigate = useNavigate()
+
 
     const [searchText, setSearchText] = useState('');
     const stations = useSelector((storeState) => storeState.stationModule.stations.slice(1, 9));
     const [isHovered, setIsHovered] = useState(false);
+    const navigate = useNavigate()
 
     const handleSearchInputChange = (e) => {
         setSearchText(e.target.value);
@@ -30,9 +32,10 @@ export function NavBar() {
     };
     async function createStation() {
         const station = stationService.getEmptyStation()
-        const stationSaved = await stationService.save(station)
+       const stationSaved = await stationService.save(station)
         navigate(`station/station/${stationSaved._id}`)
     }
+
     return (
         <nav className="side-bar">
             <ul className="side-bar-list">
@@ -121,7 +124,7 @@ export function NavBar() {
 
 
                                 </span>
-                            </a>
+                            </a >
                         </li>
                     </div>
                     <div className="user-station-list ">

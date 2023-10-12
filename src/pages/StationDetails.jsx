@@ -8,12 +8,15 @@ import { LoaderService } from '../services/loader.service'
 import { Search } from '../cmps/Search'
 import { useSelector } from 'react-redux'
 import { utilService } from '../services/util.service'
+import { ImgUploader } from '../cmps/ImgUploader'
 
 export function StationDetails() {
 	const [station, setStation] = useState(null)
 	const navigate = useNavigate()
 	const { stationId } = useParams()
 	const songs = useSelector((storeState) => storeState.stationModule.songsToSearch);
+	const [isOpen, setIsOpen] = useState(false);
+	const [textareaValue, setTextareaValue] = useState('');
 	useEffect(() => {
 		loadStations()
 	}, [station])
@@ -26,6 +29,19 @@ export function StationDetails() {
 			showErrorMsg('Cannot remove station')
 		}
 	}
+
+	const openModal = () => {
+		setIsOpen(true);
+	};
+
+	const closeModal = () => {
+		setIsOpen(false);
+	};
+
+	// Event handler to update the textarea value
+	const handleTextareaChange = (event) => {
+		setTextareaValue(event.target.value);
+	};
 	async function AddToPlaylist(song) {
 		const songToSave = {
 			id: utilService.makeId(),
@@ -40,18 +56,7 @@ export function StationDetails() {
 		console.log(stationToSave);
 	}
 
-	async function onUpdateStation(station) {
-		const name = prompt('New name?')
-		if (name !== null) {
-			const stationToSave = { ...station, name }
-			try {
-				const savedStation = await updateStation(stationToSave)
-				showSuccessMsg(`Station updated, new name: ${savedStation.name}`)
-			} catch (err) {
-				showErrorMsg('Cannot update station')
-			}
-		}
-	}
+
 	function playSong(song) {
 		setSongPlaying(song)
 	}
@@ -66,13 +71,34 @@ export function StationDetails() {
 			navigate('/station')
 		}
 	}
+
+	async function saveChanges(ev) {
+		ev.preventDefault()
+		const desc = (ev.target[1].value);
+		const name = (ev.target[0].value)
+		const stationToSave = { ...station, name, desc }
+		try {
+			const savedStation = await updateStation(stationToSave)
+			showSuccessMsg(`Station updated, new name: ${savedStation.name}`)
+		} catch (err) {
+			showErrorMsg('Cannot update station')
+		}
+		finally {
+			closeModal()
+		}
+	}
+
+	function changePhoto(){
+		<ImgUploader/>
+	}
+
 	if (!station) return LoaderService.threeDots
 	return (
 		<section className="station-details">
 			<header>
 				<img src={station.createdBy.imgUrl} alt="" />
 				<div>
-					<h1>{station.name}</h1>
+					<h1 onClick={openModal}>{station.name}</h1>
 					{station.songs.map((song) => (
 						<span key={song.artist}>{song.artist} </span>
 					))}
@@ -80,7 +106,7 @@ export function StationDetails() {
 			</header>
 			<div>
 				<button onClick={() => onRemoveStation(station._id)}>delete</button>
-				<button onClick={() => onUpdateStation(station)}>update</button>
+				
 			</div>
 			<table>
 				<thead>
@@ -121,6 +147,36 @@ export function StationDetails() {
 					</li>
 				))}
 			</ul>
+
+			<div>
+				{isOpen && (
+					<div className="modal-overlay">
+						<div className="modal">
+							<div>
+								<h2>Edit details</h2>
+								<span className="close" onClick={closeModal}>&times;</span>
+							</div>
+
+							{/* <img src={station.createdBy.imgUrl} alt="" /> */}
+							<form id='myForm' onSubmit={saveChanges}>
+								<input  className='image' type="image" src={station.createdBy.imgUrl} alt="" />
+								<input className='title' defaultValue={station.name} type="text" />
+								<textarea
+									value={textareaValue}          // Bind the value to the state variable
+									onChange={handleTextareaChange} // Handle changes to the textarea
+									rows={5}                       // Number of visible rows
+									cols={40}
+									placeholder='Add an optional description'                    // Number of visible columns
+								></textarea>
+								<button type='submit' form="myForm">save</button>
+							</form>
+								<p>By proceeding, you agree to give Spotify access to the image you choose to upload. Please make sure you have the right to upload the image.</p>
+
+						</div>
+					</div>
+				)}
+			</div>
+
 		</section>
 	)
 }

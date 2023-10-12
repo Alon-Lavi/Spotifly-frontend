@@ -1,13 +1,19 @@
 .station-details {
 	display: grid;
-	margin-left: em(300px);
+	margin-left: em(330px);
 
 	header {
 		display: flex;
 		color: aliceblue;
+		gap: 16px;
+
+		div {
+			align-self: flex-end;
+		}
 
 		h1 {
 			font-size: 6rem;
+			cursor: pointer;
 		}
 
 		img {
@@ -22,6 +28,7 @@
 	table {
 		color: white;
 		width: 100%;
+
 		tr {
 			cursor: pointer;
 		}
@@ -32,6 +39,7 @@
 
 		td {
 			text-align: left;
+
 		}
 
 		img {
@@ -39,6 +47,7 @@
 		}
 	}
 }
+
 .song-list {
 
 
@@ -49,21 +58,142 @@
 		height: 50px;
 		gap: 10px;
 		cursor: pointer;
-		.options{
+
+		.options {
 			height: inherit;
 
 		}
+
 		img {
 			width: 40px;
 			height: 40px;
 		}
 	}
 }
-.song-search{
 
-	.search-input-container{
-		input{
+.song-search {
+
+	.search-input-container {
+		input {
 			margin-left: 0;
+		}
+	}
+}
+
+/* CSS for Modal */
+.modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	/* Semi-transparent overlay */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1;
+}
+
+.modal {
+	background-color: #fff;
+	padding: 20px;
+	position: relative;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	// min-height: 384px;
+	width: 524px;
+	background-color: #282828;
+	border-radius: 8px;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, .3);
+	p {
+		margin-block: 0px;
+		font-size: 0.6875rem;
+		font-weight: 700;
+		color: #fff;
+	}
+
+	div {
+		display: flex;
+		justify-content: space-between;
+		padding: 10px 24px;
+		width: 100%;
+
+		h2 {
+			color: #fff;
+			line-height: 1;
+			margin-block: 0px;
+			font-size: 1.5rem;
+			font-weight: 700;
+		}
+
+	span{
+		cursor: pointer;
+	}
+
+		
+	}
+
+
+
+	form {
+		display: grid;
+
+		grid-template: 32px 132px 32px auto/180px 1fr;
+		grid-template-areas:
+			'img title'
+			'img desc'
+			'. btn';
+		gap: 16px;
+		padding: 0 24px 24px;
+
+		.image {
+			grid-area: img;
+			height: 180px;
+			width: 180px;
+
+		}
+
+		.title {
+			background: hsla(0, 0%, 100%, .1);
+			border: 1px solid transparent;
+			border-radius: 4px;
+			color: #fff;
+			font-family: inherit;
+			font-size: 14px;
+			height: 40px;
+			padding: 0 12px;
+			width: 100%;
+			grid-area: title;
+		}
+
+		textarea {
+			background: hsla(0, 0%, 100%, .1);
+			border: 1px solid transparent;
+			border-radius: 4px;
+			color: #fff;
+			font-family: inherit;
+			font-size: 14px;
+			height: 100%;
+			padding: 8px 8px 28px;
+			resize: none;
+			width: 100%;
+			grid-area: desc;
+		}
+
+
+
+		button {
+			grid-area: btn;
+			background-color: white;
+			color: black;
+			display: inline-block;
+			width: 100px;
+			height: 50px;
+			border-radius: 500px;
+			font-weight: 700;
+			justify-self: flex-end;
 		}
 	}
 }

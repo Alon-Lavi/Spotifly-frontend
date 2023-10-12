@@ -32,7 +32,7 @@ async function handleChange({target}) {
 
                 </span>
                 <input
-                onChange={utilService.debounce(handleChange,1000)}
+                onChange={utilService.debounce(handleChange,3000)}
                     name="txt"
                     type="text"
                     placeholder="      &#128269; What do you want to listen to?"

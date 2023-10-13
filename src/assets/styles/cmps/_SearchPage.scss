@@ -19,9 +19,23 @@
 		margin-left: 265px;
 		list-style-type: none;
 
-		.option {
+		li {
 
-		margin-right: 20px;
+
+			.options {
+				margin-left: auto;
+				display: none;
+
+				}
+				
+			}
+			li:hover {
+
+				.options{
+					margin-left: auto;
+					display: flex;
+				}
+
 		}
 
 		.button-play {
@@ -32,16 +46,17 @@
 			justify-content: center;
 			align-items: center;
 			margin-left: auto;
-		    
-			
-			
+
+
+
 		}
+
 		.black-button-play {
 			color: black;
 		}
-	
+
 		.text-song-name {
-			flex-grow: 1; 
+			flex-grow: 1;
 		}
 
 
@@ -56,11 +71,13 @@
 			justify-content: space-between;
 			align-items: center;
 			cursor: pointer;
-		
-            button {
+
+
+
+			button {
 				border-radius: 10px;
 				background-color: rgba(86, 86, 86, 0.558);
-		
+
 			}
 
 			img {
@@ -121,66 +138,68 @@
 }
 
 .modal {
-    display: flex;
-    position: fixed;
+	display: flex;
+	position: fixed;
 	width: max-content;
 	height: max-content;
-    // align-items: flex-start;
-    // justify-content: flex-start;
-    background-color: rgba(30, 30, 30, 0.711);
+	// align-items: flex-start;
+	// justify-content: flex-start;
+	background-color: rgba(30, 30, 30, 0.711);
 	flex-direction: column;
-	
-	  .button-select-modal-add:hover {
+
+	.button-select-modal-add:hover {
 		background-color: rgb(47, 47, 47);
-	  }
-	  .button-select-modal-close:hover {
+	}
+
+	.button-select-modal-close:hover {
 		background-color: rgb(47, 47, 47);
-	  }
+	}
 
 	button {
 		width: 110px;
 		background-color: rgba(30, 30, 30);
 
-		:hover{
+		:hover {
 			background-color: rgba(47, 47, 47);
 		}
 	}
 
-    &-content {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 0px rgba(0, 0, 0, 0.2);
-        max-width: 100px;
+	&-content {
+		background-color: #fff;
+		padding: 20px;
+		border-radius: 5px;
+		box-shadow: 0 0 0px rgba(0, 0, 0, 0.2);
+		max-width: 100px;
 
-        select {
+		select {
 			list-style-type: none;
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;	
-        }
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 20px;
+		}
+
 		.select-txt {
 			color: black;
 		}
 
-        button {
-            padding: 20px 20px;
-      
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+		button {
+			padding: 20px 20px;
 
-            &.add-to-playlist {
-                background-color: #c1c1c1;
-            }
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
 
-            &.close-modal {
-                background-color: #b0b0b0;
-            }
-        }
+			&.add-to-playlist {
+				background-color: #c1c1c1;
+			}
 
-        button + button {
-            margin-left: 10px;
-        }
-    }
+			&.close-modal {
+				background-color: #b0b0b0;
+			}
+		}
+
+		button+button {
+			margin-left: 10px;
+		}
+	}
 }

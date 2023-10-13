@@ -23,8 +23,8 @@ export function SearchPage() {
     }, []);
 
     async function loadGenres() {
-        const allGenres = await stationService.getGenres(); 
-        console.log(allGenres)
+        const allGenres = await stationService.getGenres();
+        // console.log(allGenres)
         setGenres(allGenres);
         loadPlaylists(allGenres);
     }
@@ -32,11 +32,11 @@ export function SearchPage() {
     async function loadPlaylists(genres) {
 
         const allPlaylists = await stationService.getGenres();
-        console.log('All playlists:', allPlaylists);
+        // console.log('All playlists:', allPlaylists);
         setPlaylists(allPlaylists);
     }
-    
-    
+
+
 
     function getPlaylistNames() {
 
@@ -88,6 +88,7 @@ export function SearchPage() {
                 )}
                 {songs && (
                     <ul className="song-list">
+
                         {songs.map((song, idx) => (
                             <li key={idx}>
                                 <img src={song.snippet.thumbnails.high.url} alt="" />
@@ -96,6 +97,19 @@ export function SearchPage() {
                                     <button className='button-play black-button-play' onClick={() => playSong(song)}>
                                         &#9658;
                                     </button>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        width="23"
+                                        height="23"
+                                        fill="currentColor"
+                                        class="bi bi-heart"
+                                        viewBox="0 0 23 19"
+                                        id="IconChangeColor"
+                                    >
+                                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
+                                            id="mainIconPathAttribute"
+                                            fill="#ffffff">
+                                        </path> </svg>
+
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="15"
@@ -113,6 +127,7 @@ export function SearchPage() {
                                         <circle cx="19" cy="12" r="1"></circle>
                                         <circle cx="5" cy="12" r="1"></circle>
                                     </svg>
+
                                 </div>
                             </li>
                         ))}

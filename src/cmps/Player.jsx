@@ -210,32 +210,32 @@ export function Player() {
 		setIsShuffle(!isShuffle)
 	}
 
-	// function onChangeSong(isNext) {
-	// 	if (isNext) {
-	// 		const nextSong =
-	// 			songPlaying.songIdx + 1 < currStation.songs.length
-	// 				? {
-	// 						songId: currStation.songs[songPlaying.songIdx + 1]?._id,
-	// 						songIdx: songPlaying.songIdx + 1,
-	// 				  }
-	// 				: {
-	// 						songId: currStation.songs[0]?._id,
-	// 						songIdx: 0,
-	// 				  }
-	// 		setSongPlaying(nextSong)
-	// 		player.playVideo()
-	// 	} else {
-	// 		if (songPlaying.songIdx - 1 < 0) return
-	// 		const prevSong = {
-	// 			songId: currStation.songs[songPlaying.songIdx - 1]?._id,
-	// 			songIdx: songPlaying.songIdx - 1,
-	// 		}
+	function onChangeSong(isNext) {
+		if (isNext) {
+			const nextSong =
+				songPlaying.songIdx + 1 < currStation.songs.length
+					? {
+							songId: currStation.songs[songPlaying.songIdx + 1]?._id,
+							songIdx: songPlaying.songIdx + 1,
+					  }
+					: {
+							songId: currStation.songs[0]?._id,
+							songIdx: 0,
+					  }
+			setSongPlaying(nextSong)
+			player.playVideo()
+		} else {
+			if (songPlaying.songIdx - 1 < 0) return
+			const prevSong = {
+				songId: currStation.songs[songPlaying.songIdx - 1]?._id,
+				songIdx: songPlaying.songIdx - 1,
+			}
 
-	// 		setSongPlaying(prevSong)
-	// 		console.log('songPlaying from else', songPlaying)
-	// 		player.playVideo()
-	// 	}
-	// }
+			setSongPlaying(prevSong)
+			console.log('songPlaying from else', songPlaying)
+			player.playVideo()
+		}
+	}
 
 	// async function onLikeSong(likedSongId) {
 	// 	const [likedSong] = currStation.songs.filter((song) => song._id === likedSongId)
@@ -288,13 +288,13 @@ export function Player() {
 							<path d="M7.5 10.723l.98-1.167.957 1.14a2.25 2.25 0 001.724.804h1.947l-1.017-1.018a.75.75 0 111.06-1.06l2.829 2.828-2.829 2.828a.75.75 0 11-1.06-1.06L13.109 13H11.16a3.75 3.75 0 01-2.873-1.34l-.787-.938z" />
 						</svg>
 					</button>
-					<button className="backBtn" onClick={() => handleBackward()}>
+					<button className="backBtn" onClick={() => onChangeSong(false)}>
 						{Svg.goBackIcon}
 					</button>
 					<button className="playBtn" onClick={handlePlay}>
 						{isPlaying ? Svg.playerPauseTrackIcon : Svg.playerPlayTrackIcon}
 					</button>
-					<button className="fwdBtn" onClick={() => handleForward()}>
+					<button className="fwdBtn" onClick={() => onChangeSong(true)}>
 						{Svg.playerFwdTrackIcon}
 					</button>
 					<button onClick={onRepeatClick}>

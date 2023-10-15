@@ -14,17 +14,26 @@
 	}
 
 	.song-list {
-		width: 1100px;
-		height: max-content;
+		width: 70%;
+		height: 100%;
 		margin-left: 265px;
 		list-style-type: none;
 
 		li {
 
+			.text-song-name{
+				display: flex;
+				
+			}
 
 			.options {
 				margin-left: auto;
 				display: none;
+
+				.bi {
+					padding-right: 20px;
+					margin-left: auto;
+				}
 
 				}
 				
@@ -32,8 +41,9 @@
 			li:hover {
 
 				.options{
+					padding-right: 20px;
 					margin-left: auto;
-					display: flex;
+					display:flex;
 				}
 
 		}
@@ -56,7 +66,7 @@
 		}
 
 		.text-song-name {
-			flex-grow: 1;
+			flex-grow: 20;
 		}
 
 

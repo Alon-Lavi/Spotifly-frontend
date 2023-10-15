@@ -97,6 +97,12 @@ export async function updateStation(station) {
 	}
 }
 
+export async function addSongToStation(song, stationId) {
+	const station = await stationService.getById(stationId)
+	station.songs.push(song)
+	updateStation(station)
+}
+
 // Demo for Optimistic Mutation
 // (IOW - Assuming the server call will work, so updating the UI first)
 // export function onRemoveStationOptimistic(stationId) {

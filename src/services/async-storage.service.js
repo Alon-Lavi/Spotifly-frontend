@@ -1,7 +1,7 @@
 export const storageService = {
 	query,
 	get,
-	post,
+	getByName,
 	put,
 	remove,
 	save,
@@ -16,6 +16,13 @@ function get(entityType, entityId) {
 	return query(entityType).then((entities) => {
 		const entity = entities.find((entity) => entity._id === entityId)
 		if (!entity) throw new Error(`Get failed, cannot find entity with id: ${entityId} in: ${entityType}`)
+		return entity
+	})
+}
+function getByName(entityType, entityName) {
+	return query(entityType).then((entities) => {
+		const entity = entities.find((entity) => entity.name === entityName)
+		if (!entity) throw new Error(`Get failed, cannot find entity with id: ${entityName} in: ${entityType}`)
 		return entity
 	})
 }

@@ -9,7 +9,7 @@ import { StationList } from '../cmps/StationList.jsx'
 import { RecomendedList } from '../cmps/RecomendedList.jsx'
 import { useParams } from 'react-router'
 import { setSongPlaying } from '../store/actions/player.actions.js'
-import { LoaderService } from '../services/loader.service.jsx'
+import { LoaderService } from '../cmps/Loader.jsx'
 import { utilService } from '../services/util.service.js'
 
 export function StationIndex() {

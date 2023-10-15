@@ -3,8 +3,6 @@
 	width: 100vw;
 	bottom: 0;
 	z-index: 2;
-
-	background-color: black;
 }
 
 .top-center-controls {
@@ -15,6 +13,15 @@
 	gap: em(16px);
 
 	// justify-content: center;
+
+	.playBtn,
+	.backBtn,
+	.fwdBtn {
+		width: 40px;
+		border-radius: 50%;
+		cursor: pointer;
+		transition: background-color 0.3s;
+	}
 
 	.playBtn {
 		display: flex;
@@ -87,7 +94,12 @@
 		gap: rem(10px);
 		align-items: center;
 		white-space: nowrap;
-
+		
+		// flex: 1;
+		// height: 4px;
+		// background-color: #282828;
+		// position: relative;
+		// margin: 0 10px;
 		// width: 100%;
 		// height: 100%;
 	}

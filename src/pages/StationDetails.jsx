@@ -126,8 +126,8 @@ export function StationDetails() {
 				<img src={station.createdBy.imgUrl} alt="" />
 				<div>
 					<h1 onClick={openModal}>{station.name}</h1>
-					{station.songs.map((song) => (
-						<span key={song.artist}>{song.artist} </span>
+					{station.songs.map((song,idx) => (
+						<span key={idx}>{song.artist} </span>
 					))}
 				</div>
 			</header>

@@ -197,9 +197,9 @@ export function Player() {
 			const nextSong =
 				songPlaying.songIdx + 1 <= currStation.songs.length
 					? {
-						songId: currStation.songs[songPlaying.songIdx + 1]?._id,
-						songIdx: songPlaying.songIdx + 1,
-					}
+							songId: currStation.songs[songPlaying.songIdx + 1]?._id,
+							songIdx: songPlaying.songIdx + 1,
+					  }
 					: null
 			setSongPlaying(nextSong)
 			player.playVideo()
@@ -325,9 +325,6 @@ export function Player() {
 							</svg>
 						)}
 					</button>
-
-
-
 				</div>
 
 				<div className="bottom-center-controls">

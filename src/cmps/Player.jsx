@@ -197,9 +197,9 @@ export function Player() {
 			const nextSong =
 				songPlaying.songIdx + 1 <= currStation.songs.length
 					? {
-							songId: currStation.songs[songPlaying.songIdx + 1]?._id,
-							songIdx: songPlaying.songIdx + 1,
-					  }
+						songId: currStation.songs[songPlaying.songIdx + 1]?._id,
+						songIdx: songPlaying.songIdx + 1,
+					}
 					: null
 			setSongPlaying(nextSong)
 			player.playVideo()
@@ -326,21 +326,8 @@ export function Player() {
 						)}
 					</button>
 
-					<button className="btn-mute" onClick={handleMute}>
-						{!isMuted ? getVolumeIcon() : Svg.volumeIcon0}
-					</button>
-					<input
-						className="volume-bar-element"
-						type="range"
-						name="volumeControl"
-						min="0"
-						max="100"
-						value={volumeValue}
-						onMouseEnter={handleVolumeBarMouseEnter}
-						onMouseLeave={handleVolumeBarMouseLeave}
-						onChange={handleVolumeChange}
-						style={volumeBarStyle}
-					/>
+
+
 				</div>
 
 				<div className="bottom-center-controls">
@@ -362,6 +349,23 @@ export function Player() {
 						<div className="time-stamp end">{utilService.convertTime(songDuration) || '--:--'}</div>
 					</div>
 				</div>
+			</div>
+			<div className="volume-bar">
+				<button className="btn-mute" onClick={handleMute}>
+					{!isMuted ? getVolumeIcon() : Svg.volumeIcon0}
+				</button>
+				<input
+					className="volume-bar-element"
+					type="range"
+					name="volumeControl"
+					min="0"
+					max="100"
+					value={volumeValue}
+					onMouseEnter={handleVolumeBarMouseEnter}
+					onMouseLeave={handleVolumeBarMouseLeave}
+					onChange={handleVolumeChange}
+					style={volumeBarStyle}
+				/>
 			</div>
 		</div>
 	)

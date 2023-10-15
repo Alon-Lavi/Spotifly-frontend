@@ -20,21 +20,25 @@ export function AddToPlaylistModal({ playlists, onClose, onAddToPlaylist, svgPos
 
   return (
     <div className="modal" style={modalStyle}>
+
       <select
-        className='select-txt'
+        className="select-txt"
         onChange={(e) => setSelectedPlaylist(e.target.value)}
         value={selectedPlaylist}
-
       >
         <option value="" disabled>
           Select a Playlist
         </option>
-        {playlists.map((playlist, idx) => (
-          <option key={idx} value={idx}>
+        // Ваш код компонента AddToPlaylistModal
+        {playlists.map((playlist,idx) => (
+          console.log(playlist.name), // Вывод названий плейлистов в консоль
+          <option key={idx * 2} value={playlist.id} style={{ backgroundColor: 'black' }}>
             {playlist.name}
           </option>
         ))}
+
       </select>
+
 
 
       <button className='button-select-modal-add' onClick={handleAddToPlaylist}>Add to Playlist</button>

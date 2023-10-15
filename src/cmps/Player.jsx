@@ -212,29 +212,26 @@ export function Player() {
 
 	function onChangeSong(isNext) {
 		if (isNext) {
-			const nextSong =
-				songPlaying.songIdx + 1 < currStation.songs.length
-					? {
-							songId: currStation.songs[songPlaying.songIdx + 1]?._id,
-							songIdx: songPlaying.songIdx + 1,
-					  }
-					: {
-							songId: currStation.songs[0]?._id,
-							songIdx: 0,
-					  }
+			const nextSong = getNextSong(songPlaying)
 			setSongPlaying(nextSong)
 			player.playVideo()
 		} else {
-			if (songPlaying.songIdx - 1 < 0) return
-			const prevSong = {
-				songId: currStation.songs[songPlaying.songIdx - 1]?._id,
-				songIdx: songPlaying.songIdx - 1,
-			}
-
+			const prevSong = getPrevSong(songPlaying)
 			setSongPlaying(prevSong)
-			console.log('songPlaying from else', songPlaying)
 			player.playVideo()
 		}
+	}
+
+	function getNextSong(songToFind) {
+		let songIdx = currStation.songs.findIndex((song) => song.id === songToFind.id)
+		if (songIdx + 1 >= currStation.songs.length) return currStation.songs[0]
+		return currStation.songs[songIdx + 1]
+	}
+
+	function getPrevSong(songToFind) {
+		let songIdx = currStation.songs.findIndex((song) => song.id === songToFind.id)
+		if (songIdx - 1 <= 0) return currStation.songs[currStation.songs.length - 1]
+		return currStation.songs[songIdx - 1]
 	}
 
 	// async function onLikeSong(likedSongId) {

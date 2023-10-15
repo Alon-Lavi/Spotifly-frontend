@@ -42,7 +42,7 @@ export function NavBar() {
                 <div className="header-side-bar">
                     <li className={`side-bar-item-home ${isHovered ? 'hovered' : ''}`}>
                         <NavLink
-                            to="/station"
+                            to="/"
                             className="nav-link flex"
                             onMouseEnter={handleMouseEnter}
                             onMouseLeave={handleMouseLeave}
@@ -150,7 +150,7 @@ export function NavBar() {
                             .map((station, idx) => (
                                 <li className="station-preview" key={idx}>
                                     <img src={station.createdBy.imgUrl} alt={station.name} />
-                                    <Link to={`station/station/${station._id}`}>
+                                    <Link to={`/station/${station._id}`}>
                                         <div className="station-info">
                                             <p className="playlist-name">{station.name}</p>
                                             <p className="song-name">

@@ -1,8 +1,12 @@
 .main-player-section-full {
-	position: fixed;
-	width: 100vw;
-	bottom: 0;
-	z-index: 2;
+    position: fixed;
+    bottom: 0;
+    z-index: 2;
+    height: 5em;
+    display: flex;
+    width: 100vw;
+    background-color: black;
+	padding: 8px;
 }
 
 .top-center-controls {
@@ -43,12 +47,11 @@
 }
 
 .center-controls {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	height: em(80px);
-	background-color: black;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
 	// flex-basis: 40%;
 

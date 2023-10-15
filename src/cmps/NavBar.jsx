@@ -147,15 +147,15 @@ export function NavBar() {
                             .filter((station) =>
                                 station.name.toLowerCase().includes(searchText.toLowerCase())
                             )
-                            .map((station) => (
-                                <li className="station-preview" key={station._id}>
+                            .map((station, idx) => (
+                                <li className="station-preview" key={idx}>
                                     <img src={station.createdBy.imgUrl} alt={station.name} />
                                     <Link to={`station/station/${station._id}`}>
                                         <div className="station-info">
                                             <p className="playlist-name">{station.name}</p>
                                             <p className="song-name">
-                                                {station.songs.map((song) => (
-                                                    <span key={song.artist}>{song.artist} </span>
+                                                {station.songs.map((song, idx) => (
+                                                    <span key={idx}>{song.artist} </span>
                                                 ))}
                                             </p>
                                         </div>

@@ -12,8 +12,8 @@ export function StationPreview({ station,onPlayStation }) {
 
 			<span>{station.name} </span>
 			<p>
-				{station.songs &&station.songs.map((song) => (
-					<span key={song.artist}>{song.artist} </span>
+				{station.songs &&station.songs.map((song, idx) => (
+					<span key={idx}>{song.artist} </span>
 				))}
 			</p>
 			<button className="btn-play-playlist" onClick={() => onPlayStation(station.songs[0])}>

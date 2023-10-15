@@ -155,7 +155,7 @@ export function NavBar() {
                                             <p className="playlist-name">{station.name}</p>
                                             <p className="song-name">
                                                 {station.songs.map((song, idx) => (
-                                                    <span key={idx + 1}>{song.artist} </span>
+                                                    <span key={idx * 2}>{song.artist} </span>
                                                 ))}
                                             </p>
                                         </div>

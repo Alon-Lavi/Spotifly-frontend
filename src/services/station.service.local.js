@@ -1,6 +1,7 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
+import {_}from 'lodash'
 
 const STORAGE_KEY = 'stationDB'
 const GENRE_KEY = 'genreDB'
@@ -14,6 +15,7 @@ export const stationService = {
 	removeSong,
 	// addStationMsg,
 	getGenres,
+	getLikedSongs
 	
 }
 
@@ -367,7 +369,7 @@ var stationsDemo = [
 	{
 		_id: 'd1005',
 		isRecomended: true,
-		name: 'liked songs',
+		name: 'Liked Songs',
 		tags: ['Funk', 'Happy', 'Hip-Hop'],
 		createdBy: {
 			_id: 'u101',
@@ -1079,6 +1081,10 @@ const genres = [
 	},
 ]
 
+function getLikedSongs(){
+	return storageService.getByName(STORAGE_KEY,'liked songs')
+}
+
 function getEmptyStation() {
 	return {
 		//  name: prompt('playlist name?'),
@@ -1125,7 +1131,10 @@ async function query(filterBy = { txt: '' }) {
 		stations = stations.filter((station) => station.isRecomended === true)
 	}
 	if (filterBy.genre) {
-		stations = stations.filter((station) => station.tags.includes(filterBy.genre))
+		stations = stations.filter((station) => 
+
+			_.includes(station.tags,filterBy.genre)
+		)
 	}
 
 	return stations
@@ -1142,16 +1151,10 @@ async function remove(stationId) {
 
 async function save(station) {
 
-	// console.log('====================================');
-	// console.log(station);
-	// console.log('====================================');
 	var savedStation
 	if (station._id) {
 		savedStation = await storageService.put(STORAGE_KEY, station)
 		
-		console.log('====================================');
-		console.log(savedStation);
-		console.log('====================================');
 	} else {
 		// Later, owner is set by the backend
 		// station.owner = userService.getLoggedinUser()

@@ -88,7 +88,9 @@ function truncateTitle(title, maxLength = 20) {
 	if (title.length <= maxLength) {
 		return title
 	}
+
 	const truncatedTitle = title.slice(0, maxLength) + '...'
-	console.log(truncatedTitle)
 	return truncatedTitle
+
+	// console.log(truncatedTitle)
 }

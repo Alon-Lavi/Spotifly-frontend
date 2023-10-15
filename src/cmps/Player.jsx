@@ -3,22 +3,23 @@ import { useSelector } from 'react-redux'
 import YouTube from 'react-youtube'
 
 import { utilService } from '../services/util.service'
-// import { stationService } from '../services/station.service'
-import { stationService } from '../services/station.service.local'
 import { setCurrTime, setCurrentTime, setIsPlaying, setPlayer, setSongDuration, setSongPlaying } from '../store/actions/player.actions'
 import { Svg } from './Svg'
-import { loadStations, updateStation } from '../store/actions/station.actions'
 import { trackService } from '../services/track.service'
+
+// import { stationService } from '../services/station.service.local'
+// import { stationService } from '../services/station.service'
+// import { loadStations, updateStation } from '../store/actions/station.actions'
 
 export function Player() {
 	const [progressValue, setProgressValue] = useState(0)
-	const [volumeValue, setVolumeValue] = useState(25)
+	const [volumeValue, setVolumeValue] = useState(100)
 	const [isMuted, setIsMuted] = useState(false)
 	const [isRepeat, setIsRepeat] = useState(false)
 	const [isShuffle, setIsShuffle] = useState(false)
 	const [isProgressBarHovered, setIsProgressBarHovered] = useState(false)
 	const [isVolumeBarHovered, setIsVolumeBarHovered] = useState(false)
-	const [isDesktop, setIsDesktop] = useState(true)
+	// const [isDesktop, setIsDesktop] = useState(true)
 	// const [isLiked, setIsLiked] = useState(false)
 
 	const currTime = useSelector((state) => state.playerModule.currTime)
@@ -48,17 +49,17 @@ export function Player() {
 		setProgressValue((currentTime / songDuration) * 100)
 	}, [currentTime, songDuration])
 
-	useEffect(() => {
-		const handleResize = () => {
-			setIsDesktop(window.innerWidth >= 768)
-		}
-		handleResize()
-		window.addEventListener('resize', handleResize)
+	// useEffect(() => {
+	// 	const handleResize = () => {
+	// 		setIsDesktop(window.innerWidth >= 768)
+	// 	}
+	// 	handleResize()
+	// 	window.addEventListener('resize', handleResize)
 
-		return () => {
-			window.removeEventListener('resize', handleResize)
-		}
-	}, [])
+	// 	return () => {
+	// 		window.removeEventListener('resize', handleResize)
+	// 	}
+	// }, [])
 
 	function handlePlay() {
 		if (player) {
@@ -86,13 +87,12 @@ export function Player() {
 	}
 
 	function handleMute() {
-		if (player) {
-			if (player.isMuted()) {
-				player.unMute()
-			}
+		if (player.isMuted()) {
+			player.unMute()
 		} else {
 			player.mute()
 		}
+
 		setIsMuted(!isMuted)
 	}
 
@@ -206,36 +206,36 @@ export function Player() {
 		}
 	}
 
-	function onChangeSong(isNext) {
-		if (isNext) {
-			const nextSong =
-				songPlaying.songIdx + 1 < currStation.songs.length
-					? {
-							songId: currStation.songs[songPlaying.songIdx + 1]?._id,
-							songIdx: songPlaying.songIdx + 1,
-					  }
-					: {
-							songId: currStation.songs[0]?._id,
-							songIdx: 0,
-					  }
-			setSongPlaying(nextSong)
-			player.playVideo()
-		} else {
-			if (songPlaying.songIdx - 1 < 0) return
-			const prevSong = {
-				songId: currStation.songs[songPlaying.songIdx - 1]?._id,
-				songIdx: songPlaying.songIdx - 1,
-			}
-
-			setSongPlaying(prevSong)
-			console.log('songPlaying from else', songPlaying)
-			player.playVideo()
-		}
-	}
-
 	function onShuffle() {
 		setIsShuffle(!isShuffle)
 	}
+
+	// function onChangeSong(isNext) {
+	// 	if (isNext) {
+	// 		const nextSong =
+	// 			songPlaying.songIdx + 1 < currStation.songs.length
+	// 				? {
+	// 						songId: currStation.songs[songPlaying.songIdx + 1]?._id,
+	// 						songIdx: songPlaying.songIdx + 1,
+	// 				  }
+	// 				: {
+	// 						songId: currStation.songs[0]?._id,
+	// 						songIdx: 0,
+	// 				  }
+	// 		setSongPlaying(nextSong)
+	// 		player.playVideo()
+	// 	} else {
+	// 		if (songPlaying.songIdx - 1 < 0) return
+	// 		const prevSong = {
+	// 			songId: currStation.songs[songPlaying.songIdx - 1]?._id,
+	// 			songIdx: songPlaying.songIdx - 1,
+	// 		}
+
+	// 		setSongPlaying(prevSong)
+	// 		console.log('songPlaying from else', songPlaying)
+	// 		player.playVideo()
+	// 	}
+	// }
 
 	// async function onLikeSong(likedSongId) {
 	// 	const [likedSong] = currStation.songs.filter((song) => song._id === likedSongId)
@@ -258,19 +258,11 @@ export function Player() {
 				<div className="station-img">
 					{songPlaying && (
 						<div className="player-container">
-							<img src={songPlaying.imgUrl} alt="station-img" />
+							<img className="station-img" src={songPlaying.imgUrl} alt="station-img" />
 							<YouTube videoId={songPlaying.videoId} opts={opts} onReady={handlePlayerReady} onStateChange={onChangePlayerStatus} />
 						</div>
 					)}
-					{currStation?.songs && (
-						<div className="artist-details">
-							<span className="song-name" title={currStation?.songs[songPlaying?.songIdx || 0]?.title}>
-								{isDesktop
-									? trackService.truncateTitle(trackService.getCleanTitle(currStation?.songs[songPlaying?.songIdx || 0]?.title))
-									: trackService.getCleanTitle(currStation?.songs[songPlaying?.songIdx || 0]?.title)}
-							</span>
-						</div>
-					)}
+					<span className="song-name">{songPlaying && trackService.getCleanTitle(songPlaying.title)}</span>
 				</div>
 				{/* {currStation && (
 					<button onClick={() => onLikeSong(songPlaying.songId)} className="btn-like-song">
@@ -314,7 +306,7 @@ export function Player() {
 								width="16"
 								aria-hidden="true"
 								viewBox="0 0 16 16"
-								className={`repeat-on-icon ${isRepeat ? 'active' : 'inatctive'} uPxdw loop-song`}
+								className={`repeat-on-icon ${isRepeat ? 'active' : 'inactive'} uPxdw loop-song`}
 							>
 								<path d="M0 4.75A3.75 3.75 0 013.75 1h.75v1.5h-.75A2.25 2.25 0 001.5 4.75v5A2.25 2.25 0 003.75 12H5v1.5H3.75A3.75 3.75 0 010 9.75v-5zM12.25 2.5h-.75V1h.75A3.75 3.75 0 0116 4.75v5a3.75 3.75 0 01-3.75 3.75H9.81l1.018 1.018a.75.75 0 11-1.06 1.06L6.939 12.75l2.829-2.828a.75.75 0 111.06 1.06L9.811 12h2.439a2.25 2.25 0 002.25-2.25v-5a2.25 2.25 0 00-2.25-2.25z" />
 								<path d="M9.12 8V1H7.787c-.128.72-.76 1.293-1.787 1.313V3.36h1.57V8h1.55z" />
@@ -333,8 +325,9 @@ export function Player() {
 							</svg>
 						)}
 					</button>
-					<button className="btn-mute" onClick={handleMute} svg={Svg.mutedIcon}>
-						{!isMuted && getVolumeIcon()}
+
+					<button className="btn-mute" onClick={handleMute}>
+						{!isMuted ? getVolumeIcon() : Svg.volumeIcon0}
 					</button>
 					<input
 						className="volume-bar-element"
@@ -370,9 +363,6 @@ export function Player() {
 					</div>
 				</div>
 			</div>
-
-			{/* {/* RIGHT */}
-			<div className="right-controls"></div>
 		</div>
 	)
 }

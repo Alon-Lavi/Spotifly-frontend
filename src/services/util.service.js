@@ -10,6 +10,7 @@ export const utilService = {
 	getAssetSrc,
 	getGreetings,
 	handleChange,
+	getRandomSongIndex,
 }
 
 function convertTime(time) {
@@ -137,4 +138,10 @@ function getAssetSrc(name) {
 	const modules = import.meta.glob('/src/assets/*', { eager: true })
 	const mod = modules[path]
 	return mod.default
+}
+
+function getRandomSongIndex(songArray) {
+	const minIndex = 0
+	const maxIndex = songArray.length - 1
+	return Math.floor(Math.random() * (maxIndex - minIndex + 1)) + minIndex
 }

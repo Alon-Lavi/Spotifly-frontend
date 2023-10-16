@@ -14,14 +14,12 @@
 	align-content: center;
 	align-items: center;
 	margin-bottom: em(8px);
-	gap: em(16px);
-
-	// justify-content: center;
+	gap: em(8px);
 
 	.playBtn,
 	.backBtn,
 	.fwdBtn {
-		width: 40px;
+		width: em(40px);
 		border-radius: 50%;
 		cursor: pointer;
 		transition: background-color 0.3s;
@@ -135,8 +133,8 @@
 			top: 0;
 			left: 0;
 
-			height: rem(50px);
-			width: em(60px);
+			height: rem(60px);
+			width: rem(60px);
 
 			margin-top: em(10px);
 			margin-inline-start: em(5px);

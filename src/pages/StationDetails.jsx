@@ -175,7 +175,7 @@ export function StationDetails() {
 								width="23"
 								height="23"
 								fill="currentColor"
-								class="bi bi-heart"
+								className="bi bi-heart"
 								viewBox="0 0 23 19"
 								id="IconChangeColor"
 							>

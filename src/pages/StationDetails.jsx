@@ -158,7 +158,7 @@ export function StationDetails() {
 					<tr>
 						<th>#</th>
 						<th>title</th>
-						<th>album</th>
+					
 						<th>  </th>
 						<th>time</th>
 					</tr>
@@ -170,7 +170,7 @@ export function StationDetails() {
 							<td>
 								<img src={song.imgUrl} alt="" /> {song.title}{' '}
 							</td>
-							<td>{song.album}</td>
+							
 							<td>		<svg onClick={(event) => addToLikedSongs(event, song)} xmlns="http://www.w3.org/2000/svg"
 								width="23"
 								height="23"
@@ -183,9 +183,6 @@ export function StationDetails() {
 									id="mainIconPathAttribute"
 									fill="#ffffff">
 								</path> </svg></td>
-								<td>
-									<button onClick={(event)=>onDeleteSong(event,song.id)}>X</button>
-								</td>
 							<td>{utilService.getDate(song.addedAt)}</td>
 						</tr>
 					))}

@@ -132,6 +132,10 @@ function handleChange({ target }) {
 	console.log('field,value', field, value)
 	// onSetFilter({ ...filterBy, [field]: value })
 }
+function getDate(stamp) {
+	const date = new Date(stamp);
+	return date.toLocaleDateString();
+  }
 
 // util function
 function getAssetSrc(name) {

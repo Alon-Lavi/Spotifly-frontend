@@ -17,7 +17,8 @@
 		}
 
 		img {
-			width: em(192px);
+			width: 192px;
+			height: 192px;
 		}
 
 		p {
@@ -28,9 +29,15 @@
 	table {
 		color: white;
 		width: 100%;
-
 		tr {
 			cursor: pointer;
+			border-radius: 4px;
+			height: 56px;
+			border: 1px solid hsla(0, 0%, 100%, .1);
+
+			&:hover {
+				background-color: hsla(0, 0%, 100%, .1);
+			}
 		}
 
 		th {
@@ -39,6 +46,7 @@
 
 		td {
 			text-align: left;
+
 
 		}
 

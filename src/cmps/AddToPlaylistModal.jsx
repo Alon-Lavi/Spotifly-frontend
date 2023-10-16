@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export function AddToPlaylistModal({ playlists, onClose, onAddToPlaylist, svgPosition }) {
+export function AddToPlaylistModal({ stations, onClose, onAddToPlaylist, svgPosition }) {
   const [selectedPlaylist, setSelectedPlaylist] = useState('');
   const [modalStyle, setModalStyle] = useState({});
 
@@ -16,11 +16,10 @@ export function AddToPlaylistModal({ playlists, onClose, onAddToPlaylist, svgPos
       onAddToPlaylist(selectedPlaylist);
       onClose();
     }
-  };
+  }
 
   return (
     <div className="modal" style={modalStyle}>
-
       <select
         className="select-txt"
         onChange={(e) => setSelectedPlaylist(e.target.value)}
@@ -29,17 +28,13 @@ export function AddToPlaylistModal({ playlists, onClose, onAddToPlaylist, svgPos
         <option value="" disabled>
           Select a Playlist
         </option>
-        // Ваш код компонента AddToPlaylistModal
-        {playlists.map((playlist,idx) => (
-          console.log(playlist.name), // Вывод названий плейлистов в консоль
-          <option key={idx * 2} value={playlist.id} style={{ backgroundColor: 'black' }}>
-            {playlist.name}
+
+        {stations.map((station, idx) => (
+          <option key={station._id} value={station._id}>
+            {station.name}
           </option>
         ))}
-
       </select>
-
-
 
       <button className='button-select-modal-add' onClick={handleAddToPlaylist}>Add to Playlist</button>
       <button className='button-select-modal-close' onClick={onClose}>Close</button>

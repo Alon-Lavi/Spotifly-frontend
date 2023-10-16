@@ -2,19 +2,27 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { loadStations, setSongsToSearch } from '../store/actions/station.actions';
-import { stationService } from '../services/station.service.local.js';
+import { stationService } from '../services/station.service.local';
 import { GenrePreview } from './GenrePreview';
 import { setSongPlaying } from '../store/actions/player.actions';
 import { AddToPlaylistModal } from './AddToPlaylistModal';
 import { trackService } from '../services/track.service.js'
+import { utilService } from '../services/util.service';
+import { addSongToStation } from '../store/actions/station.actions';
 
 export function SearchPage() {
     const songs = useSelector((storeState) => storeState.stationModule.songsToSearch);
+    const stations = useSelector((storeState) => storeState.stationModule.stations.slice(1, 9));
     const [genres, setGenres] = useState([]);
+    const [isLiked, setIsLiked] = useState(false);
+
     const [playlists, setPlaylists] = useState([]);
     const [selectedSong, setSelectedSong] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [svgPosition, setSvgPosition] = useState({ x: 0, y: 0 });
+    const handleLikeIconClick = () => {
+        setIsLiked(!isLiked);
+    };
 
     useEffect(() => {
         loadGenres();
@@ -22,6 +30,7 @@ export function SearchPage() {
             setSongsToSearch(null);
         };
     }, []);
+
 
     async function loadGenres() {
         const allGenres = await stationService.getGenres();
@@ -68,6 +77,14 @@ export function SearchPage() {
         setIsModalOpen(true);
     }
 
+    async function addToLikedSongs(ev, song) {
+        ev.stopPropagation()
+
+        const likedStation = await stationService.getLikedSongs()
+        console.log(likedStation);
+        addSongToStation(song, likedStation._id)
+    }
+
     function closeAddToPlaylistModal() {
         setIsModalOpen(false);
         setSelectedSong(null);
@@ -96,22 +113,25 @@ export function SearchPage() {
                                 <img src={song.snippet.thumbnails.high.url} alt="" />
                                 <span className='text-song-name'>{trackService.getCleanTitle(song.snippet.title)}</span>
                                 <div className="options">
+
                                     <svg
+                                        onClick={(event) => {
+                                            event.stopPropagation();
+                                            handleLikeIconClick();
+                                        }}
                                         xmlns="http://www.w3.org/2000/svg"
-                                        width="43"
-                                        height="43"
-                                        fill="currentColor"
-                                        className="bi bi-heart"
-                                        viewBox="0 0 23 19"
-                                        id="IconChangeColor"
+                                        fill={isLiked ? '#1ed760' : 'white'}
+                                        height="37"
+                                        width="37"
+                                        aria-hidden="true"
+                                        viewBox="0 0 16 16"
+                                        data-encore-id="icon"
+                                        className={`liked-song-icon ${isLiked ? 'liked' : ''}`}
                                     >
-                                        <path
-                                            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.920 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.060.055.119.112.176.171a3.120 3.120 0 0 1 .176-.17C12.720-3.042 23.333 4.867 8 15z"
-                                            id="mainIconPathAttribute"
-                                            fill="#ffffff"
-                                        >
-                                        </path>
+                                        <path d="M15.724 4.22A4.313 4.313 0 0 0 12.192.814a4.269 4.269 0 0 0-3.622 1.13.837.837 0 0 1-1.14 0 4.272 4.272 0 0 0-6.21 5.855l5.916 7.05a1.128 1.128 0 0 0 1.727 0l5.916-7.05a4.228 4.228 0 0 0 .945-3.577z" />
                                     </svg>
+
+
 
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -144,6 +164,7 @@ export function SearchPage() {
             {isModalOpen && (
                 <AddToPlaylistModal
                     playlists={playlists}
+                    stations={stations}
                     svgPosition={svgPosition}
                     onClose={closeAddToPlaylistModal}
                     onAddToPlaylist={addToPlaylist}

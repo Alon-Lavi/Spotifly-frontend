@@ -6,6 +6,7 @@ import { stationService } from '../services/station.service.local.js';
 import { GenrePreview } from './GenrePreview';
 import { setSongPlaying } from '../store/actions/player.actions';
 import { AddToPlaylistModal } from './AddToPlaylistModal';
+import { trackService } from '../services/track.service.js'
 
 export function SearchPage() {
     const songs = useSelector((storeState) => storeState.stationModule.songsToSearch);
@@ -47,6 +48,7 @@ export function SearchPage() {
     }
 
     function playSong(song) {
+
         const songToPlay = {
             title: song.snippet.title,
             videoId: song.id.videoId,
@@ -54,6 +56,7 @@ export function SearchPage() {
         };
         setSongPlaying(songToPlay);
     }
+
 
     function openAddToPlaylistModal(event, song) {
         const svgPosition = {
@@ -88,27 +91,27 @@ export function SearchPage() {
                 )}
                 {songs && (
                     <ul className="song-list">
-
                         {songs.map((song, idx) => (
-                            <li key={idx}>
+                            <li key={idx} onClick={() => playSong(song)}>
                                 <img src={song.snippet.thumbnails.high.url} alt="" />
-                                <span className='text-song-name'>{song.snippet.title}</span>
+                                <span className='text-song-name'>{trackService.getCleanTitle(song.snippet.title)}</span>
                                 <div className="options">
-                                    <button className='button-play black-button-play' onClick={() => playSong(song)}>
-                                        &#9658;
-                                    </button>
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        width="23"
-                                        height="23"
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="43"
+                                        height="43"
                                         fill="currentColor"
-                                        class="bi bi-heart"
+                                        className="bi bi-heart"
                                         viewBox="0 0 23 19"
                                         id="IconChangeColor"
                                     >
-                                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
+                                        <path
+                                            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.920 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.060.055.119.112.176.171a3.120 3.120 0 0 1 .176-.17C12.720-3.042 23.333 4.867 8 15z"
                                             id="mainIconPathAttribute"
-                                            fill="#ffffff">
-                                        </path> </svg>
+                                            fill="#ffffff"
+                                        >
+                                        </path>
+                                    </svg>
 
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -120,19 +123,23 @@ export function SearchPage() {
                                         strokeWidth="3"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
-                                        onClick={(event) => openAddToPlaylistModal(event, song)}
+                                        onClick={(event) => {
+                                            event.stopPropagation();
+                                            openAddToPlaylistModal(event, song);
+                                        }}
                                         style={{ cursor: 'pointer' }}
                                     >
                                         <circle cx="12" cy="12" r="1"></circle>
                                         <circle cx="19" cy="12" r="1"></circle>
                                         <circle cx="5" cy="12" r="1"></circle>
                                     </svg>
-
                                 </div>
                             </li>
                         ))}
                     </ul>
+
                 )}
+
             </section>
             {isModalOpen && (
                 <AddToPlaylistModal

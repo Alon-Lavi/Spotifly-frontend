@@ -91,6 +91,13 @@ export function StationDetails() {
 		await updateStation(stationToSave)
 		console.log(stationToSave);
 	}
+	async function onDeleteSong(ev, songId) {
+		ev.stopPropagation()
+		const idx = station.songs.findIndex((song) => song.id === songId)
+		console.log(idx);
+		station.songs.splice(idx, 1)
+		await updateStation(station)
+	}
 
 	async function loadStations() {
 		try {
@@ -151,7 +158,7 @@ export function StationDetails() {
 					<tr>
 						<th>#</th>
 						<th>title</th>
-					
+
 						<th>  </th>
 						<th>time</th>
 					</tr>
@@ -163,7 +170,7 @@ export function StationDetails() {
 							<td>
 								<img src={song.imgUrl} alt="" /> {song.title}{' '}
 							</td>
-							
+
 							<td>		<svg onClick={(event) => addToLikedSongs(event, song)} xmlns="http://www.w3.org/2000/svg"
 								width="23"
 								height="23"
@@ -176,6 +183,9 @@ export function StationDetails() {
 									id="mainIconPathAttribute"
 									fill="#ffffff">
 								</path> </svg></td>
+							<td>
+								<button onClick={(event) => onDeleteSong(event, song.id)}>X</button>
+							</td>
 							<td>{utilService.getDate(song.addedAt)}</td>
 						</tr>
 					))}

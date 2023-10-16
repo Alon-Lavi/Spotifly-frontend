@@ -12,46 +12,52 @@ export const trackService = {
 const KEY = 'videosDB'
 const apiKey = 'AIzaSyBRKY6ERVlaMGjytOb4wV1GWgyjr8d0tL0'
 
-function getVideos(term, amount = 5) {
+async function getVideos(term, amount = 5) {
 	const termVideosMap = utilService.loadFromStorage(KEY) || {}
-	if (termVideosMap[term]) return Promise.resolve(termVideosMap[term])
+	if (termVideosMap[term]) return termVideosMap[term]
 
-	console.log('Getting from Network')
-	return axios
-		.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${amount}&q=${term}&key=${apiKey}`)
-		.then((res) => res.data.items)
-		.then((ytVideos) =>
-			Promise.all(
-				ytVideos.map((ytVideo) => {
-					const videoId = ytVideo.id.videoId
-					const videoPromise = axios.get(
+	try {
+		const response = await axios.get(
+			`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${amount}&q=${term}&key=${apiKey}`
+		)
+		const ytVideos = response.data.items
+
+		const durations = await Promise.all(
+			ytVideos.map(async (ytVideo) => {
+				const videoId = ytVideo.id.videoId
+				try {
+					const videoResponse = await axios.get(
 						`https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=${videoId}&key=${apiKey}`
 					)
-					return videoPromise.then((res) => {
-						if (res.data.items && res.data.items.length > 0) {
-							return res.data.items[0].contentDetails.duration
-						} else {
-							return ''
-						}
-					})
-				})
-			).then((durations) => {
-				ytVideos = ytVideos.map((ytVideo, index) => {
-					const duration = durations[index] ? convertDuration(durations[index]) : 'Unknown'
-					return {
-						_id: ytVideo.id.videoId,
-						title: ytVideo.snippet.title,
-						imgUrl: ytVideo.snippet.thumbnails.default.url,
-						addedAt: ytVideo.snippet.publishedAt,
-						duration: duration,
+					if (videoResponse.data.items && videoResponse.data.items.length > 0) {
+						return videoResponse.data.items[0].contentDetails.duration
+					} else {
+						return ''
 					}
-				})
-
-				termVideosMap[term] = ytVideos
-				utilService.saveToStorage(KEY, termVideosMap)
-				return ytVideos
+				} catch (err) {
+					return ''
+				}
 			})
 		)
+
+		const ytVideosWithDurations = ytVideos.map((ytVideo, index) => {
+			const duration = durations[index] ? convertDuration(durations[index]) : 'Unknown'
+
+			return {
+				_id: ytVideo.id.videoId,
+				title: ytVideo.snippet.title,
+				imgUrl: ytVideo.snippet.thumbnails.default.url,
+				addedAt: ytVideo.snippet.publishedAt,
+				duration: duration,
+			}
+		})
+		termVideosMap[term] = ytVideosWithDurations
+		utilService.saveToStorage(KEY, termVideosMap)
+
+		return ytVideosWithDurations
+	} catch (err) {
+		throw err
+	}
 }
 
 function convertDuration(duration) {
@@ -78,7 +84,7 @@ function padZero(num) {
 
 function getCleanTitle(title) {
 	if (typeof title !== 'string') return ''
-	const regex = /^[a-zA-Z0-9\s'"-]+/
+	const regex = /^[^<>/|!@#$%^&*()]+/
 	const match = title.match(regex)
 	return match?.[0] ?? ''
 }
@@ -94,3 +100,54 @@ function truncateTitle(title, maxLength = 20) {
 
 	// console.log(truncatedTitle)
 }
+
+////////////////////////////////////////////////////////////////////////
+
+// function getCleanTitle(title) {
+// 	if (typeof title !== 'string') return ''
+// 	const regex = /^[a-zA-Z0-9\s'"-]+/
+// 	const match = title.match(regex)
+// 	return match?.[0] ?? ''
+// }
+
+// function getVideos(term, amount = 5) {
+// 	const termVideosMap = utilService.loadFromStorage(KEY) || {}
+// 	if (termVideosMap[term]) return Promise.resolve(termVideosMap[term])
+
+// 	console.log('Getting from Network')
+// 	return axios
+// 		.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${amount}&q=${term}&key=${apiKey}`)
+// 		.then((res) => res.data.items)
+// 		.then((ytVideos) =>
+// 			Promise.all(
+// 				ytVideos.map((ytVideo) => {
+// 					const videoId = ytVideo.id.videoId
+// 					const videoPromise = axios.get(
+// 						`https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=${videoId}&key=${apiKey}`
+// 					)
+// 					return videoPromise.then((res) => {
+// 						if (res.data.items && res.data.items.length > 0) {
+// 							return res.data.items[0].contentDetails.duration
+// 						} else {
+// 							return ''
+// 						}
+// 					})
+// 				})
+// 			).then((durations) => {
+// 				ytVideos = ytVideos.map((ytVideo, index) => {
+// 					const duration = durations[index] ? convertDuration(durations[index]) : 'Unknown'
+// 					return {
+// 						_id: ytVideo.id.videoId,
+// 						title: ytVideo.snippet.title,
+// 						imgUrl: ytVideo.snippet.thumbnails.default.url,
+// 						addedAt: ytVideo.snippet.publishedAt,
+// 						duration: duration,
+// 					}
+// 				})
+
+// 				termVideosMap[term] = ytVideos
+// 				utilService.saveToStorage(KEY, termVideosMap)
+// 				return ytVideos
+// 			})
+// 		)
+// }

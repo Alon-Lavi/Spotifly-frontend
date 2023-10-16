@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import YouTube from 'react-youtube'
 
 import { utilService } from '../services/util.service'
-import { setCurrTime, setCurrentTime, setIsPlaying, setPlayer, setSongDuration, setSongPlaying } from '../store/actions/player.actions'
+import { setCurrentTime, setIsPlaying, setPlayer, setSongDuration, setSongPlaying } from '../store/actions/player.actions'
 import { Svg } from './Svg'
 import { trackService } from '../services/track.service'
 
@@ -13,7 +13,7 @@ import { trackService } from '../services/track.service'
 
 export function Player() {
 	const [progressValue, setProgressValue] = useState(0)
-	const [volumeValue, setVolumeValue] = useState(100)
+	const [volumeValue, setVolumeValue] = useState(75)
 	const [isMuted, setIsMuted] = useState(false)
 	const [isRepeat, setIsRepeat] = useState(false)
 	const [isShuffle, setIsShuffle] = useState(false)
@@ -26,8 +26,6 @@ export function Player() {
 	const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
 	const songPlaying = useSelector((storeState) => storeState.playerModule.songPlaying)
 	const currStation = useSelector((storeState) => storeState.stationModule.currStation)
-	const stations = useSelector((storeState) => storeState.stationModule.stations)
-	const currTime = useSelector((state) => state.playerModule.currTime)
 
 	useEffect(() => {
 		if (!isPlaying || !player) return
@@ -141,7 +139,6 @@ export function Player() {
 	}
 
 	function onRepeatClick() {
-		if (isShuffle) setIsShuffle(false)
 		setIsRepeat(!isRepeat)
 	}
 
@@ -161,9 +158,8 @@ export function Player() {
 
 			if (isShuffle) {
 				const randSongIdx = utilService.getRandomSongIndex(currStation.songs)
-				const shuffledSongId = currStation.songs[randSongIdx]._id
-				const songName = currStation.songs[randSongIdx].title
-				setSongPlaying({ songId: shuffledSongId, songIdx: randSongIdx })
+				const shuffledSong = currStation.songs[randSongIdx]
+				setSongPlaying(shuffledSong)
 				player.playVideo()
 				return
 			} else {
@@ -177,7 +173,12 @@ export function Player() {
 	}
 
 	function onChangeSong(isNext) {
-		if (isNext) {
+		if (isNext && isShuffle) {
+			const randSongIdx = utilService.getRandomSongIndex(currStation.songs)
+			const shuffledSong = currStation.songs[randSongIdx]
+			setSongPlaying(shuffledSong)
+			player.playVideo()
+		} else if (isNext && !isShuffle) {
 			const nextSong = getAdjacentSong(songPlaying, 'next')
 			setSongPlaying(nextSong)
 			player.playVideo()
@@ -394,3 +395,6 @@ export function Player() {
 // 		: null
 // setSongPlaying(nextSong)
 // player.playVideo()
+
+// const stations = useSelector((storeState) => storeState.stationModule.stations)
+// const currTime = useSelector((state) => state.playerModule.currTime)

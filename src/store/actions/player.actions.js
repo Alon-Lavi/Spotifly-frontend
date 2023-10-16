@@ -1,6 +1,6 @@
 import { store } from '../store.js'
 
-import { SET_PLAYER, SET_IS_PLAYING, SONG_PLAYING, CURRENT_TIME, SONG_DURATION, CURR_TIME } from '../reducer/player.reducer.js'
+import { SET_PLAYER, SET_IS_PLAYING, SONG_PLAYING, CURRENT_TIME, SONG_DURATION } from '../reducer/player.reducer.js'
 
 // Action Creators:
 export function setPlayer(player) {
@@ -12,7 +12,7 @@ export function setIsPlaying(isPlaying) {
 }
 
 export function setSongPlaying(songPlaying) {
-	console.log(songPlaying, 'song')
+	// console.log(songPlaying, 'song')
 	store.dispatch({ type: SONG_PLAYING, songPlaying })
 	setIsPlaying(true)
 }
@@ -21,10 +21,12 @@ export function setCurrentTime(currentTime) {
 	store.dispatch({ type: CURRENT_TIME, currentTime })
 }
 
-export function setCurrTime(currTime) {
-	store.dispatch({ type: CURR_TIME, currTime })
-}
-
 export function setSongDuration(songDuration) {
 	store.dispatch({ type: SONG_DURATION, songDuration })
 }
+
+////////////////////////////////////////////////////////////////////////
+
+// export function setCurrTime(currTime) {
+// 	store.dispatch({ type: CURR_TIME, currTime })
+// }

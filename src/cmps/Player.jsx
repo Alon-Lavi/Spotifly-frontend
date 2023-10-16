@@ -222,6 +222,7 @@ export function Player() {
 							songId: currStation.songs[0]?._id,
 							songIdx: 0,
 					  }
+					  console.log(songPlaying,nextSong);
 			setSongPlaying(nextSong)
 			player.playVideo()
 		} else {

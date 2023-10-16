@@ -11,6 +11,7 @@ export const utilService = {
 	getGreetings,
 	handleChange,
 	getRandomSongIndex,
+	getDate
 }
 
 function convertTime(time) {
@@ -145,3 +146,7 @@ function getRandomSongIndex(songArray) {
 	const maxIndex = songArray.length - 1
 	return Math.floor(Math.random() * (maxIndex - minIndex + 1)) + minIndex
 }
+function getDate(stamp) {
+	const date = new Date(stamp);
+	return date.toLocaleDateString();
+  }

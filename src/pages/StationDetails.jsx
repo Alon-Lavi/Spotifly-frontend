@@ -75,18 +75,28 @@ export function StationDetails() {
 	}
 
 
-	async function AddToPlaylist(song) {
+	async function AddToPlaylist(song, ev) {
+		ev.stopPropagation()
 		const songToSave = {
 			id: utilService.makeId(),
 			videoId: song.id.videoId,
 			title: song.snippet.title.replace(/\([^)]*\)|\[[^\]]*\]/g, ''),
-			imgUrl: song.snippet.thumbnails.high.url
+			imgUrl: song.snippet.thumbnails.high.url,
+			addedAt: Date.now(),
+			isLiked: false
 		}
 		// setStation(prevStation=>({...prevStation,songs:[ ...prevStation.songs,  songToSave]}))
 		const stationToSave = { ...station, songs: [...station.songs, songToSave] }
 		// setStation(stationToSave)
 		await updateStation(stationToSave)
 		console.log(stationToSave);
+	}
+	async function onDeleteSong(ev,songId){
+		ev.stopPropagation()
+		const idx = station.songs.findIndex((song) => song.id === songId)
+		console.log(idx);
+		station.songs.splice(idx, 1)
+		await updateStation(station)
 	}
 
 	async function loadStations() {
@@ -149,6 +159,7 @@ export function StationDetails() {
 						<th>#</th>
 						<th>title</th>
 						<th>album</th>
+						<th>  </th>
 						<th>time</th>
 					</tr>
 				</thead>
@@ -160,20 +171,22 @@ export function StationDetails() {
 								<img src={song.imgUrl} alt="" /> {song.title}{' '}
 							</td>
 							<td>{song.album}</td>
-							<td>
-								<svg onClick={(event) => addToLikedSongs(event, song)} xmlns="http://www.w3.org/2000/svg"
-									width="23"
-									height="23"
-									fill="currentColor"
-									class="bi bi-heart"
-									viewBox="0 0 23 19"
-									id="IconChangeColor"
-								>
-									<path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
-										id="mainIconPathAttribute"
-										fill="#ffffff">
-									</path> </svg>
-								{song.addedAt}</td>
+							<td>		<svg onClick={(event) => addToLikedSongs(event, song)} xmlns="http://www.w3.org/2000/svg"
+								width="23"
+								height="23"
+								fill="currentColor"
+								class="bi bi-heart"
+								viewBox="0 0 23 19"
+								id="IconChangeColor"
+							>
+								<path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
+									id="mainIconPathAttribute"
+									fill="#ffffff">
+								</path> </svg></td>
+								<td>
+									<button onClick={(event)=>onDeleteSong(event,song.id)}>X</button>
+								</td>
+							<td>{utilService.getDate(song.addedAt)}</td>
 						</tr>
 					))}
 				</tbody>

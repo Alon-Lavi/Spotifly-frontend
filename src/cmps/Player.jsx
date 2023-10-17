@@ -75,7 +75,7 @@ export function Player() {
 		height: '0',
 		width: '0',
 		playerVars: {
-			autoplay: 1,
+			autoplay: 0,
 			controls: 0,
 		},
 	}
@@ -246,7 +246,7 @@ export function Player() {
 						{Svg.playerFwdTrackIcon}
 					</button>
 
-					<button onClick={onRepeatClick}>
+					<button className="repeat-btn" onClick={onRepeatClick}>
 						{isRepeat ? (
 							<svg
 								xmlns="http://www.w3.org/2000/svg"

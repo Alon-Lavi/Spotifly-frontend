@@ -5,7 +5,7 @@ export function RecomendedPreview({ station, onPlayStation }) {
     const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
     const currStation = useSelector((storeState) => storeState.stationModule.currStation)
 
-    console.log(station, currStation);
+   
 
     return (
         <article key={station._id}>

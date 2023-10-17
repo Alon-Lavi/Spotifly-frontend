@@ -6,11 +6,16 @@ import { useSelector } from 'react-redux'
 export function StationPreview({ station, onPlayStation }) {
 	const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
 	const currStation = useSelector((storeState) => storeState.stationModule.currStation)
-	console.log(currStation);
+	
 
 	return (
 		<>
+		<div className='img-container'>
 			<img src={station.createdBy.imgUrl} alt="" />
+			<button className="btn-play-playlist" onClick={(event) => onPlayStation(station,event)}>
+				{currStation && currStation._id === station._id && isPlaying ? Svg.playerPauseTrackIcon : Svg.playerPlayTrackIcon}
+			</button>
+		</div>
 
 			<span>{station.name} </span>
 			<p>
@@ -18,9 +23,7 @@ export function StationPreview({ station, onPlayStation }) {
 					<span key={idx}>{song.artist} </span>
 				))}
 			</p>
-			<button className="btn-play-playlist" onClick={() => onPlayStation(station.songs[0])}>
-				{currStation && currStation._id === station._id && isPlaying ? Svg.playerPauseTrackIcon : Svg.playerPlayTrackIcon}
-			</button>
+		
 		</>
 	)
 }

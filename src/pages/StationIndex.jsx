@@ -8,12 +8,18 @@ import { stationService } from '../services/station.service.local.js'
 import { StationList } from '../cmps/StationList.jsx'
 import { RecomendedList } from '../cmps/RecomendedList.jsx'
 import { useParams } from 'react-router'
-import { setSongPlaying } from '../store/actions/player.actions.js'
+import { setIsPlaying, setSongPlaying } from '../store/actions/player.actions.js'
 import { LoaderService } from '../cmps/Loader.jsx'
 import { utilService } from '../services/util.service.js'
 
 export function StationIndex() {
 	const stations = useSelector((storeState) => storeState.stationModule.stations)
+	const songPlaying = useSelector((storeState) => storeState.playerModule.songPlaying)
+	const currStation = useSelector((storeState) => storeState.stationModule.currStation)
+	const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
+	const player = useSelector((storeState) => storeState.playerModule.player)
+
+
 	const [recomended, setRecomended] = useState()
 	const { genre } = useParams()
 
@@ -21,8 +27,20 @@ export function StationIndex() {
 		loadStations({ genre })
 		loadRecomended()
 	}, [genre])
-	function onPlayStation(song) {
-		setSongPlaying(song)
+
+
+	function onPlayStation(station,ev) {
+		if (station._id === currStation._id) {
+			ev.stopPropagation()
+			const isCurrentlyPlaying = !isPlaying
+			isCurrentlyPlaying ? player.playVideo() : player.pauseVideo()
+			setIsPlaying(isCurrentlyPlaying)
+		}
+		else{
+
+			setSongPlaying(station.songs[0])
+		}
+		
 	}
 
 	async function loadRecomended() {

@@ -1,61 +1,66 @@
 .login-page {
-	.login-container {
-		.login-signup {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			-webkit-transform: translate(-50%, -50%);
-			transform: translate(-50%, -50%);
-			width: rem(450px);
-			height: rem(470px);
-			background: #111;
-			border-radius: 0.625rem;
-			text-align: center;
-			padding: em(40px);
 
-			.login-form {
-				display: flex;
-			}
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	width: rem(450px);
+	height: rem(470px);
+	background: #111;
+	border-radius: 0.625rem;
+	text-align: center;
+	padding: em(40px);
 
-			input {
-				width: 80%;
-				height: em(35px);
-				color: #fff;
-				background-color: #3a3a3a;
-				align-items: center;
-				justify-content: space-around;
-				padding-inline-end: 5px;
-				border-radius: 0.4375rem;
-				border: none;
-			}
+	display: grid;
+	justify-content: center;
 
-			button {
-				color: #fff;
-				width: 80%;
-				height: 2.8125rem;
-				border-radius: 1.25rem;
-				background-color: #1aa049;
-				font-size: 1.2rem;
-				text-transform: uppercase;
-				border: none;
-			}
+	.login-form {
+		display: grid;
+		width: 324px;
+	}
 
-			.btn-link {
-				color: #fff;
-				font-size: 1.125rem;
-				background-color: transparent;
-				border: none;
-				margin-bottom: em(3px);
-			}
-		}
+	input {
+		width: 100%;
+		height: em(48px);
+		color: #3a3a3a;
+		background-color: #fff;
+		align-items: center;
+		justify-content: space-around;
+		padding-inline-end: 5px;
+		border-radius: 0.4375rem;
+		border: none;
+	}
 
-		.signup-form {
-			display: grid;
-			place-items: center;
-			grid-gap: em(20px);
-		}
+	button {
+		color: #fff;
+		width: 100%;
+		height: 2.8125rem;
+		border-radius: 1.25rem;
+		background-color: #1aa049;
+		font-size: 1.2rem;
+	
+		border: none;
+	}
+
+	.btn-link {
+		color: #fff;
+		font-size: 1.125rem;
+		background-color: transparent;
+		border: none;
+		margin-bottom: em(3px);
+	}
+	span{
+		cursor: pointer;
 	}
 }
+
+.signup-form {
+	display: grid;
+	place-items: center;
+	grid-gap: em(20px);
+}
+
 
 .username {
 	display: flex;

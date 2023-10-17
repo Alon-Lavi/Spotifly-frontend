@@ -12,6 +12,7 @@ import { Player } from './cmps/Player'
 import { store } from './store/store'
 import { HomePage } from './pages/HomePage.jsx'
 import { SearchPage } from './cmps/SearchPage.jsx'
+import { LoginSignup } from './pages/LoginSignup'
 
 export function App() {
 	return (
@@ -26,6 +27,7 @@ export function App() {
 							<Route element={<AddStation />} path="/station/add" />
 							<Route element={<SearchPage />} path="/search" />
 							<Route element={<StationIndex />} path="/search/station/:genre" />
+							<Route element={<LoginSignup />} path="/loginsignup" />
 						</Routes>
 					</main>
 					<NavBar />

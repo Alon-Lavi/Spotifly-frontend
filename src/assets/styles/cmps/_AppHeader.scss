@@ -1,7 +1,7 @@
 .app-header {
 	display: flex;
 	justify-content: flex-end;
-    position: relative;
+	position: relative;
 	height: 100%;
 	width: 100vw;
 	margin-top: 8px;
@@ -9,14 +9,25 @@
 	color: whitesmoke;
 
 	.search-header {
-	display: flex;
-	justify-content:flex-end ;
+		display: flex;
+		justify-content: flex-end;
 		margin-right: 1000px;
+	}
+
+	img {
+		margin-inline-end: 10px;
+		height: 30px;
+		width: 30px;
+		border: 3px black solid;
+		border-radius: 50%;
+	}
+	span{
+		cursor: pointer;
 	}
 }
 
-.search-input-container { 
-	
+.search-input-container {
+
 	padding-bottom: 1px;
 	padding-left: 200px;
 	margin-top: 3px;

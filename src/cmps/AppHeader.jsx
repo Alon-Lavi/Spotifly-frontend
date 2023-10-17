@@ -1,15 +1,19 @@
 import { Search } from '../cmps/Search.jsx'
-import { User } from './User'
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { UserMsg } from './UserMsg.jsx';
+import { useSelector } from 'react-redux';
+import { logout } from '../store/actions/user.actions.js';
 
 
 export function AppHeader() {
 	const location = useLocation();
 	const [showSearchInput, setShowSearchInput] = useState(false);
+	const user =useSelector((storeState) => storeState.userModule.user)
 
 
 	useEffect(() => {
+		console.log(user);
 		if (location.pathname === '/search') {
 			setShowSearchInput(true);
 		} else {
@@ -18,11 +22,20 @@ export function AppHeader() {
 	}, [location.pathname]);
 
 	return (
+		<>
 		<section className="app-header">
 			<div className='search-header'>
 				{showSearchInput ? <Search /> : null}
 			</div>
-			<User />
+			{/* <User /> */}
+			{!user&&<Link to={'/loginsignup'}>Log In</Link>}
+			{user&& 	<>
+			<span onClick={logout}> Logout</span>
+			<img src={user.imgUrl} alt="" />
+			</>}
+		
+		<UserMsg/>
 		</section>
+		</>
 	);
 }

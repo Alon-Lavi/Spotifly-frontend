@@ -1,10 +1,12 @@
 import React from 'react'
- import { Svg } from './Svg'
+import { Svg } from './Svg'
 import { useSelector } from 'react-redux'
 
 
-export function StationPreview({ station,onPlayStation }) {
+export function StationPreview({ station, onPlayStation }) {
 	const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
+	const currStation = useSelector((storeState) => storeState.stationModule.currStation)
+	console.log(currStation);
 
 	return (
 		<>
@@ -12,12 +14,12 @@ export function StationPreview({ station,onPlayStation }) {
 
 			<span>{station.name} </span>
 			<p>
-				{station.songs &&station.songs.map((song, idx) => (
+				{station.songs && station.songs.map((song, idx) => (
 					<span key={idx}>{song.artist} </span>
 				))}
 			</p>
 			<button className="btn-play-playlist" onClick={() => onPlayStation(station.songs[0])}>
-				{isPlaying ? Svg.playerPauseTrackIcon : Svg.playerPlayTrackIcon}
+				{currStation && currStation._id === station._id && isPlaying ? Svg.playerPauseTrackIcon : Svg.playerPlayTrackIcon}
 			</button>
 		</>
 	)

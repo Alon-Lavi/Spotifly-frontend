@@ -33,7 +33,7 @@ export function NavBar() {
     async function createStation() {
         const station = stationService.getEmptyStation()
        const stationSaved = await stationService.save(station)
-        navigate(`station/station/${stationSaved._id}`)
+        navigate(`/station/${stationSaved._id}`)
     }
 
     return (

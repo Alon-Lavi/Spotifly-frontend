@@ -8,8 +8,8 @@ export function RecomendedList({recomended}){
         <section className="recomended-list ">
 
        
-     {   recomended.map((playlist,idx)=>
-       <Link key={idx+1} to={`station/${playlist._id}`}><RecomendedPreview playlist={playlist}/></Link> 
+     {   recomended.map((station,idx)=>
+       <Link key={idx+1} to={`station/${station._id}`}><RecomendedPreview station={station}/></Link> 
         )}
         </section>
     )

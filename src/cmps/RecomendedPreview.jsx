@@ -9,7 +9,7 @@ export function RecomendedPreview({ station, onPlayStation }) {
 
     return (
         <article key={station._id}>
-            <img src={station.createdBy.imgUrl} alt="" />
+            <img src={station.imgUrl} alt="" />
             <span>{station.name} </span>
             <button className="btn-play-playlist" onClick={() => onPlayStation(station._id)}>
                 {currStation && currStation._id === station._id && isPlaying ? Svg.playerPauseTrackIcon : Svg.playerPlayTrackIcon}

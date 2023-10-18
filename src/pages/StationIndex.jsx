@@ -18,15 +18,16 @@ export function StationIndex() {
 	const currStation = useSelector((storeState) => storeState.stationModule.currStation)
 	const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
 	const player = useSelector((storeState) => storeState.playerModule.player)
+	const user =useSelector((storeState) => storeState.userModule.user)
 
 
 	const [recomended, setRecomended] = useState()
 	const { genre } = useParams()
 
 	useEffect(() => {
-		loadStations({ genre })
+		loadStations({ genre,user })
 		loadRecomended()
-	}, [genre])
+	}, [genre,user])
 
 
 	function onPlayStation(station,ev) {

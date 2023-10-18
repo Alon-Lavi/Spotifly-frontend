@@ -141,12 +141,12 @@ export function StationDetails() {
 	return (
 		<section className="station-details">
 			<header>
-				<img src={station.createdBy.imgUrl} alt="" />
+				<img src={station.imgUrl} alt="" />
 				<div>
 					<h1 onClick={openModal}>{station.name}</h1>
-					{station.songs.map((song, idx) => (
-						<span key={idx}>{song.artist} </span>
-					))}
+					
+						<span>{station.createdBy.fullname}   songs</span>
+					
 				</div>
 			</header>
 			<div>

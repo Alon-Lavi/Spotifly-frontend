@@ -12,6 +12,7 @@ import { loadStations, addStation, updateStation, removeStation } from '../store
 
 export function NavBar() {
     const location = useLocation();
+	const user =useSelector((storeState) => storeState.userModule.user)
 
     const isLoginPage = location.pathname === '/loginsignup';
 
@@ -33,7 +34,15 @@ export function NavBar() {
         setIsHovered(false);
     };
     async function createStation() {
-        const station = stationService.getEmptyStation()
+        const station = await stationService.getEmptyStation(user)
+        station.createdBy={
+            _id:user._id,
+            imgUrl:user.imgUrl,
+            fullname:user.fullname
+        }
+        console.log('====================================');
+        console.log(station);
+        console.log('====================================');
        const stationSaved = await stationService.save(station)
         navigate(`/station/${stationSaved._id}`)
     }
@@ -151,7 +160,7 @@ if(isLoginPage) return <div></div>
                             )
                             .map((station, idx) => (
                                 <li className="station-preview" key={idx}>
-                                    <img src={station.createdBy.imgUrl} alt={station.name} />
+                                    <img src={station.imgUrl} alt={station.name} />
                                     <Link to={`/station/${station._id}`}>
                                         <div className="station-info">
                                             <p className="playlist-name">{station.name}</p>

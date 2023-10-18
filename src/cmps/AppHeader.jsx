@@ -28,9 +28,9 @@ export function AppHeader() {
 				{showSearchInput ? <Search /> : null}
 			</div>
 			{/* <User /> */}
-			{!user&&<Link to={'/loginsignup'}>Log In</Link>}
+			{!user&&<Link className='login-header' to={'/loginsignup'}>Log In</Link>}
 			{user&& 	<>
-			<span onClick={logout}> Logout</span>
+			<span className='logout-header' onClick={logout}> Logout</span>
 			<img src={user.imgUrl} alt="" />
 			</>}
 		

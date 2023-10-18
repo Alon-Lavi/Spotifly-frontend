@@ -1,14 +1,14 @@
 .app-header {
-    display: flex;
-    justify-content: flex-end;
-    position: fixed;
-    top: 0;
-    height: 50px;
-    width: 79%;
-    background-color: rgb(15, 15, 15);
-    color: whitesmoke;
-    z-index: 4;
-    margin-left: 300px;
+	display: flex;
+	justify-content: flex-end;
+	position: fixed;
+	top: 0;
+	height: 50px;
+	width: 100%;
+	background-color: rgb(15, 15, 15);
+	color: whitesmoke;
+	z-index: 1;
+	margin-left: 300px;
 
 	.search-header {
 		display: flex;
@@ -23,13 +23,12 @@
 		border: 3px black solid;
 		border-radius: 50%;
 	}
-	span{
+	span {
 		cursor: pointer;
 	}
 }
 
 .search-input-container {
-
 	padding-bottom: 1px;
 	padding-left: 200px;
 	margin-top: 3px;
@@ -51,4 +50,17 @@
 		border-color: rgb(255, 255, 255);
 		border: em(3px) solid whitesmoke;
 	}
+}
+
+.login-header {
+	text-decoration: none;
+	margin-inline-end: rem(330px);
+	margin-top: rem(10px);
+	color: white;
+}
+
+.logout-header {
+	text-decoration: none;
+	margin-inline-end: rem(300px);
+	margin-top: rem(10px);
 }

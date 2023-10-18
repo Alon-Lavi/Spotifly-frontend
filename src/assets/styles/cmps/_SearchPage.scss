@@ -4,8 +4,9 @@
 	left: 100px;
 	height: 95%;
 	width: 100%;
-	overflow-y: scroll;
-
+	overflow: hidden;
+	// overflow-y: hidden;
+	// overflow-x: hidden;
 	background-color: rgb(15, 15, 15);
 
 	.search-icon {
@@ -19,69 +20,55 @@
 		margin-left: 265px;
 		list-style-type: none;
 
-		li{
-			
-		}
-
-
-			.options {
-				padding-right: auto;
-				margin-left: auto;
-				display: none;
-
-				.liked-song-icon {
-					padding-right: 20px;
-					margin-left: auto;
-				}
-
-				}
-				
-			}
-			li:hover {
-				
-				:active {
-					 background-color: rgb(72, 72, 72);
-				}
-				.options{
-					padding-right: 20px;
-					margin-left: auto;
-					display:flex;
-				}
-
-		}
-
-	
-		.text-song-name {
-	        // display: flex;
-			flex-grow: 40;
-		}
-
-
-
 		li {
-			width: 100%;
-			height: 55px;
-			border-radius: 5px;
-			padding-left: 16px;
+		}
 
-			gap: 20px;
-			justify-content: space-between;
-			align-items: center;
-			cursor: pointer;
+		.options {
+			padding-right: auto;
+			margin-left: auto;
+			display: none;
 
-
-			img {
-				justify-content: start;
-				align-items: start;
-				width: 35px;
-				height: 35px;
+			.liked-song-icon {
+				padding-right: 20px;
+				margin-left: auto;
 			}
-
+		}
+	}
+	li:hover {
+		:active {
+			background-color: rgb(72, 72, 72);
+		}
+		.options {
+			padding-right: 20px;
+			margin-left: auto;
+			display: flex;
 		}
 	}
 
+	.text-song-name {
+		// display: flex;
+		flex-grow: 40;
+	}
 
+	li {
+		width: 100%;
+		height: 55px;
+		border-radius: 5px;
+		padding-left: 16px;
 
+		gap: 20px;
+		justify-content: space-between;
+		align-items: center;
+		cursor: pointer;
+
+		img {
+			justify-content: start;
+			align-items: start;
+			width: 35px;
+			height: 35px;
+		}
+	}
+}
 
 .genres-list {
 	display: flex;
@@ -92,13 +79,12 @@
 	transition: 0.55s ease-in-out;
 	flex-wrap: wrap;
 
-
 	.genre-preview {
 		border-radius: 8px;
 		cursor: pointer;
 		margin: 10px;
 		font-family: sans-serif;
-		font-size: 1.0rem;
+		font-size: 1rem;
 		font-weight: 700;
 		width: 12rem;
 		height: 12rem;
@@ -123,8 +109,6 @@
 			margin-top: 20px;
 		}
 	}
-
-
 }
 
 .modal {
@@ -188,7 +172,7 @@
 			}
 		}
 
-		button+button {
+		button + button {
 			margin-left: 10px;
 		}
 	}

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { addSongToStation } from '../store/actions/station.actions';
 import { utilService } from '../services/util.service';
 
-export function AddToPlaylistModal({ stations, onClose, onAddToPlaylist, svgPosition, song }) {
+export function AddToPlaylistModal({ stations, onClose, svgPosition, song }) {
   const [selectedPlaylist, setSelectedPlaylist] = useState('');
   const [modalStyle, setModalStyle] = useState({});
 

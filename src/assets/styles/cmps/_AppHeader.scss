@@ -1,7 +1,7 @@
 .app-header {
 	display: flex;
 	justify-content: flex-end;
-	position: relative;
+	position: fixed;
 	height: 100%;
 	width: 100vw;
 	margin-top: 8px;
@@ -10,8 +10,8 @@
 
 	.search-header {
 		display: flex;
-		justify-content: flex-end;
-		margin-right: 1000px;
+		justify-content: flex-start;
+		margin-right: 1200px;
 	}
 
 	img {

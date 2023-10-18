@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export function AddToPlaylistModal({ stations, onClose, onAddToPlaylist, svgPosition }) {
+export function AddToPlaylistModal({ stations, onClose, onAddToPlaylist, svgPosition, song }) {
   const [selectedPlaylist, setSelectedPlaylist] = useState('');
   const [modalStyle, setModalStyle] = useState({});
 
@@ -12,8 +12,8 @@ export function AddToPlaylistModal({ stations, onClose, onAddToPlaylist, svgPosi
   }, [svgPosition]);
 
   const handleAddToPlaylist = () => {
-    if (selectedPlaylist) {
-      onAddToPlaylist(selectedPlaylist);
+    if (selectedPlaylist && song) {
+      onAddToPlaylist(selectedPlaylist, song);
       onClose();
     }
   }

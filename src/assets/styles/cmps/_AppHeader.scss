@@ -1,12 +1,14 @@
 .app-header {
-	display: flex;
-	justify-content: flex-end;
-	position: fixed;
-	height: 100%;
-	width: 100vw;
-	margin-top: 8px;
-	background-color: rgb(15, 15, 15);
-	color: whitesmoke;
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    top: 0;
+    height: 50px;
+    width: 79%;
+    background-color: rgb(15, 15, 15);
+    color: whitesmoke;
+    z-index: 4;
+    margin-left: 300px;
 
 	.search-header {
 		display: flex;

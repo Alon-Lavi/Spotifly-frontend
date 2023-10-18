@@ -55,8 +55,8 @@ export function StationIndex() {
 	if (!recomended || !stations) return LoaderService.threeDots
 	return (
 		<div className="main-container-page">
-			<h3 className="greeting">{utilService.getGreetings()}</h3>
 			<main className="main-container">
+			<h3 className="greeting">{utilService.getGreetings()}</h3>
 				{!genre && <RecomendedList recomended={recomended} />}
 				<StationList onPlayStation={onPlayStation} stations={stations} />
 			</main>

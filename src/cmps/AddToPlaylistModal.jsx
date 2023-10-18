@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { addSongToStation } from '../store/actions/station.actions';
+import { utilService } from '../services/util.service';
 
 export function AddToPlaylistModal({ stations, onClose, onAddToPlaylist, svgPosition, song }) {
   const [selectedPlaylist, setSelectedPlaylist] = useState('');
@@ -11,9 +13,18 @@ export function AddToPlaylistModal({ stations, onClose, onAddToPlaylist, svgPosi
     }
   }, [svgPosition]);
 
-  const handleAddToPlaylist = () => {
-    if (selectedPlaylist && song) {
-      onAddToPlaylist(selectedPlaylist, song);
+  function handleAddToPlaylist() {
+    const songToSave = {
+      id: utilService.makeId(),
+      title: song.snippet.title,
+      videoId: song.id.videoId,
+      imgUrl: song.snippet.thumbnails.high.url,
+  };
+    console.log('====================================');
+    console.log(selectedPlaylist);
+    console.log('====================================');
+    if (selectedPlaylist && songToSave) {
+      addSongToStation(songToSave,selectedPlaylist);
       onClose();
     }
   }
@@ -22,7 +33,7 @@ export function AddToPlaylistModal({ stations, onClose, onAddToPlaylist, svgPosi
     <div className="modal" style={modalStyle}>
       <select
         className="select-txt"
-        onChange={(e) => setSelectedPlaylist(e.target.value)}
+        onChange={(event) => setSelectedPlaylist(event.target.value)}
         value={selectedPlaylist}
       >
         <option value="" disabled>

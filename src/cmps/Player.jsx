@@ -6,6 +6,7 @@ import { utilService } from '../services/util.service'
 import { setCurrentTime, setIsPlaying, setPlayer, setSongDuration, setSongPlaying } from '../store/actions/player.actions'
 import { Svg } from './Svg'
 import { trackService } from '../services/track.service'
+import { useLocation } from 'react-router'
 
 // import { stationService } from '../services/station.service.local'
 // import { stationService } from '../services/station.service'
@@ -26,7 +27,9 @@ export function Player() {
 	const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
 	const songPlaying = useSelector((storeState) => storeState.playerModule.songPlaying)
 	const currStation = useSelector((storeState) => storeState.stationModule.currStation)
+    const location = useLocation();
 
+    const isLoginPage = location.pathname === '/loginsignup';
 	useEffect(() => {
 		if (!isPlaying || !player) return
 
@@ -201,7 +204,7 @@ export function Player() {
 			return currStation.songs[prevIdx]
 		}
 	}
-
+if(isLoginPage)return <div></div>
 	return (
 		<div className="main-player-section-full">
 			<div className="left-controls">

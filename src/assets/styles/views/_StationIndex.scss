@@ -6,7 +6,7 @@
 	margin-left: em(300px);
 	background-color: #121212;
 	border-radius: em(10px);
-	// margin-top: em(70px);
+	margin-top: em(70px);
 	// justify-content: left;
 	// width: 95%;
 }
@@ -14,8 +14,10 @@
 .station-list {
 	list-style-type: none;
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust minmax values and card width as needed */
-	gap: em(24px); /* Adjust the gap between cards as needed */
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	/* Adjust minmax values and card width as needed */
+	gap: em(24px);
+	/* Adjust the gap between cards as needed */
 	justify-content: start;
 
 	margin-left: -31px;
@@ -35,31 +37,34 @@
 		background-color: $accent-clr;
 		display: grid;
 		place-items: center;
-.img-container{
-position: relative;
-	img {
-		width: 100%;
-		border-radius: em(6px);
-	}
-	.btn-play-playlist {
-		height: 48px;
-		width: 48px;
-		background-color: $clr4;
-		padding: 10px;
-		border-radius: 50%;
 
-		border: none;
-		position: absolute;
-		bottom: 14px;
-		right: 5px;
-		opacity: 0;
-		transform: translateY(20%);
-		transition: transform 0.3s, opacity 0.5s;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-}
+		.img-container {
+			position: relative;
+
+			img {
+				width: 100%;
+				border-radius: em(6px);
+			}
+
+			.btn-play-playlist {
+				height: 48px;
+				width: 48px;
+				background-color: $clr4;
+				padding: 10px;
+				border-radius: 50%;
+
+				border: none;
+				position: absolute;
+				bottom: 14px;
+				right: 5px;
+				opacity: 0;
+				transform: translateY(20%);
+				transition: transform 0.3s, opacity 0.5s;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+		}
 
 		p {
 			-webkit-tap-highlight-color: transparent;
@@ -67,10 +72,11 @@ position: relative;
 			font-size: 0.8125rem;
 			margin: em(5px);
 		}
-	
+
 		&:hover {
 			background-color: #282828;
 			cursor: pointer;
+
 			& .btn-play-playlist {
 				border: none;
 				background-color: #1ed760;
@@ -78,6 +84,7 @@ position: relative;
 				opacity: 1;
 				transform: translateY(0);
 				cursor: pointer;
+
 				.svg {
 					width: 20px;
 					height: 20px;
@@ -112,6 +119,7 @@ position: relative;
 		span {
 			margin-inline-start: 1em;
 		}
+
 		.btn-play-playlist {
 			height: 48px;
 			width: 48px;
@@ -129,9 +137,11 @@ position: relative;
 			justify-content: center;
 			align-items: center;
 		}
+
 		&:hover {
 			background: hsla(0, 0%, 100%, 0.2);
 			cursor: pointer;
+
 			& .btn-play-playlist {
 				border: none;
 				background-color: #1ed760;
@@ -139,11 +149,13 @@ position: relative;
 				opacity: 1;
 				transform: translateY(0);
 				cursor: pointer;
+
 				.svg {
 					width: 20px;
 					height: 20px;
 				}
 			}
+
 			// background-color: #282828;
 		}
 	}
@@ -151,7 +163,7 @@ position: relative;
 
 .greeting {
 	color: white;
-	margin: em(270px);
+	margin-inline-start: 20px;
 	border: 0;
 	display: inline;
 }

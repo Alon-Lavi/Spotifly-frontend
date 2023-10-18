@@ -15,6 +15,7 @@ import { SearchPage } from './cmps/SearchPage.jsx'
 import { LoginSignup } from './pages/LoginSignup'
 
 export function App() {
+	
 	return (
 		<Provider store={store}>
 			<Router>

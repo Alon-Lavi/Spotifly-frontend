@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { StationPreview } from "./StationPreview";
 import homeIcon from '../assets/img/home.png'
@@ -11,7 +11,9 @@ import { loadStations, addStation, updateStation, removeStation } from '../store
 // import { stationService } from "../services/station.service.local";
 
 export function NavBar() {
+    const location = useLocation();
 
+    const isLoginPage = location.pathname === '/loginsignup';
 
     const [searchText, setSearchText] = useState('');
     const stations = useSelector((storeState) => storeState.stationModule.stations.slice(1, 9));
@@ -35,7 +37,7 @@ export function NavBar() {
        const stationSaved = await stationService.save(station)
         navigate(`/station/${stationSaved._id}`)
     }
-
+if(isLoginPage) return <div></div>
     return (
         <nav className="side-bar">
             <ul className="side-bar-list">

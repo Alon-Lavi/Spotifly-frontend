@@ -63,11 +63,12 @@ export function SearchPage() {
 
 
     function openAddToPlaylistModal(event, song, stationId) {
+        event.stopPropagation();
         const svgPosition = {
             x: event.clientX,
             y: event.clientY,
         };
-
+        setSong(song)
         setSelectedStationId(stationId);
 
         console.log('Selected Song ID:', song.id.videoId);
@@ -78,10 +79,15 @@ export function SearchPage() {
 
     async function addToLikedSongs(ev, song) {
         ev.stopPropagation()
-
+        const songToSave = {
+            id: utilService.makeId(),
+            title: song.snippet.title,
+            videoId: song.id.videoId,
+            imgUrl: song.snippet.thumbnails.high.url,
+        };
         const likedStation = await stationService.getLikedSongs()
 
-        addSongToStation(song, likedStation._id)
+        addSongToStation(songToSave, likedStation._id)
     }
 
     function closeAddToPlaylistModal() {
@@ -89,7 +95,7 @@ export function SearchPage() {
         setSelectedSong(null);
     }
 
-    async function addToPlaylist( song, ev) {
+    async function addToPlaylist(song, ev) {
         const songToSave = {
             id: utilService.makeId(),
             videoId: song.id.videoId,
@@ -100,9 +106,9 @@ export function SearchPage() {
         }
 
         const stationToSave = { ...station, songs: [...station.songs, songToSave] }
-		// setStation(stationToSave)
-		await updateStation(stationToSave)
-		console.log("WORK:",stationToSave);
+        // setStation(stationToSave)
+        await updateStation(stationToSave)
+        console.log("WORK:", stationToSave);
 
         closeAddToPlaylistModal();
     }
@@ -131,7 +137,7 @@ export function SearchPage() {
                                 <div className="options">
 
                                     <svg
-                                        onClick={(event) => {  
+                                        onClick={(event) => {
                                             addToLikedSongs(event, song)
                                             handleLikeIconClick()
                                         }}
@@ -161,7 +167,7 @@ export function SearchPage() {
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
                                         onClick={(event) => {
-                                            event.stopPropagation();
+
                                             openAddToPlaylistModal(event, song);
                                         }}
                                         style={{ cursor: 'pointer' }}
@@ -183,7 +189,7 @@ export function SearchPage() {
                     stations={stations}
                     svgPosition={svgPosition}
                     onClose={closeAddToPlaylistModal}
-                    onAddToPlaylist={(playlistId) => addToPlaylist(playlistId, selectedSong)}
+                   song={song}
                 />
 
 

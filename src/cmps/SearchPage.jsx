@@ -86,17 +86,23 @@ export function SearchPage() {
 
 
     async function addToLikedSongs(event, song) {
-        event.stopPropagation()
+        event.stopPropagation();
         const songToSave = {
-            id: utilService.makeId(),
-            title: song.snippet.title,
-            videoId: song.id.videoId,
-            imgUrl: song.snippet.thumbnails.high.url,
+          id: utilService.makeId(),
+          title: song.snippet.title,
+          videoId: song.id.videoId,
+          imgUrl: song.snippet.thumbnails.high.url,
         };
-        const likedStation = await stationService.getLikedSongs()
-
-        addSongToStation(songToSave, likedStation._id)
-    }
+      
+        try {
+          const likedStation = await stationService.getLikedSongs();
+          addSongToStation(songToSave, likedStation._id);
+        } catch (error) {
+          console.error('Error adding song to liked songs:', error);
+          
+        }
+      }
+      
 
     function closeAddToPlaylistModal() {
         setIsModalOpen(false);

@@ -4,11 +4,13 @@
 	grid-gap: 10px;
 	background-color: #121212;
 	border-radius: 0.625em;
-	margin-top: 2.828125rem;
+	margin-top: 4.828125rem;
 	align-content: space-evenly;
 	justify-items: stretch;
 	margin-left: 19.75em;
-
+	
+	// margin-top: 2.828125rem;
+	
 	@media (max-width: 768px) {
 		grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 		margin-top: 1.4140625rem;

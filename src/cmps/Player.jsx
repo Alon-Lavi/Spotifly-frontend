@@ -14,7 +14,7 @@ import { useLocation } from 'react-router'
 
 export function Player() {
 	const [progressValue, setProgressValue] = useState(0)
-	const [volumeValue, setVolumeValue] = useState(75)
+	const [volumeValue, setVolumeValue] = useState(100)
 	const [isMuted, setIsMuted] = useState(false)
 	const [isRepeat, setIsRepeat] = useState(false)
 	const [isShuffle, setIsShuffle] = useState(false)
@@ -27,9 +27,9 @@ export function Player() {
 	const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
 	const songPlaying = useSelector((storeState) => storeState.playerModule.songPlaying)
 	const currStation = useSelector((storeState) => storeState.stationModule.currStation)
-    const location = useLocation();
+	const location = useLocation()
 
-    const isLoginPage = location.pathname === '/loginsignup';
+	const isLoginPage = location.pathname === '/loginsignup'
 	useEffect(() => {
 		if (!isPlaying || !player) return
 
@@ -78,7 +78,7 @@ export function Player() {
 		height: '0',
 		width: '0',
 		playerVars: {
-			autoplay: 0,
+			autoplay: 1,
 			controls: 0,
 		},
 	}
@@ -204,7 +204,7 @@ export function Player() {
 			return currStation.songs[prevIdx]
 		}
 	}
-if(isLoginPage)return <div></div>
+	if (isLoginPage) return <div></div>
 	return (
 		<div className="main-player-section-full">
 			<div className="left-controls">

@@ -19,6 +19,7 @@ export function SearchPage() {
     const stations = useSelector((storeState) => storeState.stationModule.stations.slice(1, 9));
     const [genres, setGenres] = useState([]);
     const [isLiked, setIsLiked] = useState(false);
+    const [hovered, setHovered] = useState(false);
     const [selectedStationId, setSelectedStationId] = useState(null);
     const [song, setSong] = useState(null);
     const [likedSongs, setLikedSongs] = useState({});
@@ -99,7 +100,7 @@ export function SearchPage() {
           addSongToStation(songToSave, likedStation._id);
         } catch (error) {
           console.error('Error adding song to liked songs:', error);
-          
+          // Здесь можно добавить обработку ошибки, например, показать пользователю сообщение об ошибке
         }
       }
       

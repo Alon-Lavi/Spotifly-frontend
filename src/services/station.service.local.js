@@ -1102,9 +1102,6 @@ function getLikedSongs(){
 
 async function getEmptyStation(user) {
 	const stations =await query({user})
-console.log('====================================');
-console.log(stations.length);
-console.log('====================================');
 const stationLength =stations.length
 	return {
 		//  name: prompt('playlist name?'),
@@ -1135,9 +1132,7 @@ async function getGenres() {
 }
 
 async function query(filterBy = { txt: '' }) {
-	// console.log('====================================')
-	console.log(filterBy)
-	// console.log('====================================')
+
 	var stations = await storageService.query(STORAGE_KEY)
 	if (filterBy.txt) {
 		const regex = new RegExp(filterBy.txt, 'i')

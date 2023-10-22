@@ -1,6 +1,6 @@
 .app-header {
 	display: flex;
-	justify-content: flex-end;
+	margin-top: 8px;
 	position: fixed;
 	top: 0;
 	height: rem(79px);
@@ -8,7 +8,7 @@
 	background-color: rgb(15, 15, 15);
 	color: whitesmoke;
 	z-index: 1;
-	margin-left: 300px;
+	margin-left: 350px;
 	// padding-left: 1000px;
 
 	img {
@@ -27,41 +27,24 @@
 
 	.login-header {
 		text-decoration: none;
-		margin-inline-end: rem(330px);
+	    align-items: end;
+		justify-content: end;
 		margin-top: 1.625rem;
-		white-space: nowrap;
+	
 		color: white;
 
-		//mt-1.625rem
 	}
 
-	.logout-header {
-		text-decoration: none;
-		margin-inline-end: rem(330px);
-		margin-top: 1.1rem;
-		white-space: nowrap;
-		//mt-1.625rem
-	}
 }
 
-.search-header {
-	// margin-right: rem(1200px);
-	// min-width: max-content;
-	// display: flex;
-	// justify-content: flex-start;
-}
 
 .search-input-container {
 	display: block;
-	padding-bottom: 1px;
-	margin-top: rem(15px);
-	margin-inline-end: 1020px;
-	// padding-left: rem(100px);
 
 	input {
 		border: none;
-		width: em(420px);
-		height: em(53px);
+		width: em(430px);
+		height: em(63px);
 		font-size: em(12px);
 		border-radius: em(45px);
 

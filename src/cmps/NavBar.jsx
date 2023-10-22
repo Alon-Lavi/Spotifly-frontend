@@ -26,7 +26,7 @@ export function NavBar() {
     };
 useEffect(()=>{
 loadMyStations()
-},[stations])
+},[])
 
 async function loadMyStations() {
 const MyStations =await stationService.query(user)
@@ -46,14 +46,12 @@ setStations(MyStations)
             imgUrl:user.imgUrl,
             fullname:user.fullname
         }
-        console.log('====================================');
-        console.log(station);
-        console.log('====================================');
+
        const stationSaved = await stationService.save(station)
         navigate(`/station/${stationSaved._id}`)
     }
 if(isLoginPage) return <div></div>
-if(!stations) return <div></div>
+
 
     return (
         <nav className="side-bar">
@@ -162,7 +160,7 @@ if(!stations) return <div></div>
                             </form>
                         </div>
 
-                        {stations
+                        {stations && stations
                             .filter((station) =>
                                 station.name.toLowerCase().includes(searchText.toLowerCase())
                             )

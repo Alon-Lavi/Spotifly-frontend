@@ -17,15 +17,21 @@ export function NavBar() {
     const isLoginPage = location.pathname === '/loginsignup';
 
     const [searchText, setSearchText] = useState('');
-    const stations = useSelector((storeState) => storeState.stationModule.stations.slice(1, 9));
+    const [stations,setStations ]= useState();
     const [isHovered, setIsHovered] = useState(false);
     const navigate = useNavigate()
 
     const handleSearchInputChange = (e) => {
         setSearchText(e.target.value);
     };
+useEffect(()=>{
+loadMyStations()
+},[stations])
 
-
+async function loadMyStations() {
+const MyStations =await stationService.query(user)
+setStations(MyStations)
+}
     const handleMouseEnter = () => {
         setIsHovered(true);
     };
@@ -47,6 +53,8 @@ export function NavBar() {
         navigate(`/station/${stationSaved._id}`)
     }
 if(isLoginPage) return <div></div>
+if(!stations) return <div></div>
+
     return (
         <nav className="side-bar">
             <ul className="side-bar-list">
@@ -101,7 +109,7 @@ if(isLoginPage) return <div></div>
                 <div className="main-side-bar">
                     <div className="flex">
                         <li className="side-bar-item">
-                            <NavLink to="/library" className="nav-link">
+                            <a className="nav-link">
                                 <span className="library">
                                     <svg
                                         role="img"
@@ -117,7 +125,7 @@ if(isLoginPage) return <div></div>
                                     <span className="library-span">Your Library</span>
                                 </span>
 
-                            </NavLink>
+                            </a>
                         </li>
                         <li
                             className="add-library">

@@ -156,7 +156,7 @@ export function StationDetails() {
 				<div>
 					<h1 onClick={openModal}>{station.name}</h1>
 					
-						<span>{station.createdBy.fullname}   songs</span>
+						<span>{station.createdBy.fullname} {station.songs.length}  songs</span>
 					
 				</div>
 			</header>
@@ -246,7 +246,7 @@ export function StationDetails() {
 
 							{/* <img src={station.createdBy.imgUrl} alt="" /> */}
 							<form id='myForm' onSubmit={saveChanges}>
-								<input className='image' type="image" src={station.createdBy.imgUrl} alt="" />
+								<input className='image' type="image" src={station.imgUrl} alt="" />
 								<input className='title' defaultValue={station.name} type="text" />
 								<textarea
 									value={textareaValue}          // Bind the value to the state variable

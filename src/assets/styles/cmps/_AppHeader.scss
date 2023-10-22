@@ -1,10 +1,10 @@
 .app-header {
 	display: flex;
-	margin-top: 8px;
+	padding-top:8px;
 	position: fixed;
 	top: 0;
 	height: rem(79px);
-	width: 100%;
+	width: 81%;
 	background-color: rgb(15, 15, 15);
 	color: whitesmoke;
 	z-index: 1;
@@ -27,8 +27,8 @@
 
 	.login-header {
 		text-decoration: none;
-	    align-items: end;
-		justify-content: end;
+	    margin-left: auto;
+		justify-content: flex-end;
 		margin-top: 1.625rem;
 	
 		color: white;

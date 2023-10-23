@@ -32,7 +32,6 @@ export function StationIndex() {
 
 
 	function onPlayStation(station,ev) {
-		console.log(station);
 		if (station._id === currStation?._id) {
 			ev.stopPropagation()
 			const isCurrentlyPlaying = !isPlaying
@@ -60,7 +59,7 @@ export function StationIndex() {
 		<div className="main-container-page">
 			<main className="main-container">
 			<h3 className="greeting">{utilService.getGreetings()}</h3>
-				{!genre && <RecomendedList recomended={recomended} />}
+				{!genre && <RecomendedList onPlayStation={onPlayStation} recomended={recomended} />}
 				<StationList onPlayStation={onPlayStation} stations={stations} />
 			</main>
 		</div>

@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Svg } from './Svg'
 import { useSelector } from 'react-redux'
+import { setCurrStation } from '../store/actions/station.actions'
 
 export function StationPreview({ station, onPlayStation }) {
 	const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
 	const currStation = useSelector((storeState) => storeState.stationModule.currStation)
+	console.log(currStation, station);
+
 
 	return (
 		<>
@@ -21,35 +24,3 @@ export function StationPreview({ station, onPlayStation }) {
 	)
 }
 
-// import { Link } from 'react-router-dom'
-// import { useSelector } from 'react-redux'
-// import { Svg } from './Svg'
-// import { trackService } from '../services/track.service'
-// export function StationPreview({ station, onPlayStation }) {
-// 	const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
-
-// 	return (
-// 		<section className="station-card-page">
-// 			<section className="station-card">
-// 				<Link to={`/station/${station._id}`}>
-// 					<div className="img-container">
-// 						<img src={station.createdBy.imgUrl} alt="" />
-// 					</div>
-// 					<h3>{station.name}</h3>
-// 					<div className="content">
-// 						{station.songs.length > 0 ? (
-// 							<>
-// 								<div title={station.songs[0].title}>{trackService.getCleanTitle(station.songs[0].title)}</div>
-// 							</>
-// 						) : (
-// 							<div></div>
-// 						)}
-// 					</div>
-// 				</Link>
-// 				<button className="btn-play-playlist" onClick={() => onPlayStation(station._id)}>
-// 					{isPlaying ? Svg.pauseTrackIcon : Svg.playTrackIcon}
-// 				</button>
-// 			</section>
-// 		</section>
-// 	)
-// }

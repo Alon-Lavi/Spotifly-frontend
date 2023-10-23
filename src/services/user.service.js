@@ -74,7 +74,7 @@ async function login(userCred) {
 
 async function signup(userCred) {
 	userCred.likedSongs = {
-		_id: utilService.makeId,
+		_id: utilService.makeId(),
 		imgUrl:'https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png',
 		name: 'Liked Songs',
 		songs:[],

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { loadStations, addStation, updateStation, removeStation } from '../store/actions/station.actions.js'
+import { loadStations, addStation, updateStation, removeStation, setCurrStation } from '../store/actions/station.actions.js'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from '../services/user.service.js'
@@ -27,18 +27,20 @@ export function StationIndex() {
 	useEffect(() => {
 		loadStations({ genre,user })
 		loadRecomended()
+		console.log(currStation);
 	}, [genre,user])
 
 
 	function onPlayStation(station,ev) {
-		if (station._id === currStation._id) {
+		console.log(station);
+		if (station._id === currStation?._id) {
 			ev.stopPropagation()
 			const isCurrentlyPlaying = !isPlaying
 			isCurrentlyPlaying ? player.playVideo() : player.pauseVideo()
 			setIsPlaying(isCurrentlyPlaying)
 		}
 		else{
-
+			setCurrStation(station)
 			setSongPlaying(station.songs[0])
 		}
 		

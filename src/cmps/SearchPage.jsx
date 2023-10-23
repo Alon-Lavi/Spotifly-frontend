@@ -7,6 +7,7 @@ import { GenrePreview } from './GenrePreview';
 import { setSongPlaying } from '../store/actions/player.actions';
 import { AddToPlaylistModal } from './AddToPlaylistModal';
 import { trackService } from '../services/track.service.js'
+import { updateUser } from '../store/actions/user.actions';
 
 
 export function SearchPage() {
@@ -14,7 +15,7 @@ export function SearchPage() {
 
     const [station, setStation] = useState(null)
     const songs = useSelector((storeState) => storeState.stationModule.songsToSearch);
-    const stations = useSelector((storeState) => storeState.stationModule.stations.slice(1, 9));
+    const stations = useSelector((storeState) => storeState.stationModule.stations);
     const [genres, setGenres] = useState([]);
     const [selectedStationId, setSelectedStationId] = useState(null);
     const [song, setSong] = useState(null);
@@ -95,14 +96,15 @@ export function SearchPage() {
     }
 
     async function addToLikedSongs(newSong) {
-        await userService.addSong(user._id, newSong)
-        console.log(user, 'like');
-
+        const updatedUser =  await userService.addSong(user._id, newSong)
+        updateUser(updatedUser)
+        
     }
 
     async function removeFromLikedSongs(newSong) {
-        await userService.removeSong(user._id, newSong.videoId)
-        console.log(user, 'like');
+        const updatedUser =   await userService.removeSong(user._id, newSong.videoId)
+        updateUser(updatedUser)
+        
         console.log(station);
     }
 

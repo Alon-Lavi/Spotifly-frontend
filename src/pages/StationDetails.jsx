@@ -166,7 +166,9 @@ export function StationDetails() {
 		const idx = newSong.likedBy.findIndex((likedUser) => likedUser._id === user._id)
 
 		newSong.likedBy.splice(idx, 1)
-		await userService.removeSong(user._id, newSong.videoId)
+		const updatedUser = await userService.removeSong(user._id, newSong.videoId)
+		updateUser(updatedUser)
+
 		console.log(user, 'like');
 		const updatedSongs = station.songs.map(song => song.videoId === newSong.videoId ? newSong : song)
 		const stationToSave = { ...station, songs: updatedSongs }

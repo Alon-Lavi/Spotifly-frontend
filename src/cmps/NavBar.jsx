@@ -1,7 +1,6 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { StationPreview } from "./StationPreview";
-import homeIcon from '../assets/img/home.png'
 import { SearchPage } from "./SearchPage";
 import { stationService } from "../services/station.service.local";
 

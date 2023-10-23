@@ -9,6 +9,7 @@ import { Search } from '../cmps/Search'
 import { useSelector } from 'react-redux'
 import { utilService } from '../services/util.service'
 import { userService } from '../services/user.service'
+import { updateUser } from '../store/actions/user.actions'
 
 export function StationDetails() {
 	const location = useLocation();
@@ -152,7 +153,8 @@ export function StationDetails() {
 		console.log(newSong);
 		newSong.likedBy.push({ _id: user._id, fullname: user.fullname })
 
-		await userService.addSong(user._id, newSong)
+		const updatedUser = await userService.addSong(user._id, newSong)
+		updateUser(updatedUser)
 		console.log(user, 'like');
 		const updatedSongs = station.songs.map(song => song.videoId === newSong.videoId ? newSong : song)
 		const stationToSave = { ...station, songs: updatedSongs }
@@ -225,7 +227,7 @@ export function StationDetails() {
 								<svg
 									onClick={(event) => {
 										checkLikedSongs(event, song)
-								
+
 									}}
 									xmlns="http://www.w3.org/2000/svg"
 									fill={checkIfLiked(song) ? '' : 'white'}

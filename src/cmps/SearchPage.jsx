@@ -18,8 +18,6 @@ export function SearchPage() {
     const songs = useSelector((storeState) => storeState.stationModule.songsToSearch);
     const stations = useSelector((storeState) => storeState.stationModule.stations.slice(1, 9));
     const [genres, setGenres] = useState([]);
-    const [isLiked, setIsLiked] = useState(false);
-    const [hovered, setHovered] = useState(false);
     const [selectedStationId, setSelectedStationId] = useState(null);
     const [song, setSong] = useState(null);
     const [likedSongs, setLikedSongs] = useState({});
@@ -71,7 +69,7 @@ export function SearchPage() {
             y: event.clientY,
         };
         setSong(song)
-        setSelectedStationId(stationId);
+        // setSelectedStationId(stationId);
 
         console.log('Selected Song ID:', song.id.videoId);
         setSvgPosition(svgPosition);

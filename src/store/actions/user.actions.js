@@ -89,3 +89,8 @@ export async function likeSong(song) {
 		console.log('Cannot load user', err)
 	}
 }
+
+
+export function updateUser(user){
+	store.dispatch({ type: SET_USER, user })
+}

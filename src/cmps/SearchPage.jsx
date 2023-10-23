@@ -74,7 +74,7 @@ export function SearchPage() {
     function openAddToPlaylistModal(event, song, stationId) {
         event.stopPropagation();
         const svgPosition = {
-            x: event.clientX,
+            x: event.clientX - 130,
             y: event.clientY,
         };
         setSong(song)
@@ -100,7 +100,7 @@ export function SearchPage() {
           addSongToStation(songToSave, likedStation._id);
         } catch (error) {
           console.error('Error adding song to liked songs:', error);
-          // Здесь можно добавить обработку ошибки, например, показать пользователю сообщение об ошибке
+         
         }
       }
       
@@ -110,23 +110,6 @@ export function SearchPage() {
         setSelectedSong(null);
     }
 
-    // async function addToPlaylist(song, ev) {
-    //     const songToSave = {
-    //         id: utilService.makeId(),
-    //         videoId: song.id.videoId,
-    //         title: song.snippet.title.replace(/\([^)]*\)|\[[^\]]*\]/g, ''),
-    //         imgUrl: song.snippet.thumbnails.high.url,
-    //         addedAt: Date.now(),
-    //         isLiked: false
-    //     }
-
-    //     const stationToSave = { ...station, songs: [...station.songs, songToSave] }
-    //     // setStation(stationToSave)
-    //     await updateStation(stationToSave)
-    //     console.log("WORK:", stationToSave);
-
-    //     closeAddToPlaylistModal();
-    // }
 
 
 

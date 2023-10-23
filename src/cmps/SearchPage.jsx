@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { loadStations, setSongsToSearch } from '../store/actions/station.actions';
+import { setSongsToSearch } from '../store/actions/station.actions';
 import { stationService } from '../services/station.service.local';
 import { GenrePreview } from './GenrePreview';
 import { setSongPlaying } from '../store/actions/player.actions';
 import { AddToPlaylistModal } from './AddToPlaylistModal';
 import { trackService } from '../services/track.service.js'
-import { utilService } from '../services/util.service';
-import { addSongToStation, updateStation } from '../store/actions/station.actions';
-import { LoaderService } from '../cmps/Loader'
+
 
 export function SearchPage() {
 
@@ -25,18 +23,18 @@ export function SearchPage() {
     const [selectedSong, setSelectedSong] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [svgPosition, setSvgPosition] = useState({ x: 0, y: 0 });
-	const user = useSelector((storeState) => storeState.userModule.user);
+    const user = useSelector((storeState) => storeState.userModule.user);
 
-   
+
 
     useEffect(() => {
         loadGenres();
         return () => {
             setSongsToSearch(null);
         };
-    }, [selectedStationId]);
+    }, []);
 
- 
+
     async function loadGenres() {
         const allGenres = await stationService.getGenres();
         // console.log(allGenres)
@@ -69,59 +67,53 @@ export function SearchPage() {
             y: event.clientY,
         };
         setSong(song)
-        // setSelectedStationId(stationId);
 
         console.log('Selected Song ID:', song.id.videoId);
         setSvgPosition(svgPosition);
         setIsModalOpen(true);
     }
 
-
-  
-   
-      
-
     function closeAddToPlaylistModal() {
         setIsModalOpen(false);
         setSelectedSong(null);
     }
 
-	function checkLikedSongs(ev, newSong) {
-		ev.stopPropagation()
-		console.log(newSong);
+    function checkLikedSongs(ev, newSong) {
+        ev.stopPropagation()
+        console.log(newSong);
         const songToSave = {
             title: newSong.snippet.title.replace(/\([^)]*\)|\[[^\]]*\]/g, ''),
             videoId: newSong.id.videoId,
             imgUrl: newSong.snippet.thumbnails.high.url,
-          };
-		const idx = user.likedSongs.songs.findIndex((likedSong) => likedSong.videoId === songToSave.videoId)
+        };
+        const idx = user.likedSongs.songs.findIndex((likedSong) => likedSong.videoId === songToSave.videoId)
 
-		console.log(idx);
-		if (idx === -1) addToLikedSongs(songToSave)
-		else removeFromLikedSongs(songToSave)
+        console.log(idx);
+        if (idx === -1) addToLikedSongs(songToSave)
+        else removeFromLikedSongs(songToSave)
 
-	}
+    }
 
-	async function addToLikedSongs(newSong) {
-		await userService.addSong(user._id, newSong)
-		console.log(user, 'like');
-	
-	}
+    async function addToLikedSongs(newSong) {
+        await userService.addSong(user._id, newSong)
+        console.log(user, 'like');
 
-	async function removeFromLikedSongs(newSong) {
-		await userService.removeSong(user._id, newSong.videoId)
-		console.log(user, 'like');
-		console.log(station);
-	}
+    }
+
+    async function removeFromLikedSongs(newSong) {
+        await userService.removeSong(user._id, newSong.videoId)
+        console.log(user, 'like');
+        console.log(station);
+    }
 
 
-	function checkIfLiked(song) {
+    function checkIfLiked(song) {
 
-		const idx = user.likedSongs.songs.findIndex((likedSong) => likedSong.videoId === song.id.videoId)
-		if (idx === -1) return false
+        const idx = user.likedSongs.songs.findIndex((likedSong) => likedSong.videoId === song.id.videoId)
+        if (idx === -1) return false
 
-		return true
-	}
+        return true
+    }
 
 
 

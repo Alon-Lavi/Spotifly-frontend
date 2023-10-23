@@ -6,7 +6,6 @@ import { setCurrStation } from '../store/actions/station.actions'
 export function StationPreview({ station, onPlayStation }) {
 	const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
 	const currStation = useSelector((storeState) => storeState.stationModule.currStation)
-	console.log(currStation, station);
 
 
 	return (

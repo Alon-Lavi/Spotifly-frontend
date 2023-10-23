@@ -27,7 +27,6 @@ export function StationIndex() {
 	useEffect(() => {
 		loadStations({ genre })
 		loadRecomended()
-		console.log(currStation);
 	}, [genre,user])
 
 

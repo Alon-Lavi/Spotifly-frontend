@@ -38,7 +38,6 @@ export function SearchPage() {
 
     async function loadGenres() {
         const allGenres = await stationService.getGenres();
-        // console.log(allGenres)
         setGenres(allGenres);
         loadPlaylists(allGenres);
     }
@@ -69,7 +68,6 @@ export function SearchPage() {
         };
         setSong(song)
 
-        console.log('Selected Song ID:', song.id.videoId);
         setSvgPosition(svgPosition);
         setIsModalOpen(true);
     }
@@ -81,7 +79,6 @@ export function SearchPage() {
 
     function checkLikedSongs(ev, newSong) {
         ev.stopPropagation()
-        console.log(newSong);
         const songToSave = {
             title: newSong.snippet.title.replace(/\([^)]*\)|\[[^\]]*\]/g, ''),
             videoId: newSong.id.videoId,
@@ -89,7 +86,6 @@ export function SearchPage() {
         };
         const idx = user.likedSongs.songs.findIndex((likedSong) => likedSong.videoId === songToSave.videoId)
 
-        console.log(idx);
         if (idx === -1) addToLikedSongs(songToSave)
         else removeFromLikedSongs(songToSave)
 
@@ -105,7 +101,6 @@ export function SearchPage() {
         const updatedUser =   await userService.removeSong(user._id, newSong.videoId)
         updateUser(updatedUser)
         
-        console.log(station);
     }
 
 

@@ -61,7 +61,6 @@ export function StationDetails() {
 
 
 	function playSong(song) {
-		console.log(song);
 		if (song.kind) {
 			const songToPlay = {
 				videoId: song.id.videoId,
@@ -89,14 +88,12 @@ export function StationDetails() {
 		// setStation(stationToSave)
 		setStation(stationToSave)
 		await updateStation(stationToSave)
-		console.log(stationToSave);
 	}
 
 
 	async function onDeleteSong(ev, songId) {
 		ev.stopPropagation()
 		const idx = station.songs.findIndex((song) => song.id === songId)
-		console.log(idx);
 		station.songs.splice(idx, 1)
 		await updateStation(station)
 	}
@@ -139,10 +136,8 @@ export function StationDetails() {
 	}
 	function checkLikedSongs(ev, newSong) {
 		ev.stopPropagation()
-		console.log(newSong);
 		const idx = user.likedSongs.songs.findIndex((likedSong) => likedSong.videoId === newSong.videoId)
 
-		console.log(idx);
 		if (idx === -1) addToLikedSongs(newSong)
 		else removeFromLikedSongs(newSong)
 
@@ -151,12 +146,10 @@ export function StationDetails() {
 	async function addToLikedSongs(newSong) {
 
 
-		console.log(newSong);
 		newSong.likedBy.push({ _id: user._id, fullname: user.fullname })
 
 		const updatedUser = await userService.addSong(user._id, newSong)
 		updateUser(updatedUser)
-		console.log(user, 'like');
 		const updatedSongs = station.songs.map(song => song.videoId === newSong.videoId ? newSong : song)
 		const stationToSave = { ...station, songs: updatedSongs }
 		setStation(stationToSave)
@@ -170,13 +163,11 @@ export function StationDetails() {
 		const updatedUser = await userService.removeSong(user._id, newSong.videoId)
 		updateUser(updatedUser)
 
-		console.log(user, 'like');
 		const updatedSongs = station.songs.map(song => song.videoId === newSong.videoId ? newSong : song)
 		const stationToSave = { ...station, songs: updatedSongs }
 		setStation(stationToSave)
 		setCurrStation(stationToSave)
 
-		console.log(station);
 
 
 	}

@@ -27,9 +27,9 @@ export function SearchPage() {
     const [selectedSong, setSelectedSong] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [svgPosition, setSvgPosition] = useState({ x: 0, y: 0 });
-    const handleLikeIconClick = () => {
-        setIsLiked(!isLiked);
-    };
+	const user = useSelector((storeState) => storeState.userModule.user);
+
+   
 
     useEffect(() => {
         loadGenres();
@@ -38,15 +38,7 @@ export function SearchPage() {
         };
     }, [selectedStationId]);
 
-    const toggleLiked = (videoId) => {
-        setLikedSongs((prevLikedSongs) => {
-            return {
-                ...prevLikedSongs,
-                [videoId]: !prevLikedSongs[videoId],
-            };
-        });
-    };
-
+ 
     async function loadGenres() {
         const allGenres = await stationService.getGenres();
         // console.log(allGenres)
@@ -66,6 +58,7 @@ export function SearchPage() {
             title: song.snippet.title,
             videoId: song.id.videoId,
             imgUrl: song.snippet.thumbnails.high.url,
+            addedAt: Date.now(),
         };
         setSongPlaying(songToPlay);
     }
@@ -86,23 +79,8 @@ export function SearchPage() {
     }
 
 
-    async function addToLikedSongs(event, song) {
-        event.stopPropagation();
-        const songToSave = {
-          id: utilService.makeId(),
-          title: song.snippet.title,
-          videoId: song.id.videoId,
-          imgUrl: song.snippet.thumbnails.high.url,
-        };
-      
-        try {
-          const likedStation = await stationService.getLikedSongs();
-          addSongToStation(songToSave, likedStation._id);
-        } catch (error) {
-          console.error('Error adding song to liked songs:', error);
-         
-        }
-      }
+  
+   
       
 
     function closeAddToPlaylistModal() {
@@ -110,6 +88,42 @@ export function SearchPage() {
         setSelectedSong(null);
     }
 
+	function checkLikedSongs(ev, newSong) {
+		ev.stopPropagation()
+		console.log(newSong);
+        const songToSave = {
+            title: newSong.snippet.title.replace(/\([^)]*\)|\[[^\]]*\]/g, ''),
+            videoId: newSong.id.videoId,
+            imgUrl: newSong.snippet.thumbnails.high.url,
+          };
+		const idx = user.likedSongs.songs.findIndex((likedSong) => likedSong.videoId === songToSave.videoId)
+
+		console.log(idx);
+		if (idx === -1) addToLikedSongs(songToSave)
+		else removeFromLikedSongs(songToSave)
+
+	}
+
+	async function addToLikedSongs(newSong) {
+		await userService.addSong(user._id, newSong)
+		console.log(user, 'like');
+	
+	}
+
+	async function removeFromLikedSongs(newSong) {
+		await userService.removeSong(user._id, newSong.videoId)
+		console.log(user, 'like');
+		console.log(station);
+	}
+
+
+	function checkIfLiked(song) {
+
+		const idx = user.likedSongs.songs.findIndex((likedSong) => likedSong.videoId === song.id.videoId)
+		if (idx === -1) return false
+
+		return true
+	}
 
 
 
@@ -136,12 +150,10 @@ export function SearchPage() {
 
                                     <svg
                                         onClick={(event) => {
-                                            addToLikedSongs(event, song)
-                                            toggleLiked(song.id.videoId);
-                                            handleLikeIconClick()
+                                            checkLikedSongs(event, song)
                                         }}
                                         xmlns="http://www.w3.org/2000/svg"
-                                        fill={isLiked ? '' : 'white'}
+                                        fill={checkIfLiked(song) ? '' : 'white'}
                                         height="37"
                                         width="37"
                                         aria-hidden="true"
@@ -150,11 +162,11 @@ export function SearchPage() {
                                         viewBox="0 0 16 16">
 
                                         <path
-                                            fill={likedSongs[song.id.videoId] ? '#1ed760' : 'none'}
+                                            fill={checkIfLiked(song) ? '#1ed760' : 'none'}
                                             d="M15.724 4.22A4.313 4.313 0 0 0 12.192.814a4.269 4.269 0 0 0-3.622 1.13.837.837 0 0 1-1.14 0 4.272 4.272 0 0 0-6.21 5.855l5.916 7.05a1.128 1.128 0 0 0 1.727 0l5.916-7.05a4.228 4.228 0 0 0 .945-3.577z">
                                         </path>
                                         <path
-                                            fill={likedSongs[song.id.videoId] ? '#1ed760' : 'white'}
+                                            fill={checkIfLiked(song) ? '#1ed760' : 'white'}
                                             d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z">
                                         </path>
 

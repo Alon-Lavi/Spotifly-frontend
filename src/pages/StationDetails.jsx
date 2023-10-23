@@ -233,7 +233,7 @@ export function StationDetails() {
 									width="17"
 									aria-hidden="true"
 									data-encore-id="icon"
-									className={`liked-song-icon ${likedSongs[song.id.videoId] ? 'liked' : ''}`}
+									className={`liked-song-icon ? 'liked' : ''}`}
 									viewBox="0 0 16 16">
 
 									<path

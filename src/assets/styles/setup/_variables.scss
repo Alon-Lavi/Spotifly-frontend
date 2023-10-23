@@ -26,7 +26,7 @@ $main-bgc-ing2: linear-gradient(0deg, rgba(28, 26, 26, 1) 73%, rgba(47, 51, 51, 
 $mobile-breakpoint: 460px;
 $narrow-breakpoint: 720px;
 $normal-breakpoint: 960px;
-// $column-count: 5;
+
 
 // $green-main-btn-clr: #2e3bce;
 $clr2: #6d08da;
@@ -39,7 +39,7 @@ $clr7: #222;
 $grid-gap: 18px;
 $min-container-width: 150px;
 $column-count: 4;
-// calc(100vw/$min-container-width);
+
 
 :root {
 	--min-column-width: 270px;
@@ -61,18 +61,18 @@ $bgclr1-light: #535353;
 $card-color: #181818;
 $bgclr3: #1ed760;
 $bgclr4: #282828;
-$bgclr5: hsla(0, 0%, 100%, 0.3); // Progress bar bg
+$bgclr5: hsla(0, 0%, 100%, 0.3);
 $bgclr-mobile-player: rgb(61 63 63);
 
 $clr-1: #fff;
-$clr1: #ffffff; // Song name
+$clr1: #ffffff;
 $clr1-faded: hsla(0, 0%, 100%, 0.9);
-$clr2: #b3b3b3; // Song desc
-$clr3: #a7a7a7; // Your library on the side bar
+$clr2: #b3b3b3;
+$clr3: #a7a7a7;
 $clr3-light: hsla(0, 0%, 100%, 0.7);
-$clr3-dark: hsla(0, 0%, 100%, 0.1); //Detail line:hover
-$clr4: #1ed760; // Play button
-$clr4-light: #1fdf64; //Play button hover
+$clr3-dark: hsla(0, 0%, 100%, 0.1);
+$clr4: #1ed760;
+$clr4-light: #1fdf64;
 $box-shadow: 0 1px 5px #000;
 $app-header-nav-btn: rgba(0, 0, 0, 0.7);
 

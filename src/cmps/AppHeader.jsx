@@ -46,7 +46,6 @@ export function AppHeader() {
 
 					{showSearchInput ? <Search /> : null}
 				</span>
-				{/* <div className="search-header">{showSearchInput ? <Search /> : null}</div> */}
 
 				{/* <User /> */}
 				<div className="login-logout">
@@ -58,8 +57,8 @@ export function AppHeader() {
 
 					{user && (
 						<span className="logout-header">
+							<span className="user-name">{user.fullname}</span>
 							<img id="logout" onClick={logout} src={user.imgUrl} alt="" aria-label="logout" />
-							{/* <span className="user-name flex">{user.fullname}</span> */}
 						</span>
 					)}
 				</div>

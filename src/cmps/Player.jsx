@@ -1,16 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useLocation } from 'react-router'
 import YouTube from 'react-youtube'
 
 import { utilService } from '../services/util.service'
 import { setCurrentTime, setIsPlaying, setPlayer, setSongDuration, setSongPlaying } from '../store/actions/player.actions'
 import { Svg } from './Svg'
 import { trackService } from '../services/track.service'
-import { useLocation } from 'react-router'
-
-// import { stationService } from '../services/station.service.local'
-// import { stationService } from '../services/station.service'
-// import { loadStations, updateStation } from '../store/actions/station.actions'
 
 export function Player() {
 	const [progressValue, setProgressValue] = useState(0)
@@ -288,6 +284,10 @@ export function Player() {
 }
 
 ////////////////////////////////////////////////////////////////
+// import { stationService } from '../services/station.service.local'
+// import { stationService } from '../services/station.service'
+// import { loadStations, updateStation } from '../store/actions/station.actions'
+
 // function handleForward() {
 // 	if (player) {
 // 		const newTime = currTime + 15

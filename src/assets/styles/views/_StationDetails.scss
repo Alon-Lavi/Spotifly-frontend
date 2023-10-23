@@ -35,10 +35,10 @@
 			cursor: pointer;
 			border-radius: 4px;
 			height: 56px;
-			border: 1px solid hsla(0, 0%, 100%, .1);
+			border: 1px solid hsla(0, 0%, 100%, 0.1);
 
 			&:hover {
-				background-color: hsla(0, 0%, 100%, .1);
+				background-color: hsla(0, 0%, 100%, 0.1);
 			}
 		}
 
@@ -48,19 +48,19 @@
 
 		td {
 			text-align: left;
-
-
 		}
 
 		img {
 			width: rem(40px);
 		}
+
+		button {
+			background-color: transparent;
+		}
 	}
 }
 
 .song-list {
-
-
 	list-style-type: none;
 
 	li {
@@ -70,7 +70,7 @@
 		cursor: pointer;
 
 		&:hover {
-			background-color: hsla(0, 0%, 100%, .1);
+			background-color: hsla(0, 0%, 100%, 0.1);
 		}
 	}
 
@@ -98,7 +98,6 @@
 				border-color: #fff;
 			}
 		}
-
 	}
 
 	img {
@@ -107,9 +106,7 @@
 	}
 }
 
-
 .song-search {
-
 	.search-input-container {
 		input {
 			margin-left: 0;
@@ -143,7 +140,7 @@
 	width: 524px;
 	background-color: #282828;
 	border-radius: 8px;
-	box-shadow: 0 4px 4px rgba(0, 0, 0, .3);
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
 
 	p {
 		margin-block: 0px;
@@ -169,11 +166,7 @@
 		span {
 			cursor: pointer;
 		}
-
-
 	}
-
-
 
 	form {
 		display: grid;
@@ -190,11 +183,10 @@
 			grid-area: img;
 			height: 180px;
 			width: 180px;
-
 		}
 
 		.title {
-			background: hsla(0, 0%, 100%, .1);
+			background: hsla(0, 0%, 100%, 0.1);
 			border: 1px solid transparent;
 			border-radius: 4px;
 			color: #fff;
@@ -207,7 +199,7 @@
 		}
 
 		textarea {
-			background: hsla(0, 0%, 100%, .1);
+			background: hsla(0, 0%, 100%, 0.1);
 			border: 1px solid transparent;
 			border-radius: 4px;
 			color: #fff;
@@ -219,8 +211,6 @@
 			width: 100%;
 			grid-area: desc;
 		}
-
-
 
 		button {
 			grid-area: btn;

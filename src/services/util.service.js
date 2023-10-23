@@ -11,7 +11,7 @@ export const utilService = {
 	getGreetings,
 	handleChange,
 	getRandomSongIndex,
-	getDate
+	getDate,
 }
 
 function convertTime(time) {
@@ -117,11 +117,11 @@ function getGreetings() {
 	let greet
 
 	if (hrs < 12) {
-		greet = 'Good Morning'
+		greet = 'Good morning'
 	} else if (hrs >= 12 && hrs <= 17) {
-		greet = 'Good Afternoon'
+		greet = 'Good afternoon'
 	} else if (hrs >= 17 && hrs <= 24) {
-		greet = 'Good Evening'
+		greet = 'Good evening'
 	}
 	return greet
 }
@@ -133,9 +133,9 @@ function handleChange({ target }) {
 	// onSetFilter({ ...filterBy, [field]: value })
 }
 function getDate(stamp) {
-	const date = new Date(stamp);
-	return date.toLocaleDateString();
-  }
+	const date = new Date(stamp)
+	return date.toLocaleDateString()
+}
 
 // util function
 function getAssetSrc(name) {
@@ -150,4 +150,3 @@ function getRandomSongIndex(songArray) {
 	const maxIndex = songArray.length - 1
 	return Math.floor(Math.random() * (maxIndex - minIndex + 1)) + minIndex
 }
-

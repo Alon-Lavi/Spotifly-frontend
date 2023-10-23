@@ -1102,7 +1102,7 @@ function getLikedSongs(){
 
 async function getEmptyStation(user) {
 	const stations =await query({user})
-const stationLength =stations.length
+const stationLength =stations.length+1
 	return {
 		//  name: prompt('playlist name?'),
 		name: `My Playlsit #${stationLength}`,

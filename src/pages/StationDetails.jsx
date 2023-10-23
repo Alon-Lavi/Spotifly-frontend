@@ -1,47 +1,47 @@
 import { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router'
+import { useLocation, useNavigate, useParams } from 'react-router'
 import { stationService } from '../services/station.service.local'
 import { addSongToStation, removeStation, setCurrStation, updateStation } from '../store/actions/station.actions'
-import { showErrorMsg } from '../services/event-bus.service'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { setIsPlaying, setSongPlaying } from '../store/actions/player.actions'
 import { LoaderService } from '../cmps/Loader'
 import { Search } from '../cmps/Search'
 import { useSelector } from 'react-redux'
 import { utilService } from '../services/util.service'
-import { ImgUploader } from '../cmps/ImgUploader'
-import { trackService } from '../services/track.service'
+import { userService } from '../services/user.service'
 
 export function StationDetails() {
+	const location = useLocation();
+	const isLikedPage = location.pathname === '/likedsongs';
+
 	const [station, setStation] = useState(null)
 	const [isLiked, setIsLiked] = useState(false)
-	const navigate = useNavigate()
 	const [likedSongs, setLikedSongs] = useState({});
-	const { stationId } = useParams()
-	const songs = useSelector((storeState) => storeState.stationModule.songsToSearch);
 	const [isOpen, setIsOpen] = useState(false);
 	const [textareaValue, setTextareaValue] = useState('');
-	const handleLikeIconClick = () => {
-        setIsLiked(!isLiked);
-    };
+	const { stationId } = useParams()
+	const currStation = useSelector((storeState) => storeState.stationModule.currStation)
+	const user = useSelector((storeState) => storeState.userModule.user);
+	const songs = useSelector((storeState) => storeState.stationModule.songsToSearch);
+	const navigate = useNavigate()
+
+
+
 	useEffect(() => {
 		loadStations()
-		setCurrStation(station)
-	}, [station])
+
+	}, [stationId, isLikedPage])
+
 	async function onRemoveStation(stationId) {
 		try {
 			await removeStation(stationId)
-			navigate('/station')
+			navigate('/')
 			showSuccessMsg('Station removed')
 		} catch (err) {
 			showErrorMsg('Cannot remove station')
 		}
 	}
-	const toggleLiked = (songId) => {
-    setLikedSongs((prevLikedSongs) => ({
-        ...prevLikedSongs,
-        [songId]: !prevLikedSongs[songId],
-    }));
-};
+
 
 	const openModal = () => {
 		setIsOpen(true);
@@ -55,21 +55,7 @@ export function StationDetails() {
 	const handleTextareaChange = (event) => {
 		setTextareaValue(event.target.value);
 	};
-	async function AddToPlaylist(song, ev) {
-		ev.stopPropagation()
-		const songToSave = {
-			id: utilService.makeId(),
-			videoId: song.id.videoId,
-			title: song.snippet.title.replace(/\([^)]*\)|\[[^\]]*\]/g, ''),
-			imgUrl: song.snippet.thumbnails.high.url
-		}
 
-		// setStation(prevStation=>({...prevStation,songs:[ ...prevStation.songs,  songToSave]}))
-		const stationToSave = { ...station, songs: [...station.songs, songToSave] }
-		// setStation(stationToSave)
-		await updateStation(stationToSave)
-		console.log(stationToSave);
-	}
 
 
 	function playSong(song) {
@@ -94,14 +80,17 @@ export function StationDetails() {
 			title: song.snippet.title.replace(/\([^)]*\)|\[[^\]]*\]/g, ''),
 			imgUrl: song.snippet.thumbnails.high.url,
 			addedAt: Date.now(),
-			isLiked: false
+			likedBy: []
 		}
 		// setStation(prevStation=>({...prevStation,songs:[ ...prevStation.songs,  songToSave]}))
 		const stationToSave = { ...station, songs: [...station.songs, songToSave] }
 		// setStation(stationToSave)
+		setStation(stationToSave)
 		await updateStation(stationToSave)
 		console.log(stationToSave);
 	}
+
+
 	async function onDeleteSong(ev, songId) {
 		ev.stopPropagation()
 		const idx = station.songs.findIndex((song) => song.id === songId)
@@ -112,8 +101,18 @@ export function StationDetails() {
 
 	async function loadStations() {
 		try {
-			const station = await stationService.getById(stationId)
-			setStation(station)
+			if (isLikedPage) {
+				setStation(user.likedSongs)
+				setCurrStation(station)
+
+			}
+			else {
+
+				const station = await stationService.getById(stationId)
+				setStation(station)
+				setCurrStation(station)
+
+			}
 		} catch (err) {
 			console.log('Had issues in station details', err)
 			showErrorMsg('Cannot load station')
@@ -136,12 +135,52 @@ export function StationDetails() {
 			closeModal()
 		}
 	}
-	async function addToLikedSongs(ev, song) {
+	function checkLikedSongs(ev, newSong) {
 		ev.stopPropagation()
+		console.log(newSong);
+		const idx = user.likedSongs.songs.findIndex((likedSong) => likedSong.videoId === newSong.videoId)
 
-		const likedStation = await stationService.getLikedSongs()
-		console.log(likedStation);
-		addSongToStation(song, likedStation._id)
+		console.log(idx);
+		if (idx === -1) addToLikedSongs(newSong)
+		else removeFromLikedSongs(newSong)
+
+	}
+
+	async function addToLikedSongs(newSong) {
+
+
+		console.log(newSong);
+		newSong.likedBy.push({ _id: user._id, fullname: user.fullname })
+
+		await userService.addSong(user._id, newSong)
+		console.log(user, 'like');
+		const updatedSongs = station.songs.map(song => song.videoId === newSong.videoId ? newSong : song)
+		const stationToSave = { ...station, songs: updatedSongs }
+		setStation(stationToSave)
+		setCurrStation(stationToSave)
+	}
+
+	async function removeFromLikedSongs(newSong) {
+		const idx = newSong.likedBy.findIndex((likedUser) => likedUser._id === user._id)
+
+		newSong.likedBy.splice(idx, 1)
+		await userService.removeSong(user._id, newSong.videoId)
+		console.log(user, 'like');
+		const updatedSongs = station.songs.map(song => song.videoId === newSong.videoId ? newSong : song)
+		const stationToSave = { ...station, songs: updatedSongs }
+		setStation(stationToSave)
+		setCurrStation(stationToSave)
+
+		console.log(station);
+
+
+	}
+	function checkIfLiked(song) {
+
+		const idx = user.likedSongs.songs.findIndex((likedSong) => likedSong.videoId === song.videoId)
+		if (idx === -1) return false
+
+		return true
 	}
 
 	// function changePhoto(){
@@ -155,9 +194,9 @@ export function StationDetails() {
 				<img src={station.imgUrl} alt="" />
 				<div>
 					<h1 onClick={openModal}>{station.name}</h1>
-					
-						<span>{station.createdBy.fullname} {station.songs.length}  songs</span>
-					
+
+					{/* <span>{station.createdBy.fullname} {station.songs.length}  songs</span> */}
+
 				</div>
 			</header>
 			<div>
@@ -183,32 +222,31 @@ export function StationDetails() {
 							</td>
 
 							<td>
-							<svg
-                                        onClick={(event) => {
-                                            addToLikedSongs(event, song)
-                                            toggleLiked(song.id.videoId);
-                                            handleLikeIconClick()
-                                        }}
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill={isLiked ? '' : 'white'}
-                                        height="17"
-                                        width="17"
-                                        aria-hidden="true"
-                                        data-encore-id="icon"
-                                        className={`liked-song-icon ${likedSongs[song.id.videoId] ? 'liked' : ''}`}
-                                        viewBox="0 0 16 16">
+								<svg
+									onClick={(event) => {
+										checkLikedSongs(event, song)
+								
+									}}
+									xmlns="http://www.w3.org/2000/svg"
+									fill={checkIfLiked(song) ? '' : 'white'}
+									height="17"
+									width="17"
+									aria-hidden="true"
+									data-encore-id="icon"
+									className={`liked-song-icon ${likedSongs[song.id.videoId] ? 'liked' : ''}`}
+									viewBox="0 0 16 16">
 
-                                        <path
-                                            fill={likedSongs[song.id.videoId] ? '#1ed760' : 'none'}
-                                            d="M15.724 4.22A4.313 4.313 0 0 0 12.192.814a4.269 4.269 0 0 0-3.622 1.13.837.837 0 0 1-1.14 0 4.272 4.272 0 0 0-6.21 5.855l5.916 7.05a1.128 1.128 0 0 0 1.727 0l5.916-7.05a4.228 4.228 0 0 0 .945-3.577z">
-                                        </path>
-                                        <path
-                                            fill={likedSongs[song.id.videoId] ? '#1ed760' : 'white'}
-                                            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z">
-                                        </path>
+									<path
+										fill={checkIfLiked(song) ? '#1ed760' : 'none'}
+										d="M15.724 4.22A4.313 4.313 0 0 0 12.192.814a4.269 4.269 0 0 0-3.622 1.13.837.837 0 0 1-1.14 0 4.272 4.272 0 0 0-6.21 5.855l5.916 7.05a1.128 1.128 0 0 0 1.727 0l5.916-7.05a4.228 4.228 0 0 0 .945-3.577z">
+									</path>
+									<path
+										fill={checkIfLiked(song) ? '#1ed760' : 'white'}
+										d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z">
+									</path>
 
 
-                                    </svg></td>
+								</svg></td>
 							<td>
 								<button onClick={(event) => onDeleteSong(event, song.id)}>X</button>
 							</td>
@@ -217,10 +255,10 @@ export function StationDetails() {
 					))}
 				</tbody>
 			</table>
-			<div>Let's find something for your playlist</div>
-			<div className='song-search'>
+			{!isLikedPage && <div>Let's find something for your playlist</div>}
+			{!isLikedPage && <div className='song-search'>
 				<Search />
-			</div>
+			</div>}
 			<ul className="song-list">
 				{songs && songs.map((song, idx) => (
 					<li onClick={() => playSong(song)} key={idx}>

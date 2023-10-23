@@ -29,6 +29,8 @@ export function App() {
 							<Route element={<SearchPage />} path="/search" />
 							<Route element={<StationIndex />} path="/search/station/:genre" />
 							<Route element={<LoginSignup />} path="/loginsignup" />
+							<Route element={<StationDetails />} path="/likedsongs" />
+
 						</Routes>
 					</main>
 					<NavBar />

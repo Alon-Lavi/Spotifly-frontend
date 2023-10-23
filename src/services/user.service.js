@@ -1,5 +1,6 @@
 import { storageService } from './async-storage.service'
 import { httpService } from './http.service'
+import { utilService } from './util.service'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
@@ -12,8 +13,10 @@ export const userService = {
 	getUsers,
 	getById,
 	remove,
-	update,
-	changeScore,
+	removeSong,
+
+	addSong,
+	
 }
 
 window.userService = userService
@@ -34,9 +37,10 @@ function remove(userId) {
 	// return httpService.delete(`user/${userId}`)
 }
 
-async function update({ _id, score }) {
+async function addSong( _id, song ) {
 	const user = await storageService.get('user', _id)
-	user.score = score
+	user.likedSongs.songs.push(song)
+	console.log(user,'updtae');
 	await storageService.put('user', user)
 
 	// const user = await httpService.put(`user/${_id}`, {_id, score})
@@ -45,6 +49,20 @@ async function update({ _id, score }) {
 	return user
 }
 
+async function removeSong( _id, videoId ) {
+	const user = await storageService.get('user', _id)
+	const idx = user.likedSongs.songs.findIndex((song) => song.videoId === videoId)
+	console.log(idx,'idx');
+	user.likedSongs.songs.splice(idx, 1)
+	
+	console.log(user,'updtae');
+	await storageService.put('user', user)
+
+	// const user = await httpService.put(`user/${_id}`, {_id, score})
+	// Handle case in which admin updates other user's details
+	if (getLoggedinUser()._id === user._id) saveLocalUser(user)
+	return user
+}
 async function login(userCred) {
 	const users = await storageService.query('user')
 	const user = users.find((user) => user.username === userCred.username)
@@ -55,7 +73,17 @@ async function login(userCred) {
 }
 
 async function signup(userCred) {
-	userCred.score = 10000
+	userCred.likedSongs = {
+		_id: utilService.makeId,
+		imgUrl:'https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png',
+		name: 'Liked Songs',
+		songs:[],
+		createdBy:{
+			_id:userCred._id,
+			fullname:userCred.fullname
+		}
+	
+	}
 	if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
 	const user = await storageService.post('user', userCred)
 	// const user = await httpService.post('auth/signup', userCred)
@@ -67,16 +95,10 @@ async function logout() {
 	// return await httpService.post('auth/logout')
 }
 
-async function changeScore(by) {
-	const user = getLoggedinUser()
-	if (!user) throw new Error('Not loggedin')
-	user.score = user.score + by || by
-	await update(user)
-	return user.score
-}
+
 
 function saveLocalUser(user) {
-	user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, score: user.score }
+	user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, likedSongs: user.likedSongs }
 	sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
 	return user
 }

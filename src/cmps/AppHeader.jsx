@@ -39,25 +39,30 @@ export function AppHeader() {
 					<button onClick={goToPreviousPage} className="btn-go-back">
 						{Svg.btnGoBackHeader}
 					</button>
+
 					<button onClick={goToNextPage} className="btn-go-next">
 						{Svg.btnGoNextHeader}
 					</button>
+
 					{showSearchInput ? <Search /> : null}
 				</span>
 				{/* <div className="search-header">{showSearchInput ? <Search /> : null}</div> */}
 
 				{/* <User /> */}
-				{!user && (
-					<Link className="login-header" to={'/loginsignup'}>
-						Log-in
-					</Link>
-				)}
-				{user && (
-					<span className="logout-header">
-						<img id="logout" onClick={logout} src={user.imgUrl} alt="" aria-label="logout" />
-						{/* <span className="user-name flex">{user.fullname}</span> */}
-					</span>
-				)}
+				<div className="login-logout">
+					{!user && (
+						<Link className="login-header" to={'/loginsignup'}>
+							Log-in
+						</Link>
+					)}
+
+					{user && (
+						<span className="logout-header">
+							<img id="logout" onClick={logout} src={user.imgUrl} alt="" aria-label="logout" />
+							{/* <span className="user-name flex">{user.fullname}</span> */}
+						</span>
+					)}
+				</div>
 
 				<UserMsg />
 			</section>

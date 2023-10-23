@@ -1,15 +1,16 @@
 .app-header {
 	display: flex;
-	padding-top:8px;
+	// padding-top: 8px;
 	position: fixed;
 	top: 0;
 	height: rem(79px);
-	width: 81%;
+	width: 100vw;
 	background-color: rgb(15, 15, 15);
 	color: whitesmoke;
 	z-index: 1;
 	margin-left: 350px;
 	// padding-left: 1000px;
+	justify-content: space-between;
 
 	img {
 		height: 30px;
@@ -25,18 +26,32 @@
 		cursor: pointer;
 	}
 
-	.login-header {
-		text-decoration: none;
-	    margin-left: auto;
+	.login-logout {
+		// display: flex;
+		// justify-content: flex-end;
+		// margin-inline-start: em(580px);
+		// padding: 10px;
+
+		position: fixed;
+		display: flex;
 		justify-content: flex-end;
-		margin-top: 1.625rem;
-	
+		margin-inline-start: 10px;
+		top: 0;
+		right: 0;
 		color: white;
+		margin-inline-end: 20px;
 
+		.login-header,
+		.logout-header {
+			text-decoration: none;
+			// margin-left: auto;
+			margin-top: 1.625rem;
+			justify-content: flex-end;
+
+			color: white;
+		}
 	}
-
 }
-
 
 .search-input-container {
 	display: block;
@@ -50,8 +65,6 @@
 
 		background-color: rgb(40, 40, 40);
 		color: rgb(255, 255, 255);
-
-		// margin-left: 555px;
 	}
 
 	input:focus {
@@ -63,6 +76,7 @@
 
 .prev-next-btns {
 	margin-inline-end: 170px;
+
 	.btn-go-back,
 	.btn-go-next {
 		background-color: rgba(0, 0, 0, 0.427);
@@ -76,14 +90,5 @@
 		align-items: center;
 		border-radius: 50%;
 		fill: #ffffff;
-	}
-
-	@media (max-width: 768px) {
-		.btn-go-back,
-		.btn-go-next {
-			margin-top: 1rem;
-			height: 1.5rem;
-			width: 1.5rem;
-		}
 	}
 }

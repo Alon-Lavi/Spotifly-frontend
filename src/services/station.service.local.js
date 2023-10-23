@@ -15,7 +15,7 @@ export const stationService = {
 	removeSong,
 	// addStationMsg,
 	getGenres,
-	getLikedSongs,
+
 }
 
 window.cs = stationService
@@ -30,7 +30,7 @@ var stationsDemo = [
 	{
 		_id: 'd5001',
 		name: 'Daily Mix 1',
-		tags: ['Funk', 'Happy'],
+		tags: ['Funk', 'daily'],
 
 		createdBy: {
 			_id: 'SOHH2',
@@ -85,7 +85,7 @@ var stationsDemo = [
 	{
 		_id: 'd1001',
 		name: 'Daily Mix 2',
-		tags: ['Funk', 'Happy'],
+		tags: ['Funk', 'daily'],
 
 		createdBy: {
 			_id: 'SOHH2',
@@ -131,7 +131,7 @@ var stationsDemo = [
 	{
 		_id: 'd1004',
 		name: 'Daily Mix 3',
-		tags: ['Funk', 'Happy'],
+		tags: ['Funk', 'daily'],
 		createdBy: {
 			_id: 'SOHH2',
 			fullname: 'Amir Shamia',
@@ -174,7 +174,7 @@ var stationsDemo = [
 	{
 		_id: 'd1031',
 		name: 'Daily Mix 4',
-		tags: ['Funk', 'Happy'],
+		tags: ['Funk', 'daily'],
 		createdBy: {
 			_id: 'SOHH2',
 			fullname: 'Amir Shamia',
@@ -218,7 +218,7 @@ var stationsDemo = [
 	{
 		_id: 'd1002',
 		name: 'Simpsons',
-		tags: ['Pop', 'Rock'],
+		tags: ['Pop', 'Rock','recent'],
 		createdBy: {
 			_id: 'SOHH2',
 			fullname: 'Amir Shamia',
@@ -261,7 +261,7 @@ var stationsDemo = [
 	{
 		_id: 'd1001',
 		name: 'Just Chill',
-		tags: ['Funk', 'Happy'],
+		tags: ['Funk', 'Happy','recent'],
 		createdBy: {
 			_id: 'SOHH2',
 			fullname: 'Amir Shamia',
@@ -304,7 +304,7 @@ var stationsDemo = [
 	{
 		_id: 'd9001',
 		name: 'GTA playlist',
-		tags: ['Hip-Hop', 'Rock'],
+		tags: ['Hip-Hop', 'Rock','recent'],
 		createdBy: {
 			_id: 'u101',
 			fullname: 'Puki Ben David',
@@ -346,7 +346,7 @@ var stationsDemo = [
 	{
 		_id: 'd1003',
 		name: 'watch it burn',
-		tags: ['Pop', 'Hip-Hop'],
+		tags: ['Pop', 'Hip-Hop','recent'],
 		createdBy: {
 			_id: 'SOHH2',
 			fullname: 'Amir Shamia',
@@ -387,54 +387,11 @@ var stationsDemo = [
 			},
 		],
 	},
-	{
-		_id: 'd1005',
-		isRecomended: true,
-		name: 'Liked Songs',
-		tags: ['Funk', 'Happy', 'Hip-Hop'],
-		createdBy: {
-			_id: 'u101',
-			fullname: 'Puki Ben David',
-		},
-		imgUrl: 'https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png',
-		likedByUsers: ['{minimal-user}', '{minimal-user}'],
-
-		songs: [
-			{
-				id: 's1001',
-				album: 'album3',
-				title: 'The Meters - Cissy Strut',
-				artist: 'Cissy Strut',
-				url: 'youtube/song.mp4',
-				addedBy: '{minimal-user}',
-				imgUrl: 'https://i.ytimg.com/vi/4_iC0MyIykM/mqdefault.jpg',
-				addedAt: 162521765262,
-			},
-
-			{
-				id: 'mUkfiLjooxs',
-				album: 'album4',
-				artist: " The JB's ",
-				title: ' Pass The Peas',
-				url: 'youtube/song.mp4',
-				addedBy: {},
-				imgUrl: 'https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg',
-			},
-		],
-
-		msgs: [
-			{
-				id: 'm101',
-				from: '{mini-user}',
-				txt: 'Manish?',
-			},
-		],
-	},
-
+	
 	{
 		_id: 'd1006',
 		name: 'Subliminal radio',
-		tags: ['Hip-Hop'],
+		tags: ['Hip-Hop','mix'],
 		createdBy: {
 			_id: 'u101',
 			fullname: 'Puki Ben David',
@@ -477,7 +434,7 @@ var stationsDemo = [
 	{
 		_id: 'd1007',
 		name: 'This is Eminem',
-		tags: ['Hip-Hop'],
+		tags: ['Hip-Hop','mix'],
 		createdBy: {
 			_id: 'u101',
 			fullname: 'Puki Ben David',
@@ -520,7 +477,7 @@ var stationsDemo = [
 	{
 		_id: 'd1008',
 		name: 'Top of 2020',
-		tags: ['Pop'],
+		tags: ['Pop','mix'],
 		createdBy: {
 			_id: 'u101',
 			fullname: 'Puki Ben David',
@@ -563,7 +520,7 @@ var stationsDemo = [
 	{
 		_id: 'd1010',
 		name: 'הליהיטים הגדולים של ישראל',
-		tags: ['Pop'],
+		tags: ['Pop','mix'],
 		createdBy: {
 			_id: 'u101',
 			fullname: 'Puki Ben David',
@@ -1101,10 +1058,6 @@ const genres = [
 		backgroundcolor: 'peru',
 	},
 ]
-
-function getLikedSongs() {
-	return storageService.getByName(STORAGE_KEY, 'liked songs')
-}
 
 async function getEmptyStation(user) {
 	const stations = await query({ user })

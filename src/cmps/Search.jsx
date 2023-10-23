@@ -16,11 +16,9 @@ async function handleChange({target}) {
 		.get(
 			`https://www.googleapis.com/youtube/v3/search?part=snippet%20&videoEmbeddable=true&type=video&key=${API_KEY}&q=${target.value}`
 		)
-		// .then((res) => (console.log(res.data.items[3].id.videoId)))
+
         setSongsToSearch(res.data.items)
-        console.log('====================================');
-        console.log(res.data.items);
-        console.log('====================================');
+  
 }
 
     return (

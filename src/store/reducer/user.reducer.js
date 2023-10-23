@@ -6,7 +6,7 @@ export const SET_USER = 'SET_USER'
 export const SET_WATCHED_USER = 'SET_WATCHED_USER'
 export const REMOVE_USER = 'REMOVE_USER'
 export const SET_USERS = 'SET_USERS'
-export const SET_SCORE = 'SET_SCORE'
+export const SET_LIKED_SONGS = 'SET_LIKED_SONGS'
 
 const initialState = {
 	user: userService.getLoggedinUser(),
@@ -38,8 +38,8 @@ export function userReducer(state = initialState, action) {
 		case SET_USERS:
 			newState = { ...state, users: action.users }
 			break
-		case SET_SCORE:
-			newState = { ...state, user: { ...state.user, score: action.score } }
+		case SET_LIKED_SONGS:
+			newState = { ...state, user: { ...state.user, likedSongs: {...user.likedSongs, songs:[...user.likedSongs.songs, action.song]} } }
 			break
 		default:
 	}

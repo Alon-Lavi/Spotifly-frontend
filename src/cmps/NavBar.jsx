@@ -11,9 +11,9 @@ import { loadStations, addStation, updateStation, removeStation } from '../store
 // import { stationService } from "../services/station.service.local";
 
 export function NavBar() {
+    const user =useSelector((storeState) => storeState.userModule.user)
+    
     const location = useLocation();
-	const user =useSelector((storeState) => storeState.userModule.user)
-
     const isLoginPage = location.pathname === '/loginsignup';
 
     const [searchText, setSearchText] = useState('');

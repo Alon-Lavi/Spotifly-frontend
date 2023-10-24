@@ -11,6 +11,8 @@ import { utilService } from '../services/util.service'
 import { userService } from '../services/user.service'
 import { updateUser } from '../store/actions/user.actions'
 import { SongList } from '../cmps/SongList'
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
+
 
 export function StationDetails() {
 	const location = useLocation();
@@ -146,7 +148,7 @@ export function StationDetails() {
 	async function addToLikedSongs(newSong) {
 
 
-		newSong.likedBy.push({ _id: user._id, fullname: user.fullname })
+		// newSong.likedBy.push({ _id: user._id, fullname: user.fullname })
 
 		const updatedUser = await userService.addSong(user._id, newSong)
 		updateUser(updatedUser)
@@ -157,9 +159,7 @@ export function StationDetails() {
 	}
 
 	async function removeFromLikedSongs(newSong) {
-		const idx = newSong.likedBy.findIndex((likedUser) => likedUser._id === user._id)
 
-		newSong.likedBy.splice(idx, 1)
 		const updatedUser = await userService.removeSong(user._id, newSong.videoId)
 		updateUser(updatedUser)
 
@@ -182,6 +182,15 @@ export function StationDetails() {
 	// function changePhoto(){
 	// 	<ImgUploader/>
 	// }
+	async function handleDragend(res) {
+		const newSongs =[...station.songs]
+		const [recordeedItems]= newSongs.splice(res.source.index, 1);
+		newSongs.splice(res.destination.index, 0, recordeedItems);
+		const stationToSave = { ...station, songs: newSongs }
+		setStation(stationToSave)
+		console.log(stationToSave);
+		await updateStation(stationToSave)
+	}
 
 	if (!station) return LoaderService.threeDots
 	return (
@@ -199,27 +208,34 @@ export function StationDetails() {
 				<button onClick={() => onRemoveStation(station._id)}>delete</button>
 
 			</div>}
-			<table>
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>title</th>
+			<section className='song-list-container'>
+				<div className='song-list-header'>
 
-						<th>  </th>
-						<th>time</th>
-					</tr>
-				</thead>
-				<tbody>
-					{station.songs && <SongList songs={station.songs} playSong={playSong} checkLikedSongs={checkLikedSongs} checkIfLiked={checkIfLiked} onDeleteSong={onDeleteSong} />
+					<span>#</span>
+					<span>title</span>
 
-					}
-				</tbody>
-			</table>
+					<span>  </span>
+					<span>time</span>
+
+				</div>
+				<DragDropContext onDragEnd={handleDragend}>
+					<Droppable droppableId={station._id}>
+						{(provided) => {return (
+							<ul className='song-list' {...provided.droppableProps} ref={provided.innerRef} >
+								{station.songs && <SongList key={station._id} songs={station.songs} playSong={playSong} checkLikedSongs={checkLikedSongs} checkIfLiked={checkIfLiked} onDeleteSong={onDeleteSong} />
+
+								}
+								{provided.placeholder}
+							</ul>)
+						}}
+					</Droppable>
+				</DragDropContext>
+			</section>
 			{!isLikedPage && <div>Let's find something for your playlist</div>}
 			{!isLikedPage && <div className='song-search'>
 				<Search />
 			</div>}
-			<ul className="song-list">
+			<ul className="song-list-search">
 				{songs && songs.map((song, idx) => (
 					<li onClick={() => playSong(song)} key={idx}>
 						<img src={song.snippet.thumbnails.high.url} alt="" />

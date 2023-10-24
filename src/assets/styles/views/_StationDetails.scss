@@ -27,40 +27,75 @@
 		}
 	}
 
-	table {
+	.song-list-container {
 		color: white;
 		width: 100%;
 
-		tr {
-			cursor: pointer;
-			border-radius: 4px;
-			height: 56px;
-			border: 1px solid hsla(0, 0%, 100%, 0.1);
+		.song-list {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
 
-			&:hover {
-				background-color: hsla(0, 0%, 100%, 0.1);
+			li {
+				grid-gap: 10px;
+				align-items: center;
+				color: #b3b3b3;
+				display: grid;
+				font-family: CircularMedium, Rubik-Light;
+				font-size: .875rem;
+				gap: 10px;
+				grid-template-columns: 16px 6fr 4fr 3fr minmax(120px, 1fr);
+				height: 56px;
+				padding-left: 15px;
+
+				.idx {
+					display: flex;
+					align-items: center;
+					grid-column: 1;
+					grid-row: 1;
+					height: 100%;
+					justify-content: center;
+					width: 100%;
+				}
+
+				.details {
+					display: flex;
+					align-items: center;
+					align-items: center;
+					grid-column: 2;
+					grid-row: 1;
+
+
+					img {
+						height: 40px;
+						margin-right: 16px;
+						width: 40px;
+					}
+					span{
+						display: flex;
+						align-items: center;
+						justify-content: center;
+					}
+				}
 			}
 		}
 
-		th {
-			text-align: left;
-		}
+		// tr {
+		// 	cursor: pointer;
+		// 	border-radius: 4px;
+		// 	height: 56px;
+		// 	border: 1px solid hsla(0, 0%, 100%, 0.1);
 
-		td {
-			text-align: left;
-		}
+		// 	&:hover {
+		// 		background-color: hsla(0, 0%, 100%, 0.1);
+		// 	}
+		// }
 
-		img {
-			width: rem(40px);
-		}
 
-		button {
-			background-color: transparent;
-		}
 	}
 }
 
-.song-list {
+.song-list-search {
 	list-style-type: none;
 
 	li {
@@ -107,9 +142,16 @@
 }
 
 .song-search {
-	.search-input-container {
-		input {
-			margin-left: 0;
+	.search-bar {
+
+		.search-input-container {
+			input {
+				margin-left: 0;
+				border-radius: 0;
+				height: 40px;
+				opacity: 1;
+
+			}
 		}
 	}
 }

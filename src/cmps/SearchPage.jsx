@@ -118,6 +118,7 @@ export function SearchPage() {
 
         <>
             <section className="search-page">
+                <h1 className='search-text'>Browse all</h1>
                 {!songs && genres && (
                     <ul className="genres-list">
                         {genres.map((genre, idx) => (

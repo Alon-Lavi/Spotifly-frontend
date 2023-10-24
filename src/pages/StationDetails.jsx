@@ -205,13 +205,13 @@ export function StationDetails() {
 				</div>
 			</header>
 			{!isLikedPage && <div>
-				<button onClick={() => onRemoveStation(station._id)}>delete</button>
+				<button className='remove-btn' onClick={() => onRemoveStation(station._id)}>delete</button>
 
 			</div>}
 			<section className='song-list-container'>
 				<div className='song-list-header'>
 
-					<span>#</span>
+					<span>#      </span>
 					<span>title</span>
 
 					<span>  </span>
@@ -231,7 +231,7 @@ export function StationDetails() {
 					</Droppable>
 				</DragDropContext>
 			</section>
-			{!isLikedPage && <div>Let's find something for your playlist</div>}
+			{!isLikedPage && <div className='search-song-txt'>Let's find something for your playlist</div>}
 			{!isLikedPage && <div className='song-search'>
 				<Search />
 			</div>}

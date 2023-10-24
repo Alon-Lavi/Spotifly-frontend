@@ -3,23 +3,28 @@
 	top: 60px;
 	left: 100px;
 	margin-top: 70px;
-	margin-left: 100px;
+	margin-left: 353px;
 	width: 100%;
 	height: 1800px;
 	overflow: hidden;
-	// overflow-y: hidden;
-	// overflow-x: hidden;
-	background-color: rgb(15, 15, 15);
+
+	background-color: #121212;
 
 	.search-icon {
 		color: white;
 		margin-right: em(2px);
 	}
 
+	.search-text {
+		color: white;
+		font-family: sans-serif;
+		margin: 23px;
+	}
+
 	.song-list {
 		width: 70%;
 		height: 100%;
-		margin-left: 265px;
+		margin-left: 5px;
 		list-style-type: none;
 
 		li {
@@ -49,7 +54,8 @@
 
 	.text-song-name {
 		// display: flex;
-		flex-grow: 40;
+		flex-grow: 30;
+		
 	}
 
 	li {
@@ -66,8 +72,8 @@
 		img {
 			justify-content: start;
 			align-items: start;
-			width: 35px;
-			height: 35px;
+			width: 38px;
+			height: 38px;
 		}
 	}
 }
@@ -75,7 +81,7 @@
 .genres-list {
 	display: flex;
 	list-style-type: none;
-	margin-left: 225px;
+	margin-left: -27px;
 	margin-bottom: 20px;
 
 	transition: 0.55s ease-in-out;
@@ -96,7 +102,7 @@
 		img {
 			height: 100px;
 			width: 100px;
-			margin-left: 6.9em;
+			margin-left: 4.9em;
 			margin-top: 2.6em;
 			position: absolute;
 			-webkit-transform: rotate(20deg) translate(18%, -2%);
@@ -105,9 +111,10 @@
 
 		h1 {
 			font-family: 'circular', 'gotham', 'rubik', sans-serif;
-			font-weight: 600;
+			font-size: 20px;
+			font-weight: 700;
 			color: #fff;
-			margin-left: 20px;
+			margin-left: 6px;
 			margin-top: 20px;
 		}
 	}
@@ -118,6 +125,8 @@
 	position: fixed;
 	width: max-content;
 	height: max-content;
+	
+
 
 	// align-items: flex-start;
 	// justify-content: flex-start;

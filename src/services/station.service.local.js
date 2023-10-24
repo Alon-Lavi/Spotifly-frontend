@@ -1231,6 +1231,126 @@ const genres = [
 		imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf8dec632effd9735fa8aba06e',
 		backgroundcolor: 'peru',
 	},
+	{
+		title: 'Reggae',
+		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafefa737b67ec51ec989f5a51d',
+		backgroundcolor: 'gold',
+	  },
+	  {
+		title: 'Jazz',
+		imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf12809992dfc5b318892ea07b',
+		backgroundcolor: 'lightcoral',
+	  },
+	  {
+		title: 'Metal',
+		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafefa737b67ec51ec989f5a51d',
+		backgroundcolor: 'lightseagreen',
+	  },
+	  {
+		title: 'Indie',
+		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafe914a07d20cec7a65e2e5dad',
+		backgroundcolor: 'tomato',
+	  },
+	  {
+		title: 'Funk',
+		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafd82e2c83fe100a89e9cbb2a2',
+		backgroundcolor: 'royalblue',
+	  },
+	  {
+		title: 'Ska',
+		imgUrl: 'https://i.scdn.co/image/ab67706f00000002b70e0223f544b1faa2e95ed0',
+		backgroundcolor: 'darkorange',
+	  },
+	  {
+		title: 'Punk',
+		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafefa737b67ec51ec989f5a51d',
+		backgroundcolor: 'orchid',
+	  },
+	  {
+		title: 'Gospel',
+		imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf12809992dfc5b318892ea07b',
+		backgroundcolor: 'cadetblue',
+	  },
+	  {
+		title: 'Rap',
+		imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf8dec632effd9735fa8aba06e',
+		backgroundcolor: 'peru',
+	  },
+	  {
+		title: 'EDM',
+		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafe0a8a4382f1ebdfdd4c597f0',
+		backgroundcolor: 'coral',
+	  },
+	  {
+		title: 'Pop-Rock',
+		imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf9e3dea60be755ccd97b7351f',
+		backgroundcolor: 'lime',
+	  },
+	  {
+		title: 'Country-Rock',
+		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafefa737b67ec51ec989f5a51d',
+		backgroundcolor: 'gold',
+	  },
+	  {
+		title: 'R&B-Pop',
+		imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf26dd3719e8824756914ae61f',
+		backgroundcolor: 'orange',
+	  },
+	  {
+		title: 'Classical-Rock',
+		imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf12809992dfc5b318892ea07b',
+		backgroundcolor: 'teal',
+	  },
+	  {
+		title: 'Blues-Rock',
+		imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf271f9d895003c5f5561c1354',
+		backgroundcolor: 'magenta',
+	  },
+	  {
+		title: 'Folk-Rock',
+		imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf271f9d895003c5f5561c1354',
+		backgroundcolor: 'lightblue',
+	  },
+	  {
+		title: 'Latin-Pop',
+		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafa59f90c077c9f618fd0dde30',
+		backgroundcolor: 'lightcoral',
+	  },
+	  {
+		title: 'Dance-Pop',
+		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafefa737b67ec51ec989f5a51d',
+		backgroundcolor: 'lightseagreen',
+	  },
+	  {
+		title: 'Alternative-Rock',
+		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafe914a07d20cec7a65e2e5dad',
+		backgroundcolor: 'tomato',
+	  },
+	  {
+		title: 'Soul-Pop',
+		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafd82e2c83fe100a89e9cbb2a2',
+		backgroundcolor: 'royalblue',
+	  },
+	  {
+		title: 'Reggaeton-Pop',
+		imgUrl: 'https://i.scdn.co/image/ab67706f00000002b70e0223f544b1faa2e95ed0',
+		backgroundcolor: 'darkorange',
+	  },
+	  {
+		title: 'K-Pop-Rock',
+		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafefa737b67ec51ec989f5a51d',
+		backgroundcolor: 'orchid',
+	  },
+	  {
+		title: 'Acoustic-Pop',
+		imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf12809992dfc5b318892ea07b',
+		backgroundcolor: 'cadetblue',
+	  },
+	  {
+		title: 'Chill-Hop',
+		imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf8dec632effd9735fa8aba06e',
+		backgroundcolor: 'peru',
+	  },
 ]
 
 async function getEmptyStation(user) {

@@ -16,7 +16,6 @@
 	@media (max-width: 768px) {
 		grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 		margin-top: 1.4140625rem;
-
 	}
 
 	// display: grid;
@@ -139,7 +138,7 @@
 	}
 }
 
-.recomended-list {
+.recommended-list {
 	margin: 17px;
 	display: grid;
 	gap: 10px;

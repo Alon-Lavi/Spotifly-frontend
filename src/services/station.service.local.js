@@ -13,9 +13,8 @@ export const stationService = {
 	remove,
 	getEmptyStation,
 	removeSong,
-	// addStationMsg,
 	getGenres,
-
+	// addStationMsg,
 }
 
 window.cs = stationService
@@ -37,6 +36,7 @@ var stationsDemo = [
 			fullname: 'Alon Lavi',
 			imgUrl: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
 		},
+
 		imgUrl: 'https://dailymix-images.scdn.co/v2/img/ab6761610000e5ebe6b8f92cadb785fd926be403/1/en/default',
 		likedByUsers: [],
 
@@ -92,30 +92,59 @@ var stationsDemo = [
 			fullname: 'Alon Lavi',
 			imgUrl: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
 		},
+
 		imgUrl: 'https://dailymix-images.scdn.co/v2/img/6f0da41419b31d9d2ba55d2df212f59ad0668118/2/en/default',
 		likedByUsers: [],
 
 		songs: [
 			{
-				id: 's1001',
-				videoId: '79fzeNUqQbQ',
-				album: 'album15',
-				title: 'The Meters - Cissy Strut',
-				artist: 'Cissy Strut',
+				artist: '50 Cent',
+				id: 'b1001',
+				videoId: '5qm8PH4xAss',
+				title: '50 Cent - In Da Club',
 				url: 'youtube/song.mp4',
-				addedBy: '{minimal-user}',
-				imgUrl: 'https://i.ytimg.com/vi/4_iC0MyIykM/mqdefault.jpg',
-				addedAt: 162521765262,
+				imgUrl: 'https://i.ytimg.com/vi/5qm8PH4xAss/hqdefault.jpg',
+				addedAt: 162521765300,
+				addedBy: {},
 			},
 
 			{
-				id: 'mUkfiLjooxs',
-				album: 'album16',
-				artist: " The JB's ",
-				title: ' Pass The Peas',
+				id: 'b1002',
+				videoId: 'SRcnnId15BA',
+				title: '50 Cent - Candy Shop ft. Olivia',
 				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/SRcnnId15BA/hqdefault.jpg',
+				addedAt: 162521765310,
 				addedBy: {},
-				imgUrl: 'https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg',
+			},
+
+			{
+				id: 'b1003',
+				videoId: '5D3crqpClPY',
+				title: '50 Cent - Many Men',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/5D3crqpClPY/hqdefault.jpg',
+				addedAt: 162521765320,
+				addedBy: {},
+			},
+
+			{
+				id: 'b1004',
+				videoId: 'GllEDACUbNo',
+				title: '50 Cent - Just A Lil Bit',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/GllEDACUbNo/hqdefault.jpg',
+				addedAt: 162521765330,
+				addedBy: {},
+			},
+			{
+				id: 'b1005',
+				videoId: 'GNqYWkiBHHw',
+				title: '50 Cent - Disco Inferno',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/GNqYWkiBHHw/hqdefault.jpg',
+				addedAt: 162521765340,
+				addedBy: {},
 			},
 		],
 
@@ -132,34 +161,66 @@ var stationsDemo = [
 		_id: 'd1004',
 		name: 'Daily Mix 3',
 		tags: ['Funk', 'daily'],
+
 		createdBy: {
 			_id: 'SOHH2',
 			fullname: 'Amir Shamia',
 			imgUrl: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
 		},
+
 		imgUrl: 'https://dailymix-images.scdn.co/v2/img/ab6761610000e5ebbd0a9110c01c547407bfd1b9/3/en/default',
 		likedByUsers: ['{minimal-user}', '{minimal-user}'],
 
 		songs: [
 			{
-				id: 's1001',
-				album: 'album1',
-				title: 'The Meters - Cissy Strut',
-				artist: 'Cissy Strut',
+				artist: 'Lady Gaga',
+				id: 'c1001',
+				videoId: 'qrO4YZeyl0I',
+				title: 'Lady Gaga - Bad Romance',
 				url: 'youtube/song.mp4',
-				addedBy: '{minimal-user}',
-				imgUrl: 'https://i.ytimg.com/vi/4_iC0MyIykM/mqdefault.jpg',
-				addedAt: 162521765262,
+				imgUrl: 'https://i.ytimg.com/vi/qrO4YZeyl0I/hqdefault.jpg',
+				addedAt: 162521765400,
+				addedBy: {},
 			},
 
 			{
-				id: 'mUkfiLjooxs',
-				album: 'album2',
-				artist: " The JB's ",
-				title: ' Pass The Peas',
+				id: 'c1002',
+				videoId: '3Wnso2A4PZE',
+				title: 'LADY GAGA - Peso Pluma, Gabito Ballesteros, Junior H',
 				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/3Wnso2A4PZE/hqdefault.jpg',
+				addedAt: 162521765410,
 				addedBy: {},
-				imgUrl: 'https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg',
+			},
+
+			{
+				id: 'c1003',
+				videoId: 'bo_efYhYU2A',
+				title: 'Lady Gaga - Shallow',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/bo_efYhYU2A/hqdefault.jpg',
+				addedAt: 162521765420,
+				addedBy: {},
+			},
+
+			{
+				id: 'c1004',
+				videoId: 'MsXdUtlDVhk',
+				title: 'Lady Gaga - Bloody Mary',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/MsXdUtlDVhk/hqdefault.jpg',
+				addedAt: 162521765430,
+				addedBy: {},
+			},
+
+			{
+				id: 'c1005',
+				videoId: 'bESGLojNYSo',
+				title: 'Lady Gaga - Poker Face',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/bESGLojNYSo/hqdefault.jpg',
+				addedAt: 162521765440,
+				addedBy: {},
 			},
 		],
 
@@ -171,38 +232,71 @@ var stationsDemo = [
 			},
 		],
 	},
+
 	{
 		_id: 'd1031',
 		name: 'Daily Mix 4',
 		tags: ['Funk', 'daily'],
+
 		createdBy: {
 			_id: 'SOHH2',
 			fullname: 'Amir Shamia',
 			imgUrl: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
 		},
+
 		imgUrl: 'https://dailymix-images.scdn.co/v2/img/ab6761610000e5eb9d786723f2aa91b9f538e139/4/en/default',
 		likedByUsers: ['{minimal-user}', '{minimal-user}'],
 
 		songs: [
 			{
-				id: 's1001',
-				album: 'album17',
-				title: 'The Meters - Cissy Strut',
-				artist: 'Cissy Strut',
+				artist: 'Avicii',
+				id: 'd1001',
+				videoId: 'IcrbM1l_BoI',
+				title: 'Avicii - Wake Me Up',
 				url: 'youtube/song.mp4',
-				addedBy: '{minimal-user}',
-				imgUrl: 'https://i.ytimg.com/vi/4_iC0MyIykM/mqdefault.jpg',
-				addedAt: 162521765262,
+				imgUrl: 'https://i.ytimg.com/vi/IcrbM1l_BoI/hqdefault.jpg',
+				addedAt: 162521765500,
+				addedBy: {},
 			},
 
 			{
-				id: 'mUkfiLjooxs',
-				album: 'album18',
-				artist: " The JB's ",
-				title: ' Pass The Peas',
+				id: 'd1002',
+				videoId: 'UtF6Jej8yb4',
+				title: 'Avicii - The Nights',
 				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/UtF6Jej8yb4/hqdefault.jpg',
+				addedAt: 162521765510,
 				addedBy: {},
-				imgUrl: 'https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg',
+			},
+
+			{
+				id: 'd1003',
+				videoId: 'cHHLHGNpCSA',
+				title: 'Avicii - Waiting For Love',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/cHHLHGNpCSA/hqdefault.jpg',
+				addedAt: 162521765520,
+				addedBy: {},
+			},
+
+			{
+				id: 'd1004',
+				videoId: '_ovdm2yX4MA',
+				title: 'Avicii - Levels',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/_ovdm2yX4MA/hqdefault.jpg',
+				addedAt: 162521765530,
+				addedBy: {},
+			},
+
+			{
+				id: 'd1005',
+				videoId: 'h2Tzd7MiOj8',
+				title: 'Avicii Tribute Concert',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/h2Tzd7MiOj8/hqdefault.jpg',
+				addedAt: 162521765540,
+				addedBy: {},
 			},
 		],
 
@@ -217,38 +311,82 @@ var stationsDemo = [
 
 	{
 		_id: 'd1002',
-		name: 'Simpsons',
-		tags: ['Pop', 'Rock','recent'],
+		name: 'Sarit Hadad',
+		tags: ['Pop', 'Rock', 'recent'],
+
 		createdBy: {
 			_id: 'SOHH2',
 			fullname: 'Amir Shamia',
 			imgUrl: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
 		},
+
 		imgUrl:
 			'data:image/jpeg;base64,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',
 		likedByUsers: ['{minimal-user}', '{minimal-user}'],
+
 		songs: [
 			{
-				id: 's1001',
-				album: 'album1',
-				title: 'The Meters - Cissy Strut',
-				artist: 'Cissy Strut',
+				artist: 'Sarit Hadad',
+				id: 'e1001',
+				videoId: 'sw4ceCrBxpg',
+				title: 'שרית חדד - כשהלב בוכה ',
 				url: 'youtube/song.mp4',
-				addedBy: '{minimal-user}',
-				imgUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ7ZmMK94DfO65cgcUxZLxz7KtJ8tHe6vk8A&usqp=CAU',
-				addedAt: 162521765262,
-			},
-			{
-				id: 'mUkfiLjooxs',
-				album: 'album2',
-				artist: " The JB's ",
-				title: ' Pass The Peas',
-				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/sw4ceCrBxpg/hqdefault.jpg',
+				addedAt: 162521765600,
 				addedBy: {},
-				imgUrl: 'https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg',
+			},
+
+			{
+				id: 'e1002',
+				videoId: 'opwdAAgbJYI',
+				title: 'שרית חדד - בלי שביקשתי',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/opwdAAgbJYI/hqdefault.jpg',
+				addedAt: 162521765610,
+				addedBy: {},
+			},
+
+			{
+				id: 'e1003',
+				videoId: 'Td9bXh9kiPQ',
+				title: 'שרית חדד - עוד מעט שבת',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/Td9bXh9kiPQ/hqdefault.jpg',
+				addedAt: 162521765620,
+				addedBy: {},
+			},
+
+			{
+				id: 'e1004',
+				videoId: '7QkhkMRWb28',
+				title: 'שרית חדד - מאחלת לך',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/7QkhkMRWb28/hqdefault.jpg',
+				addedAt: 162521765630,
+				addedBy: {},
+			},
+
+			{
+				id: 'e1005',
+				videoId: '9wisDecF8vU',
+				title: 'שרית חדד - יאללה לך הביתה מוטי',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/9wisDecF8vU/hqdefault.jpg',
+				addedAt: 162521765640,
+				addedBy: {},
+			},
+
+			{
+				id: 'e1006',
+				videoId: 'OlCT-aqcrdo',
+				title: 'שרית חדד - קח את הכל',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/OlCT-aqcrdo/hqdefault.jpg',
+				addedAt: 162521765650,
+				addedBy: {},
 			},
 		],
-		isRecomended: true,
+		isRecommended: true,
 
 		msgs: [
 			{
@@ -258,40 +396,76 @@ var stationsDemo = [
 			},
 		],
 	},
+
 	{
 		_id: 'd1001',
 		name: 'Just Chill',
-		tags: ['Funk', 'Happy','recent'],
+		tags: ['Funk', 'Happy', 'recent'],
+
 		createdBy: {
 			_id: 'SOHH2',
 			fullname: 'Amir Shamia',
 			imgUrl: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
 		},
+
 		imgUrl: 'https://i.scdn.co/image/ab67706f00000002719586de761e1ff231672faa',
 		likedByUsers: ['{minimal-user}', '{minimal-user}'],
+
 		songs: [
 			{
-				id: 's1001',
-				album: 'album1',
-				title: 'The Meters - Cissy Strut',
-				artist: 'Cissy Strut',
+				artist: 'Eminem',
+				id: 'f1001',
+				videoId: 'YVkUvmDQ3HY',
+				title: 'Eminem - Without Me',
 				url: 'youtube/song.mp4',
-				addedBy: '{minimal-user}',
-				imgUrl: 'https://i.ytimg.com/vi/4_iC0MyIykM/mqdefault.jpg',
-				addedAt: 162521765262,
-			},
-			{
-				id: 'mUkfiLjooxs',
-				album: 'album2',
-				artist: " The JB's ",
-				title: ' Pass The Peas',
-				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/YVkUvmDQ3HY/hqdefault.jpg',
+				addedAt: 162521765700,
 				addedBy: {},
-				imgUrl: 'https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg',
+			},
+
+			{
+				id: 'f1002',
+				videoId: 'XbGs_qK2PQA',
+				title: 'Eminem - Rap God',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/XbGs_qK2PQA/hqdefault.jpg',
+				addedAt: 162521765710,
+				addedBy: {},
+			},
+
+			{
+				id: 'f1003',
+				videoId: '_Yhyp-_hX2s',
+				title: 'Eminem - Lose Yourself',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/_Yhyp-_hX2s/hqdefault.jpg',
+				addedAt: 162521765720,
+				addedBy: {},
+			},
+
+			{
+				id: 'f1004',
+				videoId: 'S9bCLPwzSC0',
+				title: 'Eminem - Mockingbird',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/S9bCLPwzSC0/hqdefault.jpg',
+				addedAt: 162521765730,
+				addedBy: {},
+			},
+
+			{
+				id: 'f1005',
+				videoId: 'eJO5HU_7_1w',
+				title: 'Eminem - The Real Slim Shady (Official Video - Clean Version)',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/eJO5HU_7_1w/hqdefault.jpg',
+				addedAt: 162521765740,
+				addedBy: {},
 			},
 		],
 
-		isRecomended: true,
+		isRecommended: true,
+
 		msgs: [
 			{
 				id: 'm101',
@@ -304,7 +478,7 @@ var stationsDemo = [
 	{
 		_id: 'd9001',
 		name: 'GTA playlist',
-		tags: ['Hip-Hop', 'Rock','recent'],
+		tags: ['Hip-Hop', 'Rock', 'recent'],
 		createdBy: {
 			_id: 'u101',
 			fullname: 'Puki Ben David',
@@ -333,7 +507,7 @@ var stationsDemo = [
 				imgUrl: 'https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg',
 			},
 		],
-		isRecomended: true,
+		isRecommended: true,
 
 		msgs: [
 			{
@@ -346,7 +520,7 @@ var stationsDemo = [
 	{
 		_id: 'd1003',
 		name: 'watch it burn',
-		tags: ['Pop', 'Hip-Hop','recent'],
+		tags: ['Pop', 'Hip-Hop', 'recent'],
 		createdBy: {
 			_id: 'SOHH2',
 			fullname: 'Amir Shamia',
@@ -377,7 +551,7 @@ var stationsDemo = [
 				imgUrl: 'https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg',
 			},
 		],
-		isRecomended: true,
+		isRecommended: true,
 
 		msgs: [
 			{
@@ -387,11 +561,11 @@ var stationsDemo = [
 			},
 		],
 	},
-	
+
 	{
 		_id: 'd1006',
 		name: 'Subliminal radio',
-		tags: ['Hip-Hop','mix'],
+		tags: ['Hip-Hop', 'mix'],
 		createdBy: {
 			_id: 'u101',
 			fullname: 'Puki Ben David',
@@ -434,7 +608,7 @@ var stationsDemo = [
 	{
 		_id: 'd1007',
 		name: 'This is Eminem',
-		tags: ['Hip-Hop','mix'],
+		tags: ['Hip-Hop', 'mix'],
 		createdBy: {
 			_id: 'u101',
 			fullname: 'Puki Ben David',
@@ -477,7 +651,7 @@ var stationsDemo = [
 	{
 		_id: 'd1008',
 		name: 'Top of 2020',
-		tags: ['Pop','mix'],
+		tags: ['Pop', 'mix'],
 		createdBy: {
 			_id: 'u101',
 			fullname: 'Puki Ben David',
@@ -520,7 +694,7 @@ var stationsDemo = [
 	{
 		_id: 'd1010',
 		name: 'הליהיטים הגדולים של ישראל',
-		tags: ['Pop','mix'],
+		tags: ['Pop', 'mix'],
 		createdBy: {
 			_id: 'u101',
 			fullname: 'Puki Ben David',
@@ -550,7 +724,7 @@ var stationsDemo = [
 				imgUrl: 'https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg',
 			},
 		],
-		isRecomended: true,
+		isRecommended: true,
 
 		msgs: [
 			{
@@ -1097,8 +1271,8 @@ async function query(filterBy = { txt: '' }) {
 		const regex = new RegExp(filterBy.txt, 'i')
 		stations = stations.filter((station) => regex.test(station.vendor) || regex.test(station.description))
 	}
-	if (filterBy.isRecomended) {
-		stations = stations.filter((station) => station.isRecomended === true)
+	if (filterBy.isRecommended) {
+		stations = stations.filter((station) => station.isRecommended === true)
 	}
 	if (filterBy.genre) {
 		stations = stations.filter((station) => _.includes(station.tags, filterBy.genre))

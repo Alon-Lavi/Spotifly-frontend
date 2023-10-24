@@ -1,12 +1,22 @@
 .station-details {
 	display: grid;
-	margin-left: em(330px);
-	margin-top: 80px;
+	margin-left: em(314px);
+	margin-top: 74px;
+	background-color: rgb(21, 21, 21);
+
+	.search-song-txt {
+		margin-top: 50px;
+		margin-left: 40px;
+		color: white;
+		font-family: sans-serif;
+		font-size: 22px;
+	}
 
 	header {
 		display: flex;
 		color: aliceblue;
 		gap: 16px;
+		margin: 17px;
 
 		div {
 			align-self: flex-end;
@@ -15,6 +25,7 @@
 		h1 {
 			font-size: 6rem;
 			cursor: pointer;
+			font-family: sans-serif;
 		}
 
 		img {
@@ -48,6 +59,7 @@
 				height: 56px;
 				padding-left: 15px;
 
+				
 				.idx {
 					display: flex;
 					align-items: center;
@@ -77,6 +89,10 @@
 						justify-content: center;
 					}
 				}
+			}
+			li:hover {
+				background-color: #71717158;
+				border-radius: 4px;
 			}
 		}
 
@@ -119,7 +135,7 @@
 		button {
 			align-items: center;
 			background-color: transparent;
-			border: 1px solid #717171;
+			border: 2px solid #717171;
 			border-radius: 500px;
 			color: #f5f5f5;
 			cursor: pointer;
@@ -146,8 +162,8 @@
 
 		.search-input-container {
 			input {
-				margin-left: 0;
-				border-radius: 0;
+				margin-left: 40px;
+				border-radius: 4px;
 				height: 40px;
 				opacity: 1;
 

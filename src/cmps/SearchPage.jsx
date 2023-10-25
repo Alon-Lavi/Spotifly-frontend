@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { setSongsToSearch } from '../store/actions/station.actions';
+import { setBgc, setSongsToSearch } from '../store/actions/station.actions';
 import { stationService } from '../services/station.service.local';
 import { GenrePreview } from './GenrePreview';
 import { setSongPlaying } from '../store/actions/player.actions';
@@ -30,6 +30,7 @@ export function SearchPage() {
 
     useEffect(() => {
         loadGenres();
+        setBgc(null)
         return () => {
             setSongsToSearch(null);
         };

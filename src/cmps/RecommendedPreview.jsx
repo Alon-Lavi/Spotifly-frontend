@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Svg } from './Svg'
 import { useSelector } from 'react-redux'
 import { bgcService } from '../services/bgc.service'
-import { setBgc } from '../store/actions/station.actions'
+import { getBgc, setBgc } from '../store/actions/station.actions'
 
 export function RecommendedPreview({ station, onPlayStation }) {
 	const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
@@ -18,21 +18,10 @@ export function RecommendedPreview({ station, onPlayStation }) {
 	// 	stationHaeder.style.setProperty('background-color', color)
 	// }
 
-	async function getBgc(imgUrl) {
-		// console.log(imgUrl)
-		try {
-			const color = await bgcService.getColorFromUrl(imgUrl)
-			console.log(color)
-			// changePrimaryClr(color)
-			setBgc(color)
-		} 
-		catch (err) {
-			console.log('Could not load color', err)
-		}
-	}
+
 
 	return (
-		<article key={station._id} onClick={() => getBgc(station.imgUrl)}  onMouseEnter={() => getBgc(station.imgUrl)}>
+		<article key={station._id} onClick={() => getBgc(station.imgUrl)} onMouseLeave={()=> getBgc(currStation.imgUrl)}  onMouseEnter={() => getBgc(station.imgUrl)}>
 			<img src={station.imgUrl} alt="" />
 			<span>{station.name} </span>
 			<button className="btn-play-playlist" onClick={(event) => onPlayStation(station, event)}>

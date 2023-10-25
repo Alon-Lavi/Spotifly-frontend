@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { loadStations, addStation, updateStation, removeStation, setCurrStation } from '../store/actions/station.actions.js'
+import { loadStations, addStation, updateStation, removeStation, setCurrStation, setBgc } from '../store/actions/station.actions.js'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from '../services/user.service.js'
@@ -22,11 +22,14 @@ export function StationIndex() {
 	const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
 	const player = useSelector((storeState) => storeState.playerModule.player)
 	const user = useSelector((storeState) => storeState.userModule.user)
+	const bgc = useSelector((storeState) => storeState.stationModule.bgc)
+
 
 	useEffect(() => {
 		loadStations({ genre })
 		loadRecommended()
 	}, [genre, user])
+
 
 	function onPlayStation(station, ev) {
 		if (station._id === currStation?._id) {

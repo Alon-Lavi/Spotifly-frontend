@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router'
 import { stationService } from '../services/station.service.local'
-import { addSongToStation, removeStation, setCurrStation, updateStation } from '../store/actions/station.actions'
+import { addSongToStation, getBgc, removeStation, setCurrStation, updateStation } from '../store/actions/station.actions'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { setIsPlaying, setSongPlaying } from '../store/actions/player.actions'
 import { LoaderService } from '../cmps/Loader'
@@ -107,6 +107,8 @@ export function StationDetails() {
 
 				const station = await stationService.getById(stationId)
 				setStation(station)
+				getBgc(station.imgUrl)
+
 				setCurrStation(station)
 				
 
@@ -114,7 +116,10 @@ export function StationDetails() {
 		} catch (err) {
 			console.log('Had issues in station details', err)
 			showErrorMsg('Cannot load station')
-			navigate('/station')
+			navigate('/')
+		}
+		finally{
+			getBgc(station.imgUrl)
 		}
 	}
 

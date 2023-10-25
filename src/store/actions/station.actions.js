@@ -12,6 +12,7 @@ import {
 	SET_STATIONS,
 	UPDATE_STATION,
 } from '../reducer/station.reducer.js'
+import { bgcService } from '../../services/bgc.service.js'
 
 // Action Creators:
 export function getActionRemoveStation(stationId) {
@@ -106,6 +107,19 @@ export async function addSongToStation(song, stationId) {
 
 export async function setBgc(bgc){
 	store.dispatch({ type: SET_BGC, bgc })
+}
+
+export 	async function getBgc(imgUrl) {
+	// console.log(imgUrl)
+	try {
+		const color = await bgcService.getColorFromUrl(imgUrl)
+		console.log(color)
+		// changePrimaryClr(color)
+		setBgc(color)
+	} 
+	catch (err) {
+		console.log('Could not load color', err)
+	}
 }
 
 // Demo for Optimistic Mutation

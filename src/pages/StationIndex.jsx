@@ -13,15 +13,15 @@ import { LoaderService } from '../cmps/Loader.jsx'
 import { utilService } from '../services/util.service.js'
 
 export function StationIndex() {
+	const [recommended, setRecommended] = useState()
+	const { genre } = useParams()
+
 	const stations = useSelector((storeState) => storeState.stationModule.stations)
 	const songPlaying = useSelector((storeState) => storeState.playerModule.songPlaying)
 	const currStation = useSelector((storeState) => storeState.stationModule.currStation)
 	const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
 	const player = useSelector((storeState) => storeState.playerModule.player)
 	const user = useSelector((storeState) => storeState.userModule.user)
-
-	const [recommended, setRecommended] = useState()
-	const { genre } = useParams()
 
 	useEffect(() => {
 		loadStations({ genre })

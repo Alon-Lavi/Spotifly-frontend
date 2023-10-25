@@ -24,9 +24,3 @@ export function setCurrentTime(currentTime) {
 export function setSongDuration(songDuration) {
 	store.dispatch({ type: SONG_DURATION, songDuration })
 }
-
-////////////////////////////////////////////////////////////////////////
-
-// export function setCurrTime(currTime) {
-// 	store.dispatch({ type: CURR_TIME, currTime })
-// }

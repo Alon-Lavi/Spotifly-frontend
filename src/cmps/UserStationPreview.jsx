@@ -20,10 +20,12 @@ export function UserStationPreview({ station }) {
 	return (
 		<li className="user-station-preview" onClick={() => navToStation(station._id)}>
 			<img src={station.createdBy.imgUrl} alt={station.name} />
+
 			<div className="station-info">
 				<h3>{station.name}</h3>
 				<span>{songsLength} songs</span>
 			</div>
+
 			<div className="playlist-actions"></div>
 		</li>
 	)

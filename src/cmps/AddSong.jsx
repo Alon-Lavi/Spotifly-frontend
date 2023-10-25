@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { trackService } from '../services/track.service'
-import { Svg } from '../pages/Svg'
+
+// import { Svg } from '../pages/Svg'
 
 export function AddSong({ station, onAddSong }) {
 	const [searchTerm, setSearchTerm] = useState('')
@@ -10,6 +11,7 @@ export function AddSong({ station, onAddSong }) {
 		const delayDebounceFn = setTimeout(() => {
 			fetchData()
 		}, 500)
+
 		return () => {
 			clearTimeout(delayDebounceFn)
 		}
@@ -17,6 +19,7 @@ export function AddSong({ station, onAddSong }) {
 
 	async function fetchData() {
 		if (!searchTerm) return
+
 		try {
 			const response = await trackService.getVideos(searchTerm, 10)
 			setTracks(response)
@@ -39,6 +42,7 @@ export function AddSong({ station, onAddSong }) {
 			<section className={`station-song-search flex ${station.songs?.length === 0 ? 'no-border' : ''}`}>
 				<div className="search-input">
 					<h1>Let's find something for your playlist</h1>
+
 					<div className="search-container">
 						<input
 							className="add-song-input"
@@ -48,13 +52,16 @@ export function AddSong({ station, onAddSong }) {
 							onChange={handleInputChange}
 							value={searchTerm}
 						/>
+
 						{svgService.searchHomePageIcon}
 					</div>
 				</div>
+
 				<div className="flex align-center">
 					<button className="close-songs-list"></button>
 				</div>
 			</section>
+
 			<div className="station-search-list">
 				<ul className="clean-list">
 					{tracks.map((track, index) => (
@@ -63,9 +70,12 @@ export function AddSong({ station, onAddSong }) {
 								<div className="song-img">
 									<img src={track.imgUrl} alt={track.title} />
 								</div>
+
 								<div className="btn-play-pause"></div>
 							</div>
+
 							<div className="song-title">{trackService.getCleanTitle(track.title)}</div>
+
 							<button className="btn-add-song" onClick={() => addToStation(track)}>
 								<span>Add</span>
 							</button>

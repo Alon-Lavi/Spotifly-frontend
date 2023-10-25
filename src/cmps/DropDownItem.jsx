@@ -29,6 +29,7 @@ export function DropDownItem({ onRemoveStation, stationId, onRemoveSong, songId,
 					<article onClick={() => onRemoveSong(songId)}>Delete song</article>
 				)}
 			</li>
+
 			{!stationId && (
 				<li
 					className="dropdown-item clean-list"

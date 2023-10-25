@@ -1,11 +1,10 @@
 import axios from 'axios'
+
 import { utilService } from '../services/util.service'
-import { useState } from 'react'
 import { setSongsToSearch } from '../store/actions/station.actions'
 
 export function Search() {
 	const API_KEY = 'AIzaSyCIHRUBlXc7OJQY31NlL6jlfigPqh9_PHE'
-	const [songs, setSongs] = useState(null)
 
 	async function handleChange({ target }) {
 		const res = await axios.get(
@@ -19,7 +18,6 @@ export function Search() {
 		<div className="search-bar">
 			<form>
 				<div className="search-input-container">
-					<span></span>
 					<input
 						onChange={utilService.debounce(handleChange, 3000)}
 						name="txt"

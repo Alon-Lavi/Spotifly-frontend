@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router'
 import { stationService } from '../services/station.service.local'
-import { addSongToStation, getBgc, removeStation, setCurrStation, updateStation } from '../store/actions/station.actions'
+import { getBgc, removeStation, setCurrStation, updateStation } from '../store/actions/station.actions'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
-import { setIsPlaying, setSongPlaying } from '../store/actions/player.actions'
+import { setSongPlaying } from '../store/actions/player.actions'
 import { LoaderService } from '../cmps/Loader'
 import { Search } from '../cmps/Search'
 import { useSelector } from 'react-redux'
@@ -11,23 +11,19 @@ import { utilService } from '../services/util.service'
 import { userService } from '../services/user.service'
 import { updateUser } from '../store/actions/user.actions'
 import { SongList } from '../cmps/SongList'
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
-import { bgcService } from '../services/bgc.service'
-
+import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 
 export function StationDetails() {
-	const location = useLocation();
-	const isLikedPage = location.pathname === '/likedsongs';
+	const location = useLocation()
+	const isLikedPage = location.pathname === '/likedsongs'
 	const [station, setStation] = useState(null)
-	const [isOpen, setIsOpen] = useState(false);
-	const [textareaValue, setTextareaValue] = useState('');
+	const [isOpen, setIsOpen] = useState(false)
+	const [textareaValue, setTextareaValue] = useState('')
 	const { stationId } = useParams()
-	const user = useSelector((storeState) => storeState.userModule.user);
-	const songs = useSelector((storeState) => storeState.stationModule.songsToSearch);
+	const user = useSelector((storeState) => storeState.userModule.user)
+	const songs = useSelector((storeState) => storeState.stationModule.songsToSearch)
 	const bgc = useSelector((storeState) => storeState.stationModule.bgc)
 	const navigate = useNavigate()
-
-
 
 	useEffect(() => {
 		loadStations()
@@ -44,32 +40,27 @@ export function StationDetails() {
 	}
 
 	const openModal = () => {
-		setIsOpen(true);
-	};
+		setIsOpen(true)
+	}
 
 	const closeModal = () => {
-		setIsOpen(false);
-	};
+		setIsOpen(false)
+	}
 
-	// Event handler to update the textarea value
 	const handleTextareaChange = (event) => {
-		setTextareaValue(event.target.value);
-	};
-
-
+		setTextareaValue(event.target.value)
+	}
 
 	function playSong(song) {
 		if (song.kind) {
 			const songToPlay = {
 				videoId: song.id.videoId,
 				title: song.snippet.title,
-				imgUrl: song.snippet.thumbnails.high.url
+				imgUrl: song.snippet.thumbnails.high.url,
 			}
 			setSongPlaying(songToPlay)
-		}
-		else setSongPlaying(song)
+		} else setSongPlaying(song)
 	}
-
 
 	async function AddToPlaylist(song, ev) {
 		ev.stopPropagation()
@@ -79,15 +70,13 @@ export function StationDetails() {
 			title: song.snippet.title.replace(/\([^)]*\)|\[[^\]]*\]/g, ''),
 			imgUrl: song.snippet.thumbnails.high.url,
 			addedAt: Date.now(),
-			likedBy: []
+			likedBy: [],
 		}
-		// setStation(prevStation=>({...prevStation,songs:[ ...prevStation.songs,  songToSave]}))
+
 		const stationToSave = { ...station, songs: [...station.songs, songToSave] }
-		// setStation(stationToSave)
 		setStation(stationToSave)
 		await updateStation(stationToSave)
 	}
-
 
 	async function onDeleteSong(ev, songId) {
 		ev.stopPropagation()
@@ -101,161 +90,157 @@ export function StationDetails() {
 			if (isLikedPage) {
 				setStation(user.likedSongs)
 				setCurrStation(user.likedSongs)
-
-			}
-			else {
-
+			} else {
 				const station = await stationService.getById(stationId)
 				setStation(station)
 				getBgc(station.imgUrl)
 
 				setCurrStation(station)
-				
-
 			}
 		} catch (err) {
 			console.log('Had issues in station details', err)
 			showErrorMsg('Cannot load station')
 			navigate('/')
 		}
-		finally{
-			getBgc(station.imgUrl)
-		}
 	}
 
 	async function saveChanges(ev) {
 		ev.preventDefault()
-		const desc = (ev.target[1].value);
-		const name = (ev.target[0].value)
+		const desc = ev.target[1].value
+		const name = ev.target[0].value
 		const stationToSave = { ...station, name, desc }
 		try {
 			const savedStation = await updateStation(stationToSave)
 			showSuccessMsg(`Station updated, new name: ${savedStation.name}`)
 		} catch (err) {
 			showErrorMsg('Cannot update station')
-		}
-		finally {
+		} finally {
 			closeModal()
 		}
 	}
+
 	function checkLikedSongs(ev, newSong) {
 		ev.stopPropagation()
 		const idx = user.likedSongs.songs.findIndex((likedSong) => likedSong.videoId === newSong.videoId)
 
 		if (idx === -1) addToLikedSongs(newSong)
 		else removeFromLikedSongs(newSong)
-
 	}
 
 	async function addToLikedSongs(newSong) {
-
-
-		// newSong.likedBy.push({ _id: user._id, fullname: user.fullname })
-
 		const updatedUser = await userService.addSong(user._id, newSong)
 		updateUser(updatedUser)
-		const updatedSongs = station.songs.map(song => song.videoId === newSong.videoId ? newSong : song)
+		const updatedSongs = station.songs.map((song) => (song.videoId === newSong.videoId ? newSong : song))
 		const stationToSave = { ...station, songs: updatedSongs }
 		setStation(stationToSave)
 		setCurrStation(stationToSave)
 	}
 
 	async function removeFromLikedSongs(newSong) {
-
 		const updatedUser = await userService.removeSong(user._id, newSong.videoId)
 		updateUser(updatedUser)
-
-		const updatedSongs = station.songs.map(song => song.videoId === newSong.videoId ? newSong : song)
+		const updatedSongs = station.songs.map((song) => (song.videoId === newSong.videoId ? newSong : song))
 		const stationToSave = { ...station, songs: updatedSongs }
 		setStation(stationToSave)
 		setCurrStation(stationToSave)
-
-
-
 	}
-	function checkIfLiked(song) {
 
+	function checkIfLiked(song) {
 		const idx = user.likedSongs.songs.findIndex((likedSong) => likedSong.videoId === song.videoId)
 		if (idx === -1) return false
 
 		return true
 	}
 
-	// function changePhoto(){
-	// 	<ImgUploader/>
-	// }
 	async function handleDragend(res) {
 		const newSongs = [...station.songs]
-		const [recordeedItems] = newSongs.splice(res.source.index, 1);
-		newSongs.splice(res.destination.index, 0, recordeedItems);
+		const [recordeedItems] = newSongs.splice(res.source.index, 1)
+		newSongs.splice(res.destination.index, 0, recordeedItems)
 		const stationToSave = { ...station, songs: newSongs }
-		if(isLikedPage){
-			const userToSave = {...user, likedSongs: stationToSave }
+
+		if (isLikedPage) {
+			const userToSave = { ...user, likedSongs: stationToSave }
 			userService.updateUser(userToSave)
-		return
+			return
 		}
+
 		setStation(stationToSave)
-		console.log(stationToSave);
+		console.log(stationToSave)
 		await updateStation(stationToSave)
 	}
 
 	if (!station) return LoaderService.threeDots
 	return (
 		<section className="station-details">
-			<header style={{backgroundColor: bgc}} className='station-header'>
+			<header style={{ backgroundColor: bgc }} className="station-header">
 				<img src={station.imgUrl} alt="" />
-				<div className='title'>
+
+				<div className="title">
 					<h1 onClick={openModal}>{station.name}</h1>
 
-					<span>{station.createdBy?.fullname} {station.songs?.length}  songs</span>
-
+					<span>
+						{station.createdBy?.fullname} {station.songs?.length} songs
+					</span>
 				</div>
 			</header>
-		
-			{!isLikedPage && <div className='station-options' style={{backgroundImage: `linear-gradient(180deg, ${bgc}, transparent)`}}>
-				<button  className='remove-btn' onClick={() => onRemoveStation(station._id)}>delete</button>
 
-			</div>}
-			<section className='song-list-container'>
-				<div className='song-list-header'>
-
-					<span>#      </span>
-					<span>title</span>
-
-					<span>  </span>
-					<span>time</span>
-
+			{!isLikedPage && (
+				<div className="station-options" style={{ backgroundImage: `linear-gradient(180deg, ${bgc}, transparent)` }}>
+					<button className="remove-btn" onClick={() => onRemoveStation(station._id)}>
+						delete
+					</button>
 				</div>
+			)}
+
+			<section className="song-list-container">
+				<div className="song-list-header">
+					<span>#</span>
+					<span>title</span>
+					<span>time</span>
+				</div>
+
 				<DragDropContext onDragEnd={handleDragend}>
 					<Droppable droppableId={station._id}>
 						{(provided) => {
 							return (
-								<ul className='song-list' {...provided.droppableProps} ref={provided.innerRef} >
-									{station.songs && <SongList key={station._id} songs={station.songs} playSong={playSong} checkLikedSongs={checkLikedSongs} checkIfLiked={checkIfLiked} onDeleteSong={onDeleteSong} />
-
-									}
+								<ul className="song-list" {...provided.droppableProps} ref={provided.innerRef}>
+									{station.songs && (
+										<SongList
+											key={station._id}
+											songs={station.songs}
+											playSong={playSong}
+											checkLikedSongs={checkLikedSongs}
+											checkIfLiked={checkIfLiked}
+											onDeleteSong={onDeleteSong}
+										/>
+									)}
 									{provided.placeholder}
-								</ul>)
+								</ul>
+							)
 						}}
 					</Droppable>
 				</DragDropContext>
 			</section>
-			{!isLikedPage && <div className='search-song-txt'>Let's find something for your playlist</div>}
-			{!isLikedPage && <div className='song-search'>
-				<Search />
-			</div>}
-			<ul className="song-list-search">
-				{songs && songs.map((song, idx) => (
-					<li onClick={() => playSong(song)} key={idx}>
-						<img src={song.snippet.thumbnails.high.url} alt="" />
-						<div className="options">
-							<span>{song.snippet.title.replace(/\([^)]*\)|\[[^\]]*\]/g, '')}</span>
 
-							<button onClick={(event) => AddToPlaylist(song, event)}> Add  </button>
-							{/* Ваши три точки и модальное окно */}
-						</div>
-					</li>
-				))}
+			{!isLikedPage && <div className="search-song-txt">Let's find something for your playlist</div>}
+			{!isLikedPage && (
+				<div className="song-search">
+					<Search />
+				</div>
+			)}
+
+			<ul className="song-list-search">
+				{songs &&
+					songs.map((song, idx) => (
+						<li onClick={() => playSong(song)} key={idx}>
+							<img src={song.snippet.thumbnails.high.url} alt="" />
+							<div className="options">
+								<span>{song.snippet.title.replace(/\([^)]*\)|\[[^\]]*\]/g, '')}</span>
+
+								<button onClick={(event) => AddToPlaylist(song, event)}> Add </button>
+							</div>
+						</li>
+					))}
 			</ul>
 
 			<div>
@@ -264,29 +249,35 @@ export function StationDetails() {
 						<div className="modal">
 							<div>
 								<h2>Edit details</h2>
-								<span className="close" onClick={closeModal}>&times;</span>
+								<span className="close" onClick={closeModal}>
+									&times;
+								</span>
 							</div>
 
-							{/* <img src={station.createdBy.imgUrl} alt="" /> */}
-							<form id='myForm' onSubmit={saveChanges}>
-								<input className='image' type="image" src={station.imgUrl} alt="" />
-								<input className='title' defaultValue={station.name} type="text" />
+							<form id="myForm" onSubmit={saveChanges}>
+								<input className="image" type="image" src={station.imgUrl} alt="" />
+								<input className="title" defaultValue={station.name} type="text" />
 								<textarea
-									value={textareaValue}          // Bind the value to the state variable
-									onChange={handleTextareaChange} // Handle changes to the textarea
-									rows={5}                       // Number of visible rows
+									value={textareaValue}
+									onChange={handleTextareaChange}
+									rows={5}
 									cols={40}
-									placeholder='Add an optional description'                    // Number of visible columns
+									placeholder="Add an optional description"
 								></textarea>
-								<button type='submit' form="myForm">save</button>
-							</form>
-							<p>By proceeding, you agree to give Spotify access to the image you choose to upload. Please make sure you have the right to upload the image.</p>
 
+								<button type="submit" form="myForm">
+									save
+								</button>
+							</form>
+
+							<p>
+								By proceeding, you agree to give Spotify access to the image you choose to upload. Please make sure you have the
+								right to upload the image.
+							</p>
 						</div>
 					</div>
 				)}
 			</div>
-
 		</section>
 	)
 }

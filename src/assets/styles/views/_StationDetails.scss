@@ -1,6 +1,6 @@
 .station-details {
 	display: grid;
-	margin-left: em(314px);
+	margin-left: em(315px);
 	margin-top: 74px;
 	background-color: rgb(21, 21, 21);
 
@@ -39,8 +39,6 @@
 			align-self: flex-end;
 		}
 
-
-
 		img {
 			margin-inline-start: 17px;
 			width: 192px;
@@ -51,6 +49,7 @@
 			margin-inline-start: em(20px);
 		}
 	}
+
 	.station-options {
 		display: flex;
 		align-items: center;
@@ -58,6 +57,7 @@
 		width: 102%;
 		height: 100px;
 	}
+
 	.song-list-container {
 		color: white;
 		width: 100%;
@@ -73,12 +73,11 @@
 				color: #b3b3b3;
 				display: grid;
 				font-family: CircularMedium, Rubik-Light;
-				font-size: .875rem;
+				font-size: 0.875rem;
 				gap: 10px;
 				grid-template-columns: 16px 6fr 4fr 3fr minmax(120px, 1fr);
 				height: 56px;
 				padding-left: 15px;
-
 
 				.idx {
 					display: flex;
@@ -90,13 +89,16 @@
 					width: 100%;
 				}
 
+				button {
+					background-color: transparent;
+				}
+
 				.details {
 					display: flex;
 					align-items: center;
 					align-items: center;
 					grid-column: 2;
 					grid-row: 1;
-
 
 					img {
 						height: 40px;
@@ -117,21 +119,6 @@
 				border-radius: 4px;
 			}
 		}
-
-	
-
-		// tr {
-		// 	cursor: pointer;
-		// 	border-radius: 4px;
-		// 	height: 56px;
-		// 	border: 1px solid hsla(0, 0%, 100%, 0.1);
-
-		// 	&:hover {
-		// 		background-color: hsla(0, 0%, 100%, 0.1);
-		// 	}
-		// }
-
-
 	}
 }
 
@@ -183,14 +170,12 @@
 
 .song-search {
 	.search-bar {
-
 		.search-input-container {
 			input {
 				margin-left: 40px;
 				border-radius: 4px;
 				height: 40px;
 				opacity: 1;
-
 			}
 		}
 	}
@@ -204,7 +189,6 @@
 	width: 100%;
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.5);
-	/* Semi-transparent overlay */
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -218,7 +202,6 @@
 	display: flex;
 	-ms-flex-direction: column;
 	flex-direction: column;
-	// min-height: 384px;
 	width: 524px;
 	background-color: #282828;
 	border-radius: 8px;

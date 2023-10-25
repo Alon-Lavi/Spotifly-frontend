@@ -21,7 +21,7 @@ export function RecommendedPreview({ station, onPlayStation }) {
 
 
 	return (
-		<article key={station._id} onClick={() => getBgc(station.imgUrl)} onMouseLeave={()=> getBgc(currStation.imgUrl)}  onMouseEnter={() => getBgc(station.imgUrl)}>
+		<article key={station._id} onClick={() => getBgc(station.imgUrl)} onMouseLeave={()=> getBgc(currStation?.imgUrl)}  onMouseEnter={() => getBgc(station.imgUrl)}>
 			<img src={station.imgUrl} alt="" />
 			<span>{station.name} </span>
 			<button className="btn-play-playlist" onClick={(event) => onPlayStation(station, event)}>

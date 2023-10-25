@@ -206,13 +206,18 @@ export function Player() {
 			<div className="left-controls">
 				<div className="station-img">
 					{songPlaying && (
-						<div className="player-container">
+						<div className='img-song-name flex'>
 							<img className="station-img" src={songPlaying.imgUrl} alt="station-img" />
-							<YouTube videoId={songPlaying.videoId} opts={opts} onReady={handlePlayerReady} onStateChange={onChangePlayerStatus} />
+							<YouTube
+								videoId={songPlaying.videoId}
+								opts={opts}
+								onReady={handlePlayerReady}
+								onStateChange={onChangePlayerStatus}
+								style={{ display: 'none' }}
+							/>
+							<span className="song-name-player">{songPlaying && trackService.getCleanTitle(songPlaying.title)}</span>
 						</div>
 					)}
-
-					<span className="song-name">{songPlaying && trackService.getCleanTitle(songPlaying.title)}</span>
 				</div>
 			</div>
 

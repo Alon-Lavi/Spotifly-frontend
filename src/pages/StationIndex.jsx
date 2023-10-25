@@ -54,12 +54,9 @@ export function StationIndex() {
 
 	if (!recommended || !stations) return LoaderService.threeDots
 	return (
-		<div className="main-container-page">
-			<main className="main-container">
-				
-				{!genre && <RecommendedList onPlayStation={onPlayStation} recommended={recommended} />}
-				<StationList onPlayStation={onPlayStation} stations={stations} />
-			</main>
-		</div>
+		<main className="main-container">
+			{!genre && <RecommendedList onPlayStation={onPlayStation} recommended={recommended} />}
+			<StationList onPlayStation={onPlayStation} stations={stations} />
+		</main>
 	)
 }

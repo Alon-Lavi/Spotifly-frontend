@@ -310,6 +310,149 @@ var stationsDemo = [
 	},
 
 	{
+		_id: 'e1031',
+		name: 'Daily Mix 5',
+		tags: ['hip-hop', 'daily'],
+
+		createdBy: {
+			_id: 'SOHH2',
+			fullname: 'Alon Lavi',
+			imgUrl: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
+		},
+
+		imgUrl: 'https://dailymix-images.scdn.co/v2/img/ab6761610000e5eb9b2f6666f0dbb3234080ce43/5/en/default',
+		likedByUsers: ['{minimal-user}', '{minimal-user}'],
+
+		songs: [
+			{
+				artist: 'Snoop Dogg',
+				id: 'e1001',
+				videoId: '_CL6n0FJZpk',
+				title: 'Dr. Dre - Still D.R.E. ft. Snoop Dogg',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/_CL6n0FJZpk/hqdefault.jpg',
+				addedAt: 172521765500,
+				addedBy: {},
+			},
+
+			{
+				id: 'e1002',
+				videoId: 'GtUVQei3nX4',
+				title: "Snoop Dogg - Drop It Like It's Hot ft. Pharrell Williams",
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/GtUVQei3nX4/hqdefault.jpg',
+				addedAt: 182521765600,
+				addedBy: {},
+			},
+
+			{
+				id: 'e1003',
+				videoId: 'Wa5B22KAkEk',
+				title: 'Snoop Dogg & Wiz Khalifa - Young, Wild & Free ft. Bruno Mars',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/Wa5B22KAkEk/hqdefault.jpg',
+				addedAt: 192521765520,
+				addedBy: {},
+			},
+
+			{
+				id: 'e1004',
+				videoId: 'QZXc39hT8t4',
+				title: 'Dr. Dre - The Next Episode',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/QZXc39hT8t4/hqdefault.jpg',
+				addedAt: 192521767000,
+				addedBy: {},
+			},
+		],
+
+		msgs: [
+			{
+				id: 'm101',
+				from: '{mini-user}',
+				txt: 'Manish?',
+			},
+		],
+	},
+
+	{
+		_id: 'e1031',
+		name: 'Daily Mix 6',
+		tags: ['hip-hop', 'daily'],
+
+		createdBy: {
+			_id: 'SOHH2',
+			fullname: 'Alon Lavi',
+			imgUrl: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
+		},
+
+		imgUrl: 'https://dailymix-images.scdn.co/v2/img/ab6761610000e5eb2ee20961f3ff62292e71bb55/6/en/default',
+		likedByUsers: ['{minimal-user}', '{minimal-user}'],
+
+		songs: [
+			{
+				artist: 'Noa kirle',
+				id: 'f1001',
+				videoId: 'mv0BtAepULk',
+				title: 'נועה קירל - פרובוקטיבית ',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/mv0BtAepULk/hqdefault.jpg',
+				addedAt: 183631765500,
+				addedBy: {},
+			},
+
+			{
+				id: 'f1002',
+				videoId: '4--8fjxjkYU',
+				title: 'נועה קירל - דז׳הוו',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/4--8fjxjkYU/hqdefault.jpg',
+				addedAt: 183631905500,
+				addedBy: {},
+			},
+
+			{
+				id: 'f1003',
+				videoId: 'Z3mIcCllJXY',
+				title: 'נועה קירל - יוניקורן',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/Z3mIcCllJXY/hqdefault.jpg',
+				addedAt: 192521769920,
+				addedBy: {},
+			},
+
+			{
+				id: 'f1004',
+				videoId: '5TUN30--lUw',
+				title: 'נועה קירל - פאוץ׳',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/5TUN30--lUw/hqdefault.jpg',
+				addedAt: 194921767000,
+				addedBy: {},
+			},
+
+			{
+				id: 'f1005',
+				videoId: 'RMwhKx8_X8A',
+				title: 'נועה קירל - מדברים',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/RMwhKx8_X8A/hqdefault.jpg',
+				addedAt: 194921767700,
+				addedBy: {},
+			},
+		],
+
+		msgs: [
+			{
+				id: 'm101',
+				from: '{mini-user}',
+				txt: 'Manish?',
+			},
+		],
+	},
+	////////////////////////////////////////////////////////////////
+
+	{
 		_id: 'd1002',
 		name: 'Sarit Hadad',
 		tags: ['Pop', 'Rock', 'recent'],
@@ -479,32 +622,56 @@ var stationsDemo = [
 		_id: 'd9001',
 		name: 'GTA playlist',
 		tags: ['Hip-Hop', 'Rock', 'recent'],
+
 		createdBy: {
 			_id: 'u101',
 			fullname: 'Puki Ben David',
 		},
+
 		imgUrl:
 			'data:image/jpeg;base64,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',
-		likedByUsers: ['{minimal-user}', '{minimal-user}'],
+		likedByUsers: [],
+
 		songs: [
 			{
-				id: 's1001',
-				album: 'album1',
-				title: 'The Meters - Cissy Strut',
-				artist: 'Cissy Strut',
+				artist: 'Doja cat',
+				id: 'frr1101',
+				videoId: 'm4_9TFeMfJE',
+				title: 'Doja Cat - Paint The Town Red',
 				url: 'youtube/song.mp4',
-				addedBy: '{minimal-user}',
-				imgUrl: 'https://i.ytimg.com/vi/4_iC0MyIykM/mqdefault.jpg',
-				addedAt: 162521765262,
-			},
-			{
-				id: 'mUkfiLjooxs',
-				album: 'album2',
-				artist: " The JB's ",
-				title: ' Pass The Peas',
-				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/m4_9TFeMfJE/hqdefault.jpg',
+				addedAt: 202521765700,
 				addedBy: {},
-				imgUrl: 'https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg',
+			},
+
+			{
+				id: 'frr1102',
+				videoId: '0c66ksfigtU',
+				title: 'Doja Cat - Agora Hills',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/0c66ksfigtU/hqdefault.jpg',
+				addedAt: 202521770700,
+				addedBy: {},
+			},
+
+			{
+				id: 'frr1103',
+				videoId: 'qwtyEKTGGQ8',
+				title: 'Doja Cat - Demons',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/qwtyEKTGGQ8/hqdefault.jpg',
+				addedAt: 202521895700,
+				addedBy: {},
+			},
+
+			{
+				id: 'frr1104',
+				videoId: 'agXQQDasq0U',
+				title: 'Doja Cat - Attention',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/agXQQDasq0U/hqdefault.jpg',
+				addedAt: 202530895700,
+				addedBy: {},
 			},
 		],
 		isRecommended: true,
@@ -517,41 +684,132 @@ var stationsDemo = [
 			},
 		],
 	},
+
 	{
 		_id: 'd1003',
 		name: 'watch it burn',
 		tags: ['Pop', 'Hip-Hop', 'recent'],
+
 		createdBy: {
 			_id: 'SOHH2',
-			fullname: 'Amir Shamia',
+			fullname: 'Alon Lavi',
 			imgUrl: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
 		},
+
 		imgUrl:
 			'data:image/jpeg;base64,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',
 
-		likedByUsers: ['{minimal-user}', '{minimal-user}'],
+		likedByUsers: [],
+
 		songs: [
 			{
-				id: 's1001',
-				album: 'album1',
-				title: 'The Meters - Cissy Strut',
-				artist: 'Cissy Strut',
+				artist: 'Sean Kingston',
+				id: 'grt1122',
+				videoId: 'MrTz5xjmso4',
+				title: 'Sean Kingston - Beautiful Girls',
 				url: 'youtube/song.mp4',
-				addedBy: '{minimal-user}',
-				imgUrl: 'https://i.ytimg.com/vi/4_iC0MyIykM/mqdefault.jpg',
-				addedAt: 162521765262,
-			},
-			{
-				id: 'mUkfiLjooxs',
-				album: 'album2',
-				artist: " The JB's ",
-				title: ' Pass The Peas',
-				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/MrTz5xjmso4/hqdefault.jpg',
+				addedAt: 303631765500,
 				addedBy: {},
-				imgUrl: 'https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg',
+			},
+
+			{
+				id: 'grt1123',
+				videoId: 'prmmCg5bKxA',
+				title: 'Sean Kingston, Justin Bieber - Eenie Meenie',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/prmmCg5bKxA/hqdefault.jpg',
+				addedAt: 303631766600,
+				addedBy: {},
+			},
+
+			{
+				id: 'grt1124',
+				videoId: 'YkyhvCdJ_vM',
+				title: 'Sean Kingston - Fire Burning',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/YkyhvCdJ_vM/hqdefault.jpg',
+				addedAt: 303631777700,
+				addedBy: {},
+			},
+
+			{
+				id: 'grt1124',
+				videoId: 't130Gzik-RM',
+				title: 'Sean Kingston - Me Love',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/t130Gzik-RM/hqdefault.jpg',
+				addedAt: 303631907700,
+				addedBy: {},
 			},
 		],
 		isRecommended: true,
+
+		msgs: [
+			{
+				id: 'm101',
+				from: '{mini-user}',
+				txt: 'Manish?',
+			},
+		],
+	},
+
+	{
+		_id: 'raf111',
+		name: 'Look at me now',
+		tags: ['Pop', 'Hip-Hop', 'recent'],
+
+		createdBy: {
+			_id: 'SOHH2',
+			fullname: 'Alon Lavi',
+			imgUrl: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
+		},
+
+		imgUrl: 'https://i.scdn.co/image/ab67706f00000002fe613ad6444200638c1a034e',
+		likedByUsers: [],
+
+		songs: [
+			{
+				artist: 'Kendrick Lamar',
+				id: 'qpo111',
+				videoId: 'tvTRZJ-4EyI',
+				title: 'Kendrick Lamar - HUMBLE',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/tvTRZJ-4EyI/hqdefault.jpg',
+				addedAt: 1698247680900,
+				addedBy: {},
+			},
+
+			{
+				id: 'qpo112',
+				videoId: '5GhhVHpPR_M',
+				title: 'Kendrick Lamar - Count Me Out',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/5GhhVHpPR_M/hqdefault.jpg',
+				addedAt: 1598247680900,
+				addedBy: {},
+			},
+
+			{
+				id: 'qpo113',
+				videoId: 'Z-48u_uWMHY',
+				title: 'Kendrick Lamar - Alright',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/Z-48u_uWMHY/hqdefault.jpg',
+				addedAt: 1598235680900,
+				addedBy: {},
+			},
+
+			{
+				id: 'qpo114',
+				videoId: 'toBTPGfurLc',
+				title: 'Kendrick Lamar - Rich Spirit',
+				url: 'youtube/song.mp4',
+				imgUrl: 'https://i.ytimg.com/vi/toBTPGfurLc/hqdefault.jpg',
+				addedAt: 1594535680900,
+				addedBy: {},
+			},
+		],
 
 		msgs: [
 			{
@@ -566,34 +824,87 @@ var stationsDemo = [
 		_id: 'd1006',
 		name: 'Subliminal radio',
 		tags: ['Hip-Hop', 'mix'],
+
 		createdBy: {
 			_id: 'u101',
-			fullname: 'Puki Ben David',
+			fullname: 'Alon Lavi',
 		},
+
 		imgUrl: 'https://seeded-session-images.scdn.co/v1/img/artist/5tHvjw07aaiv3mZ6qJdKzb/en',
 		likedByUsers: ['{minimal-user}', '{minimal-user}'],
 
 		songs: [
 			{
+				artist: 'סאבלימינל',
 				id: 's1001',
-				album: 'album5',
-				title: 'The Meters - Cissy Strut',
-				artist: 'Cissy Strut',
+				videoId: 'vIYCKqbDzxo',
+				title: 'סאבלימינל והצל - עם הנצח',
 				url: 'youtube/song.mp4',
-				addedBy: '{minimal-user}',
-				imgUrl: 'https://i.ytimg.com/vi/4_iC0MyIykM/mqdefault.jpg',
-				addedAt: 162521765262,
+				imgUrl: 'https://i.ytimg.com/vi/vIYCKqbDzxo/hqdefault.jpg',
+				addedAt: 1594535680900,
+				addedBy: {},
 			},
 
 			{
-				id: 'mUkfiLjooxs',
-				album: 'album6',
-				artist: " The JB's ",
-				title: ' Pass The Peas',
+				id: 's1002',
+				videoId: "GAJt8Tquulc",
+				title: "סאבלימינל והצל - פרחים בקנה",
 				url: 'youtube/song.mp4',
+				imgUrl: "https://i.ytimg.com/vi/GAJt8Tquulc/hqdefault.jpg",
+				addedAt: 1594535680900,
 				addedBy: {},
-				imgUrl: 'https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg',
 			},
+
+			{
+				id: 's1003',
+				videoId: "d58Mu8Hp44o",
+				title: "סאבלימינל - התקווה",
+				url: 'youtube/song.mp4',
+				imgUrl: "https://i.ytimg.com/vi/d58Mu8Hp44o/hqdefault.jpg",
+				addedAt: 1594535680900,
+				addedBy: {},
+			},
+
+			{
+				id: 's1004',
+				videoId: "qPeIiwovwIA",
+				title: "סאבלימינל והצל עם מור - סופרסטאר",
+				url: 'youtube/song.mp4',
+				imgUrl: "https://i.ytimg.com/vi/qPeIiwovwIA/hqdefault.jpg",
+				addedAt: 1594535680900,
+				addedBy: {},
+			},
+
+			{
+				id: 's1005',
+				videoId: "kigoOo-Rfe0",
+				title: "סאבלימינל והצל - VATOS LOCOS",
+				url: 'youtube/song.mp4',
+				imgUrl: "https://i.ytimg.com/vi/kigoOo-Rfe0/hqdefault.jpg",
+				addedAt: 1594535680900,
+				addedBy: {},
+			},
+
+			{
+				id: 's1006',
+				videoId:"Vbq8kScxQWY" ,
+				title:"סאבלימינל - האור והצל",
+				url: 'youtube/song.mp4',
+				imgUrl: "https://i.ytimg.com/vi/Vbq8kScxQWY/hqdefault.jpg",
+				addedAt: 1594535680900,
+				addedBy: {},
+			},
+
+			{
+				id: 's1007',
+				videoId:"eC91Q8z_qf8" ,
+				title:"סאבלימינל הצל - האדריכלים ",
+				url: 'youtube/song.mp4',
+				imgUrl: "https://i.ytimg.com/vi/eC91Q8z_qf8/hqdefault.jpg",
+				addedAt: 1594535680900,
+				addedBy: {},
+			},
+
 		],
 
 		msgs: [
@@ -1235,122 +1546,122 @@ const genres = [
 		title: 'Reggae',
 		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafefa737b67ec51ec989f5a51d',
 		backgroundcolor: 'gold',
-	  },
-	  {
+	},
+	{
 		title: 'Jazz',
 		imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf12809992dfc5b318892ea07b',
 		backgroundcolor: 'lightcoral',
-	  },
-	  {
+	},
+	{
 		title: 'Metal',
 		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafefa737b67ec51ec989f5a51d',
 		backgroundcolor: 'lightseagreen',
-	  },
-	  {
+	},
+	{
 		title: 'Indie',
 		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafe914a07d20cec7a65e2e5dad',
 		backgroundcolor: 'tomato',
-	  },
-	  {
+	},
+	{
 		title: 'Funk',
 		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafd82e2c83fe100a89e9cbb2a2',
 		backgroundcolor: 'royalblue',
-	  },
-	  {
+	},
+	{
 		title: 'Ska',
 		imgUrl: 'https://i.scdn.co/image/ab67706f00000002b70e0223f544b1faa2e95ed0',
 		backgroundcolor: 'darkorange',
-	  },
-	  {
+	},
+	{
 		title: 'Punk',
 		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafefa737b67ec51ec989f5a51d',
 		backgroundcolor: 'orchid',
-	  },
-	  {
+	},
+	{
 		title: 'Gospel',
 		imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf12809992dfc5b318892ea07b',
 		backgroundcolor: 'cadetblue',
-	  },
-	  {
+	},
+	{
 		title: 'Rap',
 		imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf8dec632effd9735fa8aba06e',
 		backgroundcolor: 'peru',
-	  },
-	  {
+	},
+	{
 		title: 'EDM',
 		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafe0a8a4382f1ebdfdd4c597f0',
 		backgroundcolor: 'coral',
-	  },
-	  {
+	},
+	{
 		title: 'Pop-Rock',
 		imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf9e3dea60be755ccd97b7351f',
 		backgroundcolor: 'lime',
-	  },
-	  {
+	},
+	{
 		title: 'Country-Rock',
 		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafefa737b67ec51ec989f5a51d',
 		backgroundcolor: 'gold',
-	  },
-	  {
+	},
+	{
 		title: 'R&B-Pop',
 		imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf26dd3719e8824756914ae61f',
 		backgroundcolor: 'orange',
-	  },
-	  {
+	},
+	{
 		title: 'Classical-Rock',
 		imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf12809992dfc5b318892ea07b',
 		backgroundcolor: 'teal',
-	  },
-	  {
+	},
+	{
 		title: 'Blues-Rock',
 		imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf271f9d895003c5f5561c1354',
 		backgroundcolor: 'magenta',
-	  },
-	  {
+	},
+	{
 		title: 'Folk-Rock',
 		imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf271f9d895003c5f5561c1354',
 		backgroundcolor: 'lightblue',
-	  },
-	  {
+	},
+	{
 		title: 'Latin-Pop',
 		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafa59f90c077c9f618fd0dde30',
 		backgroundcolor: 'lightcoral',
-	  },
-	  {
+	},
+	{
 		title: 'Dance-Pop',
 		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafefa737b67ec51ec989f5a51d',
 		backgroundcolor: 'lightseagreen',
-	  },
-	  {
+	},
+	{
 		title: 'Alternative-Rock',
 		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafe914a07d20cec7a65e2e5dad',
 		backgroundcolor: 'tomato',
-	  },
-	  {
+	},
+	{
 		title: 'Soul-Pop',
 		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafd82e2c83fe100a89e9cbb2a2',
 		backgroundcolor: 'royalblue',
-	  },
-	  {
+	},
+	{
 		title: 'Reggaeton-Pop',
 		imgUrl: 'https://i.scdn.co/image/ab67706f00000002b70e0223f544b1faa2e95ed0',
 		backgroundcolor: 'darkorange',
-	  },
-	  {
+	},
+	{
 		title: 'K-Pop-Rock',
 		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafefa737b67ec51ec989f5a51d',
 		backgroundcolor: 'orchid',
-	  },
-	  {
+	},
+	{
 		title: 'Acoustic-Pop',
 		imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf12809992dfc5b318892ea07b',
 		backgroundcolor: 'cadetblue',
-	  },
-	  {
+	},
+	{
 		title: 'Chill-Hop',
 		imgUrl: 'https://i.scdn.co/image/ab67fb8200005caf8dec632effd9735fa8aba06e',
 		backgroundcolor: 'peru',
-	  },
+	},
 ]
 
 async function getEmptyStation(user) {

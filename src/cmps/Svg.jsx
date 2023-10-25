@@ -221,6 +221,7 @@ export const Svg = {
 			<path d="M0 4.75A3.75 3.75 0 013.75 1h8.5A3.75 3.75 0 0116 4.75v5a3.75 3.75 0 01-3.75 3.75H9.81l1.018 1.018a.75.75 0 11-1.06 1.06L6.939 12.75l2.829-2.828a.75.75 0 111.06 1.06L9.811 12h2.439a2.25 2.25 0 002.25-2.25v-5a2.25 2.25 0 00-2.25-2.25h-8.5A2.25 2.25 0 001.5 4.75v5A2.25 2.25 0 003.75 12H5v1.5H3.75A3.75 3.75 0 010 9.75v-5z" />
 		</svg>
 	),
+
 	activeHome: (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -232,11 +233,12 @@ export const Svg = {
 			className="Svg-sc-ytk21e-0 haNxPq home-active-icon"
 			viewBox="0 0 24 24"
 			data-encore-id="icon"
-			style={{ fill:  'white' , marginRight: '15px', marginBottom: '-15px' }}
+			style={{ fill: 'white', marginRight: '15px', marginBottom: '-15px' }}
 		>
 			<path d="M13.5 1.515a3 3 0 0 0-3 0L3 5.845a2 2 0 0 0-1 1.732V21a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6h4v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V7.577a2 2 0 0 0-1-1.732l-7.5-4.33z" />
 		</svg>
 	),
+
 	homeIcon: (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -247,12 +249,13 @@ export const Svg = {
 			aria-hidden="true"
 			className="Svg-sc-ytk21e-0 ldgdZj home-icon"
 			viewBox="0 0 24 24"
-			style={{ fill:  'white' , marginRight: '15px', marginBottom: '-15px' }}
+			style={{ fill: 'white', marginRight: '15px', marginBottom: '-15px' }}
 			data-encore-id="icon"
 		>
 			<path d="M12.5 3.247a1 1 0 0 0-1 0L4 7.577V20h4.5v-6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v6H20V7.577l-7.5-4.33zm-2-1.732a3 3 0 0 1 3 0l7.5 4.33a2 2 0 0 1 1 1.732V21a1 1 0 0 1-1 1h-6.5a1 1 0 0 1-1-1v-6h-3v6a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.577a2 2 0 0 1 1-1.732l7.5-4.33z" />
 		</svg>
 	),
+
 	activeSearch: (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -263,14 +266,13 @@ export const Svg = {
 			className="Svg-sc-ytk21e-0 haNxPq search-active-icon"
 			viewBox="0 0 24 24"
 			data-encore-id="icon"
-			style={{ fill: "white", marginRight: '15px', marginTop: '15px' }}
+			style={{ fill: 'white', marginRight: '15px', marginTop: '15px' }}
 		>
 			<path d="M15.356 10.558c0 2.623-2.16 4.75-4.823 4.75-2.664 0-4.824-2.127-4.824-4.75s2.16-4.75 4.824-4.75c2.664 0 4.823 2.127 4.823 4.75z" />
 			<path d="M1.126 10.558c0-5.14 4.226-9.28 9.407-9.28 5.18 0 9.407 4.14 9.407 9.28a9.157 9.157 0 0 1-2.077 5.816l4.344 4.344a1 1 0 0 1-1.414 1.414l-4.353-4.353a9.454 9.454 0 0 1-5.907 2.058c-5.18 0-9.407-4.14-9.407-9.28zm9.407-7.28c-4.105 0-7.407 3.274-7.407 7.28s3.302 7.279 7.407 7.279 7.407-3.273 7.407-7.28c0-4.005-3.302-7.278-7.407-7.278z" />
 		</svg>
 	),
-	
-	
+
 	searchHomePageIcon: (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -281,14 +283,12 @@ export const Svg = {
 			className="Svg-sc-ytk21e-0 ldgdZj search-icon"
 			viewBox="0 0 24 24"
 			data-encore-id="icon"
-			style={{ fill: "white", marginRight: '15px', marginTop: '15px' }}
+			style={{ fill: 'white', marginRight: '15px', marginTop: '15px' }}
 		>
 			<path d="M10.533 1.279c-5.18 0-9.407 4.14-9.407 9.279s4.226 9.279 9.407 9.279c2.234 0 4.29-.77 5.907-2.058l4.353 4.353a1 1 0 1 0 1.414-1.414l-4.344-4.344a9.157 9.157 0 0 0 2.077-5.816c0-5.14-4.226-9.28-9.407-9.28zm-7.407 9.279c0-4.006 3.302-7.28 7.407-7.28s7.407 3.274 7.407 7.28-3.302 7.279-7.407 7.279-7.407-3.273-7.407-7.28z" />
 		</svg>
 	),
 }
-
-
 
 ////////////////////////////////////////////////////////////////
 // searchMagGlassIcon: (
@@ -322,8 +322,6 @@ export const Svg = {
 // 		<path d="M15.724 4.22A4.313 4.313 0 0 0 12.192.814a4.269 4.269 0 0 0-3.622 1.13.837.837 0 0 1-1.14 0 4.272 4.272 0 0 0-6.21 5.855l5.916 7.05a1.128 1.128 0 0 0 1.727 0l5.916-7.05a4.228 4.228 0 0 0 .945-3.577z" />
 // 	</svg>
 // ),
-
-
 
 // libraryIcon: (
 // 	<svg

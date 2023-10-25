@@ -39,12 +39,13 @@ export function userReducer(state = initialState, action) {
 			newState = { ...state, users: action.users }
 			break
 		case SET_LIKED_SONGS:
-			newState = { ...state, user: { ...state.user, likedSongs: {...user.likedSongs, songs:[...user.likedSongs.songs, action.song]} } }
+			newState = {
+				...state,
+				user: { ...state.user, likedSongs: { ...user.likedSongs, songs: [...user.likedSongs.songs, action.song] } },
+			}
 			break
 		default:
 	}
-	// For debug:
-	// window.userState = newState
-	// console.log('State:', newState)
+
 	return newState
 }

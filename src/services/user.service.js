@@ -1,6 +1,6 @@
 import { storageService } from './async-storage.service'
-import { httpService } from './http.service'
 import { utilService } from './util.service'
+// import { httpService } from './http.service'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
@@ -16,7 +16,6 @@ export const userService = {
 	removeSong,
 	updateUser,
 	addSong,
-
 }
 
 window.userService = userService
@@ -40,7 +39,7 @@ function remove(userId) {
 async function addSong(_id, song) {
 	const user = await storageService.get('user', _id)
 	user.likedSongs.songs.push(song)
-	console.log(user, 'updtae');
+	console.log(user, 'updtae')
 	await storageService.put('user', user)
 
 	// const user = await httpService.put(`user/${_id}`, {_id, score})
@@ -52,10 +51,10 @@ async function addSong(_id, song) {
 async function removeSong(_id, videoId) {
 	const user = await storageService.get('user', _id)
 	const idx = user.likedSongs.songs.findIndex((song) => song.videoId === videoId)
-	console.log(idx, 'idx');
+	console.log(idx, 'idx')
 	user.likedSongs.songs.splice(idx, 1)
 
-	console.log(user, 'updtae');
+	console.log(user, 'updtae')
 	await storageService.put('user', user)
 
 	// const user = await httpService.put(`user/${_id}`, {_id, score})
@@ -84,9 +83,8 @@ async function signup(userCred) {
 		songs: [],
 		createdBy: {
 			_id: userCred._id,
-			fullname: userCred.fullname
-		}
-
+			fullname: userCred.fullname,
+		},
 	}
 	if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
 	const user = await storageService.post('user', userCred)
@@ -98,8 +96,6 @@ async function logout() {
 	sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
 	// return await httpService.post('auth/logout')
 }
-
-
 
 function saveLocalUser(user) {
 	user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, likedSongs: user.likedSongs }

@@ -53,7 +53,6 @@ export function Player() {
 	}
 
 	//PLAYER CONTROLS
-
 	function handleMute() {
 		if (player.isMuted()) {
 			player.unMute()
@@ -200,13 +199,14 @@ export function Player() {
 			return currStation.songs[prevIdx]
 		}
 	}
+
 	if (isLoginPage) return <div></div>
 	return (
 		<div className="main-player-section-full">
 			<div className="left-controls">
 				<div className="station-img">
 					{songPlaying && (
-						<div className='img-song-name flex'>
+						<div className="img-song-name flex">
 							<img className="station-img" src={songPlaying.imgUrl} alt="station-img" />
 							<YouTube
 								videoId={songPlaying.videoId}
@@ -287,86 +287,3 @@ export function Player() {
 		</div>
 	)
 }
-
-////////////////////////////////////////////////////////////////
-// import { stationService } from '../services/station.service.local'
-// import { stationService } from '../services/station.service'
-// import { loadStations, updateStation } from '../store/actions/station.actions'
-
-// function handleForward() {
-// 	if (player) {
-// 		const newTime = currTime + 15
-// 		player.seekTo(newTime, true)
-// 		setCurrTime(newTime)
-// 	}
-// }
-
-// function handleBackward() {
-// 	if (player) {
-// 		const newTime = currTime - 15
-// 		player.seekTo(newTime, true)
-// 		setCurrTime(newTime)
-// 	}
-// }
-
-// function getNextSong(songToFind) {
-// 	let songIdx = currStation.songs.findIndex((song) => song.id === songToFind.id)
-// 	if (songIdx + 1 >= currStation.songs.length) return currStation.songs[0]
-// 	return currStation.songs[songIdx + 1]
-// }
-
-// function getPrevSong(songToFind) {
-// 	let songIdx = currStation.songs.findIndex((song) => song.id === songToFind.id)
-// 	if (songIdx - 1 <= 0) return currStation.songs[currStation.songs.length - 1]
-// 	return currStation.songs[songIdx - 1]
-// }
-
-// async function onLikeSong(likedSongId) {
-// 	const [likedSong] = currStation.songs.filter((song) => song._id === likedSongId)
-// 	const updatedSongs = currStation.songs.map((song) => (song._id === likedSong._id ? { ...song, isLiked: !song.isLiked } : song))
-// 	const updatedStation = { ...currStation, songs: updatedSongs }
-// 	await updateStation(updatedStation)
-// 	const likedSongsStation = stations.find((station) => station.name === 'Liked Songs')
-// 	if (!likedSong.isLiked) {
-// 		await stationService.addToLikedSongsStation(likedSong, likedSongsStation)
-// 	} else {
-// 		await stationService.removeFromLikedSongsStation(likedSong, likedSongsStation)
-// 	}
-// 	loadStations()
-// }
-
-// const [isDesktop, setIsDesktop] = useState(true)
-// const [isLiked, setIsLiked] = useState(false)
-
-// useEffect(() => {
-// 	const handleResize = () => {
-// 		setIsDesktop(window.innerWidth >= 768)
-// 	}
-// 	handleResize()
-// 	window.addEventListener('resize', handleResize)
-
-// 	return () => {
-// 		window.removeEventListener('resize', handleResize)
-// 	}
-// }, [])
-
-// {
-/* {currStation && (
-	<button onClick={() => onLikeSong(songPlaying.songId)} className="btn-like-song">
-	{currStation.songs[songPlaying?.songIdx]?.isLiked ? Svg.likedSongIcon : Svg.heartIcon}
-	</button>
-)} */
-// }
-
-// const nextSong =
-// 	songPlaying.songIdx + 1 <= currStation.songs.length
-// 		? {
-// 				songId: currStation.songs[songPlaying.songIdx + 1]?._id,
-// 				songIdx: songPlaying.songIdx + 1,
-// 		  }
-// 		: null
-// setSongPlaying(nextSong)
-// player.playVideo()
-
-// const stations = useSelector((storeState) => storeState.stationModule.stations)
-// const currTime = useSelector((state) => state.playerModule.currTime)

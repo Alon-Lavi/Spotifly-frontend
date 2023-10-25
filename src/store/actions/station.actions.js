@@ -1,7 +1,5 @@
 import { stationService } from '../../services/station.service.local.js'
 import { store } from '../store.js'
-import { userService } from '../../services/user.service.js'
-import { showSuccessMsg, showErrorMsg } from '../../services/event-bus.service.js'
 import {
 	ADD_STATION,
 	REMOVE_SONG,
@@ -13,6 +11,9 @@ import {
 	UPDATE_STATION,
 } from '../reducer/station.reducer.js'
 import { bgcService } from '../../services/bgc.service.js'
+
+// import { userService } from '../../services/user.service.js'
+// import { showSuccessMsg, showErrorMsg } from '../../services/event-bus.service.js'
 
 // Action Creators:
 export function getActionRemoveStation(stationId) {
@@ -105,41 +106,18 @@ export async function addSongToStation(song, stationId) {
 	updateStation(station)
 }
 
-export async function setBgc(bgc){
+export async function setBgc(bgc) {
 	store.dispatch({ type: SET_BGC, bgc })
 }
 
-export 	async function getBgc(imgUrl) {
+export async function getBgc(imgUrl) {
 	// console.log(imgUrl)
 	try {
 		const color = await bgcService.getColorFromUrl(imgUrl)
 		console.log(color)
 		// changePrimaryClr(color)
 		setBgc(color)
-	} 
-	catch (err) {
+	} catch (err) {
 		console.log('Could not load color', err)
 	}
 }
-
-// Demo for Optimistic Mutation
-// (IOW - Assuming the server call will work, so updating the UI first)
-// export function onRemoveStationOptimistic(stationId) {
-//     store.dispatch({
-//         type: REMOVE_STATION,
-//         stationId
-//     })
-//     showSuccessMsg('Station removed')
-
-//     stationService.remove(stationId)
-//         .then(() => {
-//             console.log('Server Reported - Deleted Successfully')
-//         })
-//         .catch(err => {
-//             showErrorMsg('Cannot remove station')
-//             console.log('Cannot load stations', err)
-//             store.dispatch({
-//                 type: UNDO_REMOVE_STATION,
-//             })
-//         })
-// }

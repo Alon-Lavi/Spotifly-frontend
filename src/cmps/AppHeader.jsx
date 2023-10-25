@@ -36,7 +36,7 @@ export function AppHeader() {
 	if (isLoginPage) return <div></div>
 	return (
 		<>
-			<section style={{backgroundColor: bgc}} className="app-header">
+			<section style={{ backgroundColor: bgc }} className="app-header">
 				<span className="prev-next-btns flex">
 					<button onClick={goToPreviousPage} className="btn-go-back">
 						{Svg.btnGoBackHeader}
@@ -49,7 +49,6 @@ export function AppHeader() {
 					{showSearchInput ? <Search /> : null}
 				</span>
 
-				{/* <User /> */}
 				<div className="login-logout">
 					{!user && (
 						<Link className="login-header" to={'/loginsignup'}>
@@ -59,7 +58,6 @@ export function AppHeader() {
 
 					{user && (
 						<span className="logout-header">
-							
 							<img id="logout" onClick={logout} src={user.imgUrl} alt="" aria-label="logout" />
 						</span>
 					)}

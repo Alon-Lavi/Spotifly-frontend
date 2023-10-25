@@ -1,5 +1,4 @@
 .login-page {
-
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -11,7 +10,6 @@
 	border-radius: 0.625rem;
 	text-align: center;
 	padding: em(40px);
-
 	display: grid;
 	justify-content: center;
 
@@ -39,7 +37,6 @@
 		border-radius: 1.25rem;
 		background-color: #1aa049;
 		font-size: 1.2rem;
-	
 		border: none;
 	}
 
@@ -50,7 +47,8 @@
 		border: none;
 		margin-bottom: em(3px);
 	}
-	span{
+
+	span {
 		cursor: pointer;
 	}
 }
@@ -60,7 +58,6 @@
 	place-items: center;
 	grid-gap: em(20px);
 }
-
 
 .username {
 	display: flex;

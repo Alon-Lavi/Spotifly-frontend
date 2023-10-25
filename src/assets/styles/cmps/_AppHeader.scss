@@ -1,6 +1,5 @@
 .app-header {
 	display: flex;
-	// padding-top: 8px;
 	position: fixed;
 	top: 0;
 	height: rem(79px);
@@ -10,7 +9,6 @@
 	z-index: 1;
 	margin-left: 355px;
 	margin-right: 50px;
-	// padding-left: 1000px;
 	justify-content: space-between;
 
 	img {
@@ -18,9 +16,6 @@
 		width: 30px;
 		border: 3px black solid;
 		border-radius: 50%;
-
-		// display: flex;
-		// margin-inline-end: 10px;
 	}
 
 	span {
@@ -28,11 +23,6 @@
 	}
 
 	.login-logout {
-		// display: flex;
-		// justify-content: flex-end;
-		// margin-inline-start: em(580px);
-		// padding: 10px;
-       
 		position: fixed;
 		display: flex;
 		justify-content: flex-end;
@@ -44,17 +34,13 @@
 
 		.login-header,
 		.logout-header {
-
 			text-decoration: none;
-			// margin-left: auto;
 			margin-top: 1.625rem;
 			justify-content: flex-end;
-
 			color: white;
-
-		
 		}
-		.user-name{
+
+		.user-name {
 			position: absolute;
 			margin-top: rem(20px);
 		}
@@ -70,7 +56,6 @@
 		height: em(63px);
 		font-size: em(12px);
 		border-radius: em(45px);
-
 		background-color: rgb(40, 40, 40);
 		color: rgb(255, 255, 255);
 	}

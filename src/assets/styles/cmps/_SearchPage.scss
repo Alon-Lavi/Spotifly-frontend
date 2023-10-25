@@ -1,5 +1,4 @@
 .search-page {
-	// position: fixed;
 	top: 60px;
 	left: 100px;
 	margin-top: 70px;
@@ -7,7 +6,6 @@
 	width: 100%;
 	height: 1800px;
 	overflow: hidden;
-
 	background-color: #121212;
 
 	.search-icon {
@@ -54,8 +52,7 @@
 
 	li:hover {
 		background-color: rgba(72, 72, 72, 0.295);
-	
-		
+
 		.options {
 			padding-right: 20px;
 			margin-left: auto;
@@ -64,9 +61,7 @@
 	}
 
 	.text-song-name {
-		// display: flex;
 		flex-grow: 40;
-		
 	}
 
 	li {
@@ -136,9 +131,6 @@
 	position: fixed;
 	width: max-content;
 	height: max-content;
-
-	// align-items: flex-start;
-	// justify-content: flex-start;
 	background-color: rgba(30, 30, 30, 0.711);
 	flex-direction: column;
 

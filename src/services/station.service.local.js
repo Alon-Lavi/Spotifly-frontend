@@ -83,7 +83,7 @@ var stationsDemo = [
 	},
 
 	{
-		_id: 'd1001',
+		_id: 'd1011111',
 		name: 'Daily Mix 2',
 		tags: ['Funk', 'daily'],
 
@@ -847,64 +847,63 @@ var stationsDemo = [
 
 			{
 				id: 's1002',
-				videoId: "GAJt8Tquulc",
-				title: "סאבלימינל והצל - פרחים בקנה",
+				videoId: 'GAJt8Tquulc',
+				title: 'סאבלימינל והצל - פרחים בקנה',
 				url: 'youtube/song.mp4',
-				imgUrl: "https://i.ytimg.com/vi/GAJt8Tquulc/hqdefault.jpg",
+				imgUrl: 'https://i.ytimg.com/vi/GAJt8Tquulc/hqdefault.jpg',
 				addedAt: 1594535680900,
 				addedBy: {},
 			},
 
 			{
 				id: 's1003',
-				videoId: "d58Mu8Hp44o",
-				title: "סאבלימינל - התקווה",
+				videoId: 'd58Mu8Hp44o',
+				title: 'סאבלימינל - התקווה',
 				url: 'youtube/song.mp4',
-				imgUrl: "https://i.ytimg.com/vi/d58Mu8Hp44o/hqdefault.jpg",
+				imgUrl: 'https://i.ytimg.com/vi/d58Mu8Hp44o/hqdefault.jpg',
 				addedAt: 1594535680900,
 				addedBy: {},
 			},
 
 			{
 				id: 's1004',
-				videoId: "qPeIiwovwIA",
-				title: "סאבלימינל והצל עם מור - סופרסטאר",
+				videoId: 'qPeIiwovwIA',
+				title: 'סאבלימינל והצל עם מור - סופרסטאר',
 				url: 'youtube/song.mp4',
-				imgUrl: "https://i.ytimg.com/vi/qPeIiwovwIA/hqdefault.jpg",
+				imgUrl: 'https://i.ytimg.com/vi/qPeIiwovwIA/hqdefault.jpg',
 				addedAt: 1594535680900,
 				addedBy: {},
 			},
 
 			{
 				id: 's1005',
-				videoId: "kigoOo-Rfe0",
-				title: "סאבלימינל והצל - VATOS LOCOS",
+				videoId: 'kigoOo-Rfe0',
+				title: 'סאבלימינל והצל - VATOS LOCOS',
 				url: 'youtube/song.mp4',
-				imgUrl: "https://i.ytimg.com/vi/kigoOo-Rfe0/hqdefault.jpg",
+				imgUrl: 'https://i.ytimg.com/vi/kigoOo-Rfe0/hqdefault.jpg',
 				addedAt: 1594535680900,
 				addedBy: {},
 			},
 
 			{
 				id: 's1006',
-				videoId:"Vbq8kScxQWY" ,
-				title:"סאבלימינל - האור והצל",
+				videoId: 'Vbq8kScxQWY',
+				title: 'סאבלימינל - האור והצל',
 				url: 'youtube/song.mp4',
-				imgUrl: "https://i.ytimg.com/vi/Vbq8kScxQWY/hqdefault.jpg",
+				imgUrl: 'https://i.ytimg.com/vi/Vbq8kScxQWY/hqdefault.jpg',
 				addedAt: 1594535680900,
 				addedBy: {},
 			},
 
 			{
 				id: 's1007',
-				videoId:"eC91Q8z_qf8" ,
-				title:"סאבלימינל הצל - האדריכלים ",
+				videoId: 'eC91Q8z_qf8',
+				title: 'סאבלימינל הצל - האדריכלים ',
 				url: 'youtube/song.mp4',
-				imgUrl: "https://i.ytimg.com/vi/eC91Q8z_qf8/hqdefault.jpg",
+				imgUrl: 'https://i.ytimg.com/vi/eC91Q8z_qf8/hqdefault.jpg',
 				addedAt: 1594535680900,
 				addedBy: {},
 			},
-
 		],
 
 		msgs: [

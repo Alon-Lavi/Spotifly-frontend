@@ -10,12 +10,10 @@ import { StationIndex } from './pages/StationIndex'
 import { AddStation } from './cmps/AddStation'
 import { Player } from './cmps/Player'
 import { store } from './store/store'
-import { HomePage } from './pages/HomePage.jsx'
 import { SearchPage } from './cmps/SearchPage.jsx'
 import { LoginSignup } from './pages/LoginSignup'
 
 export function App() {
-	
 	return (
 		<Provider store={store}>
 			<Router>
@@ -30,7 +28,6 @@ export function App() {
 							<Route element={<StationIndex />} path="/search/station/:genre" />
 							<Route element={<LoginSignup />} path="/loginsignup" />
 							<Route element={<StationDetails />} path="/likedsongs" />
-
 						</Routes>
 					</main>
 					<NavBar />

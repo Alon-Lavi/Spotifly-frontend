@@ -147,6 +147,7 @@
 
 	article {
 		background-color: hsla(0, 0%, 100%, 0.1);
+
 		border-radius: em(4px);
 		height: em(58px);
 		overflow: hidden;
@@ -215,9 +216,7 @@
 	border: 0;
 	margin: 17px;
 	margin-bottom: 40px;
-	margin-top: -4px;
 
-	display: inline;
 	// margin-inline-start: 20px;
 	font-size: 29px;
 	font-weight: 600;

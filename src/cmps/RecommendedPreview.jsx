@@ -12,7 +12,7 @@ export function RecommendedPreview({ station, onPlayStation }) {
 	function changePrimaryClr(color = 'gray') {
 		let header = document.querySelector('.app-header')
 		header.style.setProperty('background-color', color)
-		let recommended = document.querySelector('.recommended-list ')
+		let recommended = document.querySelector('.recommended-container ')
 		recommended.style.setProperty('background-color', color)
 		// let greeting = document.querySelector('.greeting')
 		// greeting.style.setProperty('background-color', color)

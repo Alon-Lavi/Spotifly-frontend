@@ -53,7 +53,7 @@ export function StationIndex() {
 	return (
 		<div className="main-container-page">
 			<main className="main-container">
-				<h3 className="greeting">{utilService.getGreetings()}</h3>
+				
 				{!genre && <RecommendedList onPlayStation={onPlayStation} recommended={recommended} />}
 				<StationList onPlayStation={onPlayStation} stations={stations} />
 			</main>

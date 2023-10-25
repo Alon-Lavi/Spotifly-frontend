@@ -57,7 +57,7 @@ export function AppHeader() {
 
 					{user && (
 						<span className="logout-header">
-							<span className="user-name">{user.fullname}</span>
+							
 							<img id="logout" onClick={logout} src={user.imgUrl} alt="" aria-label="logout" />
 						</span>
 					)}

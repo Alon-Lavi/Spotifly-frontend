@@ -12,28 +12,25 @@ import { userService } from '../services/user.service'
 import { updateUser } from '../store/actions/user.actions'
 import { SongList } from '../cmps/SongList'
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { bgcService } from '../services/bgc.service'
 
 
 export function StationDetails() {
 	const location = useLocation();
 	const isLikedPage = location.pathname === '/likedsongs';
-
 	const [station, setStation] = useState(null)
-	const [isLiked, setIsLiked] = useState(false)
-	const [likedSongs, setLikedSongs] = useState({});
 	const [isOpen, setIsOpen] = useState(false);
 	const [textareaValue, setTextareaValue] = useState('');
 	const { stationId } = useParams()
-	const currStation = useSelector((storeState) => storeState.stationModule.currStation)
 	const user = useSelector((storeState) => storeState.userModule.user);
 	const songs = useSelector((storeState) => storeState.stationModule.songsToSearch);
+	const bgc = useSelector((storeState) => storeState.stationModule.bgc)
 	const navigate = useNavigate()
 
 
 
 	useEffect(() => {
 		loadStations()
-
 	}, [stationId, isLikedPage, user])
 
 	async function onRemoveStation(stationId) {
@@ -45,7 +42,6 @@ export function StationDetails() {
 			showErrorMsg('Cannot remove station')
 		}
 	}
-
 
 	const openModal = () => {
 		setIsOpen(true);
@@ -112,6 +108,7 @@ export function StationDetails() {
 				const station = await stationService.getById(stationId)
 				setStation(station)
 				setCurrStation(station)
+				
 
 			}
 		} catch (err) {
@@ -183,10 +180,15 @@ export function StationDetails() {
 	// 	<ImgUploader/>
 	// }
 	async function handleDragend(res) {
-		const newSongs =[...station.songs]
-		const [recordeedItems]= newSongs.splice(res.source.index, 1);
+		const newSongs = [...station.songs]
+		const [recordeedItems] = newSongs.splice(res.source.index, 1);
 		newSongs.splice(res.destination.index, 0, recordeedItems);
 		const stationToSave = { ...station, songs: newSongs }
+		if(isLikedPage){
+			const userToSave = {...user, likedSongs: stationToSave }
+			userService.updateUser(userToSave)
+		return
+		}
 		setStation(stationToSave)
 		console.log(stationToSave);
 		await updateStation(stationToSave)
@@ -195,17 +197,18 @@ export function StationDetails() {
 	if (!station) return LoaderService.threeDots
 	return (
 		<section className="station-details">
-			<header>
+			<header style={{backgroundColor: bgc}} className='station-header'>
 				<img src={station.imgUrl} alt="" />
-				<div>
+				<div className='title'>
 					<h1 onClick={openModal}>{station.name}</h1>
 
-					{/* <span>{station.createdBy.fullname} {station.songs.length}  songs</span> */}
+					<span>{station.createdBy?.fullname} {station.songs?.length}  songs</span>
 
 				</div>
 			</header>
-			{!isLikedPage && <div>
-				<button className='remove-btn' onClick={() => onRemoveStation(station._id)}>delete</button>
+		
+			{!isLikedPage && <div className='station-options' style={{backgroundImage: `linear-gradient(180deg, ${bgc}, transparent)`}}>
+				<button  className='remove-btn' onClick={() => onRemoveStation(station._id)}>delete</button>
 
 			</div>}
 			<section className='song-list-container'>
@@ -220,13 +223,14 @@ export function StationDetails() {
 				</div>
 				<DragDropContext onDragEnd={handleDragend}>
 					<Droppable droppableId={station._id}>
-						{(provided) => {return (
-							<ul className='song-list' {...provided.droppableProps} ref={provided.innerRef} >
-								{station.songs && <SongList key={station._id} songs={station.songs} playSong={playSong} checkLikedSongs={checkLikedSongs} checkIfLiked={checkIfLiked} onDeleteSong={onDeleteSong} />
+						{(provided) => {
+							return (
+								<ul className='song-list' {...provided.droppableProps} ref={provided.innerRef} >
+									{station.songs && <SongList key={station._id} songs={station.songs} playSong={playSong} checkLikedSongs={checkLikedSongs} checkIfLiked={checkIfLiked} onDeleteSong={onDeleteSong} />
 
-								}
-								{provided.placeholder}
-							</ul>)
+									}
+									{provided.placeholder}
+								</ul>)
 						}}
 					</Droppable>
 				</DragDropContext>

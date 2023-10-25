@@ -6,6 +6,7 @@ import {
 	ADD_STATION,
 	REMOVE_SONG,
 	REMOVE_STATION,
+	SET_BGC,
 	SET_CURRENT_STATION,
 	SET_SEARCHERS,
 	SET_STATIONS,
@@ -101,6 +102,10 @@ export async function addSongToStation(song, stationId) {
 	const station = await stationService.getById(stationId)
 	station.songs.push(song)
 	updateStation(station)
+}
+
+export async function setBgc(bgc){
+	store.dispatch({ type: SET_BGC, bgc })
 }
 
 // Demo for Optimistic Mutation

@@ -10,6 +10,8 @@ export function AppHeader() {
 	const location = useLocation()
 	const [showSearchInput, setShowSearchInput] = useState(false)
 	const user = useSelector((storeState) => storeState.userModule.user)
+	const bgc = useSelector((storeState) => storeState.stationModule.bgc)
+
 	const navigate = useNavigate()
 
 	const isLoginPage = location.pathname === '/loginsignup'
@@ -34,7 +36,7 @@ export function AppHeader() {
 	if (isLoginPage) return <div></div>
 	return (
 		<>
-			<section className="app-header">
+			<section style={{backgroundColor: bgc}} className="app-header">
 				<span className="prev-next-btns flex">
 					<button onClick={goToPreviousPage} className="btn-go-back">
 						{Svg.btnGoBackHeader}

@@ -24,8 +24,8 @@ export function StationList({ stations, onPlayStation }) {
 					</li>
 				)}
 
-				{myStations.map((station) => (
-					<li onClick={() => navigate(`/station/${station._id}`)} className="station-preview" key={station._id}>
+				{myStations.map((station, idx) => (
+					<li onClick={() => navigate(`/station/${station._id}`)} className="station-preview" key={idx}>
 						<StationPreview onPlayStation={onPlayStation} station={station} />
 					</li>
 				))}
@@ -35,8 +35,8 @@ export function StationList({ stations, onPlayStation }) {
 
 			{user && (
 				<ul className="station-list">
-					{dailyStation.map((station) => (
-						<li onClick={() => navigate(`/station/${station._id}`)} className="station-preview" key={station._id}>
+					{dailyStation.map((station, idx) => (
+						<li onClick={() => navigate(`/station/${station._id}`)} className="station-preview" key={idx}>
 							<StationPreview onPlayStation={onPlayStation} station={station} />
 						</li>
 					))}
@@ -46,8 +46,8 @@ export function StationList({ stations, onPlayStation }) {
 			{user && <h1 className="episodes-txt">{`Recently Played`}</h1>}
 
 			<ul className="station-list">
-				{recentStation.map((station) => (
-					<li onClick={() => navigate(`/station/${station._id}`)} className="station-preview" key={station._id}>
+				{recentStation.map((station, idx) => (
+					<li onClick={() => navigate(`/station/${station._id}`)} className="station-preview" key={idx}>
 						<StationPreview onPlayStation={onPlayStation} station={station} />
 					</li>
 				))}
@@ -56,8 +56,8 @@ export function StationList({ stations, onPlayStation }) {
 			{user && <h1 className="episodes-txt">{`Your top mixes`}</h1>}
 
 			<ul className="station-list">
-				{mixStation.map((station) => (
-					<li onClick={() => navigate(`/station/${station._id}`)} className="station-preview" key={station._id}>
+				{mixStation.map((station, idx) => (
+					<li onClick={() => navigate(`/station/${station._id}`)} className="station-preview" key={idx}>
 						<StationPreview onPlayStation={onPlayStation} station={station} />
 					</li>
 				))}

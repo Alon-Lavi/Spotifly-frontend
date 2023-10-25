@@ -8,18 +8,7 @@
 	width: 355px;
 	z-index: 1;
 	background-color: #000;
-	@media (max-width: 768px) {
-		width: 300px; 
-		transition: 0.15s ease-in-out;
-	
-	  @media (max-width: 576px) {
-		width: 250px; 
-		transition: 0.15s ease-in-out;
-            svg {
-				margin-bottom:px;
-			}	
-	  }
-	}
+
 
 	.header-side-bar {
 		background-color: rgb(15, 15, 15);
@@ -64,7 +53,8 @@
 		// margin-bottom: em(100px);
 		// margin-top: em(5px);
 	
-
+    
+		
 
 		.library {
 			display: flex;
@@ -94,6 +84,7 @@
 	}
 
 	.side-bar-list {
+		// overflow: hidden;
 		list-style: none;
 		padding: 0;
 		margin-left: em(6px);
@@ -107,11 +98,17 @@
 		margin-bottom: em(12px);
 	}
 	.add-library{
+		
+
 		a{
-			span{
 			
-				svg{
-					
+		
+			span{
+				
+				svg:hover{
+					border-radius: 20px;
+				
+					background-color: rgba(72, 72, 72, 0.295);
 					cursor: pointer;
 				}
 			}
@@ -136,6 +133,30 @@
 	.user-station-list {
 		margin-left: em(8px);
 
+		.stations-container {
+			max-height: 70vh;
+			overflow-y: auto;
+		
+			
+			&::-webkit-scrollbar {
+			  width: 8px; 
+			  height: 40px;
+			 
+			}
+		
+			&::-webkit-scrollbar-thumb {
+			  
+			  background-color: #656565; 
+			  border-radius: 10px;
+			}
+		
+			&::-webkit-scrollbar-track {
+			 display: none;
+			  background-color: #333;
+
+			}
+		  }
+
 		.side-search-bar {
 			input {
 				margin-left: em(7px);
@@ -154,6 +175,7 @@
 		.station-preview {
 			display: flex;
 			align-items: center;
+			overflow: hidden;
 		}
 
 		li {
@@ -177,21 +199,22 @@
 		.station-info {
 			display: grid;
 			flex-direction: column;
+			margin-top: 15px;
 			padding-left: 12px;
 			font-family: 'circular', 'gotham', 'rubik', sans-serif;
 		}
 
 		.playlist-name {
-			margin-top: -5px;
+			margin-top: -1px;
 			font-size: 15px;
 			color: rgba(255, 255, 255, 0.925);
 		}
 
 		.song-name {
-			margin-top: 21px;
-			position: fixed;
+			
+			margin-top: -10px;
 			font-size: 14px;
-			padding: 0px;
+
 
 			span {
 				color: rgba(245, 245, 245, 0.558);

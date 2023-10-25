@@ -10,27 +10,27 @@ import { loadStations, addStation, updateStation, removeStation } from '../store
 // import { stationService } from "../services/station.service.local";
 
 export function NavBar() {
-    const user =useSelector((storeState) => storeState.userModule.user)
-    
+    const user = useSelector((storeState) => storeState.userModule.user)
+
     const location = useLocation();
     const isLoginPage = location.pathname === '/loginsignup';
 
     const [searchText, setSearchText] = useState('');
-    const [stations,setStations ]= useState();
+    const [stations, setStations] = useState();
     const [isHovered, setIsHovered] = useState(false);
     const navigate = useNavigate()
 
     const handleSearchInputChange = (e) => {
         setSearchText(e.target.value);
     };
-useEffect(()=>{
-loadMyStations()
-},[])
+    useEffect(() => {
+        loadMyStations()
+    }, [])
 
-async function loadMyStations() {
-const MyStations =await stationService.query(user)
-setStations(MyStations)
-}
+    async function loadMyStations() {
+        const MyStations = await stationService.query(user)
+        setStations(MyStations)
+    }
     const handleMouseEnter = () => {
         setIsHovered(true);
     };
@@ -40,16 +40,16 @@ setStations(MyStations)
     };
     async function createStation() {
         const station = await stationService.getEmptyStation(user)
-        station.createdBy={
-            _id:user._id,
-            imgUrl:user.imgUrl,
-            fullname:user.fullname
+        station.createdBy = {
+            _id: user._id,
+            imgUrl: user.imgUrl,
+            fullname: user.fullname
         }
 
-       const stationSaved = await stationService.save(station)
+        const stationSaved = await stationService.save(station)
         navigate(`/station/${stationSaved._id}`)
     }
-if(isLoginPage) return <div></div>
+    if (isLoginPage) return <div></div>
 
 
     return (
@@ -131,9 +131,9 @@ if(isLoginPage) return <div></div>
 
 
                                     <svg xmlns="http://www.w3.org/2000/svg"
-                                        width="18"
-                                        height="18"
-                                        viewBox="0 0 16 16"
+                                        width="13"
+                                        height="13"
+                                        viewBox="0 0 14 14"
                                         style={{ marginTop: '19px', marginLeft: '82px' }}
                                     >
                                         <path fill="#b3b3b3" stroke="#a3a3a3" strokeLinecap="round" strokeLinejoin="round" d="M7 .54v13M.5 7h13" /></svg>
@@ -159,25 +159,28 @@ if(isLoginPage) return <div></div>
                             </form>
                         </div>
 
-                        {stations && stations
-                            .filter((station) =>
-                                station.name.toLowerCase().includes(searchText.toLowerCase())
-                            )
-                            .map((station, idx) => (
-                                <li className="station-preview" key={idx}>
-                                    <img src={station.imgUrl} alt={station.name} />
-                                    <Link to={`/station/${station._id}`}>
-                                        <div className="station-info">
-                                            <p className="playlist-name">{station.name}</p>
-                                            <p className="song-name">
-                                                {station.songs.map((song, idx) => (
-                                                    <span key={idx * 2}>{song.artist} </span>
-                                                ))}
-                                            </p>
-                                        </div>
-                                    </Link>
-                                </li>
-                            ))}
+                        <div className="stations-container">
+                            {stations &&
+                                stations
+                                    .filter((station) =>
+                                        station.name.toLowerCase().includes(searchText.toLowerCase())
+                                    )
+                                    .map((station, idx) => (
+                                        <li className="station-preview" key={idx}>
+                                            <img src={station.imgUrl} alt={station.name} />
+                                            <Link to={`/station/${station._id}`}>
+                                                <div className="station-info">
+                                                    <p className="playlist-name">{station.name}</p>
+                                                    <p className="song-name">
+                                                        {station.songs.map((song, idx) => (
+                                                            <span key={idx * 2}>{song.artist} </span>
+                                                        ))}
+                                                    </p>
+                                                </div>
+                                            </Link>
+                                        </li>
+                                    ))}
+                        </div>
                     </div>
 
                 </div>

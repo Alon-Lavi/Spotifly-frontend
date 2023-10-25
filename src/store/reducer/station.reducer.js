@@ -6,12 +6,15 @@ export const ADD_STATION = 'ADD_STATION'
 export const UPDATE_STATION = 'UPDATE_STATION'
 export const SET_SEARCHERS = 'SET_SEARCHERS'
 export const UNDO_REMOVE_STATION = 'UNDO_REMOVE_STATION'
+export const SET_BGC = 'SET_BGC'
+
 
 const initialState = {
 	stations: [],
 	currStation: null,
 	searchRes: null,
-	songsToSearch: null
+	songsToSearch: null,
+	bgc: null
 }
 
 export function stationReducer(state = initialState, action) {
@@ -47,6 +50,9 @@ export function stationReducer(state = initialState, action) {
 		case SET_SEARCHERS:
 			newState = { ...state, songsToSearch: action.songs }
 			break
+			case SET_BGC:
+				newState = { ...state, bgc: action.bgc }
+				break
 		default:
 	}
 	return newState

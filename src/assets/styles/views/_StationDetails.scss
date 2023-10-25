@@ -12,23 +12,37 @@
 		font-size: 22px;
 	}
 
-	header {
+	.station-header {
 		display: flex;
 		color: aliceblue;
-		gap: 16px;
-		margin: 17px;
+		width: 101%;
+		margin-left: -3px;
+		margin-top: -2px;
+		height: 230px;
+		align-items: center;
+
+		.title {
+			display: grid;
+			margin-inline-start: 17px;
+
+			h1 {
+				font-size: 6rem;
+				cursor: pointer;
+			}
+
+			span {
+				margin-bottom: 20px;
+			}
+		}
 
 		div {
 			align-self: flex-end;
 		}
 
-		h1 {
-			font-size: 6rem;
-			cursor: pointer;
-			font-family: sans-serif;
-		}
+
 
 		img {
+			margin-inline-start: 17px;
 			width: 192px;
 			height: 192px;
 		}
@@ -37,7 +51,13 @@
 			margin-inline-start: em(20px);
 		}
 	}
-
+	.station-options {
+		display: flex;
+		align-items: center;
+		margin-left: -3px;
+		width: 102%;
+		height: 100px;
+	}
 	.song-list-container {
 		color: white;
 		width: 100%;
@@ -59,7 +79,7 @@
 				height: 56px;
 				padding-left: 15px;
 
-				
+
 				.idx {
 					display: flex;
 					align-items: center;
@@ -83,18 +103,22 @@
 						margin-right: 16px;
 						width: 40px;
 					}
-					span{
+
+					span {
 						display: flex;
 						align-items: center;
 						justify-content: center;
 					}
 				}
 			}
+
 			li:hover {
 				background-color: #71717158;
 				border-radius: 4px;
 			}
 		}
+
+	
 
 		// tr {
 		// 	cursor: pointer;

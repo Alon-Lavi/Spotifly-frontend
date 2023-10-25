@@ -10,7 +10,7 @@ export function RecommendedPreview({ station, onPlayStation }) {
 		<article
 			key={station._id}
 			onClick={() => getBgc(station.imgUrl)}
-			onMouseLeave={() => getBgc(currStation.imgUrl)}
+			onMouseLeave={() => getBgc(currStation?.imgUrl)}
 			onMouseEnter={() => getBgc(station.imgUrl)}
 		>
 			<img src={station.imgUrl} alt="" />

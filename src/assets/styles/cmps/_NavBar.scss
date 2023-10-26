@@ -19,8 +19,8 @@
 		padding-bottom: 14px;
 
 		svg {
-			margin-top: 3px;
-			margin-left: 0px;
+			margin-top: 4px;
+			margin-left: 1px;
 		}
 
 		.txt-home {
@@ -41,16 +41,16 @@
 		}
 
 		.txt-search {
-			margin-top: 16px;
-			margin-left: 4px;
+			margin-top: 17px;
+			margin-left: 5px;
 			font-size: 15px;
 			letter-spacing: 0.7px;
 			font-weight: 500;
 		}
 
 		.txt-search-active {
-			margin-top: 16px;
-			margin-left: 4px;
+			margin-top: 17px;
+			margin-left: 5px;
 			font-size: 15px;
 			letter-spacing: 0.7px;
 			font-weight: 500;
@@ -110,6 +110,7 @@
 	}
 
 	.add-library {
+		margin-left: 40px;
 		a {
 			span {
 				svg:hover {
@@ -168,10 +169,12 @@
 				width: 100%;
 				border: none;
 				outline: none;
+				margin-bottom: 10px;
 			}
 		}
 
 		.station-preview {
+		
 			display: flex;
 			align-items: center;
 			overflow: hidden;
@@ -209,8 +212,8 @@
 		}
 
 		.song-name {
-			margin-top: -10px;
-			font-size: 14px;
+			margin-top: -11px;
+			font-size: 13px;
 
 			span {
 				color: rgba(245, 245, 245, 0.558);

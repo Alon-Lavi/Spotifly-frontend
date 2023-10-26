@@ -11,7 +11,7 @@ export function StationPreview({ station, onPlayStation }) {
 				<img src={station.imgUrl} alt="" />
 
 				<button className="btn-play-playlist" onClick={(event) => onPlayStation(station, event)}>
-					{ currStation?._id === station._id && isPlaying ? Svg.pauseTrackIcon : Svg.playTrackIcon}
+					{currStation?._id === station._id && isPlaying ? Svg.pauseTrackIcon : Svg.playTrackIcon}
 				</button>
 			</div>
 

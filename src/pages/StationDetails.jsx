@@ -16,20 +16,20 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 
 export function StationDetails() {
 	const location = useLocation()
+	const navigate = useNavigate()
+	const { stationId } = useParams()
+
 	const isLikedPage = location.pathname === '/likedsongs'
 	const [station, setStation] = useState(null)
 	const [isOpen, setIsOpen] = useState(false)
 	const [textareaValue, setTextareaValue] = useState('')
-	const { stationId } = useParams()
 	const user = useSelector((storeState) => storeState.userModule.user)
 	const songs = useSelector((storeState) => storeState.stationModule.songsToSearch)
 	const bgc = useSelector((storeState) => storeState.stationModule.bgc)
 	const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
 	const player = useSelector((storeState) => storeState.playerModule.player)
 
-	const navigate = useNavigate()
 	const currStation = useSelector((storeState) => storeState.stationModule.currStation)
-
 
 	useEffect(() => {
 		loadStations()
@@ -38,25 +38,24 @@ export function StationDetails() {
 	async function onRemoveStation(stationId) {
 		try {
 			await removeStation(stationId)
+			showSuccessMsg('Removed from Your Library.')
 			navigate('/')
-			showSuccessMsg('Station removed')
 		} catch (err) {
-			showErrorMsg('Cannot remove station')
+			showErrorMsg('Cannot remove from Your Library')
 		}
 	}
+
 	function onPlayStation(station, ev) {
 		if (currStation?._id == station._id) {
 			const isCurrentlyPlaying = !isPlaying
 			isCurrentlyPlaying ? player.playVideo() : player.pauseVideo()
 			setIsPlaying(isCurrentlyPlaying)
-		}
-		else {
+		} else {
 			setSongPlaying(station.songs[0])
 			setCurrStation(station)
 		}
-
-
 	}
+
 	// function onPlayStation(station, ev) {
 	// 	ev.stopPropagation()
 	// 	if (station._id === currStation?._id) {
@@ -66,6 +65,7 @@ export function StationDetails() {
 	// 		setSongPlaying(station.songs[0])
 	// 	}
 	// }
+
 	const openModal = () => {
 		setIsOpen(true)
 	}
@@ -100,16 +100,27 @@ export function StationDetails() {
 			likedBy: [],
 		}
 
-		const stationToSave = { ...station, songs: [...station.songs, songToSave] }
-		setStation(stationToSave)
-		await updateStation(stationToSave)
+		try {
+			const stationToSave = { ...station, songs: [...station.songs, songToSave] }
+			setStation(stationToSave)
+			showSuccessMsg(`Added to ${stationToSave.name}.`)
+			await updateStation(stationToSave)
+		} catch (err) {
+			showErrorMsg(`Could not add song to playlist`)
+			throw err
+		}
 	}
 
 	async function onDeleteSong(ev, songId) {
-		ev.stopPropagation()
-		const idx = station.songs.findIndex((song) => song.id === songId)
-		station.songs.splice(idx, 1)
-		await updateStation(station)
+		try {
+			ev.stopPropagation()
+			const idx = station.songs.findIndex((song) => song.id === songId)
+			station.songs.splice(idx, 1)
+			await updateStation(station)
+		} catch (err) {
+			showErrorMsg(`Could not delete song`)
+			throw err
+		}
 	}
 
 	async function loadStations() {
@@ -126,7 +137,7 @@ export function StationDetails() {
 			}
 		} catch (err) {
 			console.log('Had issues in station details', err)
-			showErrorMsg('Cannot load station')
+			showErrorMsg('Could not load station')
 			navigate('/')
 		}
 	}
@@ -140,7 +151,7 @@ export function StationDetails() {
 			const savedStation = await updateStation(stationToSave)
 			showSuccessMsg(`Station updated, new name: ${savedStation.name}`)
 		} catch (err) {
-			showErrorMsg('Cannot update station')
+			showErrorMsg('Could not update station')
 		} finally {
 			closeModal()
 		}
@@ -155,21 +166,33 @@ export function StationDetails() {
 	}
 
 	async function addToLikedSongs(newSong) {
-		const updatedUser = await userService.addSong(user._id, newSong)
-		updateUser(updatedUser)
-		const updatedSongs = station.songs.map((song) => (song.videoId === newSong.videoId ? newSong : song))
-		const stationToSave = { ...station, songs: updatedSongs }
-		setStation(stationToSave)
-		setCurrStation(stationToSave)
+		try {
+			const updatedUser = await userService.addSong(user._id, newSong)
+			updateUser(updatedUser)
+			const updatedSongs = station.songs.map((song) => (song.videoId === newSong.videoId ? newSong : song))
+			const stationToSave = { ...station, songs: updatedSongs }
+			setStation(stationToSave)
+			setCurrStation(stationToSave)
+			showSuccessMsg(`Added to Liked Songs.`)
+		} catch (err) {
+			showErrorMsg('Cannot add song to liked songs')
+			throw err
+		}
 	}
 
 	async function removeFromLikedSongs(newSong) {
-		const updatedUser = await userService.removeSong(user._id, newSong.videoId)
-		updateUser(updatedUser)
-		const updatedSongs = station.songs.map((song) => (song.videoId === newSong.videoId ? newSong : song))
-		const stationToSave = { ...station, songs: updatedSongs }
-		setStation(stationToSave)
-		setCurrStation(stationToSave)
+		try {
+			const updatedUser = await userService.removeSong(user._id, newSong.videoId)
+			updateUser(updatedUser)
+			const updatedSongs = station.songs.map((song) => (song.videoId === newSong.videoId ? newSong : song))
+			const stationToSave = { ...station, songs: updatedSongs }
+			setStation(stationToSave)
+			setCurrStation(stationToSave)
+			showSuccessMsg(`Removed from Liked Songs.`)
+		} catch (err) {
+			showErrorMsg(`Could not remove from Liked Songs`)
+			throw err
+		}
 	}
 
 	function checkIfLiked(song) {
@@ -180,10 +203,10 @@ export function StationDetails() {
 	}
 
 	async function handleDragend(res) {
-		console.log(isLikedPage);
+		console.log(isLikedPage)
 		const newSongs = [...station.songs]
-		const [recordeedItems] = newSongs.splice(res.source.index, 1)
-		newSongs.splice(res.destination.index, 0, recordeedItems)
+		const [recordedItems] = newSongs.splice(res.source.index, 1)
+		newSongs.splice(res.destination.index, 0, recordedItems)
 		const stationToSave = { ...station, songs: newSongs }
 
 		if (isLikedPage) {

@@ -13,6 +13,7 @@ export function AddStation() {
 		let value = target.value
 		setNewStation((prevStation) => ({ ...prevStation, [field]: value }))
 	}
+
 	async function submitForm(ev) {
 		ev.preventDefault()
 		await stationService.save(newStation)

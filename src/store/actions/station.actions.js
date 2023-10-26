@@ -11,9 +11,9 @@ import {
 	UPDATE_STATION,
 } from '../reducer/station.reducer.js'
 import { bgcService } from '../../services/bgc.service.js'
+import { showSuccessMsg } from '../../services/event-bus.service.js'
 
 // import { userService } from '../../services/user.service.js'
-// import { showSuccessMsg, showErrorMsg } from '../../services/event-bus.service.js'
 
 // Action Creators:
 export function getActionRemoveStation(stationId) {
@@ -101,9 +101,14 @@ export async function updateStation(station) {
 }
 
 export async function addSongToStation(song, stationId) {
-	const station = await stationService.getById(stationId)
-	station.songs.push(song)
-	updateStation(station)
+	try {
+		const station = await stationService.getById(stationId)
+		station.songs.push(song)
+		updateStation(station)
+		showSuccessMsg(`Added to ${station.name}`)
+	} catch (err) {
+		throw err
+	}
 }
 
 export async function setBgc(bgc) {

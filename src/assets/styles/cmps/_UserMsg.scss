@@ -1,11 +1,14 @@
 .user-msg {
-	color: white;
-	padding: em(10px);
-	font-size: 1.4em;
+	color: black;
+	padding: 5px;
+	font-size: 20px;
 	position: fixed;
-	top: 10px;
-	right: 0;
-	background-color: grey;
+	top: 82.5%;
+	right: 40%;
+	border-radius: 8px;
+	border: transparent;
+	box-shadow: transparent;
+	z-index: 40;
 }
 
 .user-msg button {
@@ -17,9 +20,9 @@
 }
 
 .user-msg.success {
-	background-color: rgb(41, 189, 73);
+	background-color: #ffffff;
 }
 
 .user-msg.error {
-	background-color: rgb(216, 59, 59);
+	background-color: #ffffff;
 }

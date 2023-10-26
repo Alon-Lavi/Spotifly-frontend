@@ -12,21 +12,23 @@ export function StationList({ genre, stations, onPlayStation }) {
 	const dailyStation = stations.filter((station) => _.includes(station.tags, 'daily'))
 	const recentStation = stations.filter((station) => _.includes(station.tags, 'recent'))
 	const mixStation = stations.filter((station) => _.includes(station.tags, 'mix'))
-console.log(genre);
+	console.log(genre)
 
-	if (genre) return (
-		<>
-			{<h1 className="episodes-txt">{genre}</h1>}
+	if (genre)
+		return (
+			<>
+				{<h1 className="episodes-txt">{genre}</h1>}
 
-			<ul className="station-list">
-				{stations.map((station, idx) => (
-					<li onClick={() => navigate(`/station/${station._id}`)} className="station-preview" key={idx}>
-						<StationPreview onPlayStation={onPlayStation} station={station} />
-					</li>
-				))}
-			</ul>
-		</>
-	)
+				<ul className="station-list">
+					{stations.map((station, idx) => (
+						<li onClick={() => navigate(`/station/${station._id}`)} className="station-preview" key={idx}>
+							<StationPreview onPlayStation={onPlayStation} station={station} />
+						</li>
+					))}
+				</ul>
+			</>
+		)
+
 	return (
 		<section>
 			{<h1 className="episodes-txt">Your playlists</h1>}

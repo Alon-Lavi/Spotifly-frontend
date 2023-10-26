@@ -12,7 +12,6 @@ export function setIsPlaying(isPlaying) {
 }
 
 export function setSongPlaying(songPlaying) {
-	// console.log(songPlaying, 'song')
 	store.dispatch({ type: SONG_PLAYING, songPlaying })
 	setIsPlaying(true)
 }

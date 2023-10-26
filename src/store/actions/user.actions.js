@@ -64,7 +64,7 @@ export async function logout() {
 			type: SET_USER,
 			user: null,
 		})
-		
+
 		// socketService.logout()
 	} catch (err) {
 		console.log('Cannot logout', err)
@@ -81,9 +81,9 @@ export async function loadUser(userId) {
 		console.log('Cannot load user', err)
 	}
 }
+
 export async function likeSong(song) {
 	try {
-	
 		store.dispatch({ type: SET_LIKED_SONGS, song })
 	} catch (err) {
 		showErrorMsg('Cannot load user')
@@ -91,7 +91,6 @@ export async function likeSong(song) {
 	}
 }
 
-
-export function updateUser(user){
+export function updateUser(user) {
 	store.dispatch({ type: SET_USER, user })
 }

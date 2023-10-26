@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { stationService } from '../services/station.service.local'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { Svg } from './Svg'
 
 export function NavBar() {
@@ -41,15 +42,19 @@ export function NavBar() {
 
 	async function createStation() {
 		const station = await stationService.getEmptyStation(user)
-
 		station.createdBy = {
 			_id: user._id,
 			imgUrl: user.imgUrl,
 			fullname: user.fullname,
 		}
 
-		const stationSaved = await stationService.save(station)
-		navigate(`/station/${stationSaved._id}`)
+		try {
+			const stationSaved = await stationService.save(station)
+			showSuccessMsg(`Added to Your Library.`)
+			navigate(`/station/${stationSaved._id}`)
+		} catch (err) {
+			showErrorMsg(`Couldn't add station`)
+		}
 	}
 
 	if (isLoginPage) return <div></div>
@@ -60,14 +65,14 @@ export function NavBar() {
 					<li className={`side-bar-item-home ${isHomeActive ? 'active' : ''}`}>
 						<NavLink to="/" className="nav-link flex" onClick={handleHomeClick}>
 							{isHomeActive ? Svg.activeHome : Svg.homeIcon}
-							<div className="txt-home">Home</div>
+							<div className={`txt-home${isHomeActive ? '-active' : ''}`}>Home</div>
 						</NavLink>
 					</li>
 
 					<li className={`side-bar-item-search ${isSearchActive ? 'active' : ''}`}>
 						<NavLink to="/search" className="nav-link flex" onClick={handleSearchClick}>
 							{isSearchActive ? Svg.activeSearch : Svg.searchHomePageIcon}
-							<div className="txt-search">Search</div>
+							<div className={`txt-search${isSearchActive ? '-active' : ''}`}>Search</div>
 						</NavLink>
 					</li>
 				</div>

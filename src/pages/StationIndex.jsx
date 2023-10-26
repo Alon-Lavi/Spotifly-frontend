@@ -28,8 +28,8 @@ export function StationIndex() {
 	}, [genre, user])
 
 	function onPlayStation(station, ev) {
+		ev.stopPropagation()
 		if (station._id === currStation?._id) {
-			ev.stopPropagation()
 			const isCurrentlyPlaying = !isPlaying
 			isCurrentlyPlaying ? player.playVideo() : player.pauseVideo()
 			setIsPlaying(isCurrentlyPlaying)

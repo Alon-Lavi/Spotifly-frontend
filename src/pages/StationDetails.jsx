@@ -3,7 +3,7 @@ import { useLocation, useNavigate, useParams } from 'react-router'
 import { stationService } from '../services/station.service.local'
 import { getBgc, removeStation, setCurrStation, updateStation } from '../store/actions/station.actions'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
-import { setSongPlaying } from '../store/actions/player.actions'
+import { setIsPlaying, setSongPlaying } from '../store/actions/player.actions'
 import { LoaderService } from '../cmps/Loader'
 import { Search } from '../cmps/Search'
 import { useSelector } from 'react-redux'
@@ -11,6 +11,7 @@ import { utilService } from '../services/util.service'
 import { userService } from '../services/user.service'
 import { updateUser } from '../store/actions/user.actions'
 import { SongList } from '../cmps/SongList'
+import { Svg } from '../cmps/Svg'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 
 export function StationDetails() {
@@ -23,7 +24,12 @@ export function StationDetails() {
 	const user = useSelector((storeState) => storeState.userModule.user)
 	const songs = useSelector((storeState) => storeState.stationModule.songsToSearch)
 	const bgc = useSelector((storeState) => storeState.stationModule.bgc)
+	const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
+	const player = useSelector((storeState) => storeState.playerModule.player)
+
 	const navigate = useNavigate()
+	const currStation = useSelector((storeState) => storeState.stationModule.currStation)
+
 
 	useEffect(() => {
 		loadStations()
@@ -38,7 +44,28 @@ export function StationDetails() {
 			showErrorMsg('Cannot remove station')
 		}
 	}
+	function onPlayStation(station, ev) {
+		if (currStation?._id == station._id) {
+			const isCurrentlyPlaying = !isPlaying
+			isCurrentlyPlaying ? player.playVideo() : player.pauseVideo()
+			setIsPlaying(isCurrentlyPlaying)
+		}
+		else {
+			setSongPlaying(station.songs[0])
+			setCurrStation(station)
+		}
 
+
+	}
+	// function onPlayStation(station, ev) {
+	// 	ev.stopPropagation()
+	// 	if (station._id === currStation?._id) {
+
+	// 	} else {
+	// 		setCurrStation(station)
+	// 		setSongPlaying(station.songs[0])
+	// 	}
+	// }
 	const openModal = () => {
 		setIsOpen(true)
 	}
@@ -95,7 +122,7 @@ export function StationDetails() {
 				setStation(station)
 				getBgc(station.imgUrl)
 
-				setCurrStation(station)
+				// setCurrStation(station)
 			}
 		} catch (err) {
 			console.log('Had issues in station details', err)
@@ -153,6 +180,7 @@ export function StationDetails() {
 	}
 
 	async function handleDragend(res) {
+		console.log(isLikedPage);
 		const newSongs = [...station.songs]
 		const [recordeedItems] = newSongs.splice(res.source.index, 1)
 		newSongs.splice(res.destination.index, 0, recordeedItems)
@@ -188,6 +216,9 @@ export function StationDetails() {
 				<div className="station-options" style={{ backgroundImage: `linear-gradient(180deg, ${bgc}, transparent)` }}>
 					<button className="remove-btn" onClick={() => onRemoveStation(station._id)}>
 						delete
+					</button>
+					<button className="btn-play-playlist" onClick={(event) => onPlayStation(station, event)}>
+						{currStation?._id === station._id && isPlaying ? Svg.pauseTrackIcon : Svg.playTrackIcon}
 					</button>
 				</div>
 			)}

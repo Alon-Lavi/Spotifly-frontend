@@ -73,6 +73,7 @@ export function SearchPage() {
 			title: newSong.snippet.title.replace(/\([^)]*\)|\[[^\]]*\]/g, ''),
 			videoId: newSong.id.videoId,
 			imgUrl: newSong.snippet.thumbnails.high.url,
+            addedAt: Date.now(),
 		}
 		const idx = user.likedSongs.songs.findIndex((likedSong) => likedSong.videoId === songToSave.videoId)
 

@@ -195,8 +195,9 @@ export function StationDetails() {
 			<section className="song-list-container">
 				<div className="song-list-header">
 					<span>#</span>
-					<span>title</span>
-					<span>time</span>
+					<span>Title</span>
+					<span></span>
+					<span>Added at</span>
 				</div>
 
 				<DragDropContext onDragEnd={handleDragend}>

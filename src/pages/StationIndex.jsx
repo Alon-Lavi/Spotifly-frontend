@@ -52,7 +52,7 @@ export function StationIndex() {
 	return (
 		<main className="main-container">
 			{!genre && <RecommendedList onPlayStation={onPlayStation} recommended={recommended} />}
-			<StationList onPlayStation={onPlayStation} stations={stations} />
+			<StationList genre={genre} onPlayStation={onPlayStation} stations={stations} />
 		</main>
 	)
 }

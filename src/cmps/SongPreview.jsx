@@ -17,7 +17,7 @@ export function SongPreview({ song, playSong, checkLikedSongs, checkIfLiked, onD
 							<span>{song.title}</span>
 						</div>
 
-						<span>
+						<span className='like-btn'>
 							<svg
 								onClick={(event) => {
 									checkLikedSongs(event, song)

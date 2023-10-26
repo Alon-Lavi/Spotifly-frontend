@@ -7,8 +7,10 @@
 	background-color: #121212;
 	color: whitesmoke;
 	z-index: 1;
+	border-top-left-radius: 10px;
 	margin-left: 355px;
-	margin-right: 50px;
+	margin-right: 2160px;
+	margin-top: 7px;
 	justify-content: space-between;
 
 	img {
@@ -48,16 +50,19 @@
 }
 
 .search-input-container {
+	margin-left: 10px;
 	display: block;
 
 	input {
 		border: none;
 		width: em(430px);
-		height: em(63px);
+		height: em(61px);
 		font-size: em(12px);
 		border-radius: em(45px);
 		background-color: rgb(40, 40, 40);
 		color: rgb(255, 255, 255);
+
+		
 	}
 
 	input:focus {

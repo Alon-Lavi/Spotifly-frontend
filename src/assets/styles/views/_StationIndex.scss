@@ -32,6 +32,15 @@
 	justify-content: start;
 	margin-left: -21px;
 
+	.station-preview {
+        
+		span {
+		
+	margin-left: 2px;
+		}
+
+	}
+
 	li {
 		-webkit-box-flex: 1;
 		border-radius: rem(8px);

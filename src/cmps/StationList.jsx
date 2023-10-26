@@ -47,7 +47,7 @@ export function StationList({ genre, stations, onPlayStation }) {
 				))}
 			</ul>
 
-			{user && <h1 className="episodes-txt">{`made for ${user.fullname}`}</h1>}
+			{user && <h1 className="episodes-txt">{`Made For ${user.fullname}`}</h1>}
 
 			{user && (
 				<ul className="station-list">
@@ -59,7 +59,7 @@ export function StationList({ genre, stations, onPlayStation }) {
 				</ul>
 			)}
 
-			{user && <h1 className="episodes-txt">{`Recently Played`}</h1>}
+			{user && <h1 className="episodes-txt">{`Recently played`}</h1>}
 
 			<ul className="station-list">
 				{recentStation.map((station, idx) => (

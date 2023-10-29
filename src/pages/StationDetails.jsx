@@ -56,15 +56,6 @@ export function StationDetails() {
 		}
 	}
 
-	// function onPlayStation(station, ev) {
-	// 	ev.stopPropagation()
-	// 	if (station._id === currStation?._id) {
-
-	// 	} else {
-	// 		setCurrStation(station)
-	// 		setSongPlaying(station.songs[0])
-	// 	}
-	// }
 
 	const openModal = () => {
 		setIsOpen(true)
@@ -203,7 +194,6 @@ export function StationDetails() {
 	}
 
 	async function handleDragend(res) {
-		console.log(isLikedPage)
 		const newSongs = [...station.songs]
 		const [recordedItems] = newSongs.splice(res.source.index, 1)
 		newSongs.splice(res.destination.index, 0, recordedItems)
@@ -212,6 +202,8 @@ export function StationDetails() {
 		if (isLikedPage) {
 			const userToSave = { ...user, likedSongs: stationToSave }
 			userService.updateUser(userToSave)
+			updateUser(userToSave)
+
 			return
 		}
 

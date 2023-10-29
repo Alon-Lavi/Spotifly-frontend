@@ -15,7 +15,7 @@ export function StationPreview({ station, onPlayStation }) {
 				</button>
 			</div>
 
-			<span>{station.name || station.title} </span>
+			<span className='small-title'>{station.name || station.title} </span>
 
 			<p>{station.songs && station.songs.map((song, idx) => <span key={idx}>{song.artist} </span>)}</p>
 		</>

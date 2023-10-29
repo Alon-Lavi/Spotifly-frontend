@@ -7,7 +7,6 @@ import { NavBar } from './cmps/NavBar'
 import { NavLink } from 'react-router-dom'
 import { StationDetails } from './pages/StationDetails'
 import { StationIndex } from './pages/StationIndex'
-import { AddStation } from './cmps/AddStation'
 import { Player } from './cmps/Player'
 import { store } from './store/store'
 import { SearchPage } from './cmps/SearchPage.jsx'
@@ -23,7 +22,6 @@ export function App() {
 						<Routes>
 							<Route element={<StationIndex />} path="/" />
 							<Route element={<StationDetails />} path="/station/:stationId" />
-							<Route element={<AddStation />} path="/station/add" />
 							<Route element={<SearchPage />} path="/search" />
 							<Route element={<StationIndex />} path="/search/station/:genre" />
 							<Route element={<LoginSignup />} path="/loginsignup" />

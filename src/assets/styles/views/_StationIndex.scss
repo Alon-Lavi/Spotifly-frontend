@@ -85,6 +85,11 @@
 			margin-block: 0px;
 			font-size: 0.8125rem;
 			margin: em(5px);
+			margin-left: 0;
+			span{
+				color: #a7a7a7;
+				margin-left: 0;
+			}
 		}
 
 		&:hover {

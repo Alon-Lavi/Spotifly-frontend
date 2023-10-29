@@ -81,6 +81,7 @@ export function NavBar() {
 				<div className="main-side-bar">
 					<div className="flex">
 						<li className="side-bar-item">
+                              <NavLink to="/library">  
 							<a className="nav-link">
 								<span className="library">
 									<svg
@@ -98,6 +99,8 @@ export function NavBar() {
 									<span className="library-span">Your Library</span>
 								</span>
 							</a>
+                            </NavLink>
+                            
 						</li>
 
 						<li className="add-library">

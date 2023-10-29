@@ -90,7 +90,7 @@ export function StationDetails() {
 			title: song.snippet.title.replace(/\([^)]*\)|\[[^\]]*\]/g, ''),
 			imgUrl: song.snippet.thumbnails.high.url,
 			addedAt: Date.now(),
-			likedBy: [],
+
 		}
 
 		try {
@@ -142,12 +142,38 @@ export function StationDetails() {
 		const stationToSave = { ...station, name, desc }
 		try {
 			const savedStation = await updateStation(stationToSave)
+			setStation(savedStation)
 			showSuccessMsg(`Station updated, new name: ${savedStation.name}`)
 		} catch (err) {
 			showErrorMsg('Could not update station')
 		} finally {
 			closeModal()
 		}
+	}
+	function checkLikedStation(newStation) {
+		console.log(newStation);
+		const idx = newStation.likedByUsers.findIndex((likedUser) => likedUser?._id === user._id)
+		console.log(idx);
+		if (idx === -1) addToLibrary(newStation)
+		else removeFromLibrary(newStation)
+	}
+
+	function addToLibrary(newStation) {
+		const userToSave = {
+			_id: user._id,
+			fullname: user.fullname,
+		}
+		const stationToSave = { ...newStation, likedByUsers: [...newStation.likedByUsers, userToSave] }
+		setStation(stationToSave)
+		updateStation(stationToSave)
+	}
+	function removeFromLibrary(newStation) {
+		const updatedUsers = newStation.likedByUsers.filter((likedUser) => {
+			if(likedUser?._id !== user._id ) return  likedUser
+		 })
+		const stationToSave = { ...newStation, likedByUsers: updatedUsers }
+		setStation(stationToSave)
+		updateStation(stationToSave)
 	}
 
 	function checkLikedSongs(ev, newSong) {
@@ -157,6 +183,7 @@ export function StationDetails() {
 		if (idx === -1) addToLikedSongs(newSong)
 		else removeFromLikedSongs(newSong)
 	}
+
 
 	async function addToLikedSongs(newSong) {
 		try {
@@ -187,7 +214,12 @@ export function StationDetails() {
 			throw err
 		}
 	}
+	function checkIfStationLiked(newStation) {
+		const idx = newStation.likedByUsers.findIndex((likedUser) => likedUser?._id === user._id)
+		if (idx === -1) return false
 
+		return true
+	}
 	function checkIfLiked(song) {
 		const idx = user.likedSongs.songs.findIndex((likedSong) => likedSong.videoId === song.videoId)
 		if (idx === -1) return false
@@ -237,6 +269,31 @@ export function StationDetails() {
 					<button className="btn-play-playlist" onClick={(event) => onPlayStation(station, event)}>
 						{currStation?._id === station._id && isPlaying ? Svg.pauseTrackIcon : Svg.playTrackIcon}
 					</button>
+					<span className="like-btn">
+						<svg
+							onClick={() => {
+								checkLikedStation(station)
+							}}
+							xmlns="http://www.w3.org/2000/svg"
+							fill={checkIfStationLiked(station) ? '' : 'white'}
+							height="17"
+							width="17"
+							aria-hidden="true"
+							data-encore-id="icon"
+							className={`liked-song-icon ? 'liked' : ''}`}
+							viewBox="0 0 16 16"
+						>
+							<path
+								fill={checkIfStationLiked(station) ? '#1ed760' : 'none'}
+								d="M15.724 4.22A4.313 4.313 0 0 0 12.192.814a4.269 4.269 0 0 0-3.622 1.13.837.837 0 0 1-1.14 0 4.272 4.272 0 0 0-6.21 5.855l5.916 7.05a1.128 1.128 0 0 0 1.727 0l5.916-7.05a4.228 4.228 0 0 0 .945-3.577z"
+							></path>
+
+							<path
+								fill={checkIfStationLiked(station) ? '#1ed760' : 'white'}
+								d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
+							></path>
+						</svg>
+					</span>
 				</div>
 			)}
 
@@ -303,7 +360,7 @@ export function StationDetails() {
 								</span>
 							</div>
 
-							<form id="myForm" onSubmit={saveChanges}>
+							<form onSubmit={saveChanges}>
 								<input className="image" type="image" src={station.imgUrl} alt="" />
 								<input className="title" defaultValue={station.name} type="text" />
 								<textarea
@@ -314,7 +371,7 @@ export function StationDetails() {
 									placeholder="Add an optional description"
 								></textarea>
 
-								<button type="submit" form="myForm">
+								<button type="submit" >
 									save
 								</button>
 							</form>

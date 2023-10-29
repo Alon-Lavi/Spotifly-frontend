@@ -9,6 +9,7 @@ import { Player } from './cmps/Player'
 import { store } from './store/store'
 import { SearchPage } from './cmps/SearchPage.jsx'
 import { LoginSignup } from './pages/LoginSignup'
+import { Library } from './pages/Library'
 
 export function App() {
 	return (
@@ -24,6 +25,8 @@ export function App() {
 							<Route element={<StationIndex />} path="/search/station/:genre" />
 							<Route element={<LoginSignup />} path="/loginsignup" />
 							<Route element={<StationDetails />} path="/likedsongs" />
+							<Route element={<Library />} path="/library" />
+
 						</Routes>
 					<NavBar />
 					<Player />

@@ -63,6 +63,7 @@ export async function loadStations(filterBy) {
 			type: SET_STATIONS,
 			stations,
 		})
+		return stations
 	} catch (err) {
 		console.log('Cannot load stations', err)
 		throw err

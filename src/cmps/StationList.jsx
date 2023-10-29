@@ -4,7 +4,7 @@ import { _ } from 'lodash'
 
 import { StationPreview } from './StationPreview.jsx'
 
-export function StationList({ genre, stations, onPlayStation }) {
+export function StationList({library , genre, stations, onPlayStation }) {
 	const navigate = useNavigate()
 	const user = useSelector((storeState) => storeState.userModule.user)
 
@@ -28,6 +28,23 @@ export function StationList({ genre, stations, onPlayStation }) {
 				</ul>
 			</>
 		)
+		if(library){
+			return(
+				<>
+                    <h1 className="episodes-txt">Library</h1>
+                    <ul className="station-list">
+					<li onClick={() => navigate(`/likedsongs`)} className="station-preview" key={user.likedSongs._id}>
+						<StationPreview onPlayStation={onPlayStation} station={user.likedSongs} />
+					</li>
+                        {stations.map((station, idx) => (
+                            <li onClick={() => navigate(`/station/${station._id}`)} className="station-preview" key={idx}>
+                                <StationPreview onPlayStation={onPlayStation} station={station} />
+                            </li>
+                        ))}
+                    </ul>
+                </>
+			)
+		}
 
 	return (
 		<section>

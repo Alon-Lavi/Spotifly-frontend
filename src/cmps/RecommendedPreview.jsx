@@ -1,5 +1,6 @@
-import { Svg } from './Svg'
 import { useSelector } from 'react-redux'
+
+import { Svg } from './Svg'
 import { getBgc } from '../store/actions/station.actions'
 
 export function RecommendedPreview({ station, onPlayStation }) {

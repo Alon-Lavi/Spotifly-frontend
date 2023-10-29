@@ -1,18 +1,20 @@
 import { useEffect, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router'
-import { stationService } from '../services/station.service.local'
+import { DragDropContext, Droppable } from 'react-beautiful-dnd'
+import { useSelector } from 'react-redux'
+
 import { getBgc, removeStation, setCurrStation, updateStation } from '../store/actions/station.actions'
-import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { setIsPlaying, setSongPlaying } from '../store/actions/player.actions'
+import { updateUser } from '../store/actions/user.actions'
+
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
+import { stationService } from '../services/station.service.local'
 import { LoaderService } from '../cmps/Loader'
 import { Search } from '../cmps/Search'
-import { useSelector } from 'react-redux'
 import { utilService } from '../services/util.service'
 import { userService } from '../services/user.service'
-import { updateUser } from '../store/actions/user.actions'
 import { SongList } from '../cmps/SongList'
 import { Svg } from '../cmps/Svg'
-import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 
 export function StationDetails() {
 	const location = useLocation()

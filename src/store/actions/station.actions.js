@@ -1,4 +1,3 @@
-import { stationService } from '../../services/station.service.local.js'
 import { store } from '../store.js'
 import {
 	ADD_STATION,
@@ -10,6 +9,8 @@ import {
 	SET_STATIONS,
 	UPDATE_STATION,
 } from '../reducer/station.reducer.js'
+
+import { stationService } from '../../services/station.service.local.js'
 import { bgcService } from '../../services/bgc.service.js'
 import { showSuccessMsg } from '../../services/event-bus.service.js'
 

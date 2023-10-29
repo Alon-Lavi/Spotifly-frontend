@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router'
-import { utilService } from '../services/util.service'
 import { Draggable } from 'react-beautiful-dnd'
+
+import { utilService } from '../services/util.service'
 
 export function SongPreview({ song, playSong, checkLikedSongs, checkIfLiked, onDeleteSong, idx }) {
 	const location = useLocation()
@@ -17,7 +18,7 @@ export function SongPreview({ song, playSong, checkLikedSongs, checkIfLiked, onD
 							<span>{song.title}</span>
 						</div>
 
-						<span className='like-btn'>
+						<span className="like-btn">
 							<svg
 								onClick={(event) => {
 									checkLikedSongs(event, song)

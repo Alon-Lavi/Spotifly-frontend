@@ -1,8 +1,9 @@
 import { Search } from '../cmps/Search.jsx'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { UserMsg } from './UserMsg.jsx'
 import { useSelector } from 'react-redux'
+
+import { UserMsg } from './UserMsg.jsx'
 import { logout } from '../store/actions/user.actions.js'
 import { Svg } from './Svg.jsx'
 

@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useParams } from 'react-router'
 import { loadStations, setCurrStation } from '../store/actions/station.actions.js'
 
 import { showErrorMsg } from '../services/event-bus.service.js'
 import { stationService } from '../services/station.service.local.js'
 import { StationList } from '../cmps/StationList.jsx'
 import { RecommendedList } from '../cmps/RecommendedList.jsx'
-import { useParams } from 'react-router'
 import { setIsPlaying, setSongPlaying } from '../store/actions/player.actions.js'
 import { LoaderService } from '../cmps/Loader.jsx'
 

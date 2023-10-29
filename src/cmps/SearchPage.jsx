@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+
 import { setBgc, setSongsToSearch } from '../store/actions/station.actions'
+import { updateUser } from '../store/actions/user.actions'
+import { setSongPlaying } from '../store/actions/player.actions'
 import { stationService } from '../services/station.service.local'
 import { GenrePreview } from './GenrePreview'
-import { setSongPlaying } from '../store/actions/player.actions'
 import { AddToPlaylistModal } from './AddToPlaylistModal'
 import { trackService } from '../services/track.service.js'
-import { updateUser } from '../store/actions/user.actions'
 
 export function SearchPage() {
 	const songs = useSelector((storeState) => storeState.stationModule.songsToSearch)
@@ -15,8 +16,6 @@ export function SearchPage() {
 	const [genres, setGenres] = useState([])
 	const [song, setSong] = useState(null)
 	const [likedSongs, setLikedSongs] = useState({})
-	const [playlists, setPlaylists] = useState([])
-	const [selectedSong, setSelectedSong] = useState(null)
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	const [svgPosition, setSvgPosition] = useState({ x: 0, y: 0 })
 	const user = useSelector((storeState) => storeState.userModule.user)
@@ -73,7 +72,7 @@ export function SearchPage() {
 			title: newSong.snippet.title.replace(/\([^)]*\)|\[[^\]]*\]/g, ''),
 			videoId: newSong.id.videoId,
 			imgUrl: newSong.snippet.thumbnails.high.url,
-            addedAt: Date.now(),
+			addedAt: Date.now(),
 		}
 		const idx = user.likedSongs.songs.findIndex((likedSong) => likedSong.videoId === songToSave.videoId)
 

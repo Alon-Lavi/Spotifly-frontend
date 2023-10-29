@@ -15,8 +15,8 @@ export function App() {
 		<Provider store={store}>
 			<Router>
 				<section>
-					<AppHeader />
 					<main>
+					<AppHeader />
 						<Routes>
 							<Route element={<StationIndex />} path="/" />
 							<Route element={<StationDetails />} path="/station/:stationId" />
@@ -25,9 +25,9 @@ export function App() {
 							<Route element={<LoginSignup />} path="/loginsignup" />
 							<Route element={<StationDetails />} path="/likedsongs" />
 						</Routes>
-					</main>
 					<NavBar />
 					<Player />
+					</main>
 				</section>
 			</Router>
 		</Provider>

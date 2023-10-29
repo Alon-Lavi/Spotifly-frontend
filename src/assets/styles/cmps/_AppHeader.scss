@@ -8,9 +8,9 @@
 	color: whitesmoke;
 	z-index: 1;
 	border-top-left-radius: 10px;
-	margin-left: 355px;
-	margin-right: 2160px;
+	margin-left: rem(353px);
 	justify-content: space-between;
+	// margin-right: 2160px;
 
 	img {
 		height: 30px;

@@ -15,6 +15,7 @@ import { utilService } from '../services/util.service'
 import { userService } from '../services/user.service'
 import { SongList } from '../cmps/SongList'
 import { Svg } from '../cmps/Svg'
+import { uploadService } from '../services/upload.service'
 
 export function StationDetails() {
 	const location = useLocation()
@@ -33,6 +34,29 @@ export function StationDetails() {
 
 	const currStation = useSelector((storeState) => storeState.stationModule.currStation)
 
+	const [imgData, setImgData] = useState({
+		imgUrl: null,
+		height: 180,
+		width: 180,
+	})
+
+	const [isUploading, setIsUploading] = useState(false)
+
+	async function uploadImg(ev) {
+		setIsUploading(true)
+		const { secure_url, height, width } = await uploadService.uploadImg(ev)
+		console.log(secure_url);
+		setImgData({ imgUrl: secure_url, width: '180', height: '180' })
+		setIsUploading(false)
+		// onUploaded && onUploaded(secure_url)
+		const stationToSave = { ...station, imgUrl: secure_url }
+		setStation(stationToSave)
+	}
+
+	function getUploadLabel() {
+		if (imgData.imgUrl) return 'Upload Another?'
+		return isUploading ? 'Uploading....' : 'Upload Image'
+	}
 	useEffect(() => {
 		loadStations()
 	}, [stationId, isLikedPage, user])
@@ -121,13 +145,19 @@ export function StationDetails() {
 			if (isLikedPage) {
 				setStation(user.likedSongs)
 				setCurrStation(user.likedSongs)
+				setImgData({ imgUrl: user.likedSongs.imgUrl, width: '180', height: '180' })
+
 			} else {
-				const station = await stationService.getById(stationId)
-				setStation(station)
-				getBgc(station.imgUrl)
+				const stationToSet = await stationService.getById(stationId)
+				setStation(stationToSet)
+				getBgc(stationToSet.imgUrl)
+				setImgData({ imgUrl: stationToSet.imgUrl, width: '180', height: '180' })
 
 				// setCurrStation(station)
 			}
+
+
+
 		} catch (err) {
 			console.log('Had issues in station details', err)
 			showErrorMsg('Could not load station')
@@ -166,14 +196,18 @@ export function StationDetails() {
 		const stationToSave = { ...newStation, likedByUsers: [...newStation.likedByUsers, userToSave] }
 		setStation(stationToSave)
 		updateStation(stationToSave)
+		showSuccessMsg(`Added to your library.`)
+
 	}
 	function removeFromLibrary(newStation) {
 		const updatedUsers = newStation.likedByUsers.filter((likedUser) => {
-			if(likedUser?._id !== user._id ) return  likedUser
-		 })
+			if (likedUser?._id !== user._id) return likedUser
+		})
 		const stationToSave = { ...newStation, likedByUsers: updatedUsers }
 		setStation(stationToSave)
 		updateStation(stationToSave)
+		showSuccessMsg(`Removed from your library.`)
+
 	}
 
 	function checkLikedSongs(ev, newSong) {
@@ -253,7 +287,8 @@ export function StationDetails() {
 				<img src={station.imgUrl} alt="" />
 
 				<div className="title">
-					<h1 onClick={openModal}>{station.name}</h1>
+					{station.createdBy._id === user._id ? <h1 className="with-modal" onClick={openModal}>{station.name}</h1> :
+						<h1 >{station.name}</h1>}
 
 					<span>
 						{station.createdBy?.fullname} {station.songs?.length} songs
@@ -300,7 +335,7 @@ export function StationDetails() {
 			<section className="song-list-container">
 				<div className="song-list-header">
 					<span>#</span>
-					<span>Title</span>
+					<span>Title </span>
 					<span></span>
 					<span>Added at</span>
 				</div>
@@ -352,8 +387,8 @@ export function StationDetails() {
 			<div>
 				{isOpen && (
 					<div className="modal-overlay">
-						<div className="modal">
-							<div>
+						<div className="details-modal">
+							<div className='modal-header'>
 								<h2>Edit details</h2>
 								<span className="close" onClick={closeModal}>
 									&times;
@@ -361,7 +396,15 @@ export function StationDetails() {
 							</div>
 
 							<form onSubmit={saveChanges}>
-								<input className="image" type="image" src={station.imgUrl} alt="" />
+								<div className='choose-photo'>
+									<span>
+										{Svg.penIcon}
+									</span>
+									<span>
+										Choose photo
+									</span>
+								</div>
+								<input className="image" type="image" src={imgData.imgUrl} alt="" />
 								<input className="title" defaultValue={station.name} type="text" />
 								<textarea
 									value={textareaValue}
@@ -374,6 +417,7 @@ export function StationDetails() {
 								<button type="submit" >
 									save
 								</button>
+								<input className='file' type="file" onChange={uploadImg} accept="img/*" id="imgUpload" />
 							</form>
 
 							<p>

@@ -21,7 +21,7 @@
 		svg {
 			margin-top: 4px;
 			margin-left: 1px;
-		
+
 		}
 
 
@@ -31,11 +31,11 @@
 			font-size: 15px;
 			font-weight: 500;
 			letter-spacing: 0.7px;
-			
+
 		}
 
 		.txt-home-active {
-			
+
 			margin-top: 6px;
 			margin-left: 5.8px;
 			font-size: 15px;
@@ -111,15 +111,77 @@
 		padding-top: em(12px);
 		padding-bottom: em(1px);
 		margin-bottom: em(12px);
+
+
+		.tooltip-container {
+		
+		}
+
+		.tooltip {
+			width: 150px;
+			height: 28px;
+			font-family: sans-serif;
+			font-size: 14px;
+			position: absolute;
+			background-color: rgb(42, 41, 41);
+			color: rgba(245, 245, 245, 0.683);
+			padding: 5px;
+			border-radius: 3px;
+			visibility: hidden;
+		
+			top: 100px;
+			left: 32px;
+			transition: visibility 1s, opacity 2s linear;
+		
+			z-index: 1;
+		}
+
+		.tooltip-container:hover .tooltip {
+			visibility: visible;
+
+		
+		}
 	}
 
 	.add-library {
-		margin-left: 40px;
+
+		.tooltip-container {
+			margin-left: -10px;
+		}
+
+		.tooltip {
+			width: 100px;
+			height: 28px;
+			font-family: sans-serif;
+			font-size: 14px;
+			position: absolute;
+			background-color: rgb(42, 41, 41);
+			color: rgba(245, 245, 245, 0.683);
+			padding: 5px;
+			border-radius: 3px;
+			visibility: hidden;
+		
+			top: 110px;
+			left: 245px;
+			transition: visibility 0.2s, opacity 1s linear;
+		
+			z-index: 1;
+		}
+
+		.tooltip-container:hover .tooltip {
+			visibility: visible;
+			opacity: 20;
+		}
+
 		a {
 			span {
+
+				margin-left: 40px;
+
 				svg:hover {
 					border-radius: 20px;
 					background-color: rgba(72, 72, 72, 0.295);
+					color: white;
 					cursor: pointer;
 				}
 			}
@@ -178,7 +240,7 @@
 		}
 
 		.station-preview {
-		
+
 			display: flex;
 			align-items: center;
 			overflow: hidden;

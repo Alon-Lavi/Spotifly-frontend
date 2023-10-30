@@ -24,14 +24,16 @@
 	}
 
 	.login-logout {
+		font-family: sans-serif;
 		position: fixed;
 		display: flex;
 		justify-content: flex-end;
 		margin-inline-start: 10px;
-		top: 0;
+		
 		right: 0;
 		color: white;
 		margin-inline-end: 20px;
+
 
 		.login-header,
 		.logout-header {
@@ -39,8 +41,11 @@
 			margin-top: 1.625rem;
 			justify-content: flex-end;
 			color: white;
+
+			
 		}
 
+		
 		.user-name {
 			position: absolute;
 			margin-top: rem(20px);
@@ -72,9 +77,37 @@
 .prev-next-btns {
 	margin-left: 11px;
 	margin-inline-end: 170px;
+	.tooltip-container {
+		margin-left: -10px;
+	}
+
+	.tooltip {
+		width: 70px;
+		height: 28px;
+		font-family: sans-serif;
+		font-size: 14px;
+		position: absolute;
+		background-color: rgb(69, 66, 66);
+		color: rgba(245, 245, 245, 0.683);
+		padding: 5px;
+		border-radius: 3px;
+		visibility: hidden;
+
+		top: 60px;
+		left: 1px;
+		transition: visibility 0.2s, opacity 1s linear;
+	
+		z-index: 1;
+	}
+
+	.tooltip-container:hover .tooltip {
+		visibility: visible;
+		opacity: 20;
+	}
 
 	.btn-go-back,
 	.btn-go-next {
+
 		background-color: rgba(0, 0, 0, 0.427);
 		margin-top: 1.25rem;
 		border: none;
@@ -86,5 +119,6 @@
 		align-items: center;
 		border-radius: 50%;
 		fill: #ffffff;
+
 	}
 }

@@ -90,7 +90,6 @@ export function NavBar() {
                                    onMouseEnter={() => setIsTooltipVisible(true)}
                                    onMouseLeave={() => setIsTooltipVisible(false)}                              
                                 >
-
                                     <span className="library">
                                         <svg
                                             role="img"

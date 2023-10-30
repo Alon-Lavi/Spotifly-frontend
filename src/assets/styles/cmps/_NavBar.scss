@@ -113,10 +113,6 @@
 		margin-bottom: em(12px);
 
 
-		.tooltip-container {
-		
-		}
-
 		.tooltip {
 			width: 150px;
 			height: 28px;
@@ -131,7 +127,7 @@
 		
 			top: 100px;
 			left: 32px;
-			transition: visibility 1s, opacity 2s linear;
+			transition: visibility 0.15s, opacity 2s linear;
 		
 			z-index: 1;
 		}

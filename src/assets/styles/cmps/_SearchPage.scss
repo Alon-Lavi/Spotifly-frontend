@@ -159,11 +159,13 @@
 	position: fixed;
 	width: max-content;
 	height: max-content;
-	background-color: rgba(30, 30, 30, 0.711);
+	background-color: rgba(48, 47, 47, 0.711);
 	flex-direction: column;
 
 	.button-select-modal-add:hover {
 		background-color: rgb(47, 47, 47);
+	
+
 	}
 
 	.button-select-modal-close:hover {
@@ -187,9 +189,10 @@
 		max-width: 100px;
 
 		select {
+			background-color: #b0b0b0;
 			list-style-type: none;
 			width: 100%;
-			padding: 10px;
+			padding: 20px;
 			margin-bottom: 20px;
 		}
 

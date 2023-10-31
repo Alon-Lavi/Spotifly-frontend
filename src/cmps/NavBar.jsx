@@ -9,6 +9,7 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { Svg } from './Svg'
 
 export function NavBar() {
+    const [isSvgActive, setIsSvgActive] = useState(false);
     const user = useSelector((storeState) => storeState.userModule.user)
     const location = useLocation()
     const isLoginPage = location.pathname === '/loginsignup'
@@ -84,7 +85,7 @@ export function NavBar() {
                     <div className="flex">
                         <li className="side-bar-item">
                             <NavLink to="/library">
-                                <Tooltip text="Collapse Your Library">
+                                <Tooltip text="Liked playlist">
                                 <a className="nav-link"
                                   
                                    onMouseEnter={() => setIsTooltipVisible(true)}

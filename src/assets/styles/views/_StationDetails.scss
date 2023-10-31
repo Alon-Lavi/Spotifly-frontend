@@ -4,9 +4,11 @@
 	margin-bottom: 95px;
 	background-color: rgb(21, 21, 21);
     grid-area: 2/2;
+	height: max-content;
 	.search-song-txt {
 		margin-top: 50px;
 		margin-left: 10px;
+	
 		color: white;
 		font-family: sans-serif;
 		font-size: 22px;

@@ -14,6 +14,7 @@ export const stationService = {
 	getEmptyStation,
 	removeSong,
 	getGenres,
+	getByName
 	// addStationMsg,
 }
 
@@ -1722,6 +1723,9 @@ async function query(filterBy = { txt: '' }) {
 
 function getById(stationId) {
 	return storageService.get(STORAGE_KEY, stationId)
+}
+function getByName(genre) {
+	return storageService.getByName(GENRE_KEY, genre)
 }
 
 async function remove(stationId) {

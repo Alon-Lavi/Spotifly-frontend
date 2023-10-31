@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 
 import { utilService } from '../services/util.service'
 import { setSongsToSearch } from '../store/actions/station.actions'
+import { Svg } from './Svg'
 
 export function Search() {
 	const API_KEY = 'AIzaSyCIHRUBlXc7OJQY31NlL6jlfigPqh9_PHE'
@@ -25,11 +26,12 @@ export function Search() {
 		<div className="search-bar">
 			<form>
 				<div className="search-input-container">
+					<span className='search-icon'> {Svg.searchIcon}</span>
 					<input
 						onChange={utilService.debounce(handleChange, 3000)}
 						name="txt"
 						type="text"
-						placeholder="      &#128269; What do you want to listen to?"
+						placeholder="What do you want to listen to?"
 					/>
 				</div>
 			</form>

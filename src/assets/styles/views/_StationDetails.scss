@@ -6,7 +6,7 @@
 
 	.search-song-txt {
 		margin-top: 50px;
-		margin-left: 40px;
+		margin-left: 10px;
 		color: white;
 		font-family: sans-serif;
 		font-size: 22px;
@@ -62,6 +62,7 @@
 		margin-left: -3px;
 		width: 102%;
 		height: 100px;
+		gap: 16px;
 
 		.btn-play-playlist {
 			height: 48px;
@@ -101,7 +102,7 @@
 			font-family: CircularMedium, Rubik-Light;
 			font-size: 0.875rem;
 			gap: 10px;
-			grid-template-columns: 16px 6fr 4fr 3fr minmax(120px, 1fr);
+			grid-template-columns: 16px 6fr 4fr 3fr minmax(40px, 1fr);
 			height: 56px;
 			padding-left: 15px;
 		}
@@ -119,13 +120,17 @@
 				font-family: CircularMedium, Rubik-Light;
 				font-size: 0.875rem;
 				gap: 10px;
-				grid-template-columns: 16px 6fr 4fr 3fr minmax(120px, 1fr);
+				grid-template-columns: 16px 6fr 4fr 3fr minmax(40px, 1fr);
 				height: 56px;
 				padding-left: 15px;
+				&:hover {
+					cursor: pointer;
+				}
 
 				.like-btn {
 					justify-self: end;
 					margin-right: 20px;
+					display: flex;
 
 					&:hover {
 						cursor: pointer;
@@ -225,7 +230,7 @@
 	.search-bar {
 		.search-input-container {
 			input {
-				margin-left: 40px;
+				// margin-left: 40px;
 				border-radius: 4px;
 				height: 40px;
 				opacity: 1;
@@ -317,9 +322,9 @@
 			grid-area: img;
 			height: 180px;
 			width: 180px;
-			&:hover .choose-photo {
-				opacity: 1;
-			}
+			// &:hover .choose-photo {
+			// 	opacity: 1;
+			// }
 		}
 
 		.title {
@@ -368,9 +373,9 @@
 			cursor: pointer;
 			opacity: 0;
 
-			&:hover .choose-photo {
-				opacity: 1;
-			}
+			// &:hover .choose-photo {
+			// 	opacity: 1;
+			// }
 		}
 	}
 }

@@ -22,7 +22,7 @@ function get(entityType, entityId) {
 }
 function getByName(entityType, entityName) {
 	return query(entityType).then((entities) => {
-		const entity = entities.find((entity) => entity.name === entityName)
+		const entity = entities.find((entity) => entity.title === entityName)
 		if (!entity) throw new Error(`Get failed, cannot find entity with id: ${entityName} in: ${entityType}`)
 		return entity
 	})

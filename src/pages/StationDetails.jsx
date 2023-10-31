@@ -404,7 +404,7 @@ export function StationDetails() {
 										Choose photo
 									</span>
 								</div>
-								<input className="image" type="image" src={imgData.imgUrl} alt="" />
+								<img className='image' src={imgData.imgUrl} alt="" />
 								<input className="title" defaultValue={station.name} type="text" />
 								<textarea
 									value={textareaValue}

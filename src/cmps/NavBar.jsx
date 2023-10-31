@@ -137,6 +137,7 @@ export function NavBar() {
                         <div className="side-search-bar">
                             <form>
                                 <div className="side-search-input-container">
+                               
                                     <input
                                         id='search-navbar'
                                         name="txt"

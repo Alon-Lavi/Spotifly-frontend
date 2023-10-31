@@ -58,6 +58,10 @@
 			justify-content: space-between;
 			align-items: center;
 			cursor: pointer;
+		
+			.like-btn:hover {
+				opacity: 1 !important;
+			}
 		}
 
 		.options {
@@ -75,6 +79,8 @@
 
 	li:hover {
 		background-color: rgba(72, 72, 72, 0.295);
+
+
 	
 
 		.options {

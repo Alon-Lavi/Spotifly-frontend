@@ -86,7 +86,7 @@ export function NavBar() {
                             <NavLink to="/library">
                                 <Tooltip text="Collapse Your Library">
                                 <a className="nav-link"
-                                   onClick={createStation}
+                                  
                                    onMouseEnter={() => setIsTooltipVisible(true)}
                                    onMouseLeave={() => setIsTooltipVisible(false)}                              
                                 >

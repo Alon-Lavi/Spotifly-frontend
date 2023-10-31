@@ -15,11 +15,17 @@
 	.station-header {
 		display: flex;
 		color: aliceblue;
-		width: 101%;
-		margin-left: -3px;
+		width: 102%;
+		margin-left: -3.5px;
 		margin-top: -2px;
 		height: 230px;
 		align-items: center;
+		.fade{
+			width: 102%;
+			position: absolute;
+			height: 150px;
+			bottom: 354px;
+		}
 
 		.title {
 			display: grid;
@@ -59,10 +65,12 @@
 	.station-options {
 		display: flex;
 		align-items: center;
-		margin-left: -3px;
+		margin-left: 13px;
 		width: 102%;
 		height: 100px;
 		gap: 16px;
+		z-index: 1;
+
 
 		.btn-play-playlist {
 			height: 48px;
@@ -125,14 +133,19 @@
 				padding-left: 15px;
 				&:hover {
 					cursor: pointer;
+					.like-btn {
+						opacity: 1;
+					}
 				}
+
 
 				.like-btn {
 					justify-self: end;
 					margin-right: 20px;
 					display: flex;
-
+					opacity: 0;
 					&:hover {
+					
 						cursor: pointer;
 					}
 				}
@@ -234,6 +247,14 @@
 				border-radius: 4px;
 				height: 40px;
 				opacity: 1;
+			}
+			input:focus {
+				outline: none;
+				
+				border:none;
+				.search-icon {
+					fill: #fff; /* Change icon color on input focus */
+				  }
 			}
 		}
 	}

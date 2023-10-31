@@ -112,12 +112,15 @@
 			grid-template-columns: 16px 6fr 4fr 3fr minmax(40px, 1fr);
 			height: 56px;
 			padding-left: 15px;
+			margin-left:20px;
+
 		}
 
 		.song-list {
 			list-style-type: none;
 			margin: 0;
 			padding: 0;
+			margin-left:20px;
 
 			li {
 				grid-gap: 10px;
@@ -135,7 +138,13 @@
 					cursor: pointer;
 
 					.like-btn {
-						opacity: 1;
+						opacity: 1 !important;
+					}
+					.idx{
+						display: none;
+					}
+					.song-play-btn{
+						display: block;
 					}
 				}
 
@@ -155,11 +164,16 @@
 				.idx {
 					display: flex;
 					align-items: center;
-					grid-column: 1;
-					grid-row: 1;
-					height: 100%;
+				
 					justify-content: center;
-					width: 100%;
+				}
+				.song-play-btn{
+					display: flex;
+					align-items: center;
+				
+					justify-content: center;
+
+					display: none;
 				}
 
 				button {

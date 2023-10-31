@@ -1,14 +1,15 @@
 .app-header {
+	grid-column: 2;
 	display: flex;
-	position: fixed;
+	position: sticky;
 	top: 0;
 	height: rem(79px);
-	width: 100vw;
 	background-color: #121212;
 	color: whitesmoke;
 	z-index: 2;
 	border-top-left-radius: 10px;
-	margin-left: rem(353px);
+	border-top-right-radius: 10px;
+
 	justify-content: space-between;
 	// margin-right: 2160px;
 

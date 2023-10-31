@@ -18,13 +18,14 @@
 		width: 102%;
 		margin-left: -3.5px;
 		margin-top: -2px;
-		height: 230px;
 		align-items: center;
+		position: relative;
 		.fade{
 			width: 102%;
 			position: absolute;
 			height: 150px;
-			bottom: 354px;
+			bottom: 0;
+			transform: translateY(100%);
 		}
 
 		.title {
@@ -271,7 +272,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	z-index: 1;
+	z-index: 2;
 }
 
 .details-modal {
@@ -296,6 +297,7 @@
 		flex-direction: column;
 		background-color: rgba(0, 0, 0, .7);
 		opacity: 0;
+		z-index: 2;
 		&:hover{
 			opacity: 1;
 		}

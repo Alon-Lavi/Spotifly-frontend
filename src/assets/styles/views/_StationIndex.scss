@@ -1,11 +1,10 @@
 .main-container {
+	grid-area: 2/2;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 	background-color: #121212;
-	margin-top: 4.6rem;
 	align-content: space-evenly;
 	justify-items: stretch;
-	margin-left: 19.65em;
 	border-end-start-radius: 0.525em;
 	border-end-end-radius: 0.525em;
 	margin-bottom: 86px;
@@ -15,21 +14,22 @@
 		margin-top: 1.4140625rem;
 	}
 }
-.title-container{
+
+.title-container {
 	width: 102%;
-	margin-top: -2px;
-	margin-left: -3px;
 
-.genre-title{
-	margin: 1.08em 17px 0.12em;
-    visibility: visible;
-    width: 100%;
-    font-size: 5rem;
-	font-family: sans-serif;
-	color: white;
 
+	.genre-title {
+		margin: 1.08em 17px 0.12em;
+		visibility: visible;
+		width: 100%;
+		font-size: 5rem;
+		font-family: sans-serif;
+		color: white;
+
+	}
 }
-}
+
 .episodes-txt {
 	margin: 17px;
 	font-size: 22px;
@@ -47,10 +47,10 @@
 	margin-left: -21px;
 
 	.station-preview {
-        
+
 		span {
-		
-	margin-left: 2px;
+
+			margin-left: 2px;
 		}
 
 	}
@@ -72,7 +72,9 @@
 			img {
 				width: 100%;
 				border-radius: em(6px);
-				
+				aspect-ratio: 1/1;
+				object-fit: cover;
+
 			}
 
 			.btn-play-playlist {
@@ -101,7 +103,8 @@
 			font-size: 0.8125rem;
 			margin: em(5px);
 			margin-left: 0;
-			span{
+
+			span {
 				color: #a7a7a7;
 				margin-left: 0;
 			}
@@ -129,9 +132,7 @@
 }
 
 .recommended-container {
-	margin-top: -2px;
-	margin-left: -3px;
-	width: 102%;
+
 
 	.recommended-list {
 		margin: 17px;

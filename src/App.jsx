@@ -16,7 +16,7 @@ export function App() {
 		<Provider store={store}>
 			<Router>
 				<section>
-					<main>
+					<main className='main-layout'>
 					<AppHeader />
 						<Routes>
 							<Route element={<StationIndex />} path="/" />

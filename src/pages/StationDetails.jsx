@@ -284,158 +284,160 @@ export function StationDetails() {
 
 	if (!station) return LoaderService.threeDots
 	return (
-		<section className="station-details">
-			<header style={{ backgroundColor: bgc }} className="station-header">
-				<img src={station.imgUrl} alt="" />
+		<>
+			<section className="station-details">
+				<header style={{ backgroundColor: bgc }} className="station-header">
+					<img src={station.imgUrl} alt="" />
 
-				<div className="title">
-					{station.createdBy._id === user._id ? <h1 className="with-modal" onClick={openModal}>{station.name}</h1> :
-						<h1 >{station.name}</h1>}
+					<div className="title">
+						{station.createdBy._id === user._id ? <h1 className="with-modal" onClick={openModal}>{station.name}</h1> :
+							<h1 >{station.name}</h1>}
 
-					<span>
-						{station.createdBy?.fullname} {station.songs?.length} songs
-					</span>
-				</div>
-
-				<div style={{ backgroundImage: `linear-gradient(180deg, ${bgc}, transparent)`, opacity: '0.5' }} className='fade'></div>
-			</header>
-
-			<div className="station-options" >
-
-				<button className="btn-play-playlist" onClick={(event) => onPlayStation(station, event)}>
-					{currStation?._id === station._id && isPlaying ? Svg.pauseTrackIcon : Svg.playTrackIcon}
-				</button>
-				{!isLikedPage && (
-					<>
-						<span className="like-btn">
-							<svg
-								onClick={() => {
-									checkLikedStation(station)
-								}}
-								xmlns="http://www.w3.org/2000/svg"
-								fill={checkIfStationLiked(station) ? '' : 'white'}
-								height="17"
-								width="17"
-								aria-hidden="true"
-								data-encore-id="icon"
-								className={`liked-song-icon ? 'liked' : ''}`}
-								viewBox="0 0 16 16"
-							>
-								<path
-									fill={checkIfStationLiked(station) ? '#1ed760' : 'none'}
-									d="M15.724 4.22A4.313 4.313 0 0 0 12.192.814a4.269 4.269 0 0 0-3.622 1.13.837.837 0 0 1-1.14 0 4.272 4.272 0 0 0-6.21 5.855l5.916 7.05a1.128 1.128 0 0 0 1.727 0l5.916-7.05a4.228 4.228 0 0 0 .945-3.577z"
-								></path>
-
-								<path
-									fill={checkIfStationLiked(station) ? '#1ed760' : 'white'}
-									d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
-								></path>
-							</svg>
+						<span>
+							{station.createdBy?.fullname} {station.songs?.length} songs
 						</span>
-						<button className="remove-btn" onClick={() => onRemoveStation(station._id)}>
-							delete
-						</button>
-					</>
+					</div>
 
-				)}
-			</div>
+					<div style={{ backgroundImage: `linear-gradient(180deg, ${bgc}, transparent)`, opacity: '0.5' }} className='fade'></div>
+				</header>
 
-			<section className="song-list-container">
-				<div className="song-list-header">
-					<span>#</span>
-					<span>Title </span>
-					<span></span>
-					<span>Added at</span>
+				<div className="station-options" >
+
+					<button className="btn-play-playlist" onClick={(event) => onPlayStation(station, event)}>
+						{currStation?._id === station._id && isPlaying ? Svg.pauseTrackIcon : Svg.playTrackIcon}
+					</button>
+					{!isLikedPage && (
+						<>
+							<span className="like-btn">
+								<svg
+									onClick={() => {
+										checkLikedStation(station)
+									}}
+									xmlns="http://www.w3.org/2000/svg"
+									fill={checkIfStationLiked(station) ? '' : 'white'}
+									height="17"
+									width="17"
+									aria-hidden="true"
+									data-encore-id="icon"
+									className={`liked-song-icon ? 'liked' : ''}`}
+									viewBox="0 0 16 16"
+								>
+									<path
+										fill={checkIfStationLiked(station) ? '#1ed760' : 'none'}
+										d="M15.724 4.22A4.313 4.313 0 0 0 12.192.814a4.269 4.269 0 0 0-3.622 1.13.837.837 0 0 1-1.14 0 4.272 4.272 0 0 0-6.21 5.855l5.916 7.05a1.128 1.128 0 0 0 1.727 0l5.916-7.05a4.228 4.228 0 0 0 .945-3.577z"
+									></path>
+
+									<path
+										fill={checkIfStationLiked(station) ? '#1ed760' : 'white'}
+										d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
+									></path>
+								</svg>
+							</span>
+							<button className="remove-btn" onClick={() => onRemoveStation(station._id)}>
+								delete
+							</button>
+						</>
+
+					)}
 				</div>
 
-				<DragDropContext onDragEnd={handleDragend}>
-					<Droppable droppableId={station._id}>
-						{(provided) => {
-							return (
-								<ul className="song-list" {...provided.droppableProps} ref={provided.innerRef}>
-									{station.songs && (
-										<SongList
-											key={station._id}
-											songs={station.songs}
-											playSong={playSong}
-											checkLikedSongs={checkLikedSongs}
-											checkIfLiked={checkIfLiked}
-											onDeleteSong={onDeleteSong}
-										/>
-									)}
-									{provided.placeholder}
-								</ul>
-							)
-						}}
-					</Droppable>
-				</DragDropContext>
-			</section>
+				<section className="song-list-container">
+					<div className="song-list-header">
+						<span>#</span>
+						<span>Title </span>
+						<span></span>
+						<span>Added at</span>
+					</div>
 
-			{!isLikedPage && <div className="search-song-txt">Let's find something for your playlist</div>}
-			{!isLikedPage && (
-				<div className="song-search">
-					<Search />
-				</div>
-			)}
+					<DragDropContext onDragEnd={handleDragend}>
+						<Droppable droppableId={station._id}>
+							{(provided) => {
+								return (
+									<ul className="song-list" {...provided.droppableProps} ref={provided.innerRef}>
+										{station.songs && (
+											<SongList
+												key={station._id}
+												songs={station.songs}
+												playSong={playSong}
+												checkLikedSongs={checkLikedSongs}
+												checkIfLiked={checkIfLiked}
+												onDeleteSong={onDeleteSong}
+											/>
+										)}
+										{provided.placeholder}
+									</ul>
+								)
+							}}
+						</Droppable>
+					</DragDropContext>
+				</section>
 
-			<ul className="song-list-search">
-				{songs &&
-					songs.map((song, idx) => (
-						<li onClick={() => playSong(song)} key={idx}>
-							<img src={song.snippet.thumbnails.high.url} alt="" />
-							<div className="options">
-								<span>{song.snippet.title.replace(/\([^)]*\)|\[[^\]]*\]/g, '')}</span>
-
-								<button onClick={(event) => AddToPlaylist(song, event)}> Add </button>
-							</div>
-						</li>
-					))}
-			</ul>
-
-			<div>
-				{isOpen && (
-					<div className="modal-overlay">
-						<div className="details-modal">
-							<div className='modal-header'>
-								<h2>Edit details</h2>
-								<span className="close" onClick={closeModal}>
-									&times;
-								</span>
-							</div>
-
-							<form onSubmit={saveChanges}>
-								<div className='choose-photo'>
-									<span>
-										{Svg.penIcon}
-									</span>
-									<span>
-										Choose photo
-									</span>
-								</div>
-								<img className='image' src={imgData.imgUrl} alt="" />
-								<input className="title" defaultValue={station.name} type="text" />
-								<textarea
-									value={textareaValue}
-									onChange={handleTextareaChange}
-									rows={5}
-									cols={40}
-									placeholder="Add an optional description"
-								></textarea>
-
-								<button type="submit" >
-									save
-								</button>
-								<input className='file' type="file" onChange={uploadImg} accept="img/*" id="imgUpload" />
-							</form>
-
-							<p>
-								By proceeding, you agree to give Spotify access to the image you choose to upload. Please make sure you have the
-								right to upload the image.
-							</p>
-						</div>
+				{!isLikedPage && <div className="search-song-txt">Let's find something for your playlist</div>}
+				{!isLikedPage && (
+					<div className="song-search">
+						<Search />
 					</div>
 				)}
-			</div>
-		</section>
+
+				<ul className="song-list-search">
+					{songs &&
+						songs.map((song, idx) => (
+							<li onClick={() => playSong(song)} key={idx}>
+								<img src={song.snippet.thumbnails.high.url} alt="" />
+								<div className="options">
+									<span>{song.snippet.title.replace(/\([^)]*\)|\[[^\]]*\]/g, '')}</span>
+
+									<button onClick={(event) => AddToPlaylist(song, event)}> Add </button>
+								</div>
+							</li>
+						))}
+				</ul>
+
+
+			</section>
+			{isOpen && (
+				<div className="modal-overlay">
+					<div className="details-modal">
+						<div className='modal-header'>
+							<h2>Edit details</h2>
+							<span className="close" onClick={closeModal}>
+								&times;
+							</span>
+						</div>
+
+						<form onSubmit={saveChanges}>
+							<div className='choose-photo'>
+								<span>
+									{Svg.penIcon}
+								</span>
+								<span>
+									Choose photo
+								</span>
+							</div>
+							<img className='image' src={imgData.imgUrl} alt="" />
+							<input className="title" defaultValue={station.name} type="text" />
+							<textarea
+								value={textareaValue}
+								onChange={handleTextareaChange}
+								rows={5}
+								cols={40}
+								placeholder="Add an optional description"
+							></textarea>
+
+							<button type="submit" >
+								save
+							</button>
+							<input className='file' type="file" onChange={uploadImg} accept="img/*" id="imgUpload" />
+						</form>
+
+						<p>
+							By proceeding, you agree to give Spotify access to the image you choose to upload. Please make sure you have the
+							right to upload the image.
+						</p>
+					</div>
+				</div>
+			)}
+		</>
+
 	)
 }

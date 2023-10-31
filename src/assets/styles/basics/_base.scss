@@ -16,7 +16,7 @@ body {
 	font-size: rem(18px);
 	background-color: black;
 	margin: 0;
-	height: 100vw;
+	height: 100vh;
 }
 
 h1,
@@ -29,11 +29,8 @@ h6 {
 	line-height: 1;
 }
 
-section,
-main,
-footer {
-	padding: em(2px);
-}
+
+
 
 img {
 	width: 100%;

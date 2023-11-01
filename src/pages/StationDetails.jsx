@@ -56,7 +56,7 @@ export function StationDetails() {
 	useEffect(() => {
 		loadStations()
 		return () => {
-			if(!currStation)setBgc(null)
+			if (!currStation) setBgc(null)
 		}
 	}, [stationId, isLikedPage, user])
 
@@ -174,8 +174,9 @@ export function StationDetails() {
 
 	async function saveChanges(ev) {
 		ev.preventDefault()
-		const desc = ev.target[1].value
+		console.log(ev);
 		const name = ev.target[0].value
+		const desc = ev.target[2].value
 		const stationToSave = { ...station, name, desc, imgUrl: imgData.imgUrl }
 		try {
 			const savedStation = await updateStation(stationToSave)
@@ -298,10 +299,13 @@ export function StationDetails() {
 					<div className="title">
 						{station.createdBy._id === user._id ? <h1 className="with-modal" onClick={openModal}>{station.name}</h1> :
 							<h1 >{station.name}</h1>}
+							<div className='info'>
 
+						<span>{station.desc}</span>
 						<span>
 							{station.createdBy?.fullname} {station.songs?.length} songs
 						</span>
+							</div>
 					</div>
 
 					<div style={{ backgroundImage: `linear-gradient(180deg, ${bgc}, transparent)`, opacity: '0.5' }} className='fade'></div>

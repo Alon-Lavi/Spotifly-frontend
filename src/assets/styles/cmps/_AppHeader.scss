@@ -4,12 +4,12 @@
 	position: sticky;
 	top: 0;
 	margin-top: 8px;
-	height: rem(80px);
+	height: rem(73px);
 	background-color: #121212;
 	color: whitesmoke;
 	z-index: 2;
 	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
+
 	justify-content: space-between;
 
 	img {
@@ -52,26 +52,27 @@
 }
 
 .search-input-container {
-	margin-left: 10px;
+	margin-left: 6px;
 	display: block;
 	position: relative;
+	margin-top: 10px;
 
 	input {
 		border: none;
-		width: em(430px);
-		height: em(61px);
+		width: em(432px);
+		height: em(55px);
 		font-size: em(12px);
-		border-radius: em(45px);
+		border-radius: em(30px);
 		background-color: rgb(40, 40, 40);
 		color: rgb(255, 255, 255);
-		padding-left: 30px;
+		padding-left: 35px;
 	}
 
 	.search-icon {
 		position: absolute;
 		left: 10px;
 		/* Adjust the icon's left position as needed */
-		top: 50%;
+		top: 56%;
 		/* Vertically center the icon */
 		transform: translateY(-50%);
 		fill: hsla(0, 0%, 100%, .7);
@@ -94,8 +95,8 @@
 }
 
 .prev-next-btns {
-	margin-left: 11px;
-	margin-inline-end: 170px;
+	margin-left: 32px;
+	// // margin-inline-end: 150px;
 
 	.tooltip-container {
 		margin-left: -10px;
@@ -127,9 +128,9 @@
 
 	.btn-go-back,
 	.btn-go-next {
-
+        
 		background-color: rgba(0, 0, 0, 0.427);
-		margin-top: 1.25rem;
+		margin-top: 1rem;
 		border: none;
 		height: 2rem;
 		width: 2rem;

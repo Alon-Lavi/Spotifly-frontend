@@ -24,7 +24,7 @@
 		svg {
 			margin-top: 4px;
 			margin-left: 2px;
-
+           
 		}
 
 
@@ -62,10 +62,18 @@
 			letter-spacing: 0.7px;
 			font-weight: 500;
 			color: white;
+
+			svg {
+				fill: white;
+			}
 		}
 
 		li {
 			margin-bottom: 7px;
+
+		
+		
+		
 		}
 	}
 

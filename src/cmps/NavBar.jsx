@@ -9,7 +9,6 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { Svg } from './Svg'
 
 export function NavBar() {
-    const [isSvgActive, setIsSvgActive] = useState(false);
     const user = useSelector((storeState) => storeState.userModule.user)
     const location = useLocation()
     const isLoginPage = location.pathname === '/loginsignup'
@@ -124,7 +123,7 @@ export function NavBar() {
                                     className="nav-link"
                                 >
                                     <span className="icon">
-                                        {Svg.addSationBtn}
+                                        {Svg.addStation}
                                     </span>
                                 </a>
                             </Tooltip>

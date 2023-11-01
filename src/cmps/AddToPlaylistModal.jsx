@@ -20,6 +20,7 @@ export function AddToPlaylistModal({ stations, onClose, svgPosition, song }) {
 			title: song.snippet.title,
 			videoId: song.id.videoId,
 			imgUrl: song.snippet.thumbnails.high.url,
+			addedAt: Date.now()
 		}
 
 		if (selectedPlaylist && songToSave) {

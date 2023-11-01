@@ -127,8 +127,13 @@ export function SearchPage() {
 
                 {songs && (
                     <ul className="song-list">
+                        <div className='artist-page'>
+                            <img src={songs[1].snippet.thumbnails.high.url} alt="" />
+                            <span className='text-artist-name'>{trackService.getArtistName(songs[0].snippet.title)}</span>
+                        </div>
+
                         {songs.map((song, idx) => (
-                            <li key={idx} onClick={() => playSong(song)}>
+                            <li className='song-list-list' key={idx} onClick={() => playSong(song)}>
                                 <img src={song.snippet.thumbnails.high.url} alt="" />
 
                                 <span className="text-song-name">{trackService.getCleanTitle(song.snippet.title)}</span>
@@ -163,7 +168,7 @@ export function SearchPage() {
                                     </span>
 
                                     <svg
-                                    className='svg-option'
+                                        className='svg-option'
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="15"
                                         height="15"

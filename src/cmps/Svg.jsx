@@ -291,24 +291,32 @@ export const Svg = {
 	penIcon: (
 		<svg
 			data-encore-id="icon"
-			role="img" aria-hidden="true"
+			role="img"
+			aria-hidden="true"
 			viewBox="0 0 24 24"
 			height="44"
 			width="46"
 			style={{ fill: 'white' }}
-			class="Svg-sc-ytk21e-0 eKvNOM"><path d="M17.318 1.975a3.329 3.329 0 1 1 4.707 4.707L8.451 20.256c-.49.49-1.082.867-1.735 1.103L2.34 22.94a1 1 0 0 1-1.28-1.28l1.581-4.376a4.726 4.726 0 0 1 1.103-1.735L17.318 1.975zm3.293 1.414a1.329 1.329 0 0 0-1.88 0L5.159 16.963c-.283.283-.5.624-.636 1l-.857 2.372 2.371-.857a2.726 2.726 0 0 0 1.001-.636L20.611 5.268a1.329 1.329 0 0 0 0-1.879z"></path></svg>
+			class="Svg-sc-ytk21e-0 eKvNOM"
+		>
+			<path d="M17.318 1.975a3.329 3.329 0 1 1 4.707 4.707L8.451 20.256c-.49.49-1.082.867-1.735 1.103L2.34 22.94a1 1 0 0 1-1.28-1.28l1.581-4.376a4.726 4.726 0 0 1 1.103-1.735L17.318 1.975zm3.293 1.414a1.329 1.329 0 0 0-1.88 0L5.159 16.963c-.283.283-.5.624-.636 1l-.857 2.372 2.371-.857a2.726 2.726 0 0 0 1.001-.636L20.611 5.268a1.329 1.329 0 0 0 0-1.879z"></path>
+		</svg>
 	),
 	searchIcon: (
-		<svg data-encore-id="icon"
-			role="img" aria-hidden="true"
+		<svg
+			data-encore-id="icon"
+			role="img"
+			aria-hidden="true"
 			class="Svg-sc-ytk21e-0 kPpCsU mOLTJ2mxkzHJj6Y9_na_"
 			height="16"
 			width="18"
-			viewBox="0 0 16 16"><path d="M7 1.75a5.25 5.25 0 1 0 0 10.5 5.25 5.25 0 0 0 0-10.5zM.25 7a6.75 6.75 0 1 1 12.096 4.12l3.184 3.185a.75.75 0 1 1-1.06 1.06L11.304 12.2A6.75 6.75 0 0 1 .25 7z"></path></svg>
-
+			viewBox="0 0 16 16"
+		>
+			<path d="M7 1.75a5.25 5.25 0 1 0 0 10.5 5.25 5.25 0 0 0 0-10.5zM.25 7a6.75 6.75 0 1 1 12.096 4.12l3.184 3.185a.75.75 0 1 1-1.06 1.06L11.304 12.2A6.75 6.75 0 0 1 .25 7z"></path>
+		</svg>
 	),
 
-	addSationBtn: (
+	addStation: (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			role="img"
@@ -330,17 +338,35 @@ export const Svg = {
 			/>
 		</svg>
 	),
-	songPlayBtn:(
-		<svg data-encore-id="icon"
-		 role="img" aria-hidden="true" 
-		 class="Svg-sc-ytk21e-0 iYxpxA UIBT7E6ZYMcSDl1KL62g" 
-		 height="16"
-		 fill="white"
-		 width="16"
-		 viewBox="0 0 24 24">
-			
-			<path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"></path></svg>
-	)
+
+	songPlayBtn: (
+		<svg
+			data-encore-id="icon"
+			role="img"
+			aria-hidden="true"
+			class="Svg-sc-ytk21e-0 iYxpxA UIBT7E6ZYMcSDl1KL62g"
+			height="16"
+			fill="white"
+			width="16"
+			viewBox="0 0 24 24"
+		>
+			<path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"></path>
+		</svg>
+	),
+
+	library: (
+		<svg
+			role="img"
+			height="24"
+			width="26"
+			viewBox="0 0 22 24"
+			data-encore-id="icon"
+			className="Svg-sc-ytk21e-0 ldgdZj"
+			style={{ fill: '#b3b3b3', marginRight: '9px', marginBottom: '3px' }}
+		>
+			<path d="M3 22a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1zM15.5 2.134A1 1 0 0 0 14 3v18a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V6.464a1 1 0 0 0-.5-.866l-6-3.464zM9 2a1 1 0 0 0-1 1v18a1 1 2 1 0 2 0V3a1 1 0 0 0-1-1z"></path>
+		</svg>
+	),
 }
 
 ////////////////////////////////////////////////////////////////

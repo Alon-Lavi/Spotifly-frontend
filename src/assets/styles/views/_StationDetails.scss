@@ -20,7 +20,7 @@
 		color: aliceblue;
 		align-items: center;
 		position: relative;
-		padding-block-end: 12px;
+		padding-block-end: 20px;
 
 		.fade {
 			width: 102%;
@@ -37,6 +37,11 @@
 
 			h1 {
 				font-size: 6rem;
+				margin: 0;
+			}
+			.info{
+				display: grid;
+				margin-block-start: 1em;
 
 			}
 
@@ -46,7 +51,7 @@
 			}
 
 			span {
-				margin-bottom: 20px;
+				margin-block-start: 5px;
 			}
 		}
 

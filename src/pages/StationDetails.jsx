@@ -31,6 +31,8 @@ export function StationDetails() {
 	const bgc = useSelector((storeState) => storeState.stationModule.bgc)
 	const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
 	const player = useSelector((storeState) => storeState.playerModule.player)
+	const songPlaying = useSelector((storeState) => storeState.playerModule.songPlaying)
+
 
 	const currStation = useSelector((storeState) => storeState.stationModule.currStation)
 
@@ -53,10 +55,7 @@ export function StationDetails() {
 		setStation(stationToSave)
 	}
 
-	function getUploadLabel() {
-		if (imgData.imgUrl) return 'Upload Another?'
-		return isUploading ? 'Uploading....' : 'Upload Image'
-	}
+
 	useEffect(() => {
 		loadStations()
 	}, [stationId, isLikedPage, user])
@@ -96,14 +95,20 @@ export function StationDetails() {
 	}
 
 	function playSong(song) {
-		if (song.kind) {
-			const songToPlay = {
-				videoId: song.id.videoId,
-				title: song.snippet.title,
-				imgUrl: song.snippet.thumbnails.high.url,
-			}
-			setSongPlaying(songToPlay)
-		} else setSongPlaying(song)
+		if (song?.videoId === songPlaying.videoId){
+			const isCurrentlyPlaying = !isPlaying
+			isCurrentlyPlaying ? player.playVideo() : player.pauseVideo()
+			setIsPlaying(isCurrentlyPlaying)
+		}
+
+		else if (song.kind) {
+				const songToPlay = {
+					videoId: song.id.videoId,
+					title: song.snippet.title,
+					imgUrl: song.snippet.thumbnails.high.url,
+				}
+				setSongPlaying(songToPlay)
+			} else setSongPlaying(song)
 	}
 
 	async function AddToPlaylist(song, ev) {
@@ -346,7 +351,7 @@ export function StationDetails() {
 						<span>#</span>
 						<span>Title </span>
 						<span></span>
-						<span>Added at</span>
+						<span>Date added</span>
 					</div>
 
 					<DragDropContext onDragEnd={handleDragend}>

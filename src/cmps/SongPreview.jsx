@@ -3,24 +3,40 @@ import { Draggable } from 'react-beautiful-dnd'
 
 import { utilService } from '../services/util.service'
 import { Svg } from './Svg'
+import { useSelector } from 'react-redux'
 
 export function SongPreview({ song, playSong, checkLikedSongs, checkIfLiked, onDeleteSong, idx }) {
 	const location = useLocation()
 	const isLikedPage = location.pathname === '/likedsongs'
+	const songPlaying = useSelector((storeState) => storeState.playerModule.songPlaying)
+	const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
+
+
+
 
 	return (
 		<Draggable key={song.id} draggableId={song.id} index={idx}>
 			{(provided) => {
 				return (
 					<li {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} onClick={() => playSong(song)}>
-						<span className="idx">{idx + 1}</span>
-						<span className='song-play-btn'> {Svg.songPlayBtn}</span>
+						{songPlaying?.videoId !== song.videoId && < span style={{ color: 'white' }} className="idx">{idx + 1}</span>}
+						{songPlaying?.videoId === song.videoId && !isPlaying && < span style={{ color: '#1ed760' }} className="idx">{idx + 1}</span>}
+						{songPlaying?.videoId === song.videoId && isPlaying && 
+						< div style={{ color: '#1ed760' }} className="icon idx">
+							<span className='bar'></span>
+							<span className='bar'></span>
+							<span className='bar'></span>
+
+							</div>}
+
+
+						<span className='song-play-btn'> {songPlaying?.videoId === song.videoId && isPlaying ? Svg.songPauseBtn :Svg.songPlayBtn  }</span>
 						<div className="details">
 							<img src={song.imgUrl} alt="" />
-							<span>{song.title}</span>
+							<span style={{ color: songPlaying.videoId === song.videoId ? '#1ed760' : 'white' }} >{song.title}</span>
 						</div>
 
-						<span style={{opacity:checkIfLiked(song)?1:0 }} className="like-btn">
+						<span style={{ opacity: checkIfLiked(song) ? 1 : 0 }} className="like-btn">
 							<svg
 								onClick={(event) => {
 									checkLikedSongs(event, song)
@@ -55,6 +71,6 @@ export function SongPreview({ song, playSong, checkLikedSongs, checkIfLiked, onD
 					</li>
 				)
 			}}
-		</Draggable>
+		</Draggable >
 	)
 }

@@ -71,8 +71,8 @@ export function AppHeader() {
 					
 				</div>
 
-				<UserMsg />
 			</section>
+				<UserMsg />
 		</>
 	)
 }

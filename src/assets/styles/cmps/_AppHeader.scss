@@ -10,7 +10,7 @@
 	z-index: 2;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
-
+	align-items: baseline;
 	justify-content: space-between;
 	// margin-right: 2160px;
 
@@ -27,12 +27,10 @@
 
 	.login-logout {
 		font-family: sans-serif;
-		position: fixed;
 		display: flex;
 		justify-content: flex-end;
 		margin-inline-start: 10px;
-		
-		right: 0;
+
 		color: white;
 		margin-inline-end: 20px;
 
@@ -44,10 +42,10 @@
 			justify-content: flex-end;
 			color: white;
 
-			
+
 		}
 
-		
+
 		.user-name {
 			position: absolute;
 			margin-top: rem(20px);
@@ -70,23 +68,29 @@
 		color: rgb(255, 255, 255);
 		padding-left: 30px;
 	}
+
 	.search-icon {
 		position: absolute;
-		left: 10px; /* Adjust the icon's left position as needed */
-		top: 50%; /* Vertically center the icon */
+		left: 10px;
+		/* Adjust the icon's left position as needed */
+		top: 50%;
+		/* Vertically center the icon */
 		transform: translateY(-50%);
-		fill: hsla(0,0%,100%,.7);
-		transition: color 0.3s; /* Transition icon color on focus */
+		fill: hsla(0, 0%, 100%, .7);
+		transition: color 0.3s;
+		/* Transition icon color on focus */
 
-	  }
+	}
 
 	input:focus {
 		outline: none;
 		border-color: rgb(255, 255, 255);
 		border: em(3px) solid whitesmoke;
+
 		.search-icon {
-			fill: #fff; /* Change icon color on input focus */
-		  }
+			fill: #fff;
+			/* Change icon color on input focus */
+		}
 	}
 
 }
@@ -94,6 +98,7 @@
 .prev-next-btns {
 	margin-left: 11px;
 	margin-inline-end: 170px;
+
 	.tooltip-container {
 		margin-left: -10px;
 	}
@@ -113,7 +118,7 @@
 		top: 60px;
 		left: 1px;
 		transition: visibility 0.2s, opacity 1s linear;
-	
+
 		z-index: 1;
 	}
 

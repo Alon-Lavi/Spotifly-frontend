@@ -65,12 +65,21 @@
 		}
 
 		.options {
+			display: flex;
 			padding-right: auto;
 			margin-left: auto;
-			display: none;
 			align-items: center;
+			justify-content: center;
+			
+			.svg-option{
+				display: none;
+				position: fixed;
+				margin-right: -15px;
+			}
 
 			.liked-song-icon {
+				margin-top: 7px;
+				margin-right: 30px;
 				padding-right: 20px;
 				margin-left: auto;
 			}
@@ -80,13 +89,16 @@
 	li:hover {
 		background-color: rgba(72, 72, 72, 0.295);
 
-
-	
-
 		.options {
-			padding-right: 20px;
-			margin-left: auto;
-			display: flex;
+		     
+			.svg-option{
+				display: flex;
+			}
+
+			.like-btn {
+				opacity: 1 !important;
+			}
+	
 		}
 	}
 
@@ -161,6 +173,7 @@
 	position: fixed;
 	width: max-content;
 	height: max-content;
+	align-items: center;
 	background-color: rgba(48, 47, 47, 0.711);
 	flex-direction: column;
 
@@ -175,7 +188,7 @@
 	}
 
 	button {
-		width: 110px;
+		width: 90%;
 		background-color: rgba(30, 30, 30);
 
 		:hover {

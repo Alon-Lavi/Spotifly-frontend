@@ -95,7 +95,7 @@ export function StationDetails() {
 	}
 
 	function playSong(song) {
-		if (song?.videoId === songPlaying.videoId){
+		if (song?.videoId === songPlaying?.videoId){
 			const isCurrentlyPlaying = !isPlaying
 			isCurrentlyPlaying ? player.playVideo() : player.pauseVideo()
 			setIsPlaying(isCurrentlyPlaying)

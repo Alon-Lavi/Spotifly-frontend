@@ -33,7 +33,7 @@ export function SongPreview({ song, playSong, checkLikedSongs, checkIfLiked, onD
 						<span className='song-play-btn'> {songPlaying?.videoId === song.videoId && isPlaying ? Svg.songPauseBtn :Svg.songPlayBtn  }</span>
 						<div className="details">
 							<img src={song.imgUrl} alt="" />
-							<span style={{ color: songPlaying.videoId === song.videoId ? '#1ed760' : 'white' }} >{song.title}</span>
+							<span style={{ color: songPlaying?.videoId === song.videoId ? '#1ed760' : 'white' }} >{song.title}</span>
 						</div>
 
 						<span style={{ opacity: checkIfLiked(song) ? 1 : 0 }} className="like-btn">

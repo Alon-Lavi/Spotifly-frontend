@@ -121,7 +121,6 @@ export async function getBgc(imgUrl) {
 	// console.log(imgUrl)
 	try {
 		const color = await bgcService.getColorFromUrl(imgUrl)
-		console.log(color)
 		// changePrimaryClr(color)
 		setBgc(color)
 	} catch (err) {

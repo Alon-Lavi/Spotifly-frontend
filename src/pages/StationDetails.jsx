@@ -3,7 +3,7 @@ import { useLocation, useNavigate, useParams } from 'react-router'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import { useSelector } from 'react-redux'
 
-import { getBgc, removeStation, setCurrStation, updateStation } from '../store/actions/station.actions'
+import { getBgc, removeStation, setBgc, setCurrStation, updateStation } from '../store/actions/station.actions'
 import { setIsPlaying, setSongPlaying } from '../store/actions/player.actions'
 import { updateUser } from '../store/actions/user.actions'
 
@@ -42,22 +42,22 @@ export function StationDetails() {
 		width: 180,
 	})
 
-	const [isUploading, setIsUploading] = useState(false)
 
 	async function uploadImg(ev) {
-		setIsUploading(true)
+
 		const { secure_url, height, width } = await uploadService.uploadImg(ev)
 		console.log(secure_url);
 		setImgData({ imgUrl: secure_url, width: '180', height: '180' })
-		setIsUploading(false)
-		// onUploaded && onUploaded(secure_url)
-		const stationToSave = { ...station, imgUrl: secure_url }
-		setStation(stationToSave)
+
+
 	}
 
 
 	useEffect(() => {
 		loadStations()
+		return () => {
+			if(!currStation)setBgc(null)
+		}
 	}, [stationId, isLikedPage, user])
 
 	async function onRemoveStation(stationId) {
@@ -95,20 +95,20 @@ export function StationDetails() {
 	}
 
 	function playSong(song) {
-		if (song?.videoId === songPlaying?.videoId){
+		if (song?.videoId === songPlaying?.videoId) {
 			const isCurrentlyPlaying = !isPlaying
 			isCurrentlyPlaying ? player.playVideo() : player.pauseVideo()
 			setIsPlaying(isCurrentlyPlaying)
 		}
 
 		else if (song.kind) {
-				const songToPlay = {
-					videoId: song.id.videoId,
-					title: song.snippet.title,
-					imgUrl: song.snippet.thumbnails.high.url,
-				}
-				setSongPlaying(songToPlay)
-			} else setSongPlaying(song)
+			const songToPlay = {
+				videoId: song.id.videoId,
+				title: song.snippet.title,
+				imgUrl: song.snippet.thumbnails.high.url,
+			}
+			setSongPlaying(songToPlay)
+		} else setSongPlaying(song)
 	}
 
 	async function AddToPlaylist(song, ev) {
@@ -176,10 +176,11 @@ export function StationDetails() {
 		ev.preventDefault()
 		const desc = ev.target[1].value
 		const name = ev.target[0].value
-		const stationToSave = { ...station, name, desc }
+		const stationToSave = { ...station, name, desc, imgUrl: imgData.imgUrl }
 		try {
 			const savedStation = await updateStation(stationToSave)
 			setStation(savedStation)
+			getBgc(savedStation.imgUrl)
 			showSuccessMsg(`Station updated, new name: ${savedStation.name}`)
 		} catch (err) {
 			showErrorMsg('Could not update station')
@@ -421,6 +422,7 @@ export function StationDetails() {
 							</div>
 							<img className='image' src={imgData.imgUrl} alt="" />
 							<input className="title" defaultValue={station.name} type="text" />
+							<input className='file' type="file" onChange={uploadImg} accept="img/*" id="imgUpload" />
 							<textarea
 								value={textareaValue}
 								onChange={handleTextareaChange}
@@ -432,7 +434,6 @@ export function StationDetails() {
 							<button type="submit" >
 								save
 							</button>
-							<input className='file' type="file" onChange={uploadImg} accept="img/*" id="imgUpload" />
 						</form>
 
 						<p>

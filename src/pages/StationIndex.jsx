@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
-import { loadStations, setCurrStation } from '../store/actions/station.actions.js'
+import { loadStations, setBgc, setCurrStation } from '../store/actions/station.actions.js'
 
 import { showErrorMsg } from '../services/event-bus.service.js'
 import { stationService } from '../services/station.service.local.js'
@@ -25,6 +25,9 @@ export function StationIndex() {
 	useEffect(() => {
 		loadStations({ genre })
 		loadRecommended()
+		if (isPlaying){
+			setBgc(currStation.imgUrl)
+		}
 	}, [genre, user])
 
 	function onPlayStation(station, ev) {

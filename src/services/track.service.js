@@ -7,6 +7,7 @@ export const trackService = {
 	getVideos,
 	getCleanTitle,
 	truncateTitle,
+	getArtistName
 }
 
 const KEY = 'videosDB'
@@ -99,3 +100,13 @@ function truncateTitle(title, maxLength = 20) {
 	const truncatedTitle = title.slice(0, maxLength) + '...'
 	return truncatedTitle
 }
+
+function getArtistName(title) {
+	if (typeof title !== 'string') return '';
+	
+	
+	const regex = /^(.*?)(-|–|:|—)\s/; 
+	const match = title.match(regex);
+	
+	return match?.[1] || ''; 
+  }

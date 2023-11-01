@@ -1,11 +1,11 @@
 .search-page {
-    grid-area: 2/2;
+	grid-area: 2/2;
 	max-width: 100%;
 	background-color: #121212;
 	margin-bottom: 90px;
 
 	.station-list {
-	
+
 
 		li {
 			-webkit-box-flex: 1;
@@ -17,11 +17,11 @@
 			height: 100%;
 			background-color: $accent-clr;
 			display: grid;
-	
+
 			.img-container {
 				position: relative;
 				height: fit-content;
-	
+
 				img {
 					width: 100%;
 					height: 100%;
@@ -43,13 +43,46 @@
 	}
 
 	.song-list {
+		display: flex;
+		flex-direction: row;
+
 		width: max-content;
 		height: max-content;
 		margin-left: 5px;
 		list-style-type: none;
 
+
+		.artist-page {
+			// display: flex;
+			// flex-direction: column;
+			border-radius: 10px;
+			width: 370px;
+			height: 200px;
+		
+			background-color: rgba(24, 24, 24);
+
+			img {
+				margin-left: 23px;
+				margin-block-start: 15px;
+				border-radius: 100%;
+				width: 100px;
+				height: 100px;
+				box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
+			}
+
+			.text-artist-name {
+				margin-left: 23px;
+				font-size: 27px;
+				font-weight: 600;
+				color: #fff;
+
+			}
+
+		}
+
 		li {
 			display: flex;
+             
 			width: 100%;
 			height: 55px;
 			border-radius: 5px;
@@ -58,7 +91,7 @@
 			justify-content: space-between;
 			align-items: center;
 			cursor: pointer;
-		
+
 			.like-btn:hover {
 				opacity: 1 !important;
 			}
@@ -70,8 +103,8 @@
 			margin-left: auto;
 			align-items: center;
 			justify-content: center;
-			
-			.svg-option{
+
+			.svg-option {
 				display: none;
 				position: fixed;
 				margin-right: -15px;
@@ -84,21 +117,25 @@
 				margin-left: auto;
 			}
 		}
+		.song-list-list {
+			display: flex;
+			flex-direction: column;
+		}
 	}
 
 	li:hover {
 		background-color: rgba(72, 72, 72, 0.295);
 
 		.options {
-		     
-			.svg-option{
+
+			.svg-option {
 				display: flex;
 			}
 
 			.like-btn {
 				opacity: 1 !important;
 			}
-	
+
 		}
 	}
 
@@ -179,7 +216,7 @@
 
 	.button-select-modal-add:hover {
 		background-color: rgb(47, 47, 47);
-	
+
 
 	}
 
@@ -231,7 +268,7 @@
 			}
 		}
 
-		button + button {
+		button+button {
 			margin-left: 10px;
 		}
 	}

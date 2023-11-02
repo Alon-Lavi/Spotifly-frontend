@@ -4,11 +4,12 @@
 	position: sticky;
 	top: 0;
 	margin-top: 8px;
-	height: rem(73px);
+	height: rem(64px);
 	background-color: #121212;
 	color: whitesmoke;
 	z-index: 2;
 	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 
 	justify-content: space-between;
 
@@ -28,26 +29,85 @@
 		display: flex;
 		justify-content: flex-end;
 		margin-inline-start: 10px;
-
-		color: white;
-		margin-inline-end: 20px;
-
+		margin-inline-end: 10px;
+		margin-top: 0.5em;
 
 		.login-header,
 		.logout-header {
 			text-decoration: none;
-			margin-top: 1.625rem;
 			justify-content: flex-end;
 			color: white;
-
-
 		}
+	}
 
+	.button-login {
+		margin-top: 0;
+		align-items: center;
+		appearance: none;
+		background-color: #fff;
+		border-radius: 24px;
+		border-style: none;
+		box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px, rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+		box-sizing: border-box;
+		color: #3c4043;
+		cursor: pointer;
+		display: inline-flex;
+		fill: currentcolor;
+		font-family: 'Google Sans', Roboto, Arial, sans-serif;
+		font-size: 1rem;
+		font-weight: 700;
+		height: 48px;
+		justify-content: center;
+		letter-spacing: 0.25px;
+		line-height: normal;
+		max-width: 100%;
+		overflow: visible;
+		padding: 2px 24px;
+		position: relative;
+		text-align: center;
+		text-transform: none;
+		transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1), opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+		user-select: none;
+		-webkit-user-select: none;
+		touch-action: manipulation;
+		width: auto;
+		will-change: transform, opacity;
+		z-index: 0;
+	}
 
-		.user-name {
-			position: absolute;
-			margin-top: rem(20px);
-		}
+	.button-17:hover {
+		background: #f6f9fe;
+		color: #174ea6;
+	}
+
+	.button-17:active {
+		box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+		outline: none;
+	}
+
+	.button-17:focus {
+		outline: none;
+		border: 2px solid #4285f4;
+	}
+
+	.button-17:not(:disabled) {
+		box-shadow: rgba(60, 64, 67, 0.3) 0 1px 3px 0, rgba(60, 64, 67, 0.15) 0 4px 8px 3px;
+	}
+
+	.button-17:not(:disabled):hover {
+		box-shadow: rgba(60, 64, 67, 0.3) 0 2px 3px 0, rgba(60, 64, 67, 0.15) 0 6px 10px 4px;
+	}
+
+	.button-17:not(:disabled):focus {
+		box-shadow: rgba(60, 64, 67, 0.3) 0 1px 3px 0, rgba(60, 64, 67, 0.15) 0 4px 8px 3px;
+	}
+
+	.button-17:not(:disabled):active {
+		box-shadow: rgba(60, 64, 67, 0.3) 0 4px 4px 0, rgba(60, 64, 67, 0.15) 0 8px 12px 6px;
+	}
+
+	.button-17:disabled {
+		box-shadow: rgba(60, 64, 67, 0.3) 0 1px 3px 0, rgba(60, 64, 67, 0.15) 0 4px 8px 3px;
 	}
 }
 
@@ -75,10 +135,9 @@
 		top: 56%;
 		/* Vertically center the icon */
 		transform: translateY(-50%);
-		fill: hsla(0, 0%, 100%, .7);
+		fill: hsla(0, 0%, 100%, 0.7);
 		transition: color 0.3s;
 		/* Transition icon color on focus */
-
 	}
 
 	input:focus {
@@ -91,7 +150,6 @@
 			/* Change icon color on input focus */
 		}
 	}
-
 }
 
 .prev-next-btns {
@@ -128,7 +186,7 @@
 
 	.btn-go-back,
 	.btn-go-next {
-        margin-left: 4px;
+		margin-left: 4px;
 		background-color: rgba(0, 0, 0, 0.427);
 		margin-top: 1rem;
 		border: none;
@@ -140,6 +198,5 @@
 		align-items: center;
 		border-radius: 50%;
 		fill: #ffffff;
-
 	}
 }

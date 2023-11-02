@@ -41,38 +41,33 @@ export function AppHeader() {
 			<section style={{ backgroundColor: bgc }} className="app-header">
 				<span className="prev-next-btns flex">
 					<Tooltip text={'Go back'}>
-					<button onClick={goToPreviousPage} className="btn-go-back">
-						{Svg.btnGoBackHeader}
-					</button>
+						<button onClick={goToPreviousPage} className="btn-go-back">
+							{Svg.btnGoBackHeader}
+						</button>
 					</Tooltip>
 
-				
 					<button onClick={goToNextPage} className="btn-go-next">
 						{Svg.btnGoNextHeader}
 					</button>
-				
+
 					{showSearchInput ? <Search /> : null}
 				</span>
 
 				<div className="login-logout">
-					
 					{!user && (
 						<Link className="login-header" to={'/loginsignup'}>
-							Log-in
+							<button className="button-login">Log in</button>
 						</Link>
 					)}
-					
-                    
+
 					{user && (
 						<span className="logout-header">
 							<img id="logout" onClick={logout} src={user.imgUrl} alt="" aria-label="logout" />
 						</span>
 					)}
-					
 				</div>
-
 			</section>
-				<UserMsg />
+			<UserMsg />
 		</>
 	)
 }

@@ -157,7 +157,7 @@
 	.add-library {
 
 		.tooltip-container {
-			margin-left: 0px;
+			margin-left: 15px;
 		}
 
 		.tooltip {
@@ -243,6 +243,8 @@
 			align-items: center;
 			font-family: sans-serif;
 
+		
+
 			.side-search-input-container {
 				display: flex;
 				align-items: center;
@@ -274,9 +276,10 @@
 
 			.filter-navBar {
 				font-size: 13px;
-				padding: 20px;
-				align-items: center;
+				padding: 21px;
+				align-items: start;
 				justify-content: flex-end;
+				display: flex;
 				margin-left: auto;
 				color: rgba(245, 245, 245, 0.717);
 			}

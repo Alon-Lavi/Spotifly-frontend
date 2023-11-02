@@ -374,6 +374,21 @@ export const Svg = {
 			<path d="M3 22a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1zM15.5 2.134A1 1 0 0 0 14 3v18a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V6.464a1 1 0 0 0-.5-.866l-6-3.464zM9 2a1 1 0 0 0-1 1v18a1 1 2 1 0 2 0V3a1 1 0 0 0-1-1z"></path>
 		</svg>
 	),
+
+	filterBy: (
+		<svg
+			data-encore-id="icon"
+			role="img"
+			aria-hidden="true"
+			viewBox="0 0 16 16"
+			fill="gray"
+			class="Svg-sc-ytk21e-0 kgVuXA"
+			style={{width:'16px', height:'16px', marginLeft:'4px' }}
+		>
+			<path d="M15 14.5H5V13h10v1.5zm0-5.75H5v-1.5h10v1.5zM15 3H5V1.5h10V3zM3 3H1V1.5h2V3zm0 11.5H1V13h2v1.5zm0-5.75H1v-1.5h2v1.5z">
+			</path>
+		</svg>
+	),
 }
 
 ////////////////////////////////////////////////////////////////

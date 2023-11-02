@@ -166,6 +166,7 @@ export function NavBar() {
                             </form>
                             <div className='filter-navBar'>
                                 Recents
+                                {Svg.filterBy}
                             </div>
                         </div>
 

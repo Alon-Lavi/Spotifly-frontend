@@ -9,6 +9,7 @@ import { stationService } from '../services/station.service.local'
 import { GenrePreview } from './GenrePreview'
 import { AddToPlaylistModal } from './AddToPlaylistModal'
 import { trackService } from '../services/track.service.js'
+import { Svg } from './Svg'
 
 
 import { StationPreview } from './StationPreview'
@@ -26,7 +27,7 @@ export function SearchPage() {
     const user = useSelector((storeState) => storeState.userModule.user)
     const searchValue = useSelector((storeState) => storeState.stationModule.searchValue)
     const regex = new RegExp(searchValue, 'i')
-	const navigate = useNavigate()
+    const navigate = useNavigate()
 
 
 
@@ -137,6 +138,9 @@ export function SearchPage() {
 
                             <img src={songs[0].snippet.thumbnails.high.url} alt="" />
                             <span className='text-artist-name'>{trackService.getArtistName(songs[0].snippet.title)}</span>
+                            <button className="btn-play-playlist">
+                                {Svg.pauseTrackIcon}
+                            </button>
                         </div>
 
                         <div className='song-list-list'>
@@ -211,17 +215,17 @@ export function SearchPage() {
                     <ul className="station-list">
 
 
-                        {  
-		
+                        {
 
-                        stations
-                        .filter((station) => station.songs.some(song => regex.test(song.title)))
-                        .map((station, idx) => (
-                        <li onClick={() => navigate(`/station/${station._id}`)} className="station-preview" key={idx}>
 
-                            <StationPreview onPlayStation={onPlayStation} station={station} />
-                        </li>
-                        ))}
+                            stations
+                                .filter((station) => station.songs.some(song => regex.test(song.title)))
+                                .map((station, idx) => (
+                                    <li onClick={() => navigate(`/station/${station._id}`)} className="station-preview" key={idx}>
+
+                                        <StationPreview onPlayStation={onPlayStation} station={station} />
+                                    </li>
+                                ))}
                     </ul>
                 </>}
 

@@ -46,25 +46,63 @@
 		display: flex;
 		justify-content: space-between; 
 		align-items: flex-start; 
-		width: max-content;
+		width: 100%;
 		height: max-content;
 		margin-left: 5px;
 		list-style-type: none;
+		
         .song-list-list{
-			margin-left: 35px;
+
 			display: flex;
 			flex-direction: column;
-			width: 100%;
+			width: 60%;
+			margin-right: 15px;
 		}
+		.artist-page:hover{
+			transition:  0.3s, width 0.2s, opacity 0.5s;
+			background-color: rgba(42, 41, 41, 0.827);
+		
+				 .btn-play-playlist {
+					border: none;
+					background-color: #1ed760;
+					box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+					opacity: 1;
+					transform: translateY(0);
+					cursor: pointer;
+
+					.svg {
+						width: 20px;
+						height: 20px;
+					}
+				 	}
+					}
 
 		.artist-page {
 			display: flex;
 			flex-direction: column;
+			position: relative;
 			border-radius: 10px;
-			width: 570px;
-			height: 200px;
+			width: 37%;
+			height: 210px;
 		
 			background-color: rgba(24, 24, 24);
+			.btn-play-playlist {
+				position: absolute;
+				right: 10px; /* Располагаем справа */
+				bottom: 10px; /* Располагаем снизу */
+				height: 48px;
+				width: 48px;
+				background-color: $clr4;
+				border-radius: 50%;
+				border: none;
+				opacity: 0;
+				transform: translateY(20%);
+				transition: transform 0.3s, opacity 0.5s;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				/* остальные стили для .btn-play-playlist */
+			}
 
 			img {
 				margin-left: 23px;
@@ -93,6 +131,7 @@
 			height: 55px;
 			border-radius: 5px;
 			padding-left: 16px;
+			margin-right: 10px;
 			gap: 10px;
 			cursor: pointer;
 
@@ -121,10 +160,7 @@
 				margin-left: auto;
 			}
 		}
-		// .song-list-list {
-		// 	display: flex;
-		// 	flex-direction: column;
-		// }
+
 	}
 
 	li:hover {

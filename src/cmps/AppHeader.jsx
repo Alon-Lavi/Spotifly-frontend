@@ -35,6 +35,13 @@ export function AppHeader() {
 		navigate(1)
 	}
 
+	function showModal() {
+		document.querySelector('.menu').hidden = false
+	}
+	function closeModal() {
+		document.querySelector('.menu').hidden = true
+	}
+
 	if (isLoginPage) return <div></div>
 	return (
 		<>
@@ -62,7 +69,23 @@ export function AppHeader() {
 
 					{user && (
 						<span className="logout-header">
-							<img id="logout" onClick={logout} src={user.imgUrl} alt="" aria-label="logout" />
+							<img id="logout" onClick={showModal} src={user.imgUrl} alt="" aria-label="logout" />
+							<div className="menu" hidden={true}>
+								<div className="context-menu">
+									<div className="user-widget-menu">
+										<ul className="ul-menu">
+											<li>
+												<button className="logout-btn" onClick={logout}>
+													logout
+												</button>
+												<button className="logout-btn" onClick={closeModal}>
+													X
+												</button>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
 						</span>
 					)}
 				</div>

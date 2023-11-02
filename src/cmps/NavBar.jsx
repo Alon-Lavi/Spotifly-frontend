@@ -34,7 +34,7 @@ export function NavBar() {
     }, [stations])
 
     async function loadMyStations() {
-        const MyStations = await stationService.query(user)
+        const MyStations = await stationService.query({user ,liked: true})
         setStations(MyStations)
     }
 

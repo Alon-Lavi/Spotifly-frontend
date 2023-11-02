@@ -1714,7 +1714,7 @@ async function query(filterBy = { txt: '' }) {
 		stations = stations.filter((station) => station.createdBy._id === filterBy.user._id)
 	}
 	if (filterBy.liked) {
-		console.log(stations, filterBy)
+	
 		stations = stations.filter((station) => station.likedByUsers.some((user) => user._id === filterBy.user._id))
 	}
 	return stations

@@ -7,9 +7,9 @@
 	height: max-content;
 
 	.search-song-txt {
-		margin-top: 50px;
-		margin-left: 10px;
-
+		margin-top: 30px;
+		margin-left: 20px;
+		padding-left: 15px;
 		color: white;
 		font-family: sans-serif;
 		font-size: 22px;
@@ -25,7 +25,7 @@
 		.fade {
 			width: 102%;
 			position: absolute;
-			height: 150px;
+			height: 190px;
 			bottom: 0;
 			transform: translateY(100%);
 		}
@@ -39,7 +39,8 @@
 				font-size: 6rem;
 				margin: 0;
 			}
-			.info{
+
+			.info {
 				display: grid;
 				margin-block-start: 1em;
 
@@ -79,6 +80,24 @@
 		gap: 16px;
 		z-index: 1;
 
+		.options-modal {
+			background-color: #4c4c4c;
+			padding: 5px;
+
+			.modal-options-content {
+				display: grid;
+				span{
+					display: flex;
+					align-items: center;
+					gap: 10px;
+					cursor: pointer;
+					border-bottom: 1px solid #7e7e7e;;
+					&:hover{
+						background-color: hsla(0,0%,100%,.1);
+					}
+				}
+			}
+		}
 
 		.btn-play-playlist {
 			height: 48px;
@@ -101,7 +120,15 @@
 			svg {
 				scale: 1.5;
 				margin-left: 10px;
+				fill: currentcolor;
 				cursor: pointer;
+			}
+		}
+
+		.options-btn:hover {
+			svg {
+				fill: #fff;
+				scale: 1.6;
 			}
 		}
 	}
@@ -122,7 +149,7 @@
 			height: 56px;
 			padding-left: 15px;
 			margin-left: 20px;
-			border-bottom: 1px solid hsla(0,0%,100%,.1);
+			border-bottom: 1px solid hsla(0, 0%, 100%, .1);
 
 		}
 
@@ -131,6 +158,7 @@
 			margin: 0;
 			padding: 0;
 			margin-left: 20px;
+			border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
 
 			li {
 				grid-gap: 10px;
@@ -156,6 +184,10 @@
 					}
 
 					.song-play-btn {
+						display: block;
+					}
+
+					.options {
 						display: block;
 					}
 				}
@@ -232,6 +264,10 @@
 					justify-content: center;
 				}
 
+				.options {
+					display: none;
+				}
+
 				.song-play-btn {
 					display: flex;
 					align-items: center;
@@ -276,12 +312,17 @@
 
 .song-list-search {
 	list-style-type: none;
+	margin-left: 20px;
+	padding-left: 15px;
+	margin-right: 20px;
 
 	li {
 		display: flex;
-		height: 50px;
+		height: 56px;
 		gap: 10px;
-		cursor: pointer;
+		align-items: center;
+		border-radius: 4px;
+		padding: 0px 11px;
 
 		&:hover {
 			background-color: hsla(0, 0%, 100%, 0.1);
@@ -321,6 +362,9 @@
 }
 
 .song-search {
+	margin-left: 20px;
+	padding-left: 15px;
+
 	.search-bar {
 		.search-input-container {
 			input {
@@ -475,7 +519,7 @@
 			cursor: pointer;
 			opacity: 0;
 			z-index: 2;
-	
+
 		}
 	}
 }

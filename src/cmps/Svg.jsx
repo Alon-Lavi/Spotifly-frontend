@@ -383,12 +383,50 @@ export const Svg = {
 			viewBox="0 0 16 16"
 			fill="gray"
 			class="Svg-sc-ytk21e-0 kgVuXA"
-			style={{width:'16px', height:'16px', marginLeft:'4px' }}
+			style={{ width: '16px', height: '16px', marginLeft: '4px' }}
 		>
 			<path d="M15 14.5H5V13h10v1.5zm0-5.75H5v-1.5h10v1.5zM15 3H5V1.5h10V3zM3 3H1V1.5h2V3zm0 11.5H1V13h2v1.5zm0-5.75H1v-1.5h2v1.5z">
 			</path>
 		</svg>
 	),
+	threeDots: (
+		<svg data-encore-id="icon"
+			role="img" aria-hidden="true"
+			height="24"
+			width="26"
+			viewBox="0 0 24 24" class="Svg-sc-ytk21e-0 
+		iaCPPY">
+			<path d="M4.5 13.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm15 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm-7.5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path></svg>
+	),
+	deleteIcon: (
+		<svg data-encore-id="icon"
+			role="img"
+			aria-hidden="true"
+			height="10"
+			width="10"
+			viewBox="0 0 16 16"
+			class="Svg-sc-ytk21e-0 dCszzJ">
+			<path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"></path><path d="M12 8.75H4v-1.5h8v1.5z"></path></svg>
+	),
+	addToLibrary: (
+		<svg data-encore-id="icon"
+			role="img"
+			aria-hidden="true"
+			height="10"
+			width="10"
+			viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 dCszzJ"
+		><path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"></path><path d="M11.75 8a.75.75 0 0 1-.75.75H8.75V11a.75.75 0 0 1-1.5 0V8.75H5a.75.75 0 0 1 0-1.5h2.25V5a.75.75 0 0 1 1.5 0v2.25H11a.75.75 0 0 1 .75.75z"></path></svg>
+	),
+	removeFromLibrary: (
+		<svg data-encore-id="icon"
+			height="10"
+			width="10"
+			role="img"
+			aria-hidden="true"
+			style={{fill:"#1ed760"}}
+			viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 kAkpoF">
+			<path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm11.748-1.97a.75.75 0 0 0-1.06-1.06l-4.47 4.47-1.405-1.406a.75.75 0 1 0-1.061 1.06l2.466 2.467 5.53-5.53z"></path></svg>
+	)
 }
 
 ////////////////////////////////////////////////////////////////

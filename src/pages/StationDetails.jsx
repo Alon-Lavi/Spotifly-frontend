@@ -3,7 +3,7 @@ import { useLocation, useNavigate, useParams } from 'react-router'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import { useSelector } from 'react-redux'
 
-import { getBgc, removeStation, setBgc, setCurrStation, updateStation } from '../store/actions/station.actions'
+import { getBgc, removeStation, setBgc, setCurrStation, setSearchValue, updateStation } from '../store/actions/station.actions'
 import { setIsPlaying, setSongPlaying } from '../store/actions/player.actions'
 import { updateUser } from '../store/actions/user.actions'
 
@@ -25,6 +25,7 @@ export function StationDetails() {
 	const isLikedPage = location.pathname === '/likedsongs'
 	const [station, setStation] = useState(null)
 	const [isOpen, setIsOpen] = useState(false)
+	const [isModalOpen, setModalOpen] = useState(false);
 	const [textareaValue, setTextareaValue] = useState('')
 	const user = useSelector((storeState) => storeState.userModule.user)
 	const songs = useSelector((storeState) => storeState.stationModule.songsToSearch)
@@ -32,7 +33,6 @@ export function StationDetails() {
 	const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
 	const player = useSelector((storeState) => storeState.playerModule.player)
 	const songPlaying = useSelector((storeState) => storeState.playerModule.songPlaying)
-
 
 	const currStation = useSelector((storeState) => storeState.stationModule.currStation)
 
@@ -56,6 +56,7 @@ export function StationDetails() {
 	useEffect(() => {
 		loadStations()
 		return () => {
+			setSearchValue(null)
 			if (!currStation) setBgc(null)
 		}
 	}, [stationId, isLikedPage, user])
@@ -80,6 +81,10 @@ export function StationDetails() {
 			setCurrStation(station)
 		}
 	}
+	const openCloseOptionsModal = () => {
+		isModalOpen ? setModalOpen(close) : setModalOpen(true);
+	};
+
 
 
 	const openModal = () => {
@@ -95,20 +100,29 @@ export function StationDetails() {
 	}
 
 	function playSong(song) {
-		if (song?.videoId === songPlaying?.videoId) {
-			const isCurrentlyPlaying = !isPlaying
-			isCurrentlyPlaying ? player.playVideo() : player.pauseVideo()
-			setIsPlaying(isCurrentlyPlaying)
-		}
-
-		else if (song.kind) {
+		if (song.kind) {
 			const songToPlay = {
 				videoId: song.id.videoId,
 				title: song.snippet.title,
 				imgUrl: song.snippet.thumbnails.high.url,
 			}
-			setSongPlaying(songToPlay)
-		} else setSongPlaying(song)
+
+			if (songToPlay.videoId === songPlaying?.videoId) {
+				const isCurrentlyPlaying = !isPlaying
+				isCurrentlyPlaying ? player.playVideo() : player.pauseVideo()
+				setIsPlaying(isCurrentlyPlaying)
+			}
+
+			else setSongPlaying(songToPlay)
+		}
+		else {
+			if (song.videoId === songPlaying?.videoId) {
+				const isCurrentlyPlaying = !isPlaying
+				isCurrentlyPlaying ? player.playVideo() : player.pauseVideo()
+				setIsPlaying(isCurrentlyPlaying)
+			}
+			else setSongPlaying(song)
+		}
 	}
 
 	async function AddToPlaylist(song, ev) {
@@ -303,7 +317,7 @@ export function StationDetails() {
 
 							<span>{station.desc}</span>
 							<span>
-								{station.createdBy?.fullname} {station.songs?.length} songs
+								{station.createdBy?.fullname} {station.songs && station.songs?.length} songs
 							</span>
 						</div>
 					</div>
@@ -324,7 +338,7 @@ export function StationDetails() {
 										checkLikedStation(station)
 									}}
 									xmlns="http://www.w3.org/2000/svg"
-									fill={checkIfStationLiked(station) ? '' : 'white'}
+									fill={checkIfStationLiked(station) ? '' : 'currentcolor'}
 									height="17"
 									width="17"
 									aria-hidden="true"
@@ -338,14 +352,25 @@ export function StationDetails() {
 									></path>
 
 									<path
-										fill={checkIfStationLiked(station) ? '#1ed760' : 'white'}
+										fill={checkIfStationLiked(station) ? '#1ed760' : 'currentcolor'}
 										d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
 									></path>
 								</svg>
 							</span>
-							<button className="remove-btn" onClick={() => onRemoveStation(station._id)}>
-								delete
-							</button>
+							<span className="options-btn" onClick={openCloseOptionsModal}>
+								{
+									Svg.threeDots
+								}
+							</span>
+							{isModalOpen && (
+								<div className="options-modal">
+									<div className="modal-options-content">
+									{!checkIfStationLiked(station) &&<span onClick={() => checkLikedStation(station)}>{Svg.addToLibrary}  Add to Library</span>}
+									{checkIfStationLiked(station) &&<span onClick={() => checkLikedStation(station)}>{Svg.removeFromLibrary}  Remove from Library</span>}
+
+										<span onClick={() => onRemoveStation(station._id)}>{Svg.deleteIcon} Delete</span>
+									</div>
+								</div>)}
 						</>
 
 					)}

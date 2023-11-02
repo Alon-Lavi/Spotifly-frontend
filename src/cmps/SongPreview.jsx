@@ -66,7 +66,7 @@ export function SongPreview({ song, playSong, checkLikedSongs, checkIfLiked, onD
 
 						<span>{utilService.getDate(song.addedAt)}</span>
 						{!isLikedPage && (
-							<span>
+							<span className='options'>
 								<button onClick={(event) => onDeleteSong(event, song.id)}>X</button>
 							</span>
 						)}

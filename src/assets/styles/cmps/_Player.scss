@@ -113,7 +113,7 @@
 		img {
 			height: rem(60px);
 			width: rem(60px);
-			margin-top: em(10px);
+		
 		}
 	}
 
@@ -131,7 +131,10 @@
 	}
 
 	.img-song-name {
-		align-items: center;
+		display: flex;
+    align-items: center;
+    margin-top: 0.625em;
+
 	}
 }
 

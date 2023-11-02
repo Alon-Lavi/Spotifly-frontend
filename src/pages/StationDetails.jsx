@@ -191,7 +191,7 @@ export function StationDetails() {
 	}
 	function checkLikedStation(newStation) {
 		console.log(newStation);
-		const idx = newStation.likedByUsers.findIndex((likedUser) => likedUser?._id === user._id)
+		const idx = newStation.likedByUsers.findIndex((likedUser) => likedUser?._id === user?._id)
 		console.log(idx);
 		if (idx === -1) addToLibrary(newStation)
 		else removeFromLibrary(newStation)
@@ -210,7 +210,7 @@ export function StationDetails() {
 	}
 	function removeFromLibrary(newStation) {
 		const updatedUsers = newStation.likedByUsers.filter((likedUser) => {
-			if (likedUser?._id !== user._id) return likedUser
+			if (likedUser?._id !== user?._id) return likedUser
 		})
 		const stationToSave = { ...newStation, likedByUsers: updatedUsers }
 		setStation(stationToSave)
@@ -221,7 +221,7 @@ export function StationDetails() {
 
 	function checkLikedSongs(ev, newSong) {
 		ev.stopPropagation()
-		const idx = user.likedSongs.songs.findIndex((likedSong) => likedSong.videoId === newSong.videoId)
+		const idx = user?.likedSongs.songs.findIndex((likedSong) => likedSong.videoId === newSong.videoId)
 
 		if (idx === -1) addToLikedSongs(newSong)
 		else removeFromLikedSongs(newSong)
@@ -230,7 +230,7 @@ export function StationDetails() {
 
 	async function addToLikedSongs(newSong) {
 		try {
-			const updatedUser = await userService.addSong(user._id, newSong)
+			const updatedUser = await userService.addSong(user?._id, newSong)
 			updateUser(updatedUser)
 			const updatedSongs = station.songs.map((song) => (song.videoId === newSong.videoId ? newSong : song))
 			const stationToSave = { ...station, songs: updatedSongs }
@@ -245,7 +245,7 @@ export function StationDetails() {
 
 	async function removeFromLikedSongs(newSong) {
 		try {
-			const updatedUser = await userService.removeSong(user._id, newSong.videoId)
+			const updatedUser = await userService.removeSong(user?._id, newSong.videoId)
 			updateUser(updatedUser)
 			const updatedSongs = station.songs.map((song) => (song.videoId === newSong.videoId ? newSong : song))
 			const stationToSave = { ...station, songs: updatedSongs }
@@ -258,13 +258,13 @@ export function StationDetails() {
 		}
 	}
 	function checkIfStationLiked(newStation) {
-		const idx = newStation.likedByUsers.findIndex((likedUser) => likedUser?._id === user._id)
+		const idx = newStation.likedByUsers.findIndex((likedUser) => likedUser?._id === user?._id)
 		if (idx === -1) return false
 
 		return true
 	}
 	function checkIfLiked(song) {
-		const idx = user.likedSongs.songs.findIndex((likedSong) => likedSong.videoId === song.videoId)
+		const idx = user?.likedSongs.songs.findIndex((likedSong) => likedSong.videoId === song.videoId)
 		if (idx === -1) return false
 
 		return true
@@ -297,15 +297,15 @@ export function StationDetails() {
 					<img src={station.imgUrl} alt="" />
 
 					<div className="title">
-						{station.createdBy._id === user._id ? <h1 className="with-modal" onClick={openModal}>{station.name}</h1> :
+						{station.createdBy._id === user?._id ? <h1 className="with-modal" onClick={openModal}>{station.name}</h1> :
 							<h1 >{station.name}</h1>}
-							<div className='info'>
+						<div className='info'>
 
-						<span>{station.desc}</span>
-						<span>
-							{station.createdBy?.fullname} {station.songs?.length} songs
-						</span>
-							</div>
+							<span>{station.desc}</span>
+							<span>
+								{station.createdBy?.fullname} {station.songs?.length} songs
+							</span>
+						</div>
 					</div>
 
 					<div style={{ backgroundImage: `linear-gradient(180deg, ${bgc}, transparent)`, opacity: '0.5' }} className='fade'></div>
@@ -316,7 +316,7 @@ export function StationDetails() {
 					<button className="btn-play-playlist" onClick={(event) => onPlayStation(station, event)}>
 						{currStation?._id === station._id && isPlaying ? Svg.pauseTrackIcon : Svg.playTrackIcon}
 					</button>
-					{!isLikedPage && (
+					{user && !isLikedPage && (
 						<>
 							<span className="like-btn">
 								<svg

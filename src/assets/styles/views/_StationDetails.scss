@@ -122,6 +122,7 @@
 			height: 56px;
 			padding-left: 15px;
 			margin-left: 20px;
+			border-bottom: 1px solid hsla(0,0%,100%,.1);
 
 		}
 
@@ -193,27 +194,22 @@
 						@keyframes bounce {
 							10% {
 								transform: scaleY(0.3);
-								/* start by scaling to 30% */
 							}
 
 							30% {
 								transform: scaleY(1);
-								/* scale up to 100% */
 							}
 
 							60% {
 								transform: scaleY(0.5);
-								/* scale down to 50% */
 							}
 
 							80% {
 								transform: scaleY(0.75);
-								/* scale up to 75% */
 							}
 
 							100% {
 								transform: scaleY(0.6);
-								/* scale down to 60% */
 							}
 						}
 					}
@@ -221,12 +217,10 @@
 					.bar {
 						&:nth-of-type(2) {
 							animation-delay: -2.2s;
-							/* Start at the end of animation */
 						}
 
 						&:nth-of-type(3) {
 							animation-delay: -3.7s;
-							/* Start mid-way of return of animation */
 						}
 					}
 				}
@@ -330,7 +324,6 @@
 	.search-bar {
 		.search-input-container {
 			input {
-				// margin-left: 40px;
 				border-radius: 4px;
 				height: 40px;
 				opacity: 1;
@@ -343,7 +336,6 @@
 
 				.search-icon {
 					fill: #fff;
-					/* Change icon color on input focus */
 				}
 			}
 		}
@@ -435,9 +427,6 @@
 			grid-area: img;
 			height: 180px;
 			width: 180px;
-			// &:hover .choose-photo {
-			// 	opacity: 1;
-			// }
 		}
 
 		.title {
@@ -486,9 +475,7 @@
 			cursor: pointer;
 			opacity: 0;
 			z-index: 2;
-			// &:hover .choose-photo {
-			// 	opacity: 1;
-			// }
+	
 		}
 	}
 }

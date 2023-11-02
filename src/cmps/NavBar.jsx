@@ -9,6 +9,7 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { Svg } from './Svg'
 
 export function NavBar() {
+    const [searchInputVisible, setSearchInputVisible] = useState(false);
     const user = useSelector((storeState) => storeState.userModule.user)
     const location = useLocation()
     const isLoginPage = location.pathname === '/loginsignup'
@@ -18,6 +19,11 @@ export function NavBar() {
     const [stations, setStations] = useState()
     const navigate = useNavigate()
     const [isTooltipVisible, setIsTooltipVisible] = useState(false);
+    const toggleSearchInput = () => {
+        console.log('Work')
+        setSearchInputVisible(!searchInputVisible);
+    }
+    
 
     const handleSearchInputChange = (ev) => {
         setSearchText(ev.target.value)
@@ -67,9 +73,9 @@ export function NavBar() {
 
                 <div className="header-side-bar">
 
-                    <li  className={`side-bar-item-home ${isHomeActive ? 'active' : ''}`}>
+                    <li className={`side-bar-item-home ${isHomeActive ? 'active' : ''}`}>
                         <NavLink to="/" className="nav-link flex" onClick={handleHomeClick}>
-                                {isHomeActive ? Svg.activeHome : Svg.homeIcon}                        
+                            {isHomeActive ? Svg.activeHome : Svg.homeIcon}
                             <div className={`txt-home${isHomeActive ? '-active' : ''}`}>Home</div>
                         </NavLink>
                     </li>
@@ -140,17 +146,27 @@ export function NavBar() {
                         <div className="side-search-bar">
                             <form>
                                 <div className="side-search-input-container">
+                                    {/* <Tooltip text={'Search in Your library'}>
 
+                                    </Tooltip> */}
+                             
+                                    <span className='search-icon-navbar' onClick={toggleSearchInput}>
+                                        {Svg.searchIcon}
+                                    </span>
                                     <input
                                         id='search-navbar'
                                         name="txt"
                                         type="text"
-                                        placeholder="     Search in your library..."
+                                        placeholder="Search in your library..."
                                         value={searchText}
                                         onChange={handleSearchInputChange}
+                                        className={searchInputVisible ? 'visible' : ''}
                                     />
                                 </div>
                             </form>
+                            <div className='filter-navBar'>
+                                Recents
+                            </div>
                         </div>
 
                         <div className="stations-container">

@@ -128,12 +128,14 @@ export function SearchPage() {
                 {songs && (
                     <ul className="song-list">
                         <div className='artist-page'>
-                            <img src={songs[1].snippet.thumbnails.high.url} alt="" />
+                           
+                            <img src={songs[0].snippet.thumbnails.high.url} alt="" />
                             <span className='text-artist-name'>{trackService.getArtistName(songs[0].snippet.title)}</span>
                         </div>
 
+                        <div className='song-list-list'>
                         {songs.map((song, idx) => (
-                            <li className='song-list-list' key={idx} onClick={() => playSong(song)}>
+                            <li  key={idx} onClick={() => playSong(song)}>
                                 <img src={song.snippet.thumbnails.high.url} alt="" />
 
                                 <span className="text-song-name">{trackService.getCleanTitle(song.snippet.title)}</span>
@@ -192,12 +194,13 @@ export function SearchPage() {
 
 
 
-                        ))}
+))}
+</div>
 
                     </ul>
 
                 )}
-                {/* <h1 className="search-text">Playlists</h1>
+                <h1 className="search-text">Playlists</h1>
                <ul className="station-list">
                 
 				
@@ -209,7 +212,7 @@ export function SearchPage() {
                                 <StationPreview onPlayStation={onPlayStation} station={station} />
                             </li>
                         ))}
-                    </ul> */}
+                    </ul>
 
 
             </section>

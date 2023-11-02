@@ -6,6 +6,7 @@ import {
 	SET_BGC,
 	SET_CURRENT_STATION,
 	SET_SEARCHERS,
+	SET_SEARCH_VALUE,
 	SET_STATIONS,
 	UPDATE_STATION,
 } from '../reducer/station.reducer.js'
@@ -111,6 +112,10 @@ export async function addSongToStation(song, stationId) {
 	} catch (err) {
 		throw err
 	}
+}
+export async function setSearchValue(searchValue){
+	store.dispatch({ type: SET_SEARCH_VALUE, searchValue })
+
 }
 
 export async function setBgc(bgc) {

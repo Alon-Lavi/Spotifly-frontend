@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-import { setBgc, setSongsToSearch } from '../store/actions/station.actions'
+import { setBgc, setSearchValue, setSongsToSearch } from '../store/actions/station.actions'
 import { updateUser } from '../store/actions/user.actions'
 import { setSongPlaying } from '../store/actions/player.actions'
 import { stationService } from '../services/station.service.local'
@@ -24,6 +24,11 @@ export function SearchPage() {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [svgPosition, setSvgPosition] = useState({ x: 0, y: 0 })
     const user = useSelector((storeState) => storeState.userModule.user)
+    const searchValue = useSelector((storeState) => storeState.stationModule.searchValue)
+    const regex = new RegExp(searchValue, 'i')
+	const navigate = useNavigate()
+
+
 
 
     useEffect(() => {
@@ -31,6 +36,7 @@ export function SearchPage() {
         setBgc(null)
         return () => {
             setSongsToSearch(null)
+            setSearchValue(null)
         }
     }, [])
 
@@ -200,20 +206,24 @@ export function SearchPage() {
                     </ul>
 
                 )}
-                <h1 className="search-text">Playlists</h1>
-                <ul className="station-list">
+                {searchValue && <>
+                    <h1 className="search-text">Featuring</h1>
+                    <ul className="station-list">
 
 
-                    {stations
-                        .filter((station) => station.name.toLowerCase().includes(searchText.toLowerCase()))
+                        {  
+		
+
+                        stations
+                        .filter((station) => station.songs.some(song => regex.test(song.title)))
                         .map((station, idx) => (
-                            <li onClick={() => navigate(`/station/${station._id}`)} className="station-preview" key={idx}>
+                        <li onClick={() => navigate(`/station/${station._id}`)} className="station-preview" key={idx}>
 
-                                <StationPreview onPlayStation={onPlayStation} station={station} />
-                            </li>
+                            <StationPreview onPlayStation={onPlayStation} station={station} />
+                        </li>
                         ))}
-                </ul>
-
+                    </ul>
+                </>}
 
             </section>
 

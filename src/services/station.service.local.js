@@ -1702,7 +1702,7 @@ async function query(filterBy = { txt: '' }) {
 	// stations.map(station => console.log(station.likedByUsers, station._id, 'a'))
 	if (filterBy.txt) {
 		const regex = new RegExp(filterBy.txt, 'i')
-		stations = stations.filter((station) => regex.test(station.vendor) || regex.test(station.description))
+		stations = stations.filter((station) => regex.test(station.name) || regex.test(station.desc))
 	}
 	if (filterBy.isRecommended) {
 		stations = stations.filter((station) => station.isRecommended === true)

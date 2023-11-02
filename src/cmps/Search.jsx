@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useEffect } from 'react'
 
 import { utilService } from '../services/util.service'
-import { setSongsToSearch } from '../store/actions/station.actions'
+import { setSearchValue, setSongsToSearch } from '../store/actions/station.actions'
 import { Svg } from './Svg'
 
 export function Search() {
@@ -18,6 +18,7 @@ export function Search() {
 		const res = await axios.get(
 			`https://www.googleapis.com/youtube/v3/search?part=snippet%20&videoEmbeddable=true&type=video&key=${API_KEY}&q=${target.value}`
 		)
+		setSearchValue(target.value)
 		console.log(res.data.items)
 		setSongsToSearch(res.data.items)
 	}

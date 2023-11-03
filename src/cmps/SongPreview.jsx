@@ -4,6 +4,7 @@ import { Draggable } from 'react-beautiful-dnd'
 import { utilService } from '../services/util.service'
 import { Svg } from './Svg'
 import { useSelector } from 'react-redux'
+import { useState } from 'react'
 
 export function SongPreview({ song, playSong, checkLikedSongs, checkIfLiked, onDeleteSong, idx }) {
 	const location = useLocation()
@@ -11,6 +12,20 @@ export function SongPreview({ song, playSong, checkLikedSongs, checkIfLiked, onD
 	const songPlaying = useSelector((storeState) => storeState.playerModule.songPlaying)
 	const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
 	const user = useSelector((storeState) => storeState.userModule.user)
+	const [isModalOpen, setModalOpen] = useState(false);
+
+	const openModal = (ev) => {
+
+		ev.stopPropagation()
+
+		setModalOpen(true);
+	};
+
+	const closeModal = (ev) => {
+		ev.stopPropagation()
+
+		setModalOpen(false);
+	};
 
 
 
@@ -66,9 +81,20 @@ export function SongPreview({ song, playSong, checkLikedSongs, checkIfLiked, onD
 
 						<span>{utilService.getDate(song.addedAt)}</span>
 						{!isLikedPage && (
-							<span className='options'>
-								<button onClick={(event) => onDeleteSong(event, song.id)}>X</button>
+							<span onClick={event => { openModal(event) }} className='options'>
+								{Svg.threeDots}
 							</span>
+						)}
+						{isModalOpen && (
+							<div className="song-modal">
+								<div className="song-modal-content">
+									<span className="close" onClick={event => { closeModal(event) }}>&times;</span>
+									<button onClick={(event) => onDeleteSong(event, song.id)}>Delete</button>
+									<button onClick={(event) => {
+										checkLikedSongs(event, song)
+									}}>Add to liked songs</button>
+								</div>
+							</div>
 						)}
 					</li>
 				)

@@ -82,7 +82,7 @@ export function StationDetails() {
 		}
 	}
 	const openCloseOptionsModal = () => {
-		isModalOpen ? setModalOpen(close) : setModalOpen(true);
+		isModalOpen ? setModalOpen(false) : setModalOpen(true);
 	};
 
 
@@ -92,6 +92,7 @@ export function StationDetails() {
 	}
 
 	const closeModal = () => {
+		openCloseOptionsModal()
 		setIsOpen(false)
 	}
 
@@ -201,9 +202,11 @@ export function StationDetails() {
 			showErrorMsg('Could not update station')
 		} finally {
 			closeModal()
+			openCloseOptionsModal()
 		}
 	}
 	function checkLikedStation(newStation) {
+		setModalOpen(false)
 		console.log(newStation);
 		const idx = newStation.likedByUsers.findIndex((likedUser) => likedUser?._id === user?._id)
 		console.log(idx);
@@ -365,9 +368,9 @@ export function StationDetails() {
 							{isModalOpen && (
 								<div className="options-modal">
 									<div className="modal-options-content">
-									{!checkIfStationLiked(station) &&<span onClick={() => checkLikedStation(station)}>{Svg.addToLibrary}  Add to Library</span>}
-									{checkIfStationLiked(station) &&<span onClick={() => checkLikedStation(station)}>{Svg.removeFromLibrary}  Remove from Library</span>}
-
+										{!checkIfStationLiked(station) && <span onClick={() => checkLikedStation(station)}>{Svg.addToLibrary}  Add to Library</span>}
+										{checkIfStationLiked(station) && <span onClick={() => checkLikedStation(station)}>{Svg.removeFromLibrary}  Remove from Library</span>}
+										<span onClick={openModal}>{Svg.editIcon} Edit details</span>
 										<span onClick={() => onRemoveStation(station._id)}>{Svg.deleteIcon} Delete</span>
 									</div>
 								</div>)}

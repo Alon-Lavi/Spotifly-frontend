@@ -12,10 +12,12 @@
 	grid-template-columns: 355px 1fr;
 	grid-template-rows: 64px 1fr;
 	height: 100vh;
+	margin-right: 5px;
 }
 .main-container {
 	display: grid;
 	grid-template-columns: em(20px) 1fr rem(20px);
+	margin-right: 5px;
 
 	> * {
 		grid-column: 3;

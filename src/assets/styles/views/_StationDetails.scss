@@ -81,19 +81,23 @@
 		z-index: 1;
 
 		.options-modal {
-			background-color: #4c4c4c;
+			background-color: #282828;
 			padding: 5px;
+			border-radius: 4px;
 
 			.modal-options-content {
 				display: grid;
-				span{
+
+				span {
 					display: flex;
 					align-items: center;
 					gap: 10px;
 					cursor: pointer;
-					border-bottom: 1px solid #7e7e7e;;
-					&:hover{
-						background-color: hsla(0,0%,100%,.1);
+					border-bottom: 1px solid #7e7e7e;
+					;
+
+					&:hover {
+						background-color: hsla(0, 0%, 100%, .1);
 					}
 				}
 			}
@@ -171,6 +175,7 @@
 				grid-template-columns: 16px 6fr 4fr 3fr minmax(40px, 1fr);
 				height: 56px;
 				padding-left: 15px;
+				position: relative;
 
 				&:hover {
 					cursor: pointer;
@@ -188,7 +193,11 @@
 					}
 
 					.options {
-						display: block;
+						display: flex;
+
+						svg {
+							fill: currentColor
+						}
 					}
 				}
 
@@ -298,6 +307,32 @@
 						display: flex;
 						align-items: center;
 						justify-content: center;
+					}
+				}
+			}
+
+			.song-modal {
+				background-color: #4c4c4c;
+				padding: 5px;
+				position: absolute;
+				right: 0;
+
+				.song-modal-content {
+					display: grid;
+
+
+					button {
+						display: flex;
+						align-items: center;
+						gap: 10px;
+						cursor: pointer;
+						border-bottom: 1px solid #7e7e7e;
+						margin: 0;
+
+
+						&:hover {
+							background-color: hsla(0, 0%, 100%, .1);
+						}
 					}
 				}
 			}

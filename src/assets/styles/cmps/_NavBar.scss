@@ -82,7 +82,7 @@
 		display: flex;
 		flex-direction: column;
 		background-color: rgb(15, 15, 15);
-
+       height: 100%;
 		border-radius: rem(8px);
 
 		.library {
@@ -280,13 +280,78 @@
 
 			.filter-navBar {
 				font-size: 13px;
+				cursor: pointer;
 				padding: 21px;
 				align-items: start;
 				justify-content: flex-end;
 				display: flex;
 				margin-left: auto;
-				color: rgba(245, 245, 245, 0.717);
+				color: rgba(245, 245, 245, 0.683);
+			
+				&.active {
+					.filter-modal {
+						display: block;
+					}
+				}
 			}
+			
+			.filter-modal {
+				z-index: 9999;
+				position: absolute;
+				top: 22%;
+				right: 10px;
+				width: 150px;
+				background: rgb(30, 30, 30, 1.901);
+				box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+				border-radius: 5px;
+				padding: 4px
+				;
+				h4 {
+					font-size: 10px;
+					padding: 10px;
+				}
+			
+				.filter-options {
+					font-size: 14px;
+					list-style: none;
+					color: rgba(229, 229, 229, 0.785);
+					padding: 0;
+					margin: 0;
+			
+					li {
+						width: 100%;
+						height: 40px;
+						justify-content: center;
+						border-radius: 0;
+						align-items: center;
+						// justify-content: flex-start;
+						padding: 10px;
+						cursor: pointer;
+
+						&.active {
+							color:aqua
+						}
+			
+						&:hover {
+							background-color: rgb(47, 47, 47);
+						}
+					}
+				}
+			
+				button {
+					width: 100%;
+					margin-top: 0px;
+					padding: 0px;
+					background: rgb(30, 30, 30);
+					border: none;
+					cursor: pointer;
+			
+					// &:hover {
+					// 	background-color: rgb(47, 47, 47);
+					// }
+				}
+			}
+			
 
 			.search-icon-navbar {
 				position: absolute;

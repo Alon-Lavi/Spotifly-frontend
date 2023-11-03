@@ -208,7 +208,7 @@ export function StationDetails() {
 	function checkLikedStation(newStation) {
 		setModalOpen(false)
 		console.log(newStation);
-		const idx = newStation.likedByUsers.findIndex((likedUser) => likedUser?._id === user?._id)
+		const idx = newStation.likedByUsers?.findIndex((likedUser) => likedUser?._id === user?._id)
 		console.log(idx);
 		if (idx === -1) addToLibrary(newStation)
 		else removeFromLibrary(newStation)

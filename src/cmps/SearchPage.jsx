@@ -20,6 +20,7 @@ export function SearchPage() {
     const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
     const player = useSelector((storeState) => storeState.playerModule.player)
     const currStation = useSelector((storeState) => storeState.stationModule.currStation)
+    const songPlaying = useSelector((storeState) => storeState.playerModule.songPlaying)
 
     const [genres, setGenres] = useState([])
     const [song, setSong] = useState(null)
@@ -59,8 +60,15 @@ export function SearchPage() {
             imgUrl: song.snippet.thumbnails.high.url,
             addedAt: Date.now(),
         }
-        setSongPlaying(songToPlay)
+        if (songToPlay.videoId === songPlaying?.videoId) {
+            const isCurrentlyPlaying = !isPlaying
+            isCurrentlyPlaying ? player.playVideo() : player.pauseVideo()
+            setIsPlaying(isCurrentlyPlaying)
+        }
+
+        else setSongPlaying(songToPlay)
     }
+
 
     function openAddToPlaylistModal(event, song, stationId) {
         event.stopPropagation()
@@ -138,18 +146,19 @@ export function SearchPage() {
 
                 {songs && (
                     <ul className="song-list">
-                        <div className='artist-page'>
+                        <div onClick={() => playSong(songs[0])} className='artist-page'>
 
                             <img src={songs[0].snippet.thumbnails.high.url} alt="" />
                             <span className='text-artist-name'>{trackService.getArtistName(songs[0].snippet.title)}</span>
                             <button className="btn-play-playlist">
-                                {Svg.pauseTrackIcon}
+                                {(songs[0].id.videoId === songPlaying?.videoId) && isPlaying ? Svg.pauseTrackIcon : Svg.playTrackIcon}
                             </button>
                         </div>
 
                         <div className='song-list-list'>
-                            {songs.map((song, idx) => (
-                                <li key={idx} onClick={() => playSong(song)}>
+                            {songs.map((song, idx) => {
+                                if (idx === 0) return
+                                return <li key={idx} onClick={() => playSong(song)}>
                                     <img src={song.snippet.thumbnails.high.url} alt="" />
 
                                     <span className="text-song-name">{trackService.getCleanTitle(song.snippet.title)}</span>
@@ -205,10 +214,11 @@ export function SearchPage() {
                                         </svg>
                                     </div>
                                 </li>
+                            }
 
 
 
-                            ))}
+                            )}
                         </div>
 
                     </ul>

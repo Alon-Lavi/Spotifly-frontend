@@ -24,7 +24,7 @@
 		svg {
 			margin-top: 4px;
 			margin-left: 2px;
-
+			fill: gray;
 		}
 
 
@@ -100,6 +100,7 @@
 
 			svg {
 				margin-left: -1px;
+				fill: gray;
 			}
 
 			span {
@@ -209,6 +210,9 @@
 
 		&:hover {
 			color: rgb(255, 255, 255);
+			svg{
+				fill: white;
+			}
 		}
 	}
 
@@ -243,13 +247,13 @@
 			align-items: center;
 			font-family: sans-serif;
 
-		
+
 
 			.side-search-input-container {
 				display: flex;
 				align-items: center;
 				transition: transform 0.7s;
-			
+
 			}
 
 			input {
@@ -258,7 +262,7 @@
 				opacity: 0;
 				transition: transform 0.9s, width 0.1s, opacity 0.2s;
 			}
-			
+
 			input.visible {
 				transform: translateX(0%);
 				width: 200px;

@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-import { setBgc, setSearchValue, setSongsToSearch } from '../store/actions/station.actions'
+import { setBgc, setCurrStation, setSearchValue, setSongsToSearch } from '../store/actions/station.actions'
 import { updateUser } from '../store/actions/user.actions'
-import { setSongPlaying } from '../store/actions/player.actions'
+import { setIsPlaying, setSongPlaying } from '../store/actions/player.actions'
 import { stationService } from '../services/station.service.local'
 import { GenrePreview } from './GenrePreview'
 import { AddToPlaylistModal } from './AddToPlaylistModal'
@@ -17,9 +17,11 @@ import { StationPreview } from './StationPreview'
 export function SearchPage() {
     const songs = useSelector((storeState) => storeState.stationModule.songsToSearch)
     const stations = useSelector((storeState) => storeState.stationModule.stations)
+    const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
+    const player = useSelector((storeState) => storeState.playerModule.player)
+    const currStation = useSelector((storeState) => storeState.stationModule.currStation)
+
     const [genres, setGenres] = useState([])
-    const [filteredStations, setFilteredStations] = useState([]);
-    const [searchText, setSearchText] = useState('')
     const [song, setSong] = useState(null)
     const [likedSongs, setLikedSongs] = useState({})
     const [isModalOpen, setIsModalOpen] = useState(false)
@@ -38,6 +40,8 @@ export function SearchPage() {
         return () => {
             setSongsToSearch(null)
             setSearchValue(null)
+            setBgc(null)
+
         }
     }, [])
 

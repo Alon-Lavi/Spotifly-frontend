@@ -247,70 +247,35 @@
 }
 
 .modal {
-	display: flex;
 	position: fixed;
-	width: max-content;
-	height: max-content;
-	align-items: center;
-	background-color: rgba(48, 47, 47, 0.711);
-	flex-direction: column;
-
-	.button-select-modal-add:hover {
-		background-color: rgb(47, 47, 47);
-
-
+	top: 300px;
+	left: 90%;
+	transform: translate(-30%, -50%);
+	width: 200px;
+	background: rgb(30, 30, 30, 1.901);
+	border-radius: 5px;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+	padding: 10px;
+  
+	select {
+	  width: 100%;
+	  padding: 10px;
+	  border: 1px solid #ccc;
+	  border-radius: 5px;
+	  margin-bottom: 10px;
 	}
-
-	.button-select-modal-close:hover {
-		background-color: rgb(47, 47, 47);
-	}
-
+  
 	button {
-		width: 90%;
-		background-color: rgba(30, 30, 30);
-
-		:hover {
-			background-color: rgba(47, 47, 47);
-		}
+	  width: 100%;
+	  padding: 10px;
+	  background: rgb(30, 30, 30, 1.901);
+	  color: #fff;
+	  border: none;
+	  border-radius: 5px;
+	  cursor: pointer;
+  
+	  &:hover {
+		background-color: rgb(47, 47, 47);
+	  }
 	}
-
-	&-content {
-		background-color: #fff;
-		padding: 20px;
-		border-radius: 5px;
-		box-shadow: 0 0 0px rgba(0, 0, 0, 0.2);
-		max-width: 100px;
-
-		select {
-			background-color: #b0b0b0;
-			list-style-type: none;
-			width: 100%;
-			padding: 20px;
-			margin-bottom: 20px;
-		}
-
-		.select-txt {
-			color: black;
-		}
-
-		button {
-			padding: 20px 20px;
-
-			border: none;
-			border-radius: 5px;
-			cursor: pointer;
-
-			&.add-to-playlist {
-				background-color: #c1c1c1;
-			}
-
-			&.close-modal {
-				background-color: #b0b0b0;
-			}
-		}
-
-		button+button {
-			margin-left: 10px;
-		}
-	}
-}
+  }

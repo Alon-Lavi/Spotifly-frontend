@@ -18,12 +18,13 @@ export function NavBar() {
     const [searchText, setSearchText] = useState('')
     const [stations, setStations] = useState()
     const navigate = useNavigate()
+    const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
     const [isTooltipVisible, setIsTooltipVisible] = useState(false);
     const toggleSearchInput = () => {
         console.log('Work')
         setSearchInputVisible(!searchInputVisible);
     }
-    
+
 
     const handleSearchInputChange = (ev) => {
         setSearchText(ev.target.value)
@@ -34,7 +35,7 @@ export function NavBar() {
     }, [stations])
 
     async function loadMyStations() {
-        const MyStations = await stationService.query({user ,liked: true})
+        const MyStations = await stationService.query({ user, liked: true })
         setStations(MyStations)
     }
 
@@ -47,6 +48,14 @@ export function NavBar() {
         setIsHomeActive(false)
         setIsSearchActive(true)
     }
+
+    const handleFilterClick = () => {
+        setIsFilterModalOpen(true);
+      };
+    
+      const handleCloseFilterModal = () => {
+        setIsFilterModalOpen(false);
+      };
 
     async function createStation() {
         const station = await stationService.getEmptyStation(user)
@@ -149,7 +158,7 @@ export function NavBar() {
                                     {/* <Tooltip text={'Search in Your library'}>
 
                                     </Tooltip> */}
-                             
+
                                     <span className='search-icon-navbar' onClick={toggleSearchInput}>
                                         {Svg.searchIcon}
                                     </span>
@@ -164,10 +173,25 @@ export function NavBar() {
                                     />
                                 </div>
                             </form>
-                            <div className='filter-navBar'>
+                            <div className='filter-navBar'  onClick={handleFilterClick}>
+
                                 Recents
-                                {Svg.filterBy}
+                               {Svg.filterBy}
+                         
                             </div>
+                            {isFilterModalOpen && (
+                                <div className="filter-modal">
+                                    <ul className="filter-options">
+                                        <h4>Sort by</h4>
+                                        <li>Recents</li>
+                                        <li>Recently Added</li>
+                                        <li>Alphabetical</li>
+                                        <li>Creator</li>
+                                     
+                                    </ul>
+                                    <button onClick={handleCloseFilterModal}>Close</button>
+                                </div>
+                            )}
                         </div>
 
                         <div className="stations-container">

@@ -9,6 +9,7 @@ import { stationService } from '../services/station.service.local'
 import { GenrePreview } from './GenrePreview'
 import { AddToPlaylistModal } from './AddToPlaylistModal'
 import { trackService } from '../services/track.service.js'
+import { utilService } from '../services/util.service'
 import { Svg } from './Svg'
 
 
@@ -62,7 +63,7 @@ export function SearchPage() {
         event.stopPropagation()
         const svgPosition = {
             x: event.clientX - 130,
-            y: event.clientY,
+            y: event.clientY +110,
         }
         setSong(song)
 
@@ -178,7 +179,9 @@ export function SearchPage() {
                                                 ></path>
                                             </svg>
                                         </span>
+
                                         }
+                                        {/* <div className="time-stamp end">{utilService.convertTime(songDuration) || '--:--'}</div> */}
                                         <svg
                                             className='svg-option'
                                             xmlns="http://www.w3.org/2000/svg"

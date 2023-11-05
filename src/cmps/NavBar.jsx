@@ -32,7 +32,7 @@ export function NavBar() {
 
     useEffect(() => {
         loadMyStations()
-    }, [user])
+    }, [])
 
     async function loadMyStations() {
         const MyStations = await stationService.query({ user, liked: true })

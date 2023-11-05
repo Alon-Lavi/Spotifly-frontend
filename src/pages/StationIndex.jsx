@@ -26,7 +26,7 @@ export function StationIndex() {
 		loadStations({ genre })
 		loadRecommended()
 		if (isPlaying){
-			setBgc(currStation.imgUrl)
+			setBgc(currStation?.imgUrl)
 		}
 	}, [genre, user])
 

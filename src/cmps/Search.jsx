@@ -33,6 +33,7 @@ export function Search() {
 						name="txt"
 						type="text"
 						placeholder="What do you want to listen to?"
+						className='input-header'
 					/>
 				</div>
 			</form>

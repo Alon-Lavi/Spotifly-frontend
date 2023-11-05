@@ -10,10 +10,13 @@ export function StationPreview({ station, onPlayStation }) {
 	useEffect(()=>{
 		console.log(isPlaying, 'isPlaying');
 	},[isPlaying])
+
+
+	if(!station)return
 	return (
 		<>
 			<div className="img-container">
-				<img src={station.imgUrl} alt="" />
+				<img src={station?.imgUrl} alt="" />
 
 				<button className="btn-play-playlist" onClick={(event) => onPlayStation(station, event)}>
 					{currStation?._id === station._id && isPlaying ? Svg.pauseTrackIcon : Svg.playTrackIcon}

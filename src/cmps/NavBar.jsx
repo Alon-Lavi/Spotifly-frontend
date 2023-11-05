@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Tooltip } from './ToolTip'
 
-import { stationService } from '../services/station.service.local'
+import { stationService } from '../services/station.service'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { Svg } from './Svg'
 
@@ -32,7 +32,7 @@ export function NavBar() {
 
     useEffect(() => {
         loadMyStations()
-    }, [stations])
+    }, [user])
 
     async function loadMyStations() {
         const MyStations = await stationService.query({ user, liked: true })

@@ -75,7 +75,7 @@ export function SearchPage() {
         event.stopPropagation()
         const svgPosition = {
             x: event.clientX - 130,
-            y: event.clientY +110,
+            y: event.clientY + 110,
         }
         setSong(song)
 
@@ -131,9 +131,10 @@ export function SearchPage() {
         return true
     }
 
-    function getSongDurations(song){
-        stationService.getSongDurations(song)
-        return 'yes'
+    async function getSongDurations(song) {
+        const dur = await stationService.getSongDurations(song)
+        console.log(dur);
+        return dur
     }
 
     return (
@@ -170,7 +171,7 @@ export function SearchPage() {
                                     <span className="text-song-name">{trackService.getCleanTitle(song.snippet.title)}</span>
 
                                     <div className="options">
-                                    <span>{getSongDurations(song)} </span>
+                                        {/* <div>{getSongDurations(song)} </div> */}
 
 
                                         {user && <span style={{ opacity: checkIfLiked(song) ? 1 : 0 }} className="like-btn">
@@ -244,7 +245,7 @@ export function SearchPage() {
                             stations
                                 .filter((station) => station.songs.some(song => regex.test(song.title)))
                                 .map((station, idx) => (
-                                    <li onClick={() => navigate(`/station/${station._id}`)} className="station-preview" key={idx}>
+                                    <li onClick={() => { navigate(`/station/${station._id}`); setCurrStation(station) }} className="station-preview" key={idx}>
 
                                         <StationPreview onPlayStation={onPlayStation} station={station} />
                                     </li>

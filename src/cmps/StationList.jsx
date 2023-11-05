@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { _ } from 'lodash'
 
 import { StationPreview } from './StationPreview.jsx'
-import { setBgc } from '../store/actions/station.actions.js'
+import { setBgc, setCurrStation } from '../store/actions/station.actions.js'
 import { stationService } from '../services/station.service.local.js'
 import { useEffect, useState } from 'react'
 
@@ -82,13 +82,13 @@ export function StationList({ library, genre, stations, onPlayStation }) {
 
 			{user && <ul className="station-list">
 				{(
-					<li onClick={() => navigate(`/likedsongs`)} className="station-preview" key={user.likedSongs._id}>
+					<li onClick={() => {navigate(`/likedsongs`); setCurrStation(user.likedSongs)}} className="station-preview" key={user?.likedSongs?._id}>
 						<StationPreview onPlayStation={onPlayStation} station={user.likedSongs} />
 					</li>
 				)}
 
 				{myStations.map((station, idx) => (
-					<li onClick={() => navigate(`/station/${station._id}`)} className="station-preview" key={idx}>
+					<li onClick={() => {navigate(`/station/${station._id}`); setCurrStation(station)}} className="station-preview" key={idx}>
 						<StationPreview onPlayStation={onPlayStation} station={station} />
 					</li>
 				))}
@@ -99,7 +99,7 @@ export function StationList({ library, genre, stations, onPlayStation }) {
 			{user && (
 				<ul className="station-list">
 					{dailyStation.map((station, idx) => (
-						<li onClick={() => navigate(`/station/${station._id}`)} className="station-preview" key={idx}>
+						<li onClick={() => {navigate(`/station/${station._id}`); setCurrStation(station)}} className="station-preview" key={idx}>
 							<StationPreview onPlayStation={onPlayStation} station={station} />
 						</li>
 					))}
@@ -110,7 +110,7 @@ export function StationList({ library, genre, stations, onPlayStation }) {
 
 			<ul className="station-list">
 				{rockStation.map((station, idx) => (
-					<li onClick={() => navigate(`/station/${station._id}`)} className="station-preview" key={idx}>
+					<li onClick={() => {navigate(`/station/${station._id}`); setCurrStation(station)}}className="station-preview" key={idx}>
 						<StationPreview onPlayStation={onPlayStation} station={station} />
 					</li>
 				))}
@@ -120,7 +120,7 @@ export function StationList({ library, genre, stations, onPlayStation }) {
 
 			<ul className="station-list">
 				{hipHopStation.map((station, idx) => (
-					<li onClick={() => navigate(`/station/${station._id}`)} className="station-preview" key={idx}>
+					<li onClick={() => {navigate(`/station/${station._id}`); setCurrStation(station)}} className="station-preview" key={idx}>
 						<StationPreview onPlayStation={onPlayStation} station={station} />
 					</li>
 				))}
@@ -129,7 +129,7 @@ export function StationList({ library, genre, stations, onPlayStation }) {
 
 			<ul className="station-list">
 				{popStation.map((station, idx) => (
-					<li onClick={() => navigate(`/station/${station._id}`)} className="station-preview" key={idx}>
+					<li onClick={() => {navigate(`/station/${station._id}`); setCurrStation(station)}} className="station-preview" key={idx}>
 						<StationPreview onPlayStation={onPlayStation} station={station} />
 					</li>
 				))}

@@ -5,6 +5,7 @@
 	background-color: rgb(21, 21, 21);
 	grid-area: 2/2;
 	height: max-content;
+	margin-right: 5px;
 
 	.search-song-txt {
 		margin-top: 30px;
@@ -23,7 +24,7 @@
 		padding-block-end: 20px;
 
 		.fade {
-			width: 102%;
+			width: 100%;
 			position: absolute;
 			height: 190px;
 			bottom: 0;

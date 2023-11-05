@@ -8,6 +8,7 @@ export function setPlayer(player) {
 }
 
 export function setIsPlaying(isPlaying) {
+	console.log('playing');
 	store.dispatch({ type: SET_IS_PLAYING, isPlaying })
 }
 

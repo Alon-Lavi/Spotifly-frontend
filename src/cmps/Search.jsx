@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { utilService } from '../services/util.service'
 import { setSearchValue, setSongsToSearch } from '../store/actions/station.actions'
 import { Svg } from './Svg'
+import { stationService } from '../services/station.service.local'
 
 export function Search() {
 	const API_KEY = 'AIzaSyCIHRUBlXc7OJQY31NlL6jlfigPqh9_PHE'
@@ -19,8 +20,11 @@ export function Search() {
 			`https://www.googleapis.com/youtube/v3/search?part=snippet%20&videoEmbeddable=true&type=video&key=${API_KEY}&q=${target.value}`
 		)
 		setSearchValue(target.value)
-		console.log(res.data.items)
-		setSongsToSearch(res.data.items)
+		const songs =res.data.items
+		songs.forEach(song=> {
+			song.duration=stationService.getSongDurations(song)})
+		console.log(songs)
+		setSongsToSearch(songs)
 	}
 
 	return (

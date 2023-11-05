@@ -4,7 +4,7 @@ import { useParams } from 'react-router'
 import { loadStations, setBgc, setCurrStation } from '../store/actions/station.actions.js'
 
 import { showErrorMsg } from '../services/event-bus.service.js'
-import { stationService } from '../services/station.service.local.js'
+import { stationService } from '../services/station.service.js'
 import { StationList } from '../cmps/StationList.jsx'
 import { RecommendedList } from '../cmps/RecommendedList.jsx'
 import { setIsPlaying, setSongPlaying } from '../store/actions/player.actions.js'
@@ -46,6 +46,9 @@ export function StationIndex() {
 		try {
 			const getRecommended = await stationService.query({ isRecommended: true })
 			setRecommended(getRecommended)
+			console.log('====================================');
+			console.log(getRecommended);
+			console.log('====================================');
 		} catch (error) {
 			showErrorMsg('Cannot get station')
 		}

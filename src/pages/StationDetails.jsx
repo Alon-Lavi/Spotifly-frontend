@@ -8,7 +8,7 @@ import { setIsPlaying, setSongPlaying } from '../store/actions/player.actions'
 import { updateUser } from '../store/actions/user.actions'
 
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
-import { stationService } from '../services/station.service.local'
+import { stationService } from '../services/station.service'
 import { LoaderService } from '../cmps/Loader'
 import { Search } from '../cmps/Search'
 import { utilService } from '../services/util.service'
@@ -122,6 +122,7 @@ export function StationDetails() {
 				isCurrentlyPlaying ? player.playVideo() : player.pauseVideo()
 				setIsPlaying(isCurrentlyPlaying)
 			}
+
 			else setSongPlaying(song)
 		}
 	}
@@ -202,7 +203,7 @@ export function StationDetails() {
 			showErrorMsg('Could not update station')
 		} finally {
 			closeModal()
-			openCloseOptionsModal()
+			if(isModalOpen) openCloseOptionsModal()
 		}
 	}
 	function checkLikedStation(newStation) {

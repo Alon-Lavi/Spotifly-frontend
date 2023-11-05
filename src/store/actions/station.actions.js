@@ -11,7 +11,7 @@ import {
 	UPDATE_STATION,
 } from '../reducer/station.reducer.js'
 
-import { stationService } from '../../services/station.service.local.js'
+import { stationService } from '../../services/station.service.js'
 import { bgcService } from '../../services/bgc.service.js'
 import { showSuccessMsg } from '../../services/event-bus.service.js'
 
@@ -129,6 +129,6 @@ export async function getBgc(imgUrl) {
 		// changePrimaryClr(color)
 		setBgc(color)
 	} catch (err) {
-		console.log('Could not load color', err)
+		// console.log('Could not load color', err)
 	}
 }

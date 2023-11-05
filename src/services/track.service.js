@@ -85,7 +85,7 @@ function padZero(num) {
 
 function getCleanTitle(title) {
 	if (typeof title !== 'string') return ''
-	const regex = /^[^<>/|!@#$%^&*()]+/
+	const regex = /^[^<>/|[!@#$%^&*()]+/
 	const match = title.match(regex)
 	return match?.[0] ?? ''
 }

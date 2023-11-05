@@ -2,6 +2,7 @@ import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 import { _ } from 'lodash'
+import axios from 'axios'
 
 const STORAGE_KEY = 'stationDB'
 const GENRE_KEY = 'genreDB'
@@ -15,6 +16,7 @@ export const stationService = {
 	removeSong,
 	getGenres,
 	getByName,
+	getSongDurations
 	// addStationMsg,
 }
 
@@ -1678,6 +1680,13 @@ async function getEmptyStation(user) {
 	}
 }
 
+async function getSongDurations(song) {
+	const videoId = song.kind ? song.id.videoId : song.videoId
+	console.log(videoId);
+	const res = await axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}}&part=contentDetails&key=AIzaSyCIHRUBlXc7OJQY31NlL6jlfigPqh9_PHE`)
+	console.log(res.data.items);
+	return 'yes'
+}
 createStations()
 async function createStations() {
 	const stationsFromStorage = await stationService.query(STORAGE_KEY)
@@ -1714,7 +1723,7 @@ async function query(filterBy = { txt: '' }) {
 		stations = stations.filter((station) => station.createdBy._id === filterBy.user._id)
 	}
 	if (filterBy.liked) {
-	
+
 		stations = stations.filter((station) => station.likedByUsers.some((user) => user._id === filterBy.user._id))
 	}
 	return stations

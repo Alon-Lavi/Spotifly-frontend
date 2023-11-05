@@ -314,13 +314,20 @@ export function StationDetails() {
 					<img src={station.imgUrl} alt="" />
 
 					<div className="title">
+						<span>playlist</span>
 						{station.createdBy._id === user?._id ? <h1 className="with-modal" onClick={openModal}>{station.name}</h1> :
 							<h1 >{station.name}</h1>}
 						<div className='info'>
 
 							<span>{station.desc}</span>
 							<span>
-								{station.createdBy?.fullname} {station.songs && station.songs?.length} songs
+								{station.createdBy?.fullname} {'• ' }  
+								{station.songs.length > 1 && <span>
+									{station.songs?.length} songs
+								</span>}
+								{station.songs?.length === 1 && <span>
+									{station.songs?.length} song
+								</span>}
 							</span>
 						</div>
 					</div>

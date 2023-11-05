@@ -5,6 +5,7 @@ import { utilService } from '../services/util.service'
 import { Svg } from './Svg'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
+import { stationService } from '../services/station.service.local'
 
 export function SongPreview({ song, playSong, checkLikedSongs, checkIfLiked, onDeleteSong, idx }) {
 	const location = useLocation()
@@ -78,6 +79,7 @@ export function SongPreview({ song, playSong, checkLikedSongs, checkIfLiked, onD
 								></path>
 							</svg>
 						</span>}
+						{/* <span>{stationService.getSongDurations(song)}</span> */}
 
 						<span>{utilService.getDate(song.addedAt)}</span>
 						{!isLikedPage && (

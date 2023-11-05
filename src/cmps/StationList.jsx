@@ -15,8 +15,10 @@ export function StationList({ library, genre, stations, onPlayStation }) {
 
 	const myStations = stations.filter((station) => station.createdBy._id === user?._id)
 	const dailyStation = stations.filter((station) => _.includes(station.tags, 'daily'))
-	const recentStation = stations.filter((station) => _.includes(station.tags, 'recent'))
-	const mixStation = stations.filter((station) => _.includes(station.tags, 'mix'))
+	const rockStation = stations.filter((station) => _.includes(station.tags, 'Rock'))
+	const hipHopStation = stations.filter((station) => _.includes(station.tags, 'Hip-Hop'))
+	const popStation = stations.filter((station) => _.includes(station.tags, 'Pop'))
+
 
 	useEffect(() => {
 
@@ -76,10 +78,10 @@ export function StationList({ library, genre, stations, onPlayStation }) {
 
 	return (
 		<section>
-			{<h1 className="episodes-txt">Your playlists</h1>}
+			{user && <h1 className="episodes-txt">Your playlists</h1>}
 
-			<ul className="station-list">
-				{user && (
+			{user && <ul className="station-list">
+				{(
 					<li onClick={() => navigate(`/likedsongs`)} className="station-preview" key={user.likedSongs._id}>
 						<StationPreview onPlayStation={onPlayStation} station={user.likedSongs} />
 					</li>
@@ -90,7 +92,7 @@ export function StationList({ library, genre, stations, onPlayStation }) {
 						<StationPreview onPlayStation={onPlayStation} station={station} />
 					</li>
 				))}
-			</ul>
+			</ul>}
 
 			{user && <h1 className="episodes-txt">{`Made For ${user.fullname}`}</h1>}
 
@@ -104,20 +106,29 @@ export function StationList({ library, genre, stations, onPlayStation }) {
 				</ul>
 			)}
 
-			{user && <h1 className="episodes-txt">{`Recently played`}</h1>}
+			{<h1 className="episodes-txt">Rock</h1>}
 
 			<ul className="station-list">
-				{recentStation.map((station, idx) => (
+				{rockStation.map((station, idx) => (
 					<li onClick={() => navigate(`/station/${station._id}`)} className="station-preview" key={idx}>
 						<StationPreview onPlayStation={onPlayStation} station={station} />
 					</li>
 				))}
 			</ul>
 
-			{user && <h1 className="episodes-txt">{`Your top mixes`}</h1>}
+			{<h1 className="episodes-txt">Hip Hop</h1>}
 
 			<ul className="station-list">
-				{mixStation.map((station, idx) => (
+				{hipHopStation.map((station, idx) => (
+					<li onClick={() => navigate(`/station/${station._id}`)} className="station-preview" key={idx}>
+						<StationPreview onPlayStation={onPlayStation} station={station} />
+					</li>
+				))}
+			</ul>
+			{<h1 className="episodes-txt">Pop</h1>}
+
+			<ul className="station-list">
+				{popStation.map((station, idx) => (
 					<li onClick={() => navigate(`/station/${station._id}`)} className="station-preview" key={idx}>
 						<StationPreview onPlayStation={onPlayStation} station={station} />
 					</li>

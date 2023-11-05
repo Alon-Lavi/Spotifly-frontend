@@ -131,6 +131,11 @@ export function SearchPage() {
         return true
     }
 
+    function getSongDurations(song){
+        stationService.getSongDurations(song)
+        return 'yes'
+    }
+
     return (
         <>
             <section className="search-page">
@@ -165,6 +170,7 @@ export function SearchPage() {
                                     <span className="text-song-name">{trackService.getCleanTitle(song.snippet.title)}</span>
 
                                     <div className="options">
+                                    <span>{getSongDurations(song)} </span>
 
 
                                         {user && <span style={{ opacity: checkIfLiked(song) ? 1 : 0 }} className="like-btn">

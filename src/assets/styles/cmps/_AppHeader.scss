@@ -3,7 +3,7 @@
 	display: flex;
 	position: sticky;
 	top: 0;
-	margin-top: 8px;
+	// margin-top: 8px;
 	height: rem(64px);
 	background-color: #121212;
 	color: whitesmoke;
@@ -12,6 +12,13 @@
 	border-top-right-radius: 10px;
 	justify-content: space-between;
 	margin-right: 5px;
+
+	@media (max-width: 768px) {
+		grid-area: 1/1/2/4;
+		grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+		border-radius: 0;;
+
+	}
 
 	img {
 		height: 30px;

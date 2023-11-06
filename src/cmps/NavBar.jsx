@@ -51,11 +51,11 @@ export function NavBar() {
 
     const handleFilterClick = () => {
         setIsFilterModalOpen(true);
-      };
-    
-      const handleCloseFilterModal = () => {
+    };
+
+    const handleCloseFilterModal = () => {
         setIsFilterModalOpen(false);
-      };
+    };
 
     async function createStation() {
         const station = await stationService.getEmptyStation(user)
@@ -77,6 +77,38 @@ export function NavBar() {
     if (isLoginPage) return <div></div>
     return (
         <nav className="side-bar">
+
+            <ul className='mobail-side-bar'>
+                <div className='main-mobile-side-bar'>
+
+                    <li className={`side-bar-item-home-mobile ${isHomeActive ? 'active' : ''}`}>
+                        <NavLink to="/" className="nav-link " onClick={handleHomeClick}>
+                            {isHomeActive ? Svg.activeHomeMobile : Svg.homeIconMobile}
+                            <div className={`txt-home-mobile`}>Home</div>
+                        </NavLink>
+                    </li>
+                    <li className={`side-bar-item-search-mobile ${isSearchActive ? 'active' : ''}`}>
+                        <NavLink to="/search" className="nav-link " onClick={handleSearchClick}>
+                            {isSearchActive ? Svg.activeSearchMobile : Svg.searchHomePageIconMobile}
+                            <div className={`txt-search-mobile${isSearchActive ? '-active' : ''}`}>Search</div>
+                        </NavLink>
+                    </li>
+
+                    <li className="side-bar-item-library">
+                        <NavLink to="/library"
+                            className= "nav-link"
+                            // onMouseEnter={() => setIsTooltipVisible(true)}
+                            // onMouseLeave={() => setIsTooltipVisible(false)}
+                        >
+                          { Svg.LibraryMobile} 
+
+                            <div className="library-span">Your Library</div>
+
+                        </NavLink>
+                    </li>
+
+                </div>
+            </ul>
 
             <ul className="side-bar-list">
 
@@ -100,6 +132,7 @@ export function NavBar() {
 
                 <div className="main-side-bar">
                     <div className="flex">
+
                         <li className="side-bar-item">
                             <NavLink to="/library">
                                 <Tooltip text="Liked playlist">
@@ -173,11 +206,11 @@ export function NavBar() {
                                     />
                                 </div>
                             </form>
-                            <div className='filter-navBar'  onClick={handleFilterClick}>
+                            <div className='filter-navBar' onClick={handleFilterClick}>
 
                                 Recents
-                               {Svg.filterBy}
-                         
+                                {Svg.filterBy}
+
                             </div>
                             {isFilterModalOpen && (
                                 <div className="filter-modal">
@@ -187,7 +220,7 @@ export function NavBar() {
                                         <li>Recently Added</li>
                                         <li>Alphabetical</li>
                                         <li>Creator</li>
-                                     
+
                                     </ul>
                                     <button onClick={handleCloseFilterModal}>Close</button>
                                 </div>

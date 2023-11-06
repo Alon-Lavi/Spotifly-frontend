@@ -14,15 +14,16 @@ export function Search() {
 			setSongsToSearch(null)
 		}
 	}, [])
-	
+
 	async function handleChange({ target }) {
 		const res = await axios.get(
 			`https://www.googleapis.com/youtube/v3/search?part=snippet%20&videoEmbeddable=true&type=video&key=${API_KEY}&q=${target.value}`
 		)
 		setSearchValue(target.value)
-		const songs =res.data.items
-		songs.forEach(song=> {
-			song.duration=stationService.getSongDurations(song)})
+		const songs = res.data.items
+		songs.forEach((song) => {
+			song.duration = stationService.getSongDurations(song)
+		})
 		console.log(songs)
 		setSongsToSearch(songs)
 	}
@@ -31,13 +32,14 @@ export function Search() {
 		<div className="search-bar">
 			<form>
 				<div className="search-input-container">
-					<span className='search-icon'> {Svg.searchIcon}</span>
+					<span className="search-icon"> {Svg.searchIcon}</span>
 					<input
 						onChange={utilService.debounce(handleChange, 3000)}
 						name="txt"
 						type="text"
 						placeholder="What do you want to listen to?"
-						className='input-header'
+						className="input-header"
+						autoComplete="off"
 					/>
 				</div>
 			</form>

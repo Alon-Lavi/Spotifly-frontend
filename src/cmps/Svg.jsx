@@ -379,7 +379,7 @@ export const Svg = {
 			height="44"
 			width="46"
 			style={{ fill: 'white' }}
-			class="Svg-sc-ytk21e-0 eKvNOM"
+			className="Svg-sc-ytk21e-0 eKvNOM"
 		>
 			<path d="M17.318 1.975a3.329 3.329 0 1 1 4.707 4.707L8.451 20.256c-.49.49-1.082.867-1.735 1.103L2.34 22.94a1 1 0 0 1-1.28-1.28l1.581-4.376a4.726 4.726 0 0 1 1.103-1.735L17.318 1.975zm3.293 1.414a1.329 1.329 0 0 0-1.88 0L5.159 16.963c-.283.283-.5.624-.636 1l-.857 2.372 2.371-.857a2.726 2.726 0 0 0 1.001-.636L20.611 5.268a1.329 1.329 0 0 0 0-1.879z"></path>
 		</svg>
@@ -389,7 +389,7 @@ export const Svg = {
 			data-encore-id="icon"
 			role="img"
 			aria-hidden="true"
-			class="Svg-sc-ytk21e-0 kPpCsU mOLTJ2mxkzHJj6Y9_na_"
+			className="Svg-sc-ytk21e-0 kPpCsU mOLTJ2mxkzHJj6Y9_na_"
 			height="16"
 			width="18"
 			viewBox="0 0 16 16"
@@ -423,7 +423,7 @@ export const Svg = {
 	songPlayBtn: (
 		<svg data-encore-id="icon"
 			role="img" aria-hidden="true"
-			class="Svg-sc-ytk21e-0 iYxpxA UIBT7E6ZYMcSDl1KL62g"
+			className="Svg-sc-ytk21e-0 iYxpxA UIBT7E6ZYMcSDl1KL62g"
 			height="16"
 			fill="white"
 			width="16"
@@ -438,7 +438,7 @@ export const Svg = {
 			height="16"
 			fill="white"
 			width="16"
-			class="Svg-sc-ytk21e-0 iYxpxA UIBT7E6ZYMcSDl1KL62g"
+			className="Svg-sc-ytk21e-0 iYxpxA UIBT7E6ZYMcSDl1KL62g"
 			viewBox="0 0 24 24">
 			<path d="M5.7 3a.7.7 0 0 0-.7.7v16.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V3.7a.7.7 0 0 0-.7-.7H5.7zm10 0a.7.7 0 0 0-.7.7v16.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V3.7a.7.7 0 0 0-.7-.7h-2.6z"></path></svg>
 	),
@@ -464,7 +464,7 @@ export const Svg = {
 			aria-hidden="true"
 			viewBox="0 0 16 16"
 			fill="gray"
-			class="Svg-sc-ytk21e-0 kgVuXA"
+			className="Svg-sc-ytk21e-0 kgVuXA"
 			style={{ width: '16px', height: '16px', marginLeft: '4px' }}
 		>
 			<path d="M15 14.5H5V13h10v1.5zm0-5.75H5v-1.5h10v1.5zM15 3H5V1.5h10V3zM3 3H1V1.5h2V3zm0 11.5H1V13h2v1.5zm0-5.75H1v-1.5h2v1.5z">
@@ -476,7 +476,7 @@ export const Svg = {
 			role="img" aria-hidden="true"
 			height="24"
 			width="26"
-			viewBox="0 0 24 24" class="Svg-sc-ytk21e-0 
+			viewBox="0 0 24 24" className="Svg-sc-ytk21e-0 
 		iaCPPY">
 			<path d="M4.5 13.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm15 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm-7.5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path></svg>
 	),
@@ -487,7 +487,7 @@ export const Svg = {
 			height="10"
 			width="10"
 			viewBox="0 0 16 16"
-			class="Svg-sc-ytk21e-0 dCszzJ">
+			className="Svg-sc-ytk21e-0 dCszzJ">
 			<path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"></path><path d="M12 8.75H4v-1.5h8v1.5z"></path></svg>
 	),
 	addToLibrary: (
@@ -496,7 +496,7 @@ export const Svg = {
 			aria-hidden="true"
 			height="10"
 			width="10"
-			viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 dCszzJ"
+			viewBox="0 0 16 16" className="Svg-sc-ytk21e-0 dCszzJ"
 		><path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"></path><path d="M11.75 8a.75.75 0 0 1-.75.75H8.75V11a.75.75 0 0 1-1.5 0V8.75H5a.75.75 0 0 1 0-1.5h2.25V5a.75.75 0 0 1 1.5 0v2.25H11a.75.75 0 0 1 .75.75z"></path></svg>
 	),
 	removeFromLibrary: (
@@ -506,7 +506,7 @@ export const Svg = {
 			role="img"
 			aria-hidden="true"
 			style={{ fill: "#1ed760" }}
-			viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 kAkpoF">
+			viewBox="0 0 16 16" className="Svg-sc-ytk21e-0 kAkpoF">
 			<path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm11.748-1.97a.75.75 0 0 0-1.06-1.06l-4.47 4.47-1.405-1.406a.75.75 0 1 0-1.061 1.06l2.466 2.467 5.53-5.53z"></path></svg>
 	),
 	editIcon: (
@@ -516,7 +516,7 @@ export const Svg = {
 			data-encore-id="icon"
 			role="img"
 			aria-hidden="true"
-			viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 dCszzJ"><path d="M11.838.714a2.438 2.438 0 0 1 3.448 3.448l-9.841 9.841c-.358.358-.79.633-1.267.806l-3.173 1.146a.75.75 0 0 1-.96-.96l1.146-3.173c.173-.476.448-.909.806-1.267l9.84-9.84zm2.387 1.06a.938.938 0 0 0-1.327 0l-9.84 9.842a1.953 1.953 0 0 0-.456.716L2 14.002l1.669-.604a1.95 1.95 0 0 0 .716-.455l9.841-9.841a.938.938 0 0 0 0-1.327z"></path></svg>
+			viewBox="0 0 16 16" className="Svg-sc-ytk21e-0 dCszzJ"><path d="M11.838.714a2.438 2.438 0 0 1 3.448 3.448l-9.841 9.841c-.358.358-.79.633-1.267.806l-3.173 1.146a.75.75 0 0 1-.96-.96l1.146-3.173c.173-.476.448-.909.806-1.267l9.84-9.84zm2.387 1.06a.938.938 0 0 0-1.327 0l-9.84 9.842a1.953 1.953 0 0 0-.456.716L2 14.002l1.669-.604a1.95 1.95 0 0 0 .716-.455l9.841-9.841a.938.938 0 0 0 0-1.327z"></path></svg>
 	),
 	clockIcon: (
 		<svg data-encore-id="icon"
@@ -525,7 +525,7 @@ export const Svg = {
 			width="18"
 			aria-hidden="true"
 			viewBox="0 0 16 16"
-			class="Svg-sc-ytk21e-0 kPpCsU"
+			className="Svg-sc-ytk21e-0 kPpCsU"
 			style={{fill:'#b3b3b3'}}
 		><path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"></path><path d="M8 3.25a.75.75 0 0 1 .75.75v3.25H11a.75.75 0 0 1 0 1.5H7.25V4A.75.75 0 0 1 8 3.25z"></path></svg>
 	)

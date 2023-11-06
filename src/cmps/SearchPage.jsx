@@ -14,6 +14,7 @@ import { Svg } from './Svg'
 
 
 import { StationPreview } from './StationPreview'
+import { userService } from '../services/user.service'
 
 export function SearchPage() {
     const songs = useSelector((storeState) => storeState.stationModule.songsToSearch)
@@ -107,6 +108,7 @@ export function SearchPage() {
             videoId: newSong.id.videoId,
             imgUrl: newSong.snippet.thumbnails.high.url,
             addedAt: Date.now(),
+            duration: newSong.duration
         }
         const idx = user.likedSongs.songs.findIndex((likedSong) => likedSong.videoId === songToSave.videoId)
 
@@ -131,11 +133,6 @@ export function SearchPage() {
         return true
     }
 
-    async function getSongDurations(song) {
-        const dur = await stationService.getSongDurations(song)
-        console.log(dur);
-        return dur
-    }
 
     return (
         <>
@@ -170,8 +167,8 @@ export function SearchPage() {
 
                                     <span className="text-song-name">{trackService.getCleanTitle(song.snippet.title)}</span>
 
-                                    <div className="options">
-                                        {/* <div>{getSongDurations(song)} </div> */}
+                                  
+                            
 
 
                                         {user && <span style={{ opacity: checkIfLiked(song) ? 1 : 0 }} className="like-btn">
@@ -201,6 +198,7 @@ export function SearchPage() {
                                         </span>
 
                                         }
+                                        <span>{utilService.getSongDurations(song.duration)} </span>
                                         {/* <div className="time-stamp end">{utilService.convertTime(songDuration) || '--:--'}</div> */}
                                         <svg
                                             className='svg-option'
@@ -222,7 +220,7 @@ export function SearchPage() {
                                             <circle cx="19" cy="12" r="1"></circle>
                                             <circle cx="5" cy="12" r="1"></circle>
                                         </svg>
-                                    </div>
+                                  
                                 </li>
                             }
 

@@ -1,0 +1,14 @@
+.chat{
+    color: white;
+    margin-inline-start: 10px;
+    padding-left: 15px;
+    ul{
+       list-style-type: none;
+     margin-left: -40px;
+       & :nth-of-type(odd){
+        background-color: transparent;
+       }
+       & :nth-of-type(even){
+        background-color:hsla(0, 0%, 100%, 0.1);       }
+    }
+}

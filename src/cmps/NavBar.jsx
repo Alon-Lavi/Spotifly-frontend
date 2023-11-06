@@ -20,6 +20,8 @@ export function NavBar() {
     const navigate = useNavigate()
     const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
     const [isTooltipVisible, setIsTooltipVisible] = useState(false);
+	const currStation = useSelector((storeState) => storeState.stationModule.currStation)
+
     const toggleSearchInput = () => {
         console.log('Work')
         setSearchInputVisible(!searchInputVisible);
@@ -32,7 +34,7 @@ export function NavBar() {
 
     useEffect(() => {
         loadMyStations()
-    }, [])
+    }, [currStation])
 
     async function loadMyStations() {
         const MyStations = await stationService.query({ user, liked: true })

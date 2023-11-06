@@ -12,7 +12,25 @@ export const utilService = {
 	handleChange,
 	getRandomSongIndex,
 	getDate,
+	getSongDurations
 }
+
+function getSongDurations(duration){
+	try {
+		const match = duration.match(/PT(\d+)M(\d+)S/);
+
+	if (match) {
+	  const minutes = parseInt(match[1]);
+	  const seconds = parseInt(match[2]);
+	  return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+	}
+	} catch (error) {
+		return "4:00";
+	} 
+  
+	
+  }
+
 
 function convertTime(time) {
 	if (typeof time !== 'number') {

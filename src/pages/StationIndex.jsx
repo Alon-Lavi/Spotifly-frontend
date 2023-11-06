@@ -46,9 +46,6 @@ export function StationIndex() {
 		try {
 			const getRecommended = await stationService.query({ isRecommended: true })
 			setRecommended(getRecommended)
-			console.log('====================================');
-			console.log(getRecommended);
-			console.log('====================================');
 		} catch (error) {
 			showErrorMsg('Cannot get station')
 		}

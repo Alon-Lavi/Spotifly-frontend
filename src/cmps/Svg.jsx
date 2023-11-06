@@ -249,7 +249,7 @@ export const Svg = {
 			aria-hidden="true"
 			className="Svg-sc-ytk21e-0 ldgdZj home-icon"
 			viewBox="0 0 24 24"
-			style={{  marginRight: '15px', marginBottom: '-15px' }}
+			style={{ marginRight: '15px', marginBottom: '-15px' }}
 			data-encore-id="icon"
 		>
 			<path d="M12.5 3.247a1 1 0 0 0-1 0L4 7.577V20h4.5v-6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v6H20V7.577l-7.5-4.33zm-2-1.732a3 3 0 0 1 3 0l7.5 4.33a2 2 0 0 1 1 1.732V21a1 1 0 0 1-1 1h-6.5a1 1 0 0 1-1-1v-6h-3v6a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.577a2 2 0 0 1 1-1.732l7.5-4.33z" />
@@ -283,7 +283,7 @@ export const Svg = {
 			className="Svg-sc-ytk21e-0 ldgdZj search-icon"
 			viewBox="0 0 24 24"
 			data-encore-id="icon"
-			style={{  marginRight: '15px', marginTop: '17px', marginLeft: '1px' }}
+			style={{ marginRight: '15px', marginTop: '17px', marginLeft: '1px' }}
 		>
 			<path d="M10.533 1.279c-5.18 0-9.407 4.14-9.407 9.279s4.226 9.279 9.407 9.279c2.234 0 4.29-.77 5.907-2.058l4.353 4.353a1 1 0 1 0 1.414-1.414l-4.344-4.344a9.157 9.157 0 0 0 2.077-5.816c0-5.14-4.226-9.28-9.407-9.28zm-7.407 9.279c0-4.006 3.302-7.28 7.407-7.28s7.407 3.274 7.407 7.28-3.302 7.279-7.407 7.279-7.407-3.273-7.407-7.28z" />
 		</svg>
@@ -435,6 +435,17 @@ export const Svg = {
 			role="img"
 			aria-hidden="true"
 			viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 dCszzJ"><path d="M11.838.714a2.438 2.438 0 0 1 3.448 3.448l-9.841 9.841c-.358.358-.79.633-1.267.806l-3.173 1.146a.75.75 0 0 1-.96-.96l1.146-3.173c.173-.476.448-.909.806-1.267l9.84-9.84zm2.387 1.06a.938.938 0 0 0-1.327 0l-9.84 9.842a1.953 1.953 0 0 0-.456.716L2 14.002l1.669-.604a1.95 1.95 0 0 0 .716-.455l9.841-9.841a.938.938 0 0 0 0-1.327z"></path></svg>
+	),
+	clockIcon: (
+		<svg data-encore-id="icon"
+			role="img"
+			height="18"
+			width="18"
+			aria-hidden="true"
+			viewBox="0 0 16 16"
+			class="Svg-sc-ytk21e-0 kPpCsU"
+			style={{fill:'#b3b3b3'}}
+		><path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"></path><path d="M8 3.25a.75.75 0 0 1 .75.75v3.25H11a.75.75 0 0 1 0 1.5H7.25V4A.75.75 0 0 1 8 3.25z"></path></svg>
 	)
 }
 

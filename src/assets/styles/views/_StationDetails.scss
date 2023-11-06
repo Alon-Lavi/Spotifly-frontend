@@ -153,7 +153,8 @@
 			font-family: CircularMedium, Rubik-Light;
 			font-size: 0.875rem;
 			gap: 10px;
-			grid-template-columns: 16px 6fr 4fr 3fr minmax(40px, 1fr);
+			grid-template-columns: 16px 6fr 4fr 3fr 1fr minmax(40px, 1fr);
+
 			height: 56px;
 			padding-left: 15px;
 			margin-left: 20px;
@@ -176,7 +177,8 @@
 				font-family: CircularMedium, Rubik-Light;
 				font-size: 0.875rem;
 				gap: 10px;
-				grid-template-columns: 16px 6fr 4fr 3fr minmax(40px, 1fr);
+				grid-template-columns: 16px 6fr 4fr 3fr 1fr minmax(40px, 1fr);
+
 				height: 56px;
 				padding-left: 15px;
 				position: relative;
@@ -510,6 +512,7 @@
 			grid-area: img;
 			height: 180px;
 			width: 180px;
+			
 		}
 
 		.title {

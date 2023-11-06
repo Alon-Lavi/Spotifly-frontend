@@ -16,6 +16,8 @@ import { userService } from '../services/user.service'
 import { SongList } from '../cmps/SongList'
 import { Svg } from '../cmps/Svg'
 import { uploadService } from '../services/upload.service'
+import { socketService } from '../services/socket.service'
+import { ChatApp } from './Chat'
 
 export function StationDetails() {
 	const location = useLocation()
@@ -51,7 +53,23 @@ export function StationDetails() {
 
 
 	}
-
+	useEffect(() => {
+		socketService.on('station-updated', stationUpdated => {
+			// updateStation(stationUpdated);
+			setCurrStation(stationUpdated)
+			setStation(stationUpdated)
+		})
+		socketService.on('play', songPlaying => {
+			console.log('====================================');
+			console.log(songPlaying);
+			console.log('====================================');
+			setSongPlaying(songPlaying)
+		})
+		return () => {
+			socketService.off('station-updated')
+			socketService.off('play')
+		}
+	}, [])
 
 	useEffect(() => {
 		loadStations()
@@ -85,14 +103,16 @@ export function StationDetails() {
 		isModalOpen ? setModalOpen(false) : setModalOpen(true);
 	};
 
-
-
 	const openModal = () => {
 		setIsOpen(true)
 	}
 
+	const closeOptionsModal = () => {
+		setModalOpen(false)
+	}
+	 
 	const closeModal = () => {
-		openCloseOptionsModal()
+	
 		setIsOpen(false)
 	}
 
@@ -123,11 +143,16 @@ export function StationDetails() {
 				setIsPlaying(isCurrentlyPlaying)
 			}
 
-			else setSongPlaying(song)
+			else {
+				setSongPlaying(song)
+				socketService.emit('play', song)
+			}
+
 		}
 	}
 
 	async function AddToPlaylist(song, ev) {
+		console.log(song);
 		ev.stopPropagation()
 		const songToSave = {
 			id: utilService.makeId(),
@@ -135,6 +160,7 @@ export function StationDetails() {
 			title: song.snippet.title.replace(/\([^)]*\)|\[[^\]]*\]/g, ''),
 			imgUrl: song.snippet.thumbnails.high.url,
 			addedAt: Date.now(),
+			duration: song.duration
 
 		}
 
@@ -173,6 +199,7 @@ export function StationDetails() {
 			} else {
 				const stationToSet = await stationService.getById(stationId)
 				setStation(stationToSet)
+				setCurrStation(stationToSet)
 				getBgc(stationToSet.imgUrl)
 				setImgData({ imgUrl: stationToSet.imgUrl, width: '180', height: '180' })
 
@@ -191,7 +218,7 @@ export function StationDetails() {
 	async function saveChanges(ev) {
 		ev.preventDefault()
 		console.log(ev);
-		const name = ev.target[0].value
+		const name = ev.target[1].value
 		const desc = ev.target[2].value
 		const stationToSave = { ...station, name, desc, imgUrl: imgData.imgUrl }
 		try {
@@ -203,7 +230,7 @@ export function StationDetails() {
 			showErrorMsg('Could not update station')
 		} finally {
 			closeModal()
-			if(isModalOpen) openCloseOptionsModal()
+			closeOptionsModal()
 		}
 	}
 	function checkLikedStation(newStation) {
@@ -322,7 +349,7 @@ export function StationDetails() {
 
 							<span>{station.desc}</span>
 							<span>
-								{station.createdBy?.fullname} {'• ' }  
+								{station.createdBy?.fullname} {'• '}
 								{station.songs.length > 1 && <span>
 									{station.songs?.length} songs
 								</span>}
@@ -391,8 +418,9 @@ export function StationDetails() {
 					<div className="song-list-header">
 						<span>#</span>
 						<span>Title </span>
-						<span></span>
 						<span>Date added</span>
+						<span></span>
+						<span>{Svg.clockIcon} </span>
 					</div>
 
 					<DragDropContext onDragEnd={handleDragend}>
@@ -438,7 +466,10 @@ export function StationDetails() {
 							</li>
 						))}
 				</ul>
+				{!isLikedPage && <section className="chat">
+					<ChatApp station={station} />
 
+				</section>}
 
 			</section>
 			{isOpen && (
@@ -460,9 +491,9 @@ export function StationDetails() {
 									Choose photo
 								</span>
 							</div>
+							<input className='file' type="file" onChange={uploadImg} accept="img/*" id="imgUpload" />
 							<img className='image' src={imgData.imgUrl} alt="" />
 							<input className="title" defaultValue={station.name} type="text" />
-							<input className='file' type="file" onChange={uploadImg} accept="img/*" id="imgUpload" />
 							<textarea
 								value={textareaValue}
 								onChange={handleTextareaChange}
@@ -483,6 +514,7 @@ export function StationDetails() {
 					</div>
 				</div>
 			)}
+
 		</>
 
 	)

@@ -67,6 +67,7 @@ export function LoginSignup() {
 					onChange={handleCredentialsChange}
 					required
 					autoFocus
+					autoComplete='off'
 					/>
 					</label>
 				<label>

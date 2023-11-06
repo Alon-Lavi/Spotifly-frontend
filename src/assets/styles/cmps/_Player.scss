@@ -8,6 +8,32 @@
 	padding: 8px;
 	width: 100%;
 	background-color: black;
+
+	@media (max-width: 375px) {
+		height: 4em;
+		bottom: 5em;
+		opacity: 0.9;
+		border-radius: 20px;
+		grid-template-columns: 1fr 100px;
+
+		.shuffle,
+		.backBtn,
+		.fwdBtn,
+		.repeat-btn,
+		.volume-bar,
+		.progress-bar-element,
+		.time-stamp {
+			display: none;
+		}
+
+		.top-center-controls {
+			margin-inline-start: 40px;
+		}
+
+		.top-center-controls .playBtn {
+			background-color: transparent;
+		}
+	}
 }
 
 .center-controls {
@@ -113,7 +139,6 @@
 		img {
 			height: rem(60px);
 			width: rem(60px);
-		
 		}
 	}
 
@@ -132,9 +157,8 @@
 
 	.img-song-name {
 		display: flex;
-    align-items: center;
-    margin-top: 0.625em;
-
+		align-items: center;
+		margin-top: 0.625em;
 	}
 }
 

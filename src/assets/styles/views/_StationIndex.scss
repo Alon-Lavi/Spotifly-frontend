@@ -9,11 +9,60 @@
 	border-end-end-radius: 0.525em;
 	margin-bottom: 86px;
 
-	@media (max-width: 768px) {
-		grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	@media (max-width: 375px) {
+		grid-area: 1/4/1/1;
+		// grid-template-rows: 40px 1fr 40px 40px ;
+		// grid-template-columns: repeat(1 , minmax(0,1fr))  ;
+		.recommended-container {
+	  
+			.recommended-list{
 
-	}
-}
+				grid-template-columns: 1fr 1fr;
+				grid-template: 0;
+				 font-size: 12px;
+			}
+		}
+			.station-list {
+				width: 375px;
+				display: flex;
+				flex-direction: row;
+				overflow-x: auto;  
+
+			
+				li {
+					-webkit-box-flex: 0; 
+					border-radius: 0;
+					padding: 0;
+					width: 40%;
+					-webkit-transition: none; 
+					transition: none;
+					background-color: inherit; 
+					display: block; 
+
+					.img-container {
+						img{
+
+							border-radius: 0;
+						}
+					}
+				  }
+				  .station-preview {
+					  margin-left: 0;
+					  flex: 0 0 auto; 
+					  width: 40%;
+					  margin-right: 24px;
+				  
+					  
+				  }
+		
+				}
+			}
+				   
+	
+		  
+		}	
+
+
 
 .title-container {
 	width: 102%;
@@ -47,10 +96,12 @@
 	margin-left: -21px;
 	margin-right: 20px;
 
+
+	  
+
 	.station-preview {
 
-		span {
-
+		span {			
 			text-overflow: ellipsis;
 			white-space: nowrap;
 			overflow: hidden;
@@ -136,6 +187,7 @@
 }
 
 .recommended-container {
+
 
 
 	.recommended-list {

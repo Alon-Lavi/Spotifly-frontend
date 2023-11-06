@@ -8,6 +8,13 @@
 	padding: 8px;
 	width: 100%;
 	background-color: black;
+
+	@media (max-width: 375px) {
+        height: 4em;
+		bottom: 5em;
+		opacity: 0.9;
+		border-radius: 20px;;
+	}   
 }
 
 .center-controls {

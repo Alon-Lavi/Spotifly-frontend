@@ -18,6 +18,7 @@ import { Svg } from '../cmps/Svg'
 import { uploadService } from '../services/upload.service'
 import { socketService } from '../services/socket.service'
 import { ChatApp } from './Chat'
+import { trackService } from '../services/track.service'
 
 export function StationDetails() {
 	const location = useLocation()
@@ -160,8 +161,8 @@ export function StationDetails() {
 			title: song.snippet.title.replace(/\([^)]*\)|\[[^\]]*\]/g, ''),
 			imgUrl: song.snippet.thumbnails.high.url,
 			addedAt: Date.now(),
-			duration: song.duration
-
+			duration: song.duration,
+			artist: trackService.getArtistName(song.snippet.title)
 		}
 
 		try {
@@ -419,8 +420,8 @@ export function StationDetails() {
 						<span>#</span>
 						<span>Title </span>
 						<span>Date added</span>
-						<span></span>
-						<span>{Svg.clockIcon} </span>
+					{user&&	<span></span>}
+						<span className='clock-icon' >{Svg.clockIcon} </span>
 					</div>
 
 					<DragDropContext onDragEnd={handleDragend}>

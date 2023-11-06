@@ -81,7 +81,7 @@ export function SongPreview({ song, playSong, checkLikedSongs, checkIfLiked, onD
 							</svg>
 						</span>}
 
-						<span>{utilService.getSongDurations(song.duration)}</span>
+						<span className='song-dur'>{utilService.getSongDurations(song.duration)}</span>
 
 						{!isLikedPage && (
 							<span onClick={event => { openModal(event) }} className='options'>

@@ -12,7 +12,6 @@
 	@media (max-width: 375px) {
 		height: 4em;
 		bottom: 5em;
-		opacity: 0.9;
 		border-radius: 20px;
 		grid-template-columns: 1fr 100px;
 
@@ -26,12 +25,31 @@
 			display: none;
 		}
 
-		.top-center-controls {
-			margin-inline-start: 40px;
-		}
-
 		.top-center-controls .playBtn {
 			background-color: transparent;
+		}
+
+		.left-controls img {
+			width: 3em;
+			height: 3em;
+		}
+
+		.playBtn {
+			fill: white;
+			margin-inline-end: 30px;
+		}
+
+		.img-song-name {
+			margin-top: 0 !important;
+		}
+
+		.song-name-player {
+			margin-left: 0 !important;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			min-width: 160px;
+			height: 1.2em;
+			white-space: nowrap;
 		}
 	}
 }
@@ -135,11 +153,9 @@
 }
 
 .left-controls {
-	.station-img {
-		img {
-			height: rem(60px);
-			width: rem(60px);
-		}
+	img {
+		height: rem(60px);
+		width: rem(60px);
 	}
 
 	.song-name-player {

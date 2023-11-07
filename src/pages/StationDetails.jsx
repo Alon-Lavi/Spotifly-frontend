@@ -26,6 +26,7 @@ export function StationDetails() {
 	const { stationId } = useParams()
 
 	const isLikedPage = location.pathname === '/likedsongs'
+	const [chatIsVisible, setChatIsVisible] = useState(false)
 	const [station, setStation] = useState(null)
 	const [isOpen, setIsOpen] = useState(false)
 	const [isModalOpen, setModalOpen] = useState(false)
@@ -96,6 +97,11 @@ export function StationDetails() {
 			setCurrStation(station)
 		}
 	}
+
+	const toggleChatVisibility = () => {
+		setChatIsVisible(!chatIsVisible)
+	}
+
 	const openCloseOptionsModal = () => {
 		isModalOpen ? setModalOpen(false) : setModalOpen(true)
 	}
@@ -392,7 +398,7 @@ export function StationDetails() {
 											<span onClick={() => checkLikedStation(station)}>{Svg.removeFromLibrary} Remove from Library</span>
 										)}
 										<span onClick={openModal}>{Svg.editIcon} Edit details</span>
-										<span>
+										<span onClick={toggleChatVisibility}>
 											{Svg.chanIcon}
 											Chat
 										</span>
@@ -458,11 +464,11 @@ export function StationDetails() {
 				</ul>
 
 				{!isLikedPage && (
-					<section>
+					<section style={{ display: chatIsVisible ? 'block' : 'none' }}>
 						<div class="chat">
 							<div class="chat-title">
-								{/* <h1>Fabio Ottaviani</h1> */}
-								{/* <h2>Supah</h2> */}
+								<h1>{user.fullname}</h1>
+								{/* <h2></h2> */}
 								<figure class="avatar">{user.imgUrl}</figure>
 							</div>
 							<div class="messages">

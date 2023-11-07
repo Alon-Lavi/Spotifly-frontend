@@ -59,7 +59,7 @@
 		.station-options {
 			display: grid !important;
 			grid-template-columns: repeat(3, 100px);
-			grid-template-areas: "item2 item1 ";
+			grid-template-areas: "item2 item3 item1";
 			grid-template-columns: 6fr 1fr 1fr;
 			margin-left: 0;
 			height: 100px;
@@ -84,7 +84,7 @@
 				li {
 					display: grid;
 					padding-left: 0px !important;
-					// grid-template-columns: 16px 6fr 1fr;
+					grid-template-columns: 1fr 7fr 1fr;
 
 					.song-dur {
 						display: none;
@@ -238,7 +238,7 @@
 
 		.options-btn:hover {
 			svg {
-
+                grid-area: item3;
 				fill: #fff;
 				scale: 1.6;
 			}

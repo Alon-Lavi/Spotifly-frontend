@@ -11,12 +11,48 @@ export const trackService = {
 	truncateTitle,
 	getArtistName,
 	getArtists,
+	getSongDurations,
+	getSongInfo
 }
 
 const KEY = 'videosDB'
 const API_KEY = 'AIzaSyBW5qn1Rksz37QRNmq2hZGhs2kep291zpk'
 // const API_KEY = 'AIzaSyBRKY6ERVlaMGjytOb4wV1GWgyjr8d0tL0'
 
+
+async function getSongInfo(value) {
+	const res = await axios.get(
+		`https://www.googleapis.com/youtube/v3/search?part=snippet%20&videoEmbeddable=true&type=video&key=${API_KEY}&q=${value}`
+	)
+	const songs = res.data.items
+	const PROMISES = songs.map((song) => {
+		return axios.get(
+			`https://www.googleapis.com/youtube/v3/videos?id=${song.id.videoId}&part=contentDetails&key=AIzaSyCIHRUBlXc7OJQY31NlL6jlfigPqh9_PHE`
+		)
+	})
+	return Promise.all(PROMISES).then((values) => {
+		console.log(values)
+		const songsToSave = songs.map((song, idx) => {
+			song.duration = values[idx].data.items[0]?.contentDetails.duration
+			return song
+		})
+		return songsToSave
+	})
+}
+async function getSongDurations(song) {
+	const videoId = song.kind ? song.id.videoId : song.videoId
+	try {
+		console.log(videoId)
+		const res = await axios.get(
+			`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&part=contentDetails&key=AIzaSyCIHRUBlXc7OJQY31NlL6jlfigPqh9_PHE`
+		)
+		const dur = utilService.getSongDurations(res.data.items[0].contentDetails.duration)
+		return dur
+	} catch (error) {
+		console.error('Error:', error)
+		return null
+	}
+}
 async function getVideos(term, amount = 5) {
 	const termVideosMap = utilService.loadFromStorage(KEY) || {}
 	if (termVideosMap[term]) return termVideosMap[term]

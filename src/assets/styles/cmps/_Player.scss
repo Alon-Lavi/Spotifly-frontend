@@ -10,10 +10,11 @@
 	background-color: black;
 
 	@media (max-width: 375px) {
-		height: 4em;
+		height: 3.9em;
 		bottom: 5em;
-		border-radius: 20px;
-		grid-template-columns: 1fr 100px;
+		margin-left: -2.6px;
+		border-radius: 25px;
+		grid-template-columns: 2fr 50px;
 
 		.shuffle,
 		.backBtn,
@@ -32,6 +33,7 @@
 		.left-controls img {
 			width: 3em;
 			height: 3em;
+			margin-left:10px ;
 		}
 
 		.playBtn {

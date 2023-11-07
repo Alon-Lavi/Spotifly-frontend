@@ -53,7 +53,7 @@ export function SongPreview({ song, playSong, checkLikedSongs, checkIfLiked, onD
 							<img src={song.imgUrl} alt="" />
 							<span style={{ color: songPlaying?.videoId === song.videoId ? '#1ed760' : 'white' }} >{song.title}</span>
 						</div>
-						<span>{utilService.getDate(song.addedAt)}</span>
+						<span className='date'>{utilService.getDate(song.addedAt)}</span>
 
 						{user && <span style={{ opacity: checkIfLiked(song) ? 1 : 0 }} className="like-btn">
 							<svg

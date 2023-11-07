@@ -65,7 +65,8 @@ async function removeSong(_id, videoId) {
 	return user
 }
 async function updateUser(user) {
-	await httpService.put('user', user)
+	console.log(user);
+	await httpService.put(`user/${user._id}`,user)
 	return user
 }
 async function login(userCred) {

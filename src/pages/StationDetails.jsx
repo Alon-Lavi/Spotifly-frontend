@@ -111,9 +111,9 @@ export function StationDetails() {
 	const closeOptionsModal = () => {
 		setModalOpen(false)
 	}
-	 
+
 	const closeModal = () => {
-	
+
 		setIsOpen(false)
 	}
 
@@ -318,14 +318,15 @@ export function StationDetails() {
 
 	async function handleDragend(res) {
 		const newSongs = [...station.songs]
+		console.log(newSongs);
 		const [recordedItems] = newSongs.splice(res.source.index, 1)
 		newSongs.splice(res.destination.index, 0, recordedItems)
 		const stationToSave = { ...station, songs: newSongs }
 
 		if (isLikedPage) {
 			const userToSave = { ...user, likedSongs: stationToSave }
-			userService.updateUser(userToSave)
-			updateUser(userToSave)
+			const updatedUser = await userService.updateUser(userToSave)
+			updateUser(updatedUser)
 
 			return
 		}
@@ -336,6 +337,7 @@ export function StationDetails() {
 	}
 
 	if (!station) return LoaderService.threeDots
+	console.log(station);
 	return (
 		<>
 			<section className="station-details">
@@ -343,12 +345,12 @@ export function StationDetails() {
 					<img src={station.imgUrl} alt="" />
 
 					<div className="title">
-						<span>playlist</span>
+						<span className='desc' >playlist</span>
 						{station.createdBy._id === user?._id ? <h1 className="with-modal" onClick={openModal}>{station.name}</h1> :
 							<h1 >{station.name}</h1>}
 						<div className='info'>
 
-							<span>{station.desc}</span>
+							<span >{station.desc}</span>
 							<span>
 								{station.createdBy?.fullname} {'• '}
 								{station.songs.length > 1 && <span>
@@ -420,12 +422,12 @@ export function StationDetails() {
 						<span>#</span>
 						<span>Title </span>
 						<span>Date added</span>
-					{user&&	<span></span>}
+						{user && <span></span>}
 						<span className='clock-icon' >{Svg.clockIcon} </span>
 					</div>
 
 					<DragDropContext onDragEnd={handleDragend}>
-						<Droppable droppableId={station._id}>
+						<Droppable droppableId={station._id || station.createdBy.fullname}>
 							{(provided) => {
 								return (
 									<ul className="song-list" {...provided.droppableProps} ref={provided.innerRef}>

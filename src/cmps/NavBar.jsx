@@ -218,7 +218,7 @@ export function NavBar() {
 						<div className="stations-container">
 							{user && <li className="station-preview" key={user._id}>
 								<img src={user.likedSongs.imgUrl} alt={user.likedSongs.name} />
-								<Link to={`/likedSongs`}>
+								<Link to={`/likedsongs`}>
 									<div className="station-info">
 										<p className="playlist-name">{user.likedSongs.name}</p>
 										<p className="song-name">

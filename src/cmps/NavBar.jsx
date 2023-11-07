@@ -5,8 +5,10 @@ import { Link } from 'react-router-dom'
 import { Tooltip } from './ToolTip'
 
 import { stationService } from '../services/station.service'
+
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { Svg } from './Svg'
+import { trackService } from '../services/track.service'
 
 export function NavBar() {
 	const [searchInputVisible, setSearchInputVisible] = useState(false)
@@ -31,9 +33,9 @@ export function NavBar() {
 		setSearchText(ev.target.value)
 	}
 
-    useEffect(() => {
-        loadMyStations()
-    }, [currStation])
+	useEffect(() => {
+		loadMyStations()
+	}, [currStation])
 
 	async function loadMyStations() {
 		const MyStations = await stationService.query({ user, liked: true })
@@ -97,8 +99,8 @@ export function NavBar() {
 						<NavLink
 							to="/library"
 							className="nav-link"
-							// onMouseEnter={() => setIsTooltipVisible(true)}
-							// onMouseLeave={() => setIsTooltipVisible(false)}
+						// onMouseEnter={() => setIsTooltipVisible(true)}
+						// onMouseLeave={() => setIsTooltipVisible(false)}
 						>
 							{Svg.LibraryMobile}
 
@@ -224,9 +226,7 @@ export function NavBar() {
 												<div className="station-info">
 													<p className="playlist-name">{station.name}</p>
 													<p className="song-name">
-														{station.songs.map((song, idx) => (
-															<span key={idx * 2}>{song.artist} </span>
-														))}
+												<span>	{trackService.getArtists(station)}</span>	
 													</p>
 												</div>
 											</Link>

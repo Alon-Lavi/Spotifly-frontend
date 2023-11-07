@@ -1,5 +1,7 @@
 import axios from 'axios'
 import { utilService } from './util.service'
+import { _ } from "lodash"
+
 // import { httpService } from './http.service'
 // import { stationService } from './station.service.local'
 
@@ -7,7 +9,8 @@ export const trackService = {
 	getVideos,
 	getCleanTitle,
 	truncateTitle,
-	getArtistName
+	getArtistName,
+	getArtists
 }
 
 const KEY = 'videosDB'
@@ -60,7 +63,17 @@ async function getVideos(term, amount = 5) {
 		throw err
 	}
 }
-
+function getArtists(station){
+	const artists =[]
+station.songs.map(song => {
+	if(artists.length===2)return
+	if(song.artist){
+		if(!_.includes(artists, song.artist))artists.push(song.artist)
+	
+	}
+})
+return artists.join(", "); 
+}
 function convertDuration(duration) {
 	const match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/)
 

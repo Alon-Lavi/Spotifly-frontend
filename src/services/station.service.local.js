@@ -18,11 +18,14 @@ export const stationService = {
 	getGenres,
 	getByName,
 	getSongDurations,
-	getSongInfo
+	getSongInfo,
+	
 	// addStationMsg,
 }
 
 window.cs = stationService
+
+
 
 function removeSong(songId, station) {
 	const updatedSongs = station.songs.filter((song) => song._id !== songId)
@@ -1714,7 +1717,7 @@ async function getSongInfo(value) {
 	return Promise.all(PROMISES).then((values) => {
 		console.log(values);
 		const songsToSave= songs.map((song,idx) =>{
-			song.duration= values[idx].data.items[0].contentDetails.duration
+			song.duration= values[idx].data.items[0]?.contentDetails.duration
 			return song
 		})
 		return (songsToSave);

@@ -1527,6 +1527,7 @@ const genres = [
 	},
 
 	{
+		title: 'Techno',
 		imgUrl: 'https://i.scdn.co/image/ab67fb8200005cafefa737b67ec51ec989f5a51d',
 		backgroundcolor: 'gold',
 	},

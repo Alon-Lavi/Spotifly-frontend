@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { utilService } from './util.service'
-import { _ } from "lodash"
+import { _ } from 'lodash'
 
 // import { httpService } from './http.service'
 // import { stationService } from './station.service.local'
@@ -10,11 +10,12 @@ export const trackService = {
 	getCleanTitle,
 	truncateTitle,
 	getArtistName,
-	getArtists
+	getArtists,
 }
 
 const KEY = 'videosDB'
-const apiKey = 'AIzaSyBRKY6ERVlaMGjytOb4wV1GWgyjr8d0tL0'
+const API_KEY = 'AIzaSyBW5qn1Rksz37QRNmq2hZGhs2kep291zpk'
+// const API_KEY = 'AIzaSyBRKY6ERVlaMGjytOb4wV1GWgyjr8d0tL0'
 
 async function getVideos(term, amount = 5) {
 	const termVideosMap = utilService.loadFromStorage(KEY) || {}
@@ -22,7 +23,7 @@ async function getVideos(term, amount = 5) {
 
 	try {
 		const response = await axios.get(
-			`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${amount}&q=${term}&key=${apiKey}`
+			`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${amount}&q=${term}&key=${API_KEY}`
 		)
 		const ytVideos = response.data.items
 
@@ -31,7 +32,7 @@ async function getVideos(term, amount = 5) {
 				const videoId = ytVideo.id.videoId
 				try {
 					const videoResponse = await axios.get(
-						`https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=${videoId}&key=${apiKey}`
+						`https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=${videoId}&key=${API_KEY}`
 					)
 					if (videoResponse.data.items && videoResponse.data.items.length > 0) {
 						return videoResponse.data.items[0].contentDetails.duration
@@ -63,16 +64,15 @@ async function getVideos(term, amount = 5) {
 		throw err
 	}
 }
-function getArtists(station){
-	const artists =[]
-station.songs.map(song => {
-	if(artists.length===2)return
-	if(song.artist){
-		if(!_.includes(artists, song.artist))artists.push(song.artist)
-	
-	}
-})
-return artists.join(", "); 
+function getArtists(station) {
+	const artists = []
+	station.songs.map((song) => {
+		if (artists.length === 2) return
+		if (song.artist) {
+			if (!_.includes(artists, song.artist)) artists.push(song.artist)
+		}
+	})
+	return artists.join(', ')
 }
 function convertDuration(duration) {
 	const match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/)
@@ -115,11 +115,10 @@ function truncateTitle(title, maxLength = 20) {
 }
 
 function getArtistName(title) {
-	if (typeof title !== 'string') return '';
-	
-	
-	const regex = /^(.*?)(-|–|:|—)\s/; 
-	const match = title.match(regex);
-	
-	return match?.[1] || ''; 
-  }
+	if (typeof title !== 'string') return ''
+
+	const regex = /^(.*?)(-|–|:|—)\s/
+	const match = title.match(regex)
+
+	return match?.[1] || ''
+}

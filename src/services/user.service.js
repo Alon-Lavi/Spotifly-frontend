@@ -1,7 +1,4 @@
-import { storageService } from './async-storage.service'
 import { httpService } from './http.service'
-import { utilService } from './util.service'
-// import { httpService } from './http.service'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
@@ -44,7 +41,7 @@ async function addSong(_id, song) {
 	console.log(user, 'updtae')
 	// await storageService.put('user', user)
 
-	await httpService.put(`user/${user._id}`,user)
+	await httpService.put(`user/${user._id}`, user)
 	// Handle case in which admin updates other user's details
 	if (getLoggedinUser()._id === user._id) saveLocalUser(user)
 	return user
@@ -59,14 +56,14 @@ async function removeSong(_id, videoId) {
 	console.log(user, 'updtae')
 	// await storageService.put('user', user)
 
-	await httpService.put(`user/${user._id}`,user)
+	await httpService.put(`user/${user._id}`, user)
 	// Handle case in which admin updates other user's details
 	if (getLoggedinUser()._id === user._id) saveLocalUser(user)
 	return user
 }
 async function updateUser(user) {
-	console.log(user);
-	await httpService.put(`user/${user._id}`,user)
+	console.log(user)
+	await httpService.put(`user/${user._id}`, user)
 	return user
 }
 async function login(userCred) {

@@ -86,7 +86,7 @@ async function getEmptyStation(user) {
 	const stationLength = stations.length + 1
 	return {
 		//  name: prompt("playlist name?"),
-		name: `My Playlsit #${stationLength}`,
+		name: `My Playlist #${stationLength}`,
 		songs: [],
 		msgs:[],
 		likedByUsers: [],

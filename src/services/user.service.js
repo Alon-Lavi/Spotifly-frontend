@@ -77,7 +77,6 @@ async function login(userCred) {
 
 async function signup(userCred) {
 	userCred.likedSongs = {
-		// _id: utilService.makeId(),
 		imgUrl: 'https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png',
 		name: 'Liked Songs',
 		songs: [],
@@ -109,32 +108,3 @@ function saveLocalUser(user) {
 function getLoggedinUser() {
 	return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
-
-// ;(async ()=>{
-//     await userService.signup({fullname: 'Puki Norma', username: 'puki', password:'123',score: 10000, isAdmin: false})
-//     await userService.signup({fullname: 'Master Adminov', username: 'admin', password:'123', score: 10000, isAdmin: true})
-//     await userService.signup({fullname: 'Muki G', username: 'muki', password:'123', score: 10000})
-// })()
-
-// const user = {
-//     _id: "u101",
-//     username: "Muki",
-//     password: "1234",
-//     fullname: "Muki Muki",
-//     imgUrl: "http://some-img",
-//     likedSongs: [
-//       {
-//         _id: "u100",
-//         fullname: "Moki Song",
-//         imgUrl: "http://some-img"
-//       }
-//     ],
-//     playLists: [
-//       {
-//         _id: "u105",
-//         fullname: "Bob",
-//         imgUrl: "http://some-img"
-//       }
-//     ],
-//     savedStoryIds: ["s102", "s120", "s200"]
-//   }

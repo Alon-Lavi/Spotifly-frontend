@@ -4,6 +4,7 @@ import { utilService } from '../services/util.service'
 import { setSearchValue, setSongsToSearch } from '../store/actions/station.actions'
 import { Svg } from './Svg'
 import { stationService } from '../services/station.service.local'
+import { trackService } from '../services/track.service'
 
 
 
@@ -19,7 +20,7 @@ export function Search() {
 
 	async function handleChange({ target }) {
 
-		const songs = await stationService.getSongInfo(target.value)
+		const songs = await trackService.getSongInfo(target.value)
 		console.log(songs, 'ssss');
 		setSearchValue(target.value)
 

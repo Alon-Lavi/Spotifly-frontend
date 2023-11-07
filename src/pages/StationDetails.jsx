@@ -337,7 +337,6 @@ export function StationDetails() {
 	}
 
 	if (!station) return LoaderService.threeDots
-	console.log(station);
 	return (
 		<>
 			<section className="station-details">
@@ -470,7 +469,7 @@ export function StationDetails() {
 						))}
 				</ul>
 				{!isLikedPage && <section className="chat">
-					<ChatApp station={station} />
+					<ChatApp setStation={setStation} station={station} />
 
 				</section>}
 

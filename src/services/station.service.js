@@ -59,6 +59,7 @@ async function save(station) {
 	try {
 		if (station._id) {
 			savedStation = await httpService.put(BASE_URL + station._id, station)
+
 		} else {
 			savedStation = await httpService.post(BASE_URL, station)
 		}

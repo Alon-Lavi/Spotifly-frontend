@@ -19,7 +19,6 @@ export function AppHeader() {
 	const isLoginPage = location.pathname === '/loginsignup'
 
 	useEffect(() => {
-		console.log(user)
 		if (location.pathname === '/search') {
 			setShowSearchInput(true)
 		} else {

@@ -5,7 +5,7 @@ import { socketService, SOCKET_EMIT_SEND_MSG, SOCKET_EVENT_ADD_MSG, SOCKET_EMIT_
 import { stationService } from '../services/station.service'
 import { updateStation } from '../store/actions/station.actions'
 
-export function ChatApp({ station }) {
+export function ChatApp({setStation, station }) {
 	const [msg, setMsg] = useState({ txt: '' })
 	const [msgs, setMsgs] = useState([])
 	const [topic, setTopic] = useState(station)
@@ -32,17 +32,16 @@ export function ChatApp({ station }) {
 
 	
 
-	function addMsg(newMsg) {
+	async function addMsg(newMsg) {
 
-		setMsgs((prevMsgs) => [...prevMsgs, newMsg])
+	
+		const stationToSave = { ...station, msgs: [newMsg,...station.msgs] }
 		console.log('====================================');
-		console.log(newMsg);
+		console.log(stationToSave);
 		console.log('====================================');
-
-		// const stationToSave = { ...station, msgs: [...station.msgs, newMsg] }
-		station.msgs.push(newMsg)
-		console.log(station);
-		updateStation(station)
+		//  station.msgs.push(newMsg)
+		await updateStation(stationToSave)
+		setStation(stationToSave)
 	}
 
 	function sendBotResponse() {
@@ -58,7 +57,7 @@ export function ChatApp({ station }) {
 		const from = loggedInUser?.fullname || 'Me'
 		const newMsg = { from, txt: msg.txt }
 		socketService.emit(SOCKET_EMIT_SEND_MSG, newMsg)
-		if (isBotMode) sendBotResponse()
+		// if (isBotMode) sendBotResponse()
 		// for now - we add the msg ourself
 		// addMsg(newMsg)
 		setMsg({ txt: '' })

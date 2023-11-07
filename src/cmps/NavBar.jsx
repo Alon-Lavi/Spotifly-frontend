@@ -216,6 +216,17 @@ export function NavBar() {
 						</div>
 
 						<div className="stations-container">
+							{user && <li className="station-preview" key={user._id}>
+								<img src={user.likedSongs.imgUrl} alt={user.likedSongs.name} />
+								<Link to={`/likedSongs`}>
+									<div className="station-info">
+										<p className="playlist-name">{user.likedSongs.name}</p>
+										<p className="song-name">
+											<span>	{trackService.getArtists(user.likedSongs)}</span>
+										</p>
+									</div>
+								</Link>
+							</li>}
 							{stations &&
 								stations
 									.filter((station) => station.name.toLowerCase().includes(searchText.toLowerCase()))
@@ -226,7 +237,7 @@ export function NavBar() {
 												<div className="station-info">
 													<p className="playlist-name">{station.name}</p>
 													<p className="song-name">
-												<span>	{trackService.getArtists(station)}</span>	
+														<span>	{trackService.getArtists(station)}</span>
 													</p>
 												</div>
 											</Link>

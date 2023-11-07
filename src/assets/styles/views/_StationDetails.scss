@@ -57,8 +57,11 @@
 		}
 
 		.station-options {
-			display: grid;
+			display: grid !important;
+			grid-template-columns: repeat(3, 100px);
+			grid-template-areas: "item2 item1 ";
 			grid-template-columns: 6fr 1fr 1fr;
+			margin-left: 0;
 			height: 100px;
 
 			span {
@@ -79,8 +82,9 @@
 
 			.song-list {
 				li {
-					padding-left: 0px;
-					grid-template-columns: 16px 6fr 1fr;
+					display: grid;
+					padding-left: 0px !important;
+					// grid-template-columns: 16px 6fr 1fr;
 
 					.song-dur {
 						display: none;
@@ -211,6 +215,7 @@
 			padding: 10px;
 			border-radius: 50%;
 			border: none;
+			grid-area: item1 ;
 			right: 3%;
 			display: flex;
 			justify-content: center;
@@ -223,6 +228,7 @@
 
 		span {
 			svg {
+				grid-area: item2;
 				scale: 1.5;
 				margin-left: 10px;
 				fill: currentcolor;
@@ -232,6 +238,7 @@
 
 		.options-btn:hover {
 			svg {
+
 				fill: #fff;
 				scale: 1.6;
 			}

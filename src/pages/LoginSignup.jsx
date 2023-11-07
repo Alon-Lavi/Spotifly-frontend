@@ -54,31 +54,40 @@ export function LoginSignup() {
 	const { username, password, fullname } = credentials
 	return (
 		<div className="login-page">
-			<h2 className='title'>Log in to Spotifly</h2>
-		
+			<h2 className="title">Log in to Spotifly</h2>
+
 			<form className="login-form" onSubmit={onSubmit}>
 				<label>
 					Email or username
-				<input
-					type="text"
-					name="username"
-					value={username}
-					placeholder="Email or username"
-					onChange={handleCredentialsChange}
-					required
-					autoFocus
-					autoComplete='off'
+					<input
+						type="text"
+						name="username"
+						value={username}
+						placeholder="Email or username"
+						onChange={handleCredentialsChange}
+						required
+						autoFocus
+						autoComplete="off"
 					/>
-					</label>
+				</label>
 				<label>
 					Password
-				<input type="password" name="password" value={password} placeholder="Password" onChange={handleCredentialsChange} required />
+					<input type="password" name="password" value={password} placeholder="Password" onChange={handleCredentialsChange} required />
 				</label>
 
 				{isSignupState && (
-					<label> Fullname
-
-					<input type="text" name="fullname" value={fullname} placeholder="Full name" onChange={handleCredentialsChange} required />
+					<label>
+						{' '}
+						Fullname
+						<input
+							type="text"
+							name="fullname"
+							value={fullname}
+							placeholder="Full name"
+							autoComplete="off"
+							onChange={handleCredentialsChange}
+							required
+						/>
 					</label>
 				)}
 

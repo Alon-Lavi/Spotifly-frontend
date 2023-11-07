@@ -11,62 +11,49 @@
 
 	@media (max-width: 375px) {
 		grid-area: 1/4/1/1;
-		// grid-template-rows: 40px 1fr 40px 40px ;
-		// grid-template-columns: repeat(1 , minmax(0,1fr))  ;
 		.recommended-container {
-	  
-			.recommended-list{
-
+			.recommended-list {
 				grid-template-columns: 1fr 1fr;
 				grid-template: 0;
-				 font-size: 14px;
+				font-size: 14px;
 			}
 		}
-			.station-list {
-				width: 375px;
-				display: flex;
-				flex-direction: row;
-				overflow-x: auto;  
 
-			
-				li {
-					-webkit-box-flex: 0; 
-					border-radius: 0;
-					padding: 0;
-					width: 40%;
-					-webkit-transition: none; 
-					transition: none;
-					background-color: inherit; 
-					display: block; 
+		.station-list {
+			width: 375px;
+			display: flex;
+			flex-direction: row;
+			overflow-x: auto;
 
-					.img-container {
-						img{
+			li {
+				-webkit-box-flex: 0;
+				border-radius: 0;
+				padding: 0;
+				width: 40%;
+				-webkit-transition: none;
+				transition: none;
+				background-color: inherit;
+				display: block;
 
-							border-radius: 0;
-						}
+				.img-container {
+					img {
+						border-radius: 0;
 					}
-				  }
-				  .station-preview {
-					  margin-left: 0;
-					  flex: 0 0 auto; 
-					  width: 40%;
-					  margin-right: 24px;
-				  
-					  
-				  }
-		
 				}
 			}
-				   
-	
-		  
-		}	
-
-
+			
+			.station-preview {
+				margin-left: 0;
+				flex: 0 0 auto;
+				width: 40%;
+				margin-right: 24px;
+			}
+		}
+	}
+}
 
 .title-container {
 	width: 102%;
-
 
 	.genre-title {
 		margin: 1.08em 17px 0.12em;
@@ -75,7 +62,6 @@
 		font-size: 5rem;
 		font-family: sans-serif;
 		color: white;
-
 	}
 }
 
@@ -90,24 +76,19 @@
 .station-list {
 	list-style-type: none;
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-	gap: em(24px);
+	grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+	gap: 24px;
 	justify-content: start;
 	margin-left: -21px;
 	margin-right: 20px;
 
-
-	  
-
 	.station-preview {
-
-		span {			
+		span {
 			text-overflow: ellipsis;
 			white-space: nowrap;
 			overflow: hidden;
 			width: inherit;
 		}
-
 	}
 
 	li {
@@ -129,7 +110,6 @@
 				border-radius: em(6px);
 				aspect-ratio: 1/1;
 				object-fit: cover;
-
 			}
 
 			.btn-play-playlist {
@@ -187,9 +167,6 @@
 }
 
 .recommended-container {
-
-
-
 	.recommended-list {
 		margin: 17px;
 		display: grid;

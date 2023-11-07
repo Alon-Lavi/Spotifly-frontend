@@ -7,12 +7,23 @@
 	height: max-content;
 	margin-right: 5px;
 
-	@media (max-width: 375px) {
-
-		.station-options {
-			flex-direction: row-reverse ;
+	.chat-container {
+		display: flex;
+		.open-chat-btn {
+			height: 48px;
+			width: 48px;
+			background-color: #1ed760;
+			padding: 10px;
+			border-radius: 50%;
+			border: none;
+			right: 3%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
+	}
 
+	@media (max-width: 375px) {
 		.song-search {
 			display: none;
 		}
@@ -22,13 +33,12 @@
 			flex-direction: column;
 
 			img {
-				margin-inline-start: 0 ;
+				margin-inline-start: 0;
 			}
 
 			div {
 				align-self: flex-start !important;
 				margin-top: 10px;
-
 			}
 
 			.title {
@@ -47,7 +57,15 @@
 		}
 
 		.station-options {
-			height: 100%;
+			display: grid;
+			grid-template-columns: 6fr 1fr 1fr;
+			height: 100px;
+
+			span {
+				svg {
+					margin-left: 0;
+				}
+			}
 		}
 
 		.song-list-container {
@@ -62,19 +80,18 @@
 			.song-list {
 				li {
 					padding-left: 0px;
-					display: flex !important;
+					grid-template-columns: 16px 6fr 1fr;
 
 					.song-dur {
 						display: none;
 					}
-					.like-btn{
+					.like-btn {
 						display: none !important;
 					}
-					.date{
+					.date {
 						display: none !important;
-
 					}
-					.options{
+					.options {
 						display: block !important;
 						fill: #717171;
 					}
@@ -85,9 +102,7 @@
 		.search-song-txt {
 			display: none !important;
 		}
-	
 	}
-
 
 	.search-song-txt {
 		margin-top: 30px;
@@ -126,12 +141,10 @@
 			.info {
 				display: grid;
 				margin-block-start: 1em;
-
 			}
 
 			.with-modal {
 				cursor: pointer;
-
 			}
 
 			span {
@@ -148,6 +161,8 @@
 			margin-inline-start: 17px;
 			width: 192px;
 			height: 192px;
+			margin-top: 10px;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
 		}
 
 		p {
@@ -183,7 +198,7 @@
 					height: 40px;
 
 					&:hover {
-						background-color: hsla(0, 0%, 100%, .1);
+						background-color: hsla(0, 0%, 100%, 0.1);
 					}
 				}
 			}
@@ -202,7 +217,7 @@
 			align-items: center;
 
 			&:hover {
-				scale: 1.05
+				scale: 1.05;
 			}
 		}
 
@@ -240,12 +255,11 @@
 			height: 56px;
 			padding-left: 15px;
 			margin-left: 20px;
-			border-bottom: 1px solid hsla(0, 0%, 100%, .1);
+			border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
 
 			.clock-icon {
 				justify-self: end;
 			}
-
 		}
 
 		.song-list {
@@ -288,7 +302,7 @@
 						display: flex;
 
 						svg {
-							fill: currentColor
+							fill: currentColor;
 						}
 					}
 				}
@@ -304,7 +318,6 @@
 					opacity: 0;
 
 					&:hover {
-
 						cursor: pointer;
 					}
 				}
@@ -415,7 +428,6 @@
 				.song-modal-content {
 					display: grid;
 
-
 					button {
 						display: flex;
 						align-items: center;
@@ -424,9 +436,8 @@
 						border-bottom: 1px solid #7e7e7e;
 						margin: 0;
 
-
 						&:hover {
-							background-color: hsla(0, 0%, 100%, .1);
+							background-color: hsla(0, 0%, 100%, 0.1);
 						}
 					}
 				}
@@ -550,14 +561,13 @@
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
-		background-color: rgba(0, 0, 0, .7);
+		background-color: rgba(0, 0, 0, 0.7);
 		opacity: 0;
 		z-index: 2;
 
 		&:hover {
 			opacity: 1;
 		}
-
 	}
 
 	p {
@@ -601,7 +611,6 @@
 			grid-area: img;
 			height: 180px;
 			width: 180px;
-
 		}
 
 		.title {
@@ -650,7 +659,6 @@
 			cursor: pointer;
 			opacity: 0;
 			z-index: 2;
-
 		}
 	}
 }

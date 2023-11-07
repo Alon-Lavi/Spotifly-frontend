@@ -28,7 +28,7 @@ export function StationDetails() {
 	const isLikedPage = location.pathname === '/likedsongs'
 	const [station, setStation] = useState(null)
 	const [isOpen, setIsOpen] = useState(false)
-	const [isModalOpen, setModalOpen] = useState(false);
+	const [isModalOpen, setModalOpen] = useState(false)
 	const [textareaValue, setTextareaValue] = useState('')
 	const user = useSelector((storeState) => storeState.userModule.user)
 	const songs = useSelector((storeState) => storeState.stationModule.songsToSearch)
@@ -45,25 +45,21 @@ export function StationDetails() {
 		width: 180,
 	})
 
-
 	async function uploadImg(ev) {
-
 		const { secure_url, height, width } = await uploadService.uploadImg(ev)
-		console.log(secure_url);
+		console.log(secure_url)
 		setImgData({ imgUrl: secure_url, width: '180', height: '180' })
-
-
 	}
 	useEffect(() => {
-		socketService.on('station-updated', stationUpdated => {
+		socketService.on('station-updated', (stationUpdated) => {
 			// updateStation(stationUpdated);
 			setCurrStation(stationUpdated)
 			setStation(stationUpdated)
 		})
-		socketService.on('play', songPlaying => {
-			console.log('====================================');
-			console.log(songPlaying);
-			console.log('====================================');
+		socketService.on('play', (songPlaying) => {
+			console.log('====================================')
+			console.log(songPlaying)
+			console.log('====================================')
 			setSongPlaying(songPlaying)
 		})
 		return () => {
@@ -101,8 +97,8 @@ export function StationDetails() {
 		}
 	}
 	const openCloseOptionsModal = () => {
-		isModalOpen ? setModalOpen(false) : setModalOpen(true);
-	};
+		isModalOpen ? setModalOpen(false) : setModalOpen(true)
+	}
 
 	const openModal = () => {
 		setIsOpen(true)
@@ -113,7 +109,6 @@ export function StationDetails() {
 	}
 
 	const closeModal = () => {
-
 		setIsOpen(false)
 	}
 
@@ -133,27 +128,21 @@ export function StationDetails() {
 				const isCurrentlyPlaying = !isPlaying
 				isCurrentlyPlaying ? player.playVideo() : player.pauseVideo()
 				setIsPlaying(isCurrentlyPlaying)
-			}
-
-			else setSongPlaying(songToPlay)
-		}
-		else {
+			} else setSongPlaying(songToPlay)
+		} else {
 			if (song.videoId === songPlaying?.videoId) {
 				const isCurrentlyPlaying = !isPlaying
 				isCurrentlyPlaying ? player.playVideo() : player.pauseVideo()
 				setIsPlaying(isCurrentlyPlaying)
-			}
-
-			else {
+			} else {
 				setSongPlaying(song)
 				socketService.emit('play', song)
 			}
-
 		}
 	}
 
 	async function AddToPlaylist(song, ev) {
-		console.log(song);
+		console.log(song)
 		ev.stopPropagation()
 		const songToSave = {
 			id: utilService.makeId(),
@@ -162,7 +151,7 @@ export function StationDetails() {
 			imgUrl: song.snippet.thumbnails.high.url,
 			addedAt: Date.now(),
 			duration: song.duration,
-			artist: trackService.getArtistName(song.snippet.title)
+			artist: trackService.getArtistName(song.snippet.title),
 		}
 
 		try {
@@ -196,7 +185,6 @@ export function StationDetails() {
 				getBgc(user.likedSongs.imgUrl)
 
 				setImgData({ imgUrl: user.likedSongs.imgUrl, width: '180', height: '180' })
-
 			} else {
 				const stationToSet = await stationService.getById(stationId)
 				setStation(stationToSet)
@@ -206,9 +194,6 @@ export function StationDetails() {
 
 				// setCurrStation(station)
 			}
-
-
-
 		} catch (err) {
 			console.log('Had issues in station details', err)
 			showErrorMsg('Could not load station')
@@ -218,7 +203,7 @@ export function StationDetails() {
 
 	async function saveChanges(ev) {
 		ev.preventDefault()
-		console.log(ev);
+		console.log(ev)
 		const name = ev.target[1].value
 		const desc = ev.target[2].value
 		const stationToSave = { ...station, name, desc, imgUrl: imgData.imgUrl }
@@ -236,9 +221,9 @@ export function StationDetails() {
 	}
 	function checkLikedStation(newStation) {
 		setModalOpen(false)
-		console.log(newStation);
+		console.log(newStation)
 		const idx = newStation.likedByUsers?.findIndex((likedUser) => likedUser?._id === user?._id)
-		console.log(idx);
+		console.log(idx)
 		if (idx === -1) addToLibrary(newStation)
 		else removeFromLibrary(newStation)
 	}
@@ -252,7 +237,6 @@ export function StationDetails() {
 		setStation(stationToSave)
 		updateStation(stationToSave)
 		showSuccessMsg(`Added to your library.`)
-
 	}
 	function removeFromLibrary(newStation) {
 		const updatedUsers = newStation.likedByUsers.filter((likedUser) => {
@@ -262,7 +246,6 @@ export function StationDetails() {
 		setStation(stationToSave)
 		updateStation(stationToSave)
 		showSuccessMsg(`Removed from your library.`)
-
 	}
 
 	function checkLikedSongs(ev, newSong) {
@@ -272,7 +255,6 @@ export function StationDetails() {
 		if (idx === -1) addToLikedSongs(newSong)
 		else removeFromLikedSongs(newSong)
 	}
-
 
 	async function addToLikedSongs(newSong) {
 		try {
@@ -318,7 +300,7 @@ export function StationDetails() {
 
 	async function handleDragend(res) {
 		const newSongs = [...station.songs]
-		console.log(newSongs);
+		console.log(newSongs)
 		const [recordedItems] = newSongs.splice(res.source.index, 1)
 		newSongs.splice(res.destination.index, 0, recordedItems)
 		const stationToSave = { ...station, songs: newSongs }
@@ -344,29 +326,28 @@ export function StationDetails() {
 					<img src={station.imgUrl} alt="" />
 
 					<div className="title">
-						<span className='desc' >playlist</span>
-						{station.createdBy._id === user?._id ? <h1 className="with-modal" onClick={openModal}>{station.name}</h1> :
-							<h1 >{station.name}</h1>}
-						<div className='info'>
-
-							<span >{station.desc}</span>
+						<span className="desc">playlist</span>
+						{station.createdBy._id === user?._id ? (
+							<h1 className="with-modal" onClick={openModal}>
+								{station.name}
+							</h1>
+						) : (
+							<h1>{station.name}</h1>
+						)}
+						<div className="info">
+							<span>{station.desc}</span>
 							<span>
 								{station.createdBy?.fullname} {'• '}
-								{station.songs.length > 1 && <span>
-									{station.songs?.length} songs
-								</span>}
-								{station.songs?.length === 1 && <span>
-									{station.songs?.length} song
-								</span>}
+								{station.songs.length > 1 && <span>{station.songs?.length} songs</span>}
+								{station.songs?.length === 1 && <span>{station.songs?.length} song</span>}
 							</span>
 						</div>
 					</div>
 
-					<div style={{ backgroundImage: `linear-gradient(180deg, ${bgc}, transparent)`, opacity: '0.5' }} className='fade'></div>
+					<div style={{ backgroundImage: `linear-gradient(180deg, ${bgc}, transparent)`, opacity: '0.5' }} className="fade"></div>
 				</header>
 
-				<div className="station-options" >
-
+				<div className="station-options">
 					<button className="btn-play-playlist" onClick={(event) => onPlayStation(station, event)}>
 						{currStation?._id === station._id && isPlaying ? Svg.pauseTrackIcon : Svg.playTrackIcon}
 					</button>
@@ -398,21 +379,28 @@ export function StationDetails() {
 								</svg>
 							</span>
 							<span className="options-btn" onClick={openCloseOptionsModal}>
-								{
-									Svg.threeDots
-								}
+								{Svg.threeDots}
 							</span>
+
 							{isModalOpen && (
 								<div className="options-modal">
 									<div className="modal-options-content">
-										{!checkIfStationLiked(station) && <span onClick={() => checkLikedStation(station)}>{Svg.addToLibrary}  Add to Library</span>}
-										{checkIfStationLiked(station) && <span onClick={() => checkLikedStation(station)}>{Svg.removeFromLibrary}  Remove from Library</span>}
+										{!checkIfStationLiked(station) && (
+											<span onClick={() => checkLikedStation(station)}>{Svg.addToLibrary} Add to Library</span>
+										)}
+										{checkIfStationLiked(station) && (
+											<span onClick={() => checkLikedStation(station)}>{Svg.removeFromLibrary} Remove from Library</span>
+										)}
 										<span onClick={openModal}>{Svg.editIcon} Edit details</span>
+										<span>
+											{Svg.chanIcon}
+											Chat
+										</span>
 										<span onClick={() => onRemoveStation(station._id)}>{Svg.deleteIcon} Delete</span>
 									</div>
-								</div>)}
+								</div>
+							)}
 						</>
-
 					)}
 				</div>
 
@@ -422,7 +410,7 @@ export function StationDetails() {
 						<span>Title </span>
 						<span>Date added</span>
 						{user && <span></span>}
-						<span className='clock-icon' >{Svg.clockIcon} </span>
+						<span className="clock-icon">{Svg.clockIcon} </span>
 					</div>
 
 					<DragDropContext onDragEnd={handleDragend}>
@@ -468,16 +456,34 @@ export function StationDetails() {
 							</li>
 						))}
 				</ul>
-				{!isLikedPage && <section className="chat">
-					<ChatApp setStation={setStation} station={station} />
 
-				</section>}
-
+				{!isLikedPage && (
+					<section>
+						<div class="chat">
+							<div class="chat-title">
+								{/* <h1>Fabio Ottaviani</h1> */}
+								{/* <h2>Supah</h2> */}
+								<figure class="avatar">{user.imgUrl}</figure>
+							</div>
+							<div class="messages">
+								<div class="messages-content"></div>
+							</div>
+							<div class="message-box">
+								<textarea type="text" class="message-input" placeholder="Type message..."></textarea>
+								<button type="submit" class="message-submit">
+									Send
+								</button>
+							</div>
+						</div>
+						<div class="bg"></div>
+					</section>
+				)}
 			</section>
+
 			{isOpen && (
 				<div className="modal-overlay">
 					<div className="details-modal">
-						<div className='modal-header'>
+						<div className="modal-header">
 							<h2>Edit details</h2>
 							<span className="close" onClick={closeModal}>
 								&times;
@@ -485,16 +491,12 @@ export function StationDetails() {
 						</div>
 
 						<form onSubmit={saveChanges}>
-							<div className='choose-photo'>
-								<span>
-									{Svg.penIcon}
-								</span>
-								<span>
-									Choose photo
-								</span>
+							<div className="choose-photo">
+								<span>{Svg.penIcon}</span>
+								<span>Choose photo</span>
 							</div>
-							<input className='file' type="file" onChange={uploadImg} accept="img/*" id="imgUpload" />
-							<img className='image' src={imgData.imgUrl} alt="" />
+							<input className="file" type="file" onChange={uploadImg} accept="img/*" id="imgUpload" />
+							<img className="image" src={imgData.imgUrl} alt="" />
 							<input className="title" defaultValue={station.name} type="text" />
 							<textarea
 								value={textareaValue}
@@ -504,20 +506,16 @@ export function StationDetails() {
 								placeholder="Add an optional description"
 							></textarea>
 
-							<button type="submit" >
-								save
-							</button>
+							<button type="submit">save</button>
 						</form>
 
 						<p>
-							By proceeding, you agree to give Spotify access to the image you choose to upload. Please make sure you have the
-							right to upload the image.
+							By proceeding, you agree to give Spotify access to the image you choose to upload. Please make sure you have the right
+							to upload the image.
 						</p>
 					</div>
 				</div>
 			)}
-
 		</>
-
 	)
 }

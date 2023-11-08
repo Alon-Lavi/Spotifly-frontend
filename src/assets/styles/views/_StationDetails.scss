@@ -59,14 +59,14 @@
 		.station-options {
 			display: grid !important;
 			grid-template-columns: repeat(3, 100px);
-			grid-template-areas: "item2 item1 ";
-			grid-template-columns: 6fr 1fr 1fr;
-			margin-left: 0;
+			grid-template-areas: "item2 item3 item1";
+			grid-template-columns: 0fr 4fr 1fr !important;
+			margin-left: 15px !important;
 			height: 100px;
 
 			span {
 				svg {
-					margin-left: 0;
+					margin-left: 10px !important;
 				}
 			}
 		}
@@ -84,7 +84,7 @@
 				li {
 					display: grid;
 					padding-left: 0px !important;
-					// grid-template-columns: 16px 6fr 1fr;
+					grid-template-columns: 1fr 6fr 1fr !important;
 
 					.song-dur {
 						display: none;
@@ -238,7 +238,7 @@
 
 		.options-btn:hover {
 			svg {
-
+                grid-area: item3;
 				fill: #fff;
 				scale: 1.6;
 			}

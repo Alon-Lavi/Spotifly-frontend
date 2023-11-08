@@ -10,10 +10,12 @@
 	background-color: black;
 
 	@media (max-width: 375px) {
-		height: 3.9em;
-		bottom: 5em;
-		margin-left: -2.6px;
-		border-radius: 25px;
+		height: 2.9em;
+		width: 370px;
+		background-color: rebeccapurple;
+		bottom: 5.7em;
+		margin-left: 2px;
+		border-radius: 15px;
 		grid-template-columns: 2fr 50px;
 
 		.shuffle,
@@ -31,8 +33,8 @@
 		}
 
 		.left-controls img {
-			width: 3em;
-			height: 3em;
+			width: 2em;
+			height: 2em;
 			margin-left:10px ;
 		}
 
@@ -46,11 +48,11 @@
 		}
 
 		.song-name-player {
-			margin-left: 0 !important;
+			margin-left: 1em !important;
 			text-overflow: ellipsis;
 			overflow: hidden;
-			min-width: 160px;
-			height: 1.2em;
+			min-width: max-content;
+			
 			white-space: nowrap;
 		}
 	}

@@ -7,7 +7,7 @@
 	grid-template-rows: 1fr em(90px);
 }
 
-.main-layout{
+.main-layout {
 	display: grid;
 	grid-template-columns: 355px 1fr;
 	grid-template-rows: 64px 1fr;
@@ -15,10 +15,11 @@
 	margin-right: 5px;
 
 	@media (max-width: 375px) {
-	display: block;
-	margin-right: 0;
-		}
+		display: block;
+		margin-right: 0;
+	}
 }
+
 .main-container {
 	display: grid;
 	grid-template-columns: em(20px) 1fr rem(20px);
@@ -31,25 +32,4 @@
 			grid-column: 1 /-1;
 		}
 	}
-
-	// @include for-narrow-layout {
-	// 	grid-template-columns:
-	// 		1fr
-	// 		minmax(auto, $mobile-breakpoint)
-	// 		minmax(20px, 1fr);
-	// }
-
-	// @include for-normal-layout {
-	// 	grid-template-columns:
-	// 		minmax(20px, 1fr)
-	// 		minmax(auto, $narrow-breakpoint)
-	// 		minmax(20px, 1fr);
-	// }
-
-	// @include for-wide-layout {
-	// 	grid-template-columns:
-	// 		minmax(20px, 1fr)
-	// 		minmax(auto, $normal-breakpoint)
-	// 		minmax(20px, 1fr);
-	// }
 }

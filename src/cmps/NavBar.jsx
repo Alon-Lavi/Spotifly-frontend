@@ -81,7 +81,7 @@ export function NavBar() {
 	if (isLoginPage) return <div></div>
 	return (
 		<nav className="side-bar">
-			<ul className="mobail-side-bar">
+			<ul className="mobil-side-bar">
 				<div className="main-mobile-side-bar">
 					<li className={`side-bar-item-home-mobile ${isHomeActive ? 'active' : ''}`}>
 						<NavLink to="/" className="nav-link " onClick={handleHomeClick}>

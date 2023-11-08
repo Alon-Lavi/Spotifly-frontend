@@ -87,8 +87,8 @@
 			background-color: rgba(24, 24, 24);
 			.btn-play-playlist {
 				position: absolute;
-				right: 10px; /* Располагаем справа */
-				bottom: 10px; /* Располагаем снизу */
+				right: 10px;
+				bottom: 10px;
 				height: 48px;
 				width: 48px;
 				background-color: $clr4;
@@ -100,7 +100,6 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				/* остальные стили для .btn-play-playlist */
 			}
 
 			img {
@@ -173,7 +172,6 @@
 		height: 55px;
 		border-radius: 5px;
 		padding-left: 16px;
-
 		gap: 20px;
 		justify-content: space-between;
 		align-items: center;
@@ -194,7 +192,6 @@
 	margin-left: -28px;
 	margin-bottom: 40px;
 	margin-top: -5px;
-
 	transition: 0.55s ease-in-out;
 	flex-wrap: wrap;
 

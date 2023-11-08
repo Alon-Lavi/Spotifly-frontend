@@ -3,7 +3,6 @@
 	display: flex;
 	position: sticky;
 	top: 0;
-	// margin-top: 8px;
 	height: rem(64px);
 	background-color: #121212;
 	color: whitesmoke;
@@ -16,8 +15,7 @@
 	@media (max-width: 768px) {
 		grid-area: 1/1/2/4;
 		grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-		border-radius: 0;;
-
+		border-radius: 0;
 	}
 
 	img {
@@ -45,7 +43,6 @@
 			color: white;
 			margin-inline-end: 8px;
 			margin-top: 0.6rem;
-
 		}
 	}
 
@@ -140,13 +137,10 @@
 	.search-icon {
 		position: absolute;
 		left: 10px;
-		/* Adjust the icon's left position as needed */
 		top: 56%;
-		/* Vertically center the icon */
 		transform: translateY(-50%);
 		fill: hsla(0, 0%, 100%, 0.7);
 		transition: color 0.3s;
-		/* Transition icon color on focus */
 	}
 
 	input:focus {
@@ -156,14 +150,12 @@
 
 		.search-icon {
 			fill: #fff;
-			/* Change icon color on input focus */
 		}
 	}
 }
 
 .prev-next-btns {
 	margin-left: 32px;
-	// // margin-inline-end: 150px;
 
 	.tooltip-container {
 		margin-left: -10px;
@@ -180,11 +172,9 @@
 		padding: 5px;
 		border-radius: 3px;
 		visibility: hidden;
-
 		top: 60px;
 		left: 1px;
 		transition: visibility 0.2s, opacity 1s linear;
-
 		z-index: 1;
 	}
 
@@ -228,7 +218,6 @@
 		box-shadow: 0 16px 24px rgba(0, 0, 0, 0.3), 0 6px 8px rgba(0, 0, 0, 0.2);
 		max-height: calc(100vh - 24px);
 		max-width: 350px;
-		// min-width: 160px;
 		width: 80px;
 		overflow-y: auto;
 		padding: 4px;
@@ -237,6 +226,5 @@
 	.logout-btn {
 		background-color: transparent;
 		align-items: center;
-		// margin-inline-start: 40%;
 	}
 }

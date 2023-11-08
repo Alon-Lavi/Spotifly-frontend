@@ -21,39 +21,20 @@ Mixins
 	animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
 }
 
-/*--------------------
-Body
---------------------*/
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-}
 
-html,
-body {
-	height: 100%;
-}
-
-// body {
-// 	background: linear-gradient(135deg, #044f48, #2a7561);
-// 	background-size: cover;
-// 	font-family: 'Open Sans', sans-serif;
-// 	font-size: 12px;
-// 	line-height: 1.3;
-// 	overflow: hidden;
-// }
 
 .bg {
+	position: absolute;
 	width: 100%;
 	height: 100%;
 	top: 0;
 	left: 0;
 	z-index: 1;
-	background: url('https://images.unsplash.com/photo-1451186859696-371d9477be93?crop=entropy&fit=crop&fm=jpg&h=975&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1925')
-		no-repeat 0 0;
-	filter: blur(80px);
+	// background: url('https://images.unsplash.com/photo-1517384084767-6bc118943770?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat 0 0;
 	transform: scale(1.2);
+	object-fit: cover;
+	opacity: 0.5;
+
 }
 
 /*--------------------
@@ -67,7 +48,7 @@ Chat
 	z-index: 2;
 	overflow: hidden;
 	box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
-	background: rgba(0, 0, 0, 0.5);
+	background: rgba(0, 0, 0, );
 	border-radius: 20px;
 	display: flex;
 	justify-content: space-between;
@@ -82,16 +63,20 @@ Chat Title
 	flex: 0 1 45px;
 	position: relative;
 	z-index: 2;
-	background: rgba(0, 0, 0, 0.2);
 	color: #fff;
 	text-transform: uppercase;
 	text-align: left;
 	padding: 10px 10px 10px 50px;
+	background-color: #202c33;
+	display: flex;
+    align-items: center;
+    justify-content: space-between;
 
 	h1,
 	h2 {
+		font-family: sans-serif;
 		font-weight: normal;
-		font-size: 10px;
+		font-size: 20px;
 		margin: 0;
 		padding: 0;
 	}
@@ -127,8 +112,8 @@ Messages
 --------------------*/
 .messages {
 	flex: 1 1 auto;
-	color: rgba(255, 255, 255, 0.5);
-	overflow: hidden;
+	color: rgba(255, 255, 255, 0.8);
+	overflow-y: auto;
 	position: relative;
 	width: 100%;
 
@@ -143,31 +128,51 @@ Messages
 	.message {
 		clear: both;
 		float: left;
-		padding: 6px 10px 7px;
+		padding: 6px 10px 9px;
 		border-radius: 10px 10px 10px 0;
-		background: rgba(0, 0, 0, 0.3);
 		margin: 8px 0;
-		font-size: 11px;
+		font-size: 14px;
 		line-height: 1.4;
 		margin-left: 35px;
 		position: relative;
 		text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+		z-index: 10;
+		padding-right: 33px;
+		&.recevied{
+			background-color: #248a52;
+			float: inline-end;
+			margin-inline-end: 15px;
+			margin-bottom: 15px;
+			&::before {
+				content: '';
+				position: absolute;
+				bottom: -6px;
+				border-top: 6px solid #248a52;
+				left: 0;
+				border-right: 7px solid transparent;
+			}
+		}
+		&.sent{
+			background-color: #2000d6;
+			&::before {
+				content: '';
+				position: absolute;
+				bottom: -6px;
+				border-top: 6px solid #2000d6;
+				left: 0;
+				border-right: 7px solid transparent;
+			}
 
-		.timestamp {
+		}
+
+		.time-stamp {
 			position: absolute;
-			bottom: -15px;
+			bottom: 1px;
 			font-size: 9px;
-			color: rgba(255, 255, 255, 0.3);
+			color: rgba(255, 255, 255, .7);
 		}
 
-		&::before {
-			content: '';
-			position: absolute;
-			bottom: -6px;
-			border-top: 6px solid rgba(0, 0, 0, 0.3);
-			left: 0;
-			border-right: 7px solid transparent;
-		}
+	
 
 		.avatar {
 			position: absolute;
@@ -249,19 +254,21 @@ Message Box
 --------------------*/
 
 .message-box {
-	flex: 0 1 40px;
+	flex: 0 1 50px;
 	width: 100%;
-	background: rgba(0, 0, 0, 0.3);
+	background: rgba(253, 253, 253, 0.8);
 	padding: 10px;
 	position: relative;
+	align-items: center;
+	display: flex;
 
 	& .message-input {
 		background: none;
 		border: none;
 		outline: none !important;
 		resize: none;
-		color: rgba(255, 255, 255, 0.7);
-		font-size: 11px;
+		color: black;
+		font-size: 14px;
 		height: 17px;
 		margin: 0;
 		padding-right: 20px;
@@ -273,7 +280,6 @@ Message Box
 	}
 
 	& .message-submit {
-		position: absolute;
 		z-index: 1;
 		top: 9px;
 		right: 10px;
@@ -287,6 +293,7 @@ Message Box
 		border-radius: 10px;
 		outline: none !important;
 		transition: background 0.2s ease;
+		width: 80px;
 
 		&:hover {
 			background: #1d7745;
@@ -302,7 +309,7 @@ Custom Srollbar
 	opacity: 0;
 }
 
-.mCSB_inside > .mCSB_container {
+.mCSB_inside>.mCSB_container {
 	margin-right: 0px;
 	padding: 0 10px;
 }
@@ -318,39 +325,51 @@ Bounce
 	0% {
 		transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
 	}
+
 	4.7% {
 		transform: matrix3d(0.45, 0, 0, 0, 0, 0.45, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
 	}
+
 	9.41% {
 		transform: matrix3d(0.883, 0, 0, 0, 0, 0.883, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
 	}
+
 	14.11% {
 		transform: matrix3d(1.141, 0, 0, 0, 0, 1.141, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
 	}
+
 	18.72% {
 		transform: matrix3d(1.212, 0, 0, 0, 0, 1.212, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
 	}
+
 	24.32% {
 		transform: matrix3d(1.151, 0, 0, 0, 0, 1.151, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
 	}
+
 	29.93% {
 		transform: matrix3d(1.048, 0, 0, 0, 0, 1.048, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
 	}
+
 	35.54% {
 		transform: matrix3d(0.979, 0, 0, 0, 0, 0.979, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
 	}
+
 	41.04% {
 		transform: matrix3d(0.961, 0, 0, 0, 0, 0.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
 	}
+
 	52.15% {
 		transform: matrix3d(0.991, 0, 0, 0, 0, 0.991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
 	}
+
 	63.26% {
 		transform: matrix3d(1.007, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
 	}
+
 	85.49% {
 		transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
 	}
+
 	100% {
 		transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
 	}
@@ -360,6 +379,7 @@ Bounce
 	from {
 		transform: translateY(0) scaleY(0.8);
 	}
+
 	to {
 		transform: translateY(-10px);
 	}

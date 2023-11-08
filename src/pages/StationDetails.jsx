@@ -465,23 +465,7 @@ export function StationDetails() {
 
 				{!isLikedPage && (
 					<section style={{ display: chatIsVisible ? 'block' : 'none' }}>
-						<div class="chat">
-							<div class="chat-title">
-								<h1>{user.fullname}</h1>
-								{/* <h2></h2> */}
-								<figure class="avatar">{user.imgUrl}</figure>
-							</div>
-							<div class="messages">
-								<div class="messages-content"></div>
-							</div>
-							<div class="message-box">
-								<textarea type="text" class="message-input" placeholder="Type message..."></textarea>
-								<button type="submit" class="message-submit">
-									Send
-								</button>
-							</div>
-						</div>
-						<div class="bg"></div>
+					<ChatApp toggleChatVisibility={toggleChatVisibility} station={station} setStation={setStation}/>
 					</section>
 				)}
 			</section>

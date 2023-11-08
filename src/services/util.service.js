@@ -12,7 +12,8 @@ export const utilService = {
 	handleChange,
 	getRandomSongIndex,
 	getDate,
-	getSongDurations
+	getSongDurations,
+	getTimeStamp
 }
 
 function getSongDurations(duration){
@@ -29,6 +30,13 @@ function getSongDurations(duration){
 	} 
   
 	
+  }
+
+  function getTimeStamp() {
+	const now = new Date();
+	const hours = String(now.getHours()).padStart(2, '0');
+	const minutes = String(now.getMinutes()).padStart(2, '0');
+	return `${hours}:${minutes}`;
   }
 
 

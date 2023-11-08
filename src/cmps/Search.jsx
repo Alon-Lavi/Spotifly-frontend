@@ -27,7 +27,7 @@ export function Search() {
 				<div className="search-input-container">
 					<span className="search-icon"> {Svg.searchIcon}</span>
 					<input
-						onChange={utilService.debounce(handleChange, 3000)}
+						onChange={utilService.debounce(handleChange, 1000)}
 						name="txt"
 						type="text"
 						placeholder="What do you want to listen to?"

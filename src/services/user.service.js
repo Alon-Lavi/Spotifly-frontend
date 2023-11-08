@@ -42,7 +42,7 @@ async function addSong(_id, song) {
 	// await storageService.put('user', user)
 
 	await httpService.put(`user/${user._id}`, user)
-	// Handle case in which admin updates other user's details
+
 	if (getLoggedinUser()._id === user._id) saveLocalUser(user)
 	return user
 }
@@ -57,15 +57,17 @@ async function removeSong(_id, videoId) {
 	// await storageService.put('user', user)
 
 	await httpService.put(`user/${user._id}`, user)
-	// Handle case in which admin updates other user's details
+
 	if (getLoggedinUser()._id === user._id) saveLocalUser(user)
 	return user
 }
+
 async function updateUser(user) {
 	console.log(user)
 	await httpService.put(`user/${user._id}`, user)
 	return user
 }
+
 async function login(userCred) {
 	const users = await httpService.get('user')
 	const user = users.find((user) => user.username === userCred.username)
@@ -89,7 +91,7 @@ async function signup(userCred) {
 	if (!userCred.imgUrl)
 		userCred.imgUrl =
 			'https://www.pc.co.il/wp-content/uploads/2018/06/Kim_Jong-un_at_the_Workers_Party_of_Korea_main_building600-600x416.jpg'
-	// 'https://scontent.ftlv5-1.fna.fbcdn.net/v/t39.30808-1/320401709_618554706690234_7902483804227545232_n.jpg?stp=cp0_dst-jpg_p80x80&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=j9T6iJw4v30AX9dt1RK&_nc_ht=scontent.ftlv5-1.fna&oh=00_AfBH5dmTtobDQ2wsWbnjLrU5IgTEB93L4xdHyWa4zjtcwg&oe=6548CC53'
+
 	// const user = await storageService.post('user', userCred)
 	const user = await httpService.post('auth/signup', userCred)
 	return saveLocalUser(user)

@@ -58,8 +58,6 @@ function remove(entityType, entityId) {
 	})
 }
 
-// Private functions
-
 function save(entityType, entities) {
 	localStorage.setItem(entityType, JSON.stringify(entities))
 }

@@ -10,7 +10,6 @@ export async function getColorFromUrl(url) {
 		const color = await fac.getColorAsync(url)
 		return color.rgba
 	} catch (err) {
-		// console.log('Could not load bgc:', err)
 		throw err
 	}
 }

@@ -2,9 +2,6 @@ import axios from 'axios'
 import { utilService } from './util.service'
 import { _ } from 'lodash'
 
-// import { httpService } from './http.service'
-// import { stationService } from './station.service.local'
-
 export const trackService = {
 	getVideos,
 	getCleanTitle,
@@ -12,13 +9,12 @@ export const trackService = {
 	getArtistName,
 	getArtists,
 	getSongDurations,
-	getSongInfo
+	getSongInfo,
 }
 
 const KEY = 'videosDB'
 const API_KEY = 'AIzaSyBW5qn1Rksz37QRNmq2hZGhs2kep291zpk'
 // const API_KEY = 'AIzaSyBRKY6ERVlaMGjytOb4wV1GWgyjr8d0tL0'
-
 
 async function getSongInfo(value) {
 	const res = await axios.get(
@@ -39,6 +35,7 @@ async function getSongInfo(value) {
 		return songsToSave
 	})
 }
+
 async function getSongDurations(song) {
 	const videoId = song.kind ? song.id.videoId : song.videoId
 	try {
@@ -53,6 +50,7 @@ async function getSongDurations(song) {
 		return null
 	}
 }
+
 async function getVideos(term, amount = 5) {
 	const termVideosMap = utilService.loadFromStorage(KEY) || {}
 	if (termVideosMap[term]) return termVideosMap[term]
@@ -100,6 +98,7 @@ async function getVideos(term, amount = 5) {
 		throw err
 	}
 }
+
 function getArtists(station) {
 	const artists = []
 	station.songs.map((song) => {
@@ -110,6 +109,7 @@ function getArtists(station) {
 	})
 	return artists.join(', ')
 }
+
 function convertDuration(duration) {
 	const match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/)
 

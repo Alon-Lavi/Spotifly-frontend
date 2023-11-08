@@ -1,8 +1,5 @@
 import { storageService } from './async-storage.service.js'
-import { utilService } from './util.service.js'
-import { userService } from './user.service.js'
 import { _ } from 'lodash'
-import axios, { all } from 'axios'
 
 const STORAGE_KEY = 'stationDB'
 const GENRE_KEY = 'genreDB'
@@ -16,10 +13,6 @@ export const stationService = {
 	removeSong,
 	getGenres,
 	getByName,
-	// getSongDurations,
-	// getSongInfo,
-
-	// addStationMsg,
 }
 
 window.cs = stationService
@@ -468,7 +461,6 @@ var stationsDemo = [
 			},
 		],
 	},
-	////////////////////////////////////////////////////////////////
 
 	{
 		_id: 'd1002',
@@ -1704,13 +1696,10 @@ const genres = [
 	},
 ]
 
-
-
 async function getEmptyStation(user) {
 	const stations = await query({ user })
 	const stationLength = stations.length + 1
 	return {
-		//  name: prompt("playlist name?"),
 		name: `My Playlsit #${stationLength}`,
 		songs: [],
 		_id: '',
@@ -1727,6 +1716,7 @@ async function createStations() {
 		storageService.save(STORAGE_KEY, stationsDemo)
 	}
 }
+
 createGenres()
 async function createGenres() {
 	const genresFromStorage = await stationService.query(GENRE_KEY)
@@ -1741,7 +1731,7 @@ async function getGenres() {
 
 async function query(filterBy = { txt: '' }) {
 	var stations = await storageService.query(STORAGE_KEY)
-	// stations.map(station => console.log(station.likedByUsers, station._id, "a"))
+
 	if (filterBy.txt) {
 		const regex = new RegExp(filterBy.txt, 'i')
 		stations = stations.filter((station) => regex.test(station.name) || regex.test(station.desc))
@@ -1764,6 +1754,7 @@ async function query(filterBy = { txt: '' }) {
 function getById(stationId) {
 	return storageService.get(STORAGE_KEY, stationId)
 }
+
 function getByName(genre) {
 	return storageService.getByName(GENRE_KEY, genre)
 }
@@ -1777,25 +1768,7 @@ async function save(station) {
 	if (station._id) {
 		savedStation = await storageService.put(STORAGE_KEY, station)
 	} else {
-		// Later, owner is set by the backend
-		// station.owner = userService.getLoggedinUser()
 		savedStation = await storageService.post(STORAGE_KEY, station)
 	}
 	return savedStation
 }
-
-// async function addStationMsg(stationId, txt) {
-// 	// Later, this is all done by the backend
-// 	const station = await getById(stationId)
-// 	if (!station.msgs) station.msgs = []
-
-// 	const msg = {
-// 		id: 'd1001',
-// 		by: userService.getLoggedinUser(),
-// 		txt,
-// 	}
-// 	station.msgs.push(msg)
-// 	await storageService.put(STORAGE_KEY, station)
-
-// 	return msg
-// }

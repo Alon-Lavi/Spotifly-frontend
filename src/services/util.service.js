@@ -13,32 +13,29 @@ export const utilService = {
 	getRandomSongIndex,
 	getDate,
 	getSongDurations,
-	getTimeStamp
+	getTimeStamp,
 }
 
-function getSongDurations(duration){
+function getSongDurations(duration) {
 	try {
-		const match = duration.match(/PT(\d+)M(\d+)S/);
+		const match = duration.match(/PT(\d+)M(\d+)S/)
 
-	if (match) {
-	  const minutes = parseInt(match[1]);
-	  const seconds = parseInt(match[2]);
-	  return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-	}
+		if (match) {
+			const minutes = parseInt(match[1])
+			const seconds = parseInt(match[2])
+			return `${minutes}:${seconds.toString().padStart(2, '0')}`
+		}
 	} catch (error) {
-		return `4:${utilService.getRandomIntInclusive(10,59)}`;
-	} 
-  
-	
-  }
+		return `4:${utilService.getRandomIntInclusive(10, 59)}`
+	}
+}
 
-  function getTimeStamp() {
-	const now = new Date();
-	const hours = String(now.getHours()).padStart(2, '0');
-	const minutes = String(now.getMinutes()).padStart(2, '0');
-	return `${hours}:${minutes}`;
-  }
-
+function getTimeStamp() {
+	const now = new Date()
+	const hours = String(now.getHours()).padStart(2, '0')
+	const minutes = String(now.getMinutes()).padStart(2, '0')
+	return `${hours}:${minutes}`
+}
 
 function convertTime(time) {
 	if (typeof time !== 'number') {
@@ -106,7 +103,7 @@ function makeLorem(size = 100) {
 function getRandomIntInclusive(min, max) {
 	min = Math.ceil(min)
 	max = Math.floor(max)
-	return Math.floor(Math.random() * (max - min + 1)) + min //The maximum is inclusive and the minimum is inclusive
+	return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
 function randomPastTime() {
@@ -156,14 +153,13 @@ function handleChange({ target }) {
 	const field = target.name
 	const value = target.type === 'number' ? +target.value || '' : target.value
 	console.log('field,value', field, value)
-	// onSetFilter({ ...filterBy, [field]: value })
 }
+
 function getDate(stamp) {
 	const date = new Date(stamp)
 	return date.toLocaleDateString()
 }
 
-// util function
 function getAssetSrc(name) {
 	const path = `/src/assets/${name}`
 	const modules = import.meta.glob('/src/assets/*', { eager: true })

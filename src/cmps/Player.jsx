@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useLocation } from 'react-router'
 import YouTube from 'react-youtube'
+import { useMediaQuery } from 'react-responsive';
 
 import { utilService } from '../services/util.service'
 import { setCurrentTime, setIsPlaying, setPlayer, setSongDuration, setSongPlaying } from '../store/actions/player.actions'
@@ -16,6 +17,9 @@ export function Player() {
 	const [isShuffle, setIsShuffle] = useState(false)
 	const [isProgressBarHovered, setIsProgressBarHovered] = useState(false)
 	const [isVolumeBarHovered, setIsVolumeBarHovered] = useState(false)
+
+	const bgc = useSelector((storeState) => storeState.stationModule.bgc)
+    const isMobile = useMediaQuery({ maxWidth: 375 });
 
 	const songDuration = useSelector((storeState) => storeState.playerModule.songDuration)
 	const currentTime = useSelector((storeState) => storeState.playerModule.currentTime)
@@ -200,9 +204,10 @@ export function Player() {
 		}
 	}
 
+
 	if (isLoginPage) return <div></div>
 	return (
-		<div className="main-player-section-full">
+		<div className="main-player-section-full" style={{ backgroundColor: isMobile ? bgc : 'black' }} >
 			<div className="left-controls">
 				<div className="station-img">
 					{songPlaying && (

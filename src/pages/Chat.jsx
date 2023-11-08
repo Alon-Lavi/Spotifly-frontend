@@ -61,7 +61,7 @@ export function ChatApp({ toggleChatVisibility, station }) {
 				<div className='messages' style={{backgroundColor: bgc}}>
 				<div className="bg"></div>
 					<div className='messges-content'>
-						{msgs.length > 0 && station.msgs.map((msg, idx) => (
+						{msgs.length > 0 && msgs.map((msg, idx) => (
 							<div key={idx} className={`message ${loggedInUser.fullname === msg.from ? 'sent' : 'recevied'}`}>
 								{msg.from}: {msg.txt}
 								<span className='time-stamp'>{utilService.getTimeStamp()}</span>

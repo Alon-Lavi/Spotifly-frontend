@@ -15,8 +15,6 @@ import { stationService } from '../../services/station.service.js'
 import { bgcService } from '../../services/bgc.service.js'
 import { showSuccessMsg } from '../../services/event-bus.service.js'
 
-// import { userService } from '../../services/user.service.js'
-
 // Action Creators:
 export function getActionRemoveStation(stationId) {
 	return {
@@ -114,9 +112,8 @@ export async function addSongToStation(song, stationId) {
 		throw err
 	}
 }
-export async function setSearchValue(searchValue){
+export async function setSearchValue(searchValue) {
 	store.dispatch({ type: SET_SEARCH_VALUE, searchValue })
-
 }
 
 export async function setBgc(bgc) {
@@ -124,10 +121,8 @@ export async function setBgc(bgc) {
 }
 
 export async function getBgc(imgUrl) {
-	// console.log(imgUrl)
 	try {
 		const color = await bgcService.getColorFromUrl(imgUrl)
-		// changePrimaryClr(color)
 		setBgc(color)
 	} catch (err) {
 		// console.log('Could not load color', err)

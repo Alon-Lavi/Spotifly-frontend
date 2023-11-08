@@ -16,8 +16,8 @@ export function App() {
 		<Provider store={store}>
 			<Router>
 				<section>
-					<main className='main-layout'>
-					<AppHeader />
+					<main className="main-layout">
+						<AppHeader />
 						<Routes>
 							<Route element={<StationIndex />} path="/" />
 							<Route element={<StationDetails />} path="/station/:stationId" />
@@ -26,10 +26,9 @@ export function App() {
 							<Route element={<LoginSignup />} path="/loginsignup" />
 							<Route element={<StationDetails />} path="/likedsongs" />
 							<Route element={<Library />} path="/library" />
-
 						</Routes>
-					<NavBar />
-					<Player />
+						<NavBar />
+						<Player />
 					</main>
 				</section>
 			</Router>

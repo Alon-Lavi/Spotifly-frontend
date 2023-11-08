@@ -16,7 +16,7 @@ const initialState = {
 	searchRes: null,
 	songsToSearch: null,
 	bgc: null,
-	searchValue:null
+	searchValue: null,
 }
 
 export function stationReducer(state = initialState, action) {
@@ -47,9 +47,9 @@ export function stationReducer(state = initialState, action) {
 			stations = state.stations.map((station) => (station._id === action.station._id ? action.station : station))
 			newState = { ...state, stations, currStation: action.station }
 			break
-			case SET_SEARCH_VALUE:
-				newState = { ...state, searchValue: action.searchValue }
-				break
+		case SET_SEARCH_VALUE:
+			newState = { ...state, searchValue: action.searchValue }
+			break
 		case SET_SEARCHERS:
 			newState = { ...state, songsToSearch: action.songs }
 			break

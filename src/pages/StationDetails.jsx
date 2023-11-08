@@ -240,7 +240,6 @@ export function StationDetails() {
 			fullname: user.fullname,
 		}
 		const stationToSave = { ...newStation, likedByUsers: [...newStation.likedByUsers, userToSave] }
-		setStation(stationToSave)
 		updateStation(stationToSave)
 		showSuccessMsg(`Added to your library.`)
 	}
@@ -249,7 +248,6 @@ export function StationDetails() {
 			if (likedUser?._id !== user?._id) return likedUser
 		})
 		const stationToSave = { ...newStation, likedByUsers: updatedUsers }
-		setStation(stationToSave)
 		updateStation(stationToSave)
 		showSuccessMsg(`Removed from your library.`)
 	}

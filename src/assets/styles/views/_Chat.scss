@@ -71,6 +71,9 @@ Chat Title
 	display: flex;
     align-items: center;
     justify-content: space-between;
+	span{
+		cursor: pointer;
+	}
 
 	h1,
 	h2 {
@@ -116,6 +119,7 @@ Messages
 	overflow-y: auto;
 	position: relative;
 	width: 100%;
+	overflow-x: hidden;
 
 	& .messages-content {
 		position: absolute;

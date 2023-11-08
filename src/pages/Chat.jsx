@@ -76,11 +76,7 @@ export function ChatApp({ toggleChatVisibility, station }) {
 					<input className="message-input" placeholder="Type message..." type="text" value={msg.txt} onChange={handleFormChange} name="txt" autoComplete="off" />
 					<button className="message-submit">Send</button>
 				</form>
-				{/* 
-					<textarea type="text" ></textarea>
-					<button type="submit" >
-						Send
-					</button> */}
+		
 
 			</div>
 		

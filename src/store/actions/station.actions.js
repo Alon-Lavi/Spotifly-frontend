@@ -96,6 +96,7 @@ export async function updateStation(station) {
 	try {
 		const savedStation = await stationService.save(station)
 
+		if (station.name !== 'Liked Songs') setCurrStation(savedStation)
 		return savedStation
 	} catch (err) {
 		console.log('Cannot save station', err)

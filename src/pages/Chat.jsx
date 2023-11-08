@@ -16,9 +16,6 @@ export function ChatApp({ toggleChatVisibility, station }) {
 	useEffect(() => {
 		setMsgs([])
 		setTopic(station._id)
-		console.log('====================================');
-		console.log(topic);
-		console.log('====================================');
 		socketService.emit(SOCKET_EMIT_SET_TOPIC, topic)
 		socketService.on(SOCKET_EVENT_ADD_MSG, addMsg)
 		return () => {

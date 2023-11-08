@@ -2,26 +2,27 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Tooltip } from './ToolTip'
 
 import { stationService } from '../services/station.service'
-
+import { Tooltip } from './ToolTip'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { Svg } from './Svg'
 import { trackService } from '../services/track.service'
 
 export function NavBar() {
-	const [searchInputVisible, setSearchInputVisible] = useState(false)
-	const user = useSelector((storeState) => storeState.userModule.user)
+	const navigate = useNavigate()
 	const location = useLocation()
 	const isLoginPage = location.pathname === '/loginsignup'
+
+	const [searchInputVisible, setSearchInputVisible] = useState(false)
 	const [isHomeActive, setIsHomeActive] = useState(true)
 	const [isSearchActive, setIsSearchActive] = useState(false)
 	const [searchText, setSearchText] = useState('')
 	const [stations, setStations] = useState()
-	const navigate = useNavigate()
 	const [isFilterModalOpen, setIsFilterModalOpen] = useState(false)
 	const [isTooltipVisible, setIsTooltipVisible] = useState(false)
+
+	const user = useSelector((storeState) => storeState.userModule.user)
 	const currStation = useSelector((storeState) => storeState.stationModule.currStation)
 
 	const toggleSearchInput = () => {
@@ -96,12 +97,7 @@ export function NavBar() {
 					</li>
 
 					<li className="side-bar-item-library">
-						<NavLink
-							to="/library"
-							className="nav-link"
-						// onMouseEnter={() => setIsTooltipVisible(true)}
-						// onMouseLeave={() => setIsTooltipVisible(false)}
-						>
+						<NavLink to="/library" className="nav-link">
 							{Svg.LibraryMobile}
 
 							<div className="library-span">Your Library</div>
@@ -178,10 +174,6 @@ export function NavBar() {
 						<div className="side-search-bar">
 							<form>
 								<div className="side-search-input-container">
-									{/* <Tooltip text={'Search in Your library'}>
-
-                                    </Tooltip> */}
-
 									<span className="search-icon-navbar" onClick={toggleSearchInput}>
 										{Svg.searchIcon}
 									</span>
@@ -197,10 +189,12 @@ export function NavBar() {
 									/>
 								</div>
 							</form>
+
 							<div className="filter-navBar" onClick={handleFilterClick}>
 								Recents
 								{Svg.filterBy}
 							</div>
+
 							{isFilterModalOpen && (
 								<div className="filter-modal">
 									<ul className="filter-options">
@@ -216,17 +210,20 @@ export function NavBar() {
 						</div>
 
 						<div className="stations-container">
-							{user && <li className="station-preview" key={user._id}>
-								<img src={user.likedSongs.imgUrl} alt={user.likedSongs.name} />
-								<Link to={`/likedsongs`}>
-									<div className="station-info">
-										<p className="playlist-name">{user.likedSongs.name}</p>
-										<p className="song-name">
-											<span>	{trackService.getArtists(user.likedSongs)}</span>
-										</p>
-									</div>
-								</Link>
-							</li>}
+							{user && (
+								<li className="station-preview" key={user._id}>
+									<img src={user.likedSongs.imgUrl} alt={user.likedSongs.name} />
+									<Link to={`/likedsongs`}>
+										<div className="station-info">
+											<p className="playlist-name">{user.likedSongs.name}</p>
+											<p className="song-name">
+												<span> {trackService.getArtists(user.likedSongs)}</span>
+											</p>
+										</div>
+									</Link>
+								</li>
+							)}
+
 							{stations &&
 								stations
 									.filter((station) => station.name.toLowerCase().includes(searchText.toLowerCase()))
@@ -237,7 +234,7 @@ export function NavBar() {
 												<div className="station-info">
 													<p className="playlist-name">{station.name}</p>
 													<p className="song-name">
-														<span>	{trackService.getArtists(station)}</span>
+														<span> {trackService.getArtists(station)}</span>
 													</p>
 												</div>
 											</Link>

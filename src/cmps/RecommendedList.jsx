@@ -9,7 +9,10 @@ export function RecommendedList({ onPlayStation, recommended }) {
 	const bgc = useSelector((storeState) => storeState.stationModule.bgc)
 
 	return (
-		<section style={{ backgroundImage: `linear-gradient(180deg, ${bgc}, transparent)` ,transition:'0.5s'}} className="recommended-container">
+		<section
+			style={{ backgroundImage: `linear-gradient(180deg, ${bgc}, transparent)`, transition: '0.5s' }}
+			className="recommended-container"
+		>
 			<h3 className="greeting">{utilService.getGreetings()}</h3>
 
 			<section className="recommended-list">

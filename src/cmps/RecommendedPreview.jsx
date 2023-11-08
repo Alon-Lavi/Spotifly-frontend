@@ -6,7 +6,8 @@ import { getBgc } from '../store/actions/station.actions'
 export function RecommendedPreview({ station, onPlayStation }) {
 	const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
 	const currStation = useSelector((storeState) => storeState.stationModule.currStation)
-if(!station)return
+
+	if (!station) return
 	return (
 		<article
 			key={station?._id}

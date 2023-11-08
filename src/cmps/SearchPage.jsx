@@ -11,7 +11,6 @@ import { AddToPlaylistModal } from './AddToPlaylistModal'
 import { trackService } from '../services/track.service.js'
 import { utilService } from '../services/util.service'
 import { Svg } from './Svg'
-
 import { StationPreview } from './StationPreview'
 import { userService } from '../services/user.service'
 
@@ -184,8 +183,9 @@ export function SearchPage() {
 												</svg>
 											</span>
 										)}
+
 										<span>{utilService.getSongDurations(song.duration)} </span>
-										{/* <div className="time-stamp end">{utilService.convertTime(songDuration) || '--:--'}</div> */}
+
 										<svg
 											className="svg-option"
 											xmlns="http://www.w3.org/2000/svg"
@@ -212,6 +212,7 @@ export function SearchPage() {
 						</div>
 					</ul>
 				)}
+
 				{searchValue && (
 					<>
 						<h1 className="search-text">Featuring</h1>

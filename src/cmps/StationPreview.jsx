@@ -1,20 +1,18 @@
 import { useSelector } from 'react-redux'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 import { Svg } from './Svg'
-import { stationService } from '../services/station.service.local'
 import { trackService } from '../services/track.service'
 
 export function StationPreview({ station, onPlayStation }) {
 	const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
 	const currStation = useSelector((storeState) => storeState.stationModule.currStation)
-	
-	useEffect(()=>{
-		console.log(isPlaying, 'isPlaying');
-	},[isPlaying])
 
+	useEffect(() => {
+		console.log(isPlaying, 'isPlaying')
+	}, [isPlaying])
 
-	if(!station)return
+	if (!station) return
 	return (
 		<>
 			<div className="img-container">
@@ -25,16 +23,11 @@ export function StationPreview({ station, onPlayStation }) {
 				</button>
 			</div>
 
-			<span className='small-title'>{station.name || station.title} </span>
+			<span className="small-title">{station.name || station.title} </span>
 
-			{/* <p>{station.songs && station.songs.map((song, idx) => {
-				if (!song.artist) return
-				return <span key={idx}>{song.artist} </span>
-			})}
-			</p> */}
 			<p>
 				<span>{trackService.getArtists(station)}</span>
-				</p> 
+			</p>
 		</>
 	)
 }

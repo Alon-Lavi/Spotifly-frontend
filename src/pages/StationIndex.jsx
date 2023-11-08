@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
-import { loadStations, setBgc, setCurrStation } from '../store/actions/station.actions.js'
 
+import { loadStations, setBgc, setCurrStation } from '../store/actions/station.actions.js'
 import { showErrorMsg } from '../services/event-bus.service.js'
 import { stationService } from '../services/station.service.js'
 import { StationList } from '../cmps/StationList.jsx'
@@ -11,8 +11,8 @@ import { setIsPlaying, setSongPlaying } from '../store/actions/player.actions.js
 import { LoaderService } from '../cmps/Loader.jsx'
 
 export function StationIndex() {
-	const [recommended, setRecommended] = useState()
 	const { genre } = useParams()
+	const [recommended, setRecommended] = useState()
 
 	const stations = useSelector((storeState) => storeState.stationModule.stations)
 	const currStation = useSelector((storeState) => storeState.stationModule.currStation)

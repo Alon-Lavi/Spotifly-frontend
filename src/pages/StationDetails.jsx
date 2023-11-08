@@ -24,20 +24,20 @@ export function StationDetails() {
 	const location = useLocation()
 	const navigate = useNavigate()
 	const { stationId } = useParams()
-
 	const isLikedPage = location.pathname === '/likedsongs'
+
 	const [chatIsVisible, setChatIsVisible] = useState(false)
 	const [station, setStation] = useState(null)
 	const [isOpen, setIsOpen] = useState(false)
 	const [isModalOpen, setModalOpen] = useState(false)
 	const [textareaValue, setTextareaValue] = useState('')
+
 	const user = useSelector((storeState) => storeState.userModule.user)
 	const songs = useSelector((storeState) => storeState.stationModule.songsToSearch)
 	const bgc = useSelector((storeState) => storeState.stationModule.bgc)
 	const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
 	const player = useSelector((storeState) => storeState.playerModule.player)
 	const songPlaying = useSelector((storeState) => storeState.playerModule.songPlaying)
-
 	const currStation = useSelector((storeState) => storeState.stationModule.currStation)
 
 	const [imgData, setImgData] = useState({
@@ -51,9 +51,9 @@ export function StationDetails() {
 		console.log(secure_url)
 		setImgData({ imgUrl: secure_url, width: '180', height: '180' })
 	}
+
 	useEffect(() => {
 		socketService.on('station-updated', (stationUpdated) => {
-			// updateStation(stationUpdated);
 			setCurrStation(stationUpdated)
 			setStation(stationUpdated)
 		})
@@ -102,7 +102,6 @@ export function StationDetails() {
 	const toggleChatVisibility = () => {
 		setChatIsVisible(!chatIsVisible)
 		setModalOpen(false)
-
 	}
 
 	const openCloseOptionsModal = () => {
@@ -200,8 +199,6 @@ export function StationDetails() {
 				setCurrStation(stationToSet)
 				getBgc(stationToSet.imgUrl)
 				setImgData({ imgUrl: stationToSet.imgUrl, width: '180', height: '180' })
-
-				// setCurrStation(station)
 			}
 		} catch (err) {
 			console.log('Had issues in station details', err)
@@ -228,6 +225,7 @@ export function StationDetails() {
 			closeOptionsModal()
 		}
 	}
+
 	function checkLikedStation(newStation) {
 		setModalOpen(false)
 		console.log(newStation)
@@ -247,6 +245,7 @@ export function StationDetails() {
 		setStation(stationToSave)
 		showSuccessMsg(`Added to your library.`)
 	}
+
 	function removeFromLibrary(newStation) {
 		const updatedUsers = newStation.likedByUsers.filter((likedUser) => {
 			if (likedUser?._id !== user?._id) return likedUser
@@ -294,12 +293,14 @@ export function StationDetails() {
 			throw err
 		}
 	}
+
 	function checkIfStationLiked(newStation) {
 		const idx = newStation.likedByUsers.findIndex((likedUser) => likedUser?._id === user?._id)
 		if (idx === -1) return false
 
 		return true
 	}
+
 	function checkIfLiked(song) {
 		const idx = user?.likedSongs.songs.findIndex((likedSong) => likedSong.videoId === song.videoId)
 		if (idx === -1) return false
@@ -468,7 +469,7 @@ export function StationDetails() {
 
 				{!isLikedPage && (
 					<section style={{ display: chatIsVisible ? 'block' : 'none' }}>
-					<ChatApp toggleChatVisibility={toggleChatVisibility} station={station} setStation={setStation}/>
+						<ChatApp toggleChatVisibility={toggleChatVisibility} station={station} setStation={setStation} />
 					</section>
 				)}
 			</section>

@@ -15,17 +15,15 @@ export function StationIndex() {
 	const { genre } = useParams()
 
 	const stations = useSelector((storeState) => storeState.stationModule.stations)
-	// const songPlaying = useSelector((storeState) => storeState.playerModule.songPlaying)
 	const currStation = useSelector((storeState) => storeState.stationModule.currStation)
 	const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
 	const player = useSelector((storeState) => storeState.playerModule.player)
 	const user = useSelector((storeState) => storeState.userModule.user)
-	// const bgc = useSelector((storeState) => storeState.stationModule.bgc)
 
 	useEffect(() => {
 		loadStations({ genre })
 		loadRecommended()
-		if (isPlaying){
+		if (isPlaying) {
 			setBgc(currStation?.imgUrl)
 		}
 	}, [genre, user])

@@ -41,7 +41,9 @@ Mixins
 Chat
 --------------------*/
 .chat {
-	@include center;
+    position: fixed;
+    top: 236px;
+    left: 75%;
 	width: 300px;
 	height: 80vh;
 	max-height: 500px;
@@ -69,9 +71,10 @@ Chat Title
 	padding: 10px 10px 10px 50px;
 	background-color: #202c33;
 	display: flex;
-    align-items: center;
-    justify-content: space-between;
-	span{
+	align-items: center;
+	justify-content: space-between;
+
+	span {
 		cursor: pointer;
 	}
 
@@ -161,12 +164,13 @@ Messages
 			}
 		}
 
-		&.recevied{
-		border-radius: 10px 10px 0 10px;
+		&.recevied {
+			border-radius: 10px 10px 0 10px;
 			background-color: #248a52;
 			float: inline-end;
 			margin-inline-end: 35px;
 			margin-bottom: 15px;
+
 			&::before {
 				content: '';
 				position: absolute;
@@ -175,21 +179,25 @@ Messages
 				right: 0;
 				border-left: 7px solid transparent;
 			}
-			.avatar{
+
+			.avatar {
 				right: -35px;
 			}
 		}
-		&.sent{
-			background-color: #2000d6;
+
+		&.sent {
+			background-color: #5b42e8;
+
 			&::before {
 				content: '';
 				position: absolute;
 				bottom: -6px;
-				border-top: 6px solid #2000d6;
+				border-top: 6px solid #5b42e8;
 				left: 0;
 				border-right: 7px solid transparent;
 			}
-			.avatar{
+
+			.avatar {
 				left: -35px;
 			}
 
@@ -202,7 +210,7 @@ Messages
 			color: rgba(255, 255, 255, .7);
 		}
 
-	
+
 
 
 		&.message-personal {

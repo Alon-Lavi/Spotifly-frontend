@@ -100,6 +100,8 @@ export function StationDetails() {
 
 	const toggleChatVisibility = () => {
 		setChatIsVisible(!chatIsVisible)
+		setModalOpen(false)
+
 	}
 
 	const openCloseOptionsModal = () => {

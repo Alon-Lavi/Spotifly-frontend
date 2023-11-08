@@ -60,7 +60,7 @@
 			display: grid !important;
 			grid-template-columns: repeat(3, 100px);
 			grid-template-areas: "item2 item3 item1";
-			grid-template-columns: 0fr 4fr 1fr !important;
+			grid-template-columns: 1fr 10fr 4fr !important;
 			margin-left: 15px !important;
 			height: 100px;
 

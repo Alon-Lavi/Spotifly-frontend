@@ -142,47 +142,11 @@ Messages
 		text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 		z-index: 10;
 		padding-right: 33px;
-		&.recevied{
-			background-color: #248a52;
-			float: inline-end;
-			margin-inline-end: 15px;
-			margin-bottom: 15px;
-			&::before {
-				content: '';
-				position: absolute;
-				bottom: -6px;
-				border-top: 6px solid #248a52;
-				left: 0;
-				border-right: 7px solid transparent;
-			}
-		}
-		&.sent{
-			background-color: #2000d6;
-			&::before {
-				content: '';
-				position: absolute;
-				bottom: -6px;
-				border-top: 6px solid #2000d6;
-				left: 0;
-				border-right: 7px solid transparent;
-			}
-
-		}
-
-		.time-stamp {
-			position: absolute;
-			bottom: 1px;
-			font-size: 9px;
-			color: rgba(255, 255, 255, .7);
-		}
-
-	
 
 		.avatar {
 			position: absolute;
 			z-index: 1;
 			bottom: -15px;
-			left: -35px;
 			border-radius: 30px;
 			width: 30px;
 			height: 30px;
@@ -196,6 +160,50 @@ Messages
 				height: auto;
 			}
 		}
+
+		&.recevied{
+		border-radius: 10px 10px 0 10px;
+			background-color: #248a52;
+			float: inline-end;
+			margin-inline-end: 35px;
+			margin-bottom: 15px;
+			&::before {
+				content: '';
+				position: absolute;
+				bottom: -6px;
+				border-top: 6px solid #248a52;
+				right: 0;
+				border-left: 7px solid transparent;
+			}
+			.avatar{
+				right: -35px;
+			}
+		}
+		&.sent{
+			background-color: #2000d6;
+			&::before {
+				content: '';
+				position: absolute;
+				bottom: -6px;
+				border-top: 6px solid #2000d6;
+				left: 0;
+				border-right: 7px solid transparent;
+			}
+			.avatar{
+				left: -35px;
+			}
+
+		}
+
+		.time-stamp {
+			position: absolute;
+			bottom: 1px;
+			font-size: 9px;
+			color: rgba(255, 255, 255, .7);
+		}
+
+	
+
 
 		&.message-personal {
 			float: right;

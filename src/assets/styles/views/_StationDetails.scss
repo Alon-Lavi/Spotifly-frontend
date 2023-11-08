@@ -9,6 +9,7 @@
 
 	.chat-container {
 		display: flex;
+
 		.open-chat-btn {
 			height: 48px;
 			width: 48px;
@@ -89,12 +90,15 @@
 					.song-dur {
 						display: none;
 					}
+
 					.like-btn {
 						display: none !important;
 					}
+
 					.date {
 						display: none !important;
 					}
+
 					.options {
 						display: block !important;
 						fill: #717171;
@@ -140,6 +144,13 @@
 			h1 {
 				font-size: 6rem;
 				margin: 0;
+
+				@media (max-width: 1020px) {
+					font-size: 4rem;
+				}
+				@media (max-width: 900px) {
+					font-size: 3rem;
+				}
 			}
 
 			.info {
@@ -187,6 +198,8 @@
 			background-color: #282828;
 			padding: 5px;
 			border-radius: 4px;
+			position: absolute;
+			right: 100px;
 
 			.modal-options-content {
 				display: grid;
@@ -215,7 +228,7 @@
 			padding: 10px;
 			border-radius: 50%;
 			border: none;
-			grid-area: item1 ;
+			grid-area: item1;
 			right: 3%;
 			display: flex;
 			justify-content: center;
@@ -238,7 +251,7 @@
 
 		.options-btn:hover {
 			svg {
-                grid-area: item3;
+				grid-area: item3;
 				fill: #fff;
 				scale: 1.6;
 			}

@@ -26,7 +26,7 @@ function getSongDurations(duration){
 	  return `${minutes}:${seconds.toString().padStart(2, '0')}`;
 	}
 	} catch (error) {
-		return "4:00";
+		return `4:${utilService.getRandomIntInclusive(10,59)}`;
 	} 
   
 	

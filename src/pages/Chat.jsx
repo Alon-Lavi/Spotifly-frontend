@@ -7,13 +7,18 @@ import { utilService } from '../services/util.service'
 export function ChatApp({ toggleChatVisibility, station }) {
 	const [msg, setMsg] = useState({ txt: '' })
 	const [msgs, setMsgs] = useState([])
-	const [topic, setTopic] = useState(station._id)
+	const [topic, setTopic] = useState()
 	const loggedInUser = useSelector((storeState) => storeState.userModule.user)
 	const botTimeoutRef = useRef()
 	const bgc = useSelector((storeState) => storeState.stationModule.bgc)
 
 
 	useEffect(() => {
+		setMsgs([])
+		setTopic(station._id)
+		console.log('====================================');
+		console.log(topic);
+		console.log('====================================');
 		socketService.emit(SOCKET_EMIT_SET_TOPIC, topic)
 		socketService.on(SOCKET_EVENT_ADD_MSG, addMsg)
 		return () => {

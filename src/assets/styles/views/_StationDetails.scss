@@ -4,7 +4,6 @@
 	margin-bottom: 95px;
 	background-color: rgb(21, 21, 21);
 	grid-area: 2/2;
-	height: max-content;
 	margin-right: 5px;
 
 	.chat-container {
@@ -85,7 +84,7 @@
 				li {
 					display: grid;
 					padding-left: 0px !important;
-					grid-template-columns: 1fr 6fr 1fr !important;
+					grid-template-columns: 16px 7fr 1fr !important;
 
 					.song-dur {
 						display: none;
@@ -145,7 +144,7 @@
 				font-size: 6rem;
 				margin: 0;
 
-				@media (max-width: 1020px) {
+				@media (max-width: 1150px) {
 					font-size: 4rem;
 				}
 				@media (max-width: 900px) {

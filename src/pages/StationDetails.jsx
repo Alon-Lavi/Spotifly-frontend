@@ -70,6 +70,7 @@ export function StationDetails() {
 	}, [])
 
 	useEffect(() => {
+		setChatIsVisible(false)
 		loadStations()
 		return () => {
 			setSearchValue(null)

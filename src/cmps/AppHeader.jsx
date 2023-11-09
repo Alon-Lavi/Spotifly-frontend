@@ -1,8 +1,8 @@
-import { Search } from '../cmps/Search.jsx'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
+import { Search } from '../cmps/Search.jsx'
 import { UserMsg } from './UserMsg.jsx'
 import { logout } from '../store/actions/user.actions.js'
 import { Svg } from './Svg.jsx'
@@ -11,6 +11,8 @@ import { Tooltip } from './ToolTip.jsx'
 export function AppHeader() {
 	const location = useLocation()
 	const [showSearchInput, setShowSearchInput] = useState(false)
+	const [modalIsOpen, setModalIsOpen] = useState(false)
+
 	const user = useSelector((storeState) => storeState.userModule.user)
 	const bgc = useSelector((storeState) => storeState.stationModule.bgc)
 
@@ -34,11 +36,8 @@ export function AppHeader() {
 		navigate(1)
 	}
 
-	function showModal() {
-		document.querySelector('.menu').hidden = false
-	}
-	function closeModal() {
-		document.querySelector('.menu').hidden = true
+	function toggleModal() {
+		setModalIsOpen(!modalIsOpen)
 	}
 
 	if (isLoginPage) return <div></div>
@@ -67,18 +66,15 @@ export function AppHeader() {
 					)}
 
 					{user && (
-						<span className="logout-header">
-							<img id="logout" onClick={showModal} src={user.imgUrl} alt="" aria-label="logout" />
-							<div className="menu" hidden={true}>
+						<span className="logout-header" onClick={toggleModal}>
+							<img id="logout" src={user.imgUrl} alt="" aria-label="logout" />
+							<div className="menu" style={{ display: modalIsOpen ? 'block' : 'none' }}>
 								<div className="context-menu">
 									<div className="user-widget-menu">
 										<ul className="ul-menu">
-											<li>
+											<li className>
 												<button className="logout-btn" onClick={logout}>
 													logout
-												</button>
-												<button className="logout-btn" onClick={closeModal}>
-													X
 												</button>
 											</li>
 										</ul>

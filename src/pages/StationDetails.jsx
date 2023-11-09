@@ -186,14 +186,12 @@ export function StationDetails() {
 		try {
 			if (isLikedPage) {
 				setStation(user.likedSongs)
-				setCurrStation(user.likedSongs)
 				getBgc(user.likedSongs.imgUrl)
 
 				setImgData({ imgUrl: user.likedSongs.imgUrl, width: '180', height: '180' })
 			} else {
 				const stationToSet = await stationService.getById(stationId)
 				setStation(stationToSet)
-				setCurrStation(stationToSet)
 				getBgc(stationToSet.imgUrl)
 				setImgData({ imgUrl: stationToSet.imgUrl, width: '180', height: '180' })
 			}

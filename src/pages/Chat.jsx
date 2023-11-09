@@ -10,21 +10,22 @@ export function ChatApp({ toggleChatVisibility, station }) {
 
 	const [msg, setMsg] = useState({ txt: '' })
 	const [msgs, setMsgs] = useState([])
-	const [topic, setTopic] = useState()
 
 	const loggedInUser = useSelector((storeState) => storeState.userModule.user)
 	const bgc = useSelector((storeState) => storeState.stationModule.bgc)
 
 	useEffect(() => {
 		setMsgs([])
-		setTopic(station._id)
-		socketService.emit(SOCKET_EMIT_SET_TOPIC, topic)
+
+		socketService.emit(SOCKET_EMIT_SET_TOPIC, station._id)
 		socketService.on(SOCKET_EVENT_ADD_MSG, addMsg)
 		return () => {
 			socketService.off(SOCKET_EVENT_ADD_MSG, addMsg)
 			botTimeoutRef.current && clearTimeout(botTimeoutRef.current)
 		}
 	}, [station])
+
+
 
 	async function addMsg(newMsg) {
 		console.log('add msg was activated', newMsg)

@@ -136,7 +136,6 @@ export function StationDetails() {
 				isCurrentlyPlaying ? player.playVideo() : player.pauseVideo()
 				setIsPlaying(isCurrentlyPlaying)
 			} else {
-				console.log(stationToSet);
 				setSongPlaying(song)
 				setCurrStation(stationToSet)
 				socketService.emit('play', song)

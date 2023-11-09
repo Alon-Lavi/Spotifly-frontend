@@ -13,8 +13,8 @@ export const trackService = {
 }
 
 const KEY = 'videosDB'
-const API_KEY = 'AIzaSyBW5qn1Rksz37QRNmq2hZGhs2kep291zpk'
-// const API_KEY = 'AIzaSyBRKY6ERVlaMGjytOb4wV1GWgyjr8d0tL0'
+// const API_KEY = 'AIzaSyBW5qn1Rksz37QRNmq2hZGhs2kep291zpk'
+const API_KEY = 'AIzaSyBRKY6ERVlaMGjytOb4wV1GWgyjr8d0tL0'
 
 async function getSongInfo(value) {
 	const res = await axios.get(

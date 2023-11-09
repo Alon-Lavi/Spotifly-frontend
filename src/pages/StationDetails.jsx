@@ -57,15 +57,9 @@ export function StationDetails() {
 			setCurrStation(stationUpdated)
 			setStation(stationUpdated)
 		})
-		socketService.on('play', (songPlaying) => {
-			console.log('====================================')
-			console.log(songPlaying)
-			console.log('====================================')
-			setSongPlaying(songPlaying)
-		})
+	
 		return () => {
 			socketService.off('station-updated')
-			socketService.off('play')
 		}
 	}, [])
 
@@ -89,6 +83,9 @@ export function StationDetails() {
 	}
 
 	function onPlayStation(station, ev) {
+		console.log('====================================');
+		console.log(station,currStation);
+		console.log('====================================');
 		if (currStation?._id == station._id) {
 			const isCurrentlyPlaying = !isPlaying
 			isCurrentlyPlaying ? player.playVideo() : player.pauseVideo()

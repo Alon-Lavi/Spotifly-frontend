@@ -6,7 +6,7 @@ import { Draggable } from 'react-beautiful-dnd'
 import { utilService } from '../services/util.service'
 import { Svg } from './Svg'
 
-export function SongPreview({ song, playSong, checkLikedSongs, checkIfLiked, onDeleteSong, idx }) {
+export function SongPreview({ station,song, playSong, checkLikedSongs, checkIfLiked, onDeleteSong, idx }) {
 	const location = useLocation()
 	const isLikedPage = location.pathname === '/likedsongs'
 
@@ -25,12 +25,11 @@ export function SongPreview({ song, playSong, checkLikedSongs, checkIfLiked, onD
 		ev.stopPropagation()
 		setModalOpen(false)
 	}
-
 	return (
 		<Draggable key={song.id} draggableId={song.id} index={idx}>
 			{(provided) => {
 				return (
-					<li {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} onClick={() => playSong(song)}>
+					<li {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} onClick={() => playSong(song,station)}>
 						{songPlaying?.videoId !== song.videoId && (
 							<span style={{ color: 'white' }} className="idx">
 								{idx + 1}

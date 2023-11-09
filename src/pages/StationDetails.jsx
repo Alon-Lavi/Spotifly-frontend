@@ -117,7 +117,7 @@ export function StationDetails() {
 		setTextareaValue(event.target.value)
 	}
 
-	function playSong(song) {
+	function playSong(song,stationToSet) {
 		if (song.kind) {
 			const songToPlay = {
 				videoId: song.id.videoId,
@@ -136,7 +136,9 @@ export function StationDetails() {
 				isCurrentlyPlaying ? player.playVideo() : player.pauseVideo()
 				setIsPlaying(isCurrentlyPlaying)
 			} else {
+				console.log(stationToSet);
 				setSongPlaying(song)
+				setCurrStation(stationToSet)
 				socketService.emit('play', song)
 			}
 		}
@@ -421,6 +423,7 @@ export function StationDetails() {
 												checkLikedSongs={checkLikedSongs}
 												checkIfLiked={checkIfLiked}
 												onDeleteSong={onDeleteSong}
+												station={station}
 											/>
 										)}
 										{provided.placeholder}

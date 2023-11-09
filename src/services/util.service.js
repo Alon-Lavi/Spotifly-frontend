@@ -152,7 +152,6 @@ function getGreetings() {
 function handleChange({ target }) {
 	const field = target.name
 	const value = target.type === 'number' ? +target.value || '' : target.value
-	console.log('field,value', field, value)
 }
 
 function getDate(stamp) {

@@ -26,7 +26,6 @@ export function NavBar() {
 	const currStation = useSelector((storeState) => storeState.stationModule.currStation)
 
 	const toggleSearchInput = () => {
-		console.log('Work')
 		setSearchInputVisible(!searchInputVisible)
 	}
 
@@ -80,23 +79,23 @@ export function NavBar() {
 
 	if (isLoginPage) return <div></div>
 	return (
-		<nav className="side-bar">
-			<ul className="mobil-side-bar">
-				<div className="main-mobile-side-bar">
-					<li className={`side-bar-item-home-mobile ${isHomeActive ? 'active' : ''}`}>
+		<nav className="nav-bar">
+			<ul className="mobil-nav-bar">
+				<div className="main-mobile-nav-bar">
+					<li className={`nav-bar-item-home-mobile ${isHomeActive ? 'active' : ''}`}>
 						<NavLink to="/" className="nav-link " onClick={handleHomeClick}>
 							{isHomeActive ? Svg.activeHomeMobile : Svg.homeIconMobile}
 							<div className={`txt-home-mobile`}>Home</div>
 						</NavLink>
 					</li>
-					<li className={`side-bar-item-search-mobile ${isSearchActive ? 'active' : ''}`}>
+					<li className={`nav-bar-item-search-mobile ${isSearchActive ? 'active' : ''}`}>
 						<NavLink to="/search" className="nav-link " onClick={handleSearchClick}>
 							{isSearchActive ? Svg.activeSearchMobile : Svg.searchHomePageIconMobile}
 							<div className={`txt-search-mobile${isSearchActive ? '-active' : ''}`}>Search</div>
 						</NavLink>
 					</li>
 
-					<li className="side-bar-item-library">
+					<li className="nav-bar-item-library">
 						<NavLink to="/library" className="nav-link">
 							{Svg.LibraryMobile}
 
@@ -106,16 +105,16 @@ export function NavBar() {
 				</div>
 			</ul>
 
-			<ul className="side-bar-list">
-				<div className="header-side-bar">
-					<li className={`side-bar-item-home ${isHomeActive ? 'active' : ''}`}>
+			<ul className="nav-bar-list">
+				<div className="header-nav-bar">
+					<li className={`nav-bar-item-home ${isHomeActive ? 'active' : ''}`}>
 						<NavLink to="/" className="nav-link flex" onClick={handleHomeClick}>
 							{isHomeActive ? Svg.activeHome : Svg.homeIcon}
 							<div className={`txt-home${isHomeActive ? '-active' : ''}`}>Home</div>
 						</NavLink>
 					</li>
 
-					<li className={`side-bar-item-search ${isSearchActive ? 'active' : ''}`}>
+					<li className={`nav-bar-item-search ${isSearchActive ? 'active' : ''}`}>
 						<NavLink to="/search" className="nav-link flex" onClick={handleSearchClick}>
 							{isSearchActive ? Svg.activeSearch : Svg.searchHomePageIcon}
 							<div className={`txt-search${isSearchActive ? '-active' : ''}`}>Search</div>
@@ -124,9 +123,9 @@ export function NavBar() {
 				</div>
 				<ul />
 
-				<div className="main-side-bar">
+				<div className="main-nav-bar">
 					<div className="flex">
-						<li className="side-bar-item">
+						<li className="nav-bar-item">
 							<NavLink to="/library">
 								<Tooltip text="Liked playlist">
 									<a

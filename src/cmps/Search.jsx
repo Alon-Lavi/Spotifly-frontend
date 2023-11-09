@@ -14,9 +14,7 @@ export function Search() {
 
 	async function handleChange({ target }) {
 		const songs = await trackService.getSongInfo(target.value)
-		console.log(songs, 'ssss')
 		setSearchValue(target.value)
-
 		setSongsToSearch(songs)
 	}
 

@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux'
 import { getBgc, removeStation, setBgc, setCurrStation, setSearchValue, updateStation } from '../store/actions/station.actions'
 import { setIsPlaying, setSongPlaying } from '../store/actions/player.actions'
 import { updateUser } from '../store/actions/user.actions'
-
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { stationService } from '../services/station.service'
 import { LoaderService } from '../cmps/Loader'
@@ -57,7 +56,7 @@ export function StationDetails() {
 			setCurrStation(stationUpdated)
 			setStation(stationUpdated)
 		})
-	
+
 		return () => {
 			socketService.off('station-updated')
 		}
@@ -83,10 +82,7 @@ export function StationDetails() {
 	}
 
 	function onPlayStation(station, ev) {
-		console.log('====================================');
-		console.log(station,currStation);
-		console.log('====================================');
-		if (currStation?._id == station._id) {
+		if (currStation?._id === station._id && songPlaying) {
 			const isCurrentlyPlaying = !isPlaying
 			isCurrentlyPlaying ? player.playVideo() : player.pauseVideo()
 			setIsPlaying(isCurrentlyPlaying)
@@ -147,7 +143,6 @@ export function StationDetails() {
 	}
 
 	async function AddToPlaylist(song, ev) {
-		console.log(song)
 		ev.stopPropagation()
 		const songToSave = {
 			id: utilService.makeId(),
@@ -204,7 +199,6 @@ export function StationDetails() {
 
 	async function saveChanges(ev) {
 		ev.preventDefault()
-		console.log(ev)
 		const name = ev.target[1].value
 		const desc = ev.target[2].value
 		const stationToSave = { ...station, name, desc, imgUrl: imgData.imgUrl }
@@ -223,9 +217,7 @@ export function StationDetails() {
 
 	function checkLikedStation(newStation) {
 		setModalOpen(false)
-		console.log(newStation)
 		const idx = newStation.likedByUsers?.findIndex((likedUser) => likedUser?._id === user?._id)
-		console.log(idx)
 		if (idx === -1) addToLibrary(newStation)
 		else removeFromLibrary(newStation)
 	}
@@ -305,7 +297,6 @@ export function StationDetails() {
 
 	async function handleDragend(res) {
 		const newSongs = [...station.songs]
-		console.log(newSongs)
 		const [recordedItems] = newSongs.splice(res.source.index, 1)
 		newSongs.splice(res.destination.index, 0, recordedItems)
 		const stationToSave = { ...station, songs: newSongs }
@@ -319,7 +310,6 @@ export function StationDetails() {
 		}
 
 		setStation(stationToSave)
-		console.log(stationToSave)
 		await updateStation(stationToSave)
 	}
 

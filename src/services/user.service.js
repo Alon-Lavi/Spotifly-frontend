@@ -37,33 +37,23 @@ function remove(userId) {
 async function addSong(_id, song) {
 	const user = await httpService.get(`user/${_id}`)
 	user.likedSongs.songs.push(song)
-
-	console.log(user, 'updtae')
-	// await storageService.put('user', user)
-
 	await httpService.put(`user/${user._id}`, user)
-
 	if (getLoggedinUser()._id === user._id) saveLocalUser(user)
 	return user
+	// await storageService.put('user', user)
 }
 
 async function removeSong(_id, videoId) {
 	const user = await httpService.get(`user/${_id}`)
 	const idx = user.likedSongs.songs.findIndex((song) => song.videoId === videoId)
-	console.log(idx, 'idx')
 	user.likedSongs.songs.splice(idx, 1)
-
-	console.log(user, 'updtae')
-	// await storageService.put('user', user)
-
 	await httpService.put(`user/${user._id}`, user)
-
 	if (getLoggedinUser()._id === user._id) saveLocalUser(user)
 	return user
+	// await storageService.put('user', user)
 }
 
 async function updateUser(user) {
-	console.log(user)
 	await httpService.put(`user/${user._id}`, user)
 	return user
 }

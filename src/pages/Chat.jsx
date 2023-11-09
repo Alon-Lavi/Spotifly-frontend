@@ -25,10 +25,7 @@ export function ChatApp({ toggleChatVisibility, station }) {
 		}
 	}, [station])
 
-
-
 	async function addMsg(newMsg) {
-		console.log('add msg was activated', newMsg)
 		setMsgs((prevMsgs) => [...prevMsgs, newMsg])
 	}
 
@@ -39,14 +36,8 @@ export function ChatApp({ toggleChatVisibility, station }) {
 			const from = loggedInUser?.fullname || 'Me'
 			const newMsg = { imgUrl, from, txt: msg.txt }
 			const stationToSave = { ...station, msgs: [newMsg, ...station.msgs] }
-			console.log('====================================')
-			console.log(stationToSave)
-			console.log('====================================')
 			await updateStation(stationToSave)
 			socketService.emit(SOCKET_EMIT_SEND_MSG, newMsg)
-			// if (isBotMode) sendBotResponse()
-			// for now - we add the msg ourself
-			// addMsg(newMsg)
 			setMsg({ txt: '' })
 		} catch (err) {
 			console.log('err with sending the message:', err)

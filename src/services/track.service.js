@@ -27,7 +27,6 @@ async function getSongInfo(value) {
 		)
 	})
 	return Promise.all(PROMISES).then((values) => {
-		console.log(values)
 		const songsToSave = songs.map((song, idx) => {
 			song.duration = values[idx].data.items[0]?.contentDetails.duration
 			return song
@@ -39,7 +38,6 @@ async function getSongInfo(value) {
 async function getSongDurations(song) {
 	const videoId = song.kind ? song.id.videoId : song.videoId
 	try {
-		console.log(videoId)
 		const res = await axios.get(
 			`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&part=contentDetails&key=AIzaSyCIHRUBlXc7OJQY31NlL6jlfigPqh9_PHE`
 		)

@@ -15,12 +15,6 @@ export const trackService = {
 const KEY = 'videosDB'
 const API_KEY = 'AIzaSyBRKY6ERVlaMGjytOb4wV1GWgyjr8d0tL0'
 
-// new-alon
-// const API_KEY = 'AIzaSyAsKzAWTofbLnSWaJdeENM-TYjNMtiuzI4'
-
-//old-alon
-// const API_KEY = 'AIzaSyBW5qn1Rksz37QRNmq2hZGhs2kep291zpk'
-
 async function getSongInfo(value) {
 	const res = await axios.get(
 		`https://www.googleapis.com/youtube/v3/search?part=snippet%20&videoEmbeddable=true&type=video&key=${API_KEY}&q=${value}`
